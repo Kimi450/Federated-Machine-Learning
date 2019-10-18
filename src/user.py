@@ -2,11 +2,11 @@
 import numpy as np
 
 class User:
-    def __init__(self, id, model,
+    def __init__(self, user_id, averaging_method, model,
     train_class, train_data,
     val_class, val_data,
     test_class, test_data):
-        self._id = id
+        self._id = user_id
         self._model = model
         self._history = []
         self._train_class = train_class
@@ -20,7 +20,104 @@ class User:
         self._post_fit_accuracy = np.array([])
         self._pre_fit_loss = np.array([])
         self._pre_fit_accuracy = np.array([])
+    
+        self._averaging_method = averaging_method #std_dev, weighted_avg
+        
+    def set_averaging_method(self, averaging_method):
+        self._averaging_method = averaging_method
+        
+    def get_averaging_method(self):
+        return self._averaging_method
+        
 
+    def average_weights(self, users, 
+                    loss = False, 
+                    accuracy = False, 
+                    post = False,
+                    pre = False):
+        new_weights = User.static_average_weights(users, 
+                    method = self.get_averaging_method(), 
+                    loss = loss, 
+                    accuracy = accuracy, 
+                    post = post,
+                    pre = pre)
+        
+        model = self.get_model()
+        model.set_weights(new_weights)
+
+    def static_average_weights(users, method = 'all', 
+                    loss = False, 
+                    accuracy = False, 
+                    post = False,
+                    pre = False):
+        new_weights = []
+        layer_indices_count = len(list(users.values())[0].get_weights())
+        if pre == post or loss==accuracy:
+            raise Exception("Please select one of pre or post and loss or accuracy")
+
+        latest_user_metric = \
+                lambda u, pr, po, acc, lo: u.get_latest_accuracy(pre = pr, post = po) if acc \
+                        else (u.get_latest_loss(pre = pr, post = po) if lo else None)
+
+        if method == "std_dev":
+
+            latest_metrics = []
+            for user in users.values():
+    #             print(user.get_latest_accuracy(pre = pre, post = post))
+                value = latest_user_metric(user,pre,post,accuracy,loss)
+                latest_metrics.append(value)
+
+            latest_metrics = np.asarray(latest_metrics)
+            std_dev = latest_metrics.std()
+            avg = latest_metrics.mean()
+
+
+        users_used = set()
+
+        # sum of the accuracies, as thatll be what you divide by, think
+        # this is for weighted average division
+        acc_sum = 0
+
+        #create a numpy array of 0s
+        new_weights = np.asarray(users[0].get_weights())
+        for i in new_weights:
+            i[i==i] = 0
+
+        for user in users.values():
+            if method == "all":
+                user_weights = np.asarray(user.get_weights())
+                users_used.add(user.get_id())
+                new_weights += user_weights #nested array of [weights] and [biases]
+
+            elif method == "std_dev":
+                curr_metric = latest_user_metric(user,pre,post,accuracy,loss) 
+                if curr_metric >= (avg-std_dev):
+                    user_weights = np.asarray(user.get_weights())
+                    users_used.add(user.get_id())
+                    new_weights += user_weights #nested array of [weights] and [biases]
+                else:
+                    print(f"user {user.get_id()}: {curr_metric} < {avg-std_dev}")
+    #                 continue
+
+            elif method == "weighted_avg":
+                user_weights = np.asarray(user.get_weights())
+                users_used.add(user.get_id())
+
+                curr_metric = latest_user_metric(user,pre,post,accuracy,loss) 
+                acc_sum += curr_metric
+
+                user_weights = user_weights * curr_metric # weighted average
+
+                new_weights += user_weights #nested array of [weights] and [biases]
+
+        if method == "weighted_avg":
+            new_weights = new_weights/acc_sum
+        else:
+            new_weights = new_weights/len(users_used)
+
+        return new_weights.tolist()
+        
+        
     def evaluate_user(self, verbose = True):
         """returns the loss and accuracy for the given User instance
         on test data"""
