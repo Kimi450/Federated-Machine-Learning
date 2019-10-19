@@ -35,6 +35,8 @@ class User:
                     accuracy = False, 
                     post = False,
                     pre = False):
+        
+        
         new_weights = User.static_average_weights(users, 
                     method = self.get_averaging_method(), 
                     loss = loss, 
@@ -50,6 +52,20 @@ class User:
                     accuracy = False, 
                     post = False,
                     pre = False):
+        
+        """
+        this is used to average all the users data using 'method' method
+        It returns the new weights as a list of numpy arrrays.
+        all, std_dev or weighted_average.
+        
+        all is where all the users' weights are just averaged, google policy
+        
+        std_dev is where users with metrics 1 std_dev less than the average are discarded
+        
+        weighted_avg is the weights*metric/(sum of metrics from all users)
+        """
+
+        
         new_weights = []
         layer_indices_count = len(list(users.values())[0].get_weights())
         if pre == post or loss==accuracy:
