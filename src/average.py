@@ -1,5 +1,11 @@
 import numpy as np
 
+
+def temp(users, main_user):
+    for user in users.values():
+        eval = user.evaluate(model = main_user.get_model(), verbose = False)
+
+
 class Average:
     def __init__(self):
         """
@@ -9,9 +15,10 @@ class Average:
 
         all is where all the users' weights are just averaged, google policy
 
-        std_dev is where users with metrics 1 std_dev less than the average are discarded
+        std_dev is where users with metrics 1 std_dev less than the average
+        are discarded
 
-        weighted_avg is the weights*metric/(sum of metrics from all users)
+        weighted_avg is the (weights*metric)/(sum of metrics from all users)
         """
         pass
 

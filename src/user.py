@@ -33,12 +33,13 @@ class User:
     
         
         
-    def evaluate_user(self, verbose = True):
+    def evaluate(self, model = None, verbose = True):
         """returns the loss and accuracy for the given User instance
         on test data"""
         test_data = self.get_test_data()
         test_class = self.get_test_class()
-        model = self.get_model()
+        if model == None:
+            model = self.get_model()
         evaluation = model.evaluate(test_data,
                                     test_class,
                                     verbose = verbose)
@@ -58,12 +59,14 @@ class User:
         val_data = self.get_val_data()
         val_class = self.get_val_class()
         model = self.get_model()
-
         if weights != None: # if provided, update model weights
             model.set_weights(weights)
 
-        e = self.evaluate_user(verbose = verbose_evaluate)
+        e = self.evaluate(verbose = verbose_evaluate)
         self.add_pre_fit_evaluation(e)
+# sanity check to see they all have the same init weights
+#         print(self.get_id())
+#         print(model.get_weights()) 
 
 
         history = model.fit(
@@ -71,12 +74,13 @@ class User:
             train_class,
             epochs = epochs,
             verbose = verbose_fit,
+            shuffle = False,
             # batch_size = 2**8, #4k
             # use_multiprocessing = True,
             validation_data = (val_data, val_class)
         )
 
-        e = self.evaluate_user(verbose = verbose_evaluate)
+        e = self.evaluate(verbose = verbose_evaluate)
         self.add_post_fit_evaluation(e)
 
         # update user data
@@ -90,8 +94,8 @@ class User:
                  pre = False, post = False):
         if (loss == accuracy) or (pre == post):
 
-            print("Please select one from accuracy or loss and one from pre or post")
-            return None
+            raise Exception("Please select one from \
+                    accuracy or loss and one from pre or post")
         if loss:
             if pre:
                 data = self.get_pre_fit_loss()
