@@ -2,7 +2,8 @@
 import numpy as np
 
 class User:
-    def __init__(self, user_id, averaging_method, model,
+    def __init__(self, user_id, model, averaging_method,
+    averaging_metric_loss, averaging_metric_accuracy,
     train_class, train_data,
     val_class, val_data,
     test_class, test_data):
@@ -20,19 +21,27 @@ class User:
         self._post_fit_accuracy = np.array([])
         self._pre_fit_loss = np.array([])
         self._pre_fit_accuracy = np.array([])
-    
+
+        self._averaging_metric_loss = averaging_metric_loss
+        self._averaging_metric_accuracy = averaging_metric_accuracy
         self._averaging_method = averaging_method #std_dev, weighted_avg
-        
+
+    def get_averaging_metric_accuracy(self):
+        return self._averaging_metric_accuracy
+    def get_averaging_metric_loss(self):
+        return self._averaging_metric_loss
+
+    def set_averaging_metric_accuracy(self, averaging_metric_accuracy):
+        self._averaging_metric_accuracy = averaging_metric_accuracy
+    def set_averaging_metric_loss(self, averaging_metric_loss):
+        self._averaging_metric_loss = averaging_metric_loss
+
     def set_averaging_method(self, averaging_method):
         self._averaging_method = averaging_method
-        
+
     def get_averaging_method(self):
         return self._averaging_method
-        
 
-    
-        
-        
     def evaluate(self, model = None, verbose = True):
         """returns the loss and accuracy for the given User instance
         on test data"""
@@ -59,14 +68,26 @@ class User:
         val_data = self.get_val_data()
         val_class = self.get_val_class()
         model = self.get_model()
-        if weights != None: # if provided, update model weights
+        if weights == None: # if provided, update model weights
+            pass
+        elif type(weights) == type(dict()): # personalised strat
+            original_user_weights = self.get_weights()
+            # you save the original weights and then calcualte new weights
+            # based on the strat set for the user
+            new_weights = self.get_averaging_method()(users = None, user = self,
+                                        weights = weights,
+                                        accuracy = self.get_averaging_metric_accuracy(),
+                                        loss = self.get_averaging_metric_loss())
+            model.set_weights(new_weights)
+
+        else:
             model.set_weights(weights)
 
         e = self.evaluate(verbose = verbose_evaluate)
         self.add_pre_fit_evaluation(e)
-# sanity check to see they all have the same init weights
-#         print(self.get_id())
-#         print(model.get_weights()) 
+        # sanity check to see they all have the same init weights
+        # print(self.get_id())
+        # print(model.get_weights())
 
 
         history = model.fit(
@@ -88,9 +109,9 @@ class User:
 
         return
 
-        
-    def get_data(self, ignore_first_n = 0, 
-                 loss = False, accuracy = False, 
+
+    def get_data(self, ignore_first_n = 0,
+                 loss = False, accuracy = False,
                  pre = False, post = False):
         if (loss == accuracy) or (pre == post):
 
@@ -129,10 +150,10 @@ class User:
             print("Please select one of pre or post as True")
             return None
         return data[-1]
-    
+
     def get_latest_loss(self, pre, post):
         data = None
-        
+
         if pre:
             data = self.get_pre_fit_loss()
         elif post:
@@ -141,7 +162,7 @@ class User:
             print("Please select one of pre or post as True")
             return None
         return data[-1]
-    
+
     def add_pre_fit_evaluation(self, pre_fit_evaluation):
         self._pre_fit_loss = np.append(self.get_pre_fit_loss(),
                                        pre_fit_evaluation[0])
