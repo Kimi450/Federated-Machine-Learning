@@ -178,6 +178,7 @@ class Average:
         avg = latest_metrics.mean()
 
 ## from here
+        print(f"User {user.get_id()}: -> ")
         for user_id, curr_metric in evals.items():
             if curr_metric >= (avg-std_dev):
                 user_weights = np.asarray(weights[user_id])
@@ -185,7 +186,7 @@ class Average:
                 #nested array of [weights] and [biases]
                 new_weights += user_weights
             else:
-                output=f"User: {user.get_id()} -> User {user_id}: {curr_metric} < {avg-std_dev}"
+                output=f"User {user_id}: {curr_metric} < {avg-std_dev}"
                 print(output)
         new_weights = new_weights/len(users_used)
         return new_weights.tolist()
@@ -225,7 +226,30 @@ class Average:
         new_weights = new_weights/len(users_used)
         return new_weights.tolist()
 
-    def weighted_avg_central(users = None, user = None, weights = None,
+    def weighted_avg(users = None,
+            user = None, weights = None,
+            loss = False,
+            accuracy = False,
+            post = False,
+            pre = False):
+        new_weights = None
+        if users:
+            new_weights = Average.weighted_avg_central(users = users,
+                loss = loss,
+                accuracy = accuracy,
+                post = post,
+                pre = pre)
+
+        elif user and weights:
+            new_weights = Average.weighted_avg_personalised(user = user,
+                weights = weights,
+                loss = loss,
+                accuracy = accuracy,
+                post = True,
+                pre = False)
+        return new_weights
+
+    def weighted_avg_central(users = None,
             loss = False,
             accuracy = False,
             post = False,
@@ -244,6 +268,34 @@ class Average:
 
             curr_metric = Average._latest_user_metric(user,pre,post,
                                                     accuracy,loss)
+            acc_sum += curr_metric
+            # weighted average
+            user_weights = user_weights * curr_metric
+            # nested array of [weights] and [biases]
+            new_weights += user_weights
+        new_weights = new_weights/acc_sum
+        return new_weights.tolist()
+
+    def weighted_avg_personalised(user = None, weights = None,
+            loss = False,
+            accuracy = False,
+            post = False,
+            pre = False):
+        new_weights, users_used = Average._initialise(user,
+                                            loss = loss,
+                                            accuracy = accuracy,
+                                            post = post,
+                                            pre = pre)
+        # sum of the accuracies, as thatll be what you divide by, think
+        # this is for weighted average division
+        acc_sum = 0
+        evals = Average.eval_user_on_all(user = user, weights = weights,
+                                 loss = loss, accuracy = accuracy)
+        for user_id, weight in weights.items():
+            user_weights = np.asarray(weight)
+            users_used.add(user_id)
+
+            curr_metric = evals[user_id]
             acc_sum += curr_metric
             # weighted average
             user_weights = user_weights * curr_metric
