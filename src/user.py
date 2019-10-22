@@ -42,13 +42,12 @@ class User:
     def get_averaging_method(self):
         return self._averaging_method
 
-    def evaluate(self, model = None, verbose = True):
+    def evaluate(self, verbose = True):
         """returns the loss and accuracy for the given User instance
         on test data"""
         test_data = self.get_test_data()
         test_class = self.get_test_class()
-        if model == None:
-            model = self.get_model()
+        model = self.get_model()
         evaluation = model.evaluate(test_data,
                                     test_class,
                                     verbose = verbose)

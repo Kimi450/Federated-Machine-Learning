@@ -109,14 +109,94 @@ class Average:
         new_weights = new_weights/len(users_used)
         return new_weights.tolist()
 
+    def eval_user_on_all(user, weights, loss, accuracy):
+        """
+        returns a dictionary of user_id:metric where metric is
+        accuracy or loss based on what boolean parameters were
+        passed in, both are not allowed.
+        it places weights from 'weights' in users current model and
+        evaluates it on those custom weights models (recieved from all users)
+        and tests on the users own test data, returning the metric values as
+        a dictionary
+        """
+        if loss == accuracy:
+            raise Exception("Please select one of loss or accuracy")
+        evals = dict.fromkeys(list(weights.keys()))
+        original_weights = user.get_weights()
+        for user_id,weight in weights.items():
+            user.set_weights(weight)
+            metric = user.evaluate(verbose = False)
+            if loss:
+                metric = metric[0]
+            elif accuracy:
+                metric = metric[1]
 
+            evals[user_id] = metric
 
-    def std_dev_central(users = None, user = None, weights = None,
+        user.set_weights(original_weights)
+        return evals
+
+    def std_dev(users = None,
+            user = None, weights = None,
             loss = False,
             accuracy = False,
             post = False,
             pre = False):
-        new_weights, users_used = Average._initialise(users.values()[0],
+        new_weights = None
+        if users:
+            new_weights = Average.std_dev_central(users = users,
+                loss = loss,
+                accuracy = accuracy,
+                post = post,
+                pre = pre)
+
+        elif user and weights:
+            new_weights = Average.std_dev_personalised(user = user,
+                weights = weights,
+                loss = loss,
+                accuracy = accuracy,
+                post = True,
+                pre = False)
+        return new_weights
+
+    def std_dev_personalised(user = None, weights = None,
+            loss = False,
+            accuracy = False,
+            post = False,
+            pre = False):
+        new_weights, users_used = Average._initialise(user,
+                                            loss = loss,
+                                            accuracy = accuracy,
+                                            post = post,
+                                            pre = pre)
+
+        evals = Average.eval_user_on_all(user = user, weights = weights,
+                                 loss = loss, accuracy = accuracy)
+        latest_metrics = list(evals.values())
+        latest_metrics = np.asarray(latest_metrics)
+        std_dev = latest_metrics.std()
+        avg = latest_metrics.mean()
+
+## from here
+        for user_id, curr_metric in evals.items():
+            if curr_metric >= (avg-std_dev):
+                user_weights = np.asarray(weights[user_id])
+                users_used.add(user_id)
+                #nested array of [weights] and [biases]
+                new_weights += user_weights
+            else:
+                output=f"User: {user.get_id()} -> User {user_id}: {curr_metric} < {avg-std_dev}"
+                print(output)
+        new_weights = new_weights/len(users_used)
+        return new_weights.tolist()
+
+
+    def std_dev_central(users = None,
+            loss = False,
+            accuracy = False,
+            post = False,
+            pre = False):
+        new_weights, users_used = Average._initialise(users,
                                             loss = loss,
                                             accuracy = accuracy,
                                             post = post,
@@ -150,7 +230,7 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
-        new_weights, users_used = Average._initialise(users.values()[0],
+        new_weights, users_used = Average._initialise(users,
                                             loss = loss,
                                             accuracy = accuracy,
                                             post = post,
@@ -165,9 +245,9 @@ class Average:
             curr_metric = Average._latest_user_metric(user,pre,post,
                                                     accuracy,loss)
             acc_sum += curr_metric
-
-            user_weights = user_weights * curr_metric # weighted average
-#nested array of [weights] and [biases]
+            # weighted average
+            user_weights = user_weights * curr_metric
+            # nested array of [weights] and [biases]
             new_weights += user_weights
         new_weights = new_weights/acc_sum
         return new_weights.tolist()
