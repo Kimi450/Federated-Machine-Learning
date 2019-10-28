@@ -19,6 +19,10 @@ class Average:
         raise ex
 
     def _latest_user_metric(user, pre, post, accuracy, loss):
+        """
+        returns the users metric (acc or loss) on their own model
+        using their own test data, based on prefit or postfit of the model
+        """
         data = None
         if accuracy:
             data = user.get_latest_accuracy(pre = pre, post = post)
@@ -29,7 +33,10 @@ class Average:
         return data
 
     def _initialise(user, loss, accuracy, post, pre):
-
+        """
+        create and return an empty set of users used and nested numpy array
+        initialised with 0s to act as a holder for new weights
+        """
         if type(user) == type(dict()):
             user = list(user.values())[0]
 
@@ -50,6 +57,17 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+        """
+        wrapper for the all averaging method, calls the personalised (p2p)
+        version or the central version.
+        Both should yield the same results
+        central model needs
+            users is a list of all the users
+
+        p2p model needs
+            user is the current user
+            weights is the weights of all the other users' models
+        """
         new_weights = None
         if users:
             new_weights = Average.all_central(users = users,
@@ -72,6 +90,10 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+        """
+        Central version is for all weights to be averaged based on the user's
+        performance metric on their own model with their own test data
+        """
         new_weights, users_used = Average._initialise(users,
                                             loss = loss,
                                             accuracy = accuracy,
@@ -91,6 +113,11 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+        """
+        Personalised version is for all weights to be averaged based on the
+        user A's performance metric on other users models using user A's test
+        data
+        """
         new_weights, users_used = Average._initialise(user,
 
                                             loss = loss,
@@ -142,6 +169,17 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+
+        """
+        wrapper for the std_dev averaging method, calls the personalised (p2p)
+        version or the central version.
+        central model needs
+            users is a list of all the users
+
+        p2p model needs
+            user is the current user
+            weights is the weights of all the other users' models
+        """
         new_weights = None
         if users:
             new_weights = Average.std_dev_central(users = users,
@@ -164,6 +202,14 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+
+        """
+        Personalised version is for weights to be averaged based on the
+        user A's performance metric on each of the other users' models
+        using user A's test data and if their metric is greater
+        than (average of metrics - std dev)m then the weights are used for
+        averaging, else the weights are discarded
+        """
         new_weights, users_used = Average._initialise(user,
                                             loss = loss,
                                             accuracy = accuracy,
@@ -197,6 +243,13 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+        """
+        Central version is for weights to be averaged based on the user's
+        performance metric on their own model with their own test data and
+        if the metric is greater than (average of metrics - std dev), then
+        the weights are used for averaging, else the weights are discarded.
+        """
+
         new_weights, users_used = Average._initialise(users,
                                             loss = loss,
                                             accuracy = accuracy,
@@ -232,6 +285,16 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+        """
+        wrapper for the weighted averaging method, calls the personalised (p2p)
+        version or the central version.
+        central model needs
+            users is a list of all the users
+
+        p2p model needs
+            user is the current user
+            weights is the weights of all the other users' models
+        """
         new_weights = None
         if users:
             new_weights = Average.weighted_avg_central(users = users,
@@ -254,6 +317,12 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+        """
+        Central version is for all weights to be averaged based on the user's
+        performance metric on their own model with their own test data by
+        multiplying the metric by the weights and averaging using the
+        sum of the metrics as the divisor
+        """
         new_weights, users_used = Average._initialise(users,
                                             loss = loss,
                                             accuracy = accuracy,
@@ -281,6 +350,12 @@ class Average:
             accuracy = False,
             post = False,
             pre = False):
+        """
+        Personalised version is for all weights to be averaged based on the
+        user A's performance metric on other users models using user A's
+        test data by multiplying the metric by the weights and averaging
+        using the um of the metrics as the divisor
+        """
         new_weights, users_used = Average._initialise(user,
                                             loss = loss,
                                             accuracy = accuracy,
