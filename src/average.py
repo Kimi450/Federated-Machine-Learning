@@ -223,7 +223,6 @@ class Average:
         std_dev = latest_metrics.std()
         avg = latest_metrics.mean()
 
-## from here
         print(f"User {user.get_id()}: -> ")
         for user_id, curr_metric in evals.items():
             if curr_metric >= (avg-std_dev):

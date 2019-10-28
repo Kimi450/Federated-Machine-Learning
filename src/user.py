@@ -73,7 +73,7 @@ class User:
             original_user_weights = self.get_weights()
             # you save the original weights and then calcualte new weights
             # based on the strat set for the user
-            new_weights = self.get_averaging_method()(users = None, user = self,
+            new_weights = self.get_averaging_method()(user = self,
                                         weights = weights,
                                         accuracy = self.get_averaging_metric_accuracy(),
                                         loss = self.get_averaging_metric_loss())
