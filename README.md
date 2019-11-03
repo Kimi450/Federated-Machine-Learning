@@ -10,17 +10,21 @@ Traditionally, a Neural Network would require a lot of data from users to train 
 My project is based on implementing the way in which Google does this, and then implementing several more strategies proposed by Derek and comparing their outcome. At a high level, these strategies include discarding the weights of users in certain conditions or using a weighted average of their weights and biases. 
 
 ## Virtual environment setup
-pip install tensorflow scipy numpy pandas scikit-learn matplotlib jupyterlab
+Setup a virtual environment using [venv](https://docs.python.org/3/library/venv.html) or [virtualenv](https://help.dreamhost.com/hc/en-us/articles/115000695551-Installing-and-using-virtualenv-with-Python-3) and then run:
+
+```pip install tensorflow_gpu scipy numpy pandas scikit-learn matplotlib jupyterlab```
+
+Optionally, include `tensorflow_federated` in the above statement as well.
 
 ## SSH Connection to work machine
 More info found [here](https://medium.com/@sankarshan7/how-to-run-jupyter-notebook-in-server-which-is-at-multi-hop-distance-a02bc8e78314)
 
 ### Create a 2 hop ssh tunnel to the work machine
-ssh -L 8888:localhost:8889 kts1@csgate.ucc.ie -t ssh -L 8889:localhost:8890 kts1@csg25-05.ucc.ie
+```ssh -L 8888:localhost:8889 kts1@csgate.ucc.ie -t ssh -L 8889:localhost:8890 kts1@csg25-05.ucc.ie```
 
 ### On the work machine, run the following command
-jupyter lab --no-browser --port 8890
+```jupyter lab --no-browser --port 8890```
 
 ### On your machine, go to the browser and run
-localhost:8888
+```localhost:8888```
 
