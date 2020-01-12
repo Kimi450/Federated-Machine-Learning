@@ -2,11 +2,10 @@
 import numpy as np
 
 class User:
-    def __init__(self, user_id, model, averaging_method,
-    averaging_metric_loss, averaging_metric_accuracy,
-    train_class, train_data,
-    val_class, val_data,
-    test_class, test_data):
+    def __init__(self, user_id, model, averaging_method, averaging_metric,
+                 train_class, train_data,
+                 val_class, val_data,
+                 test_class, test_data):
         self._id = user_id
         self._model = model
         self._history = []
@@ -22,19 +21,14 @@ class User:
         self._pre_fit_loss = np.array([])
         self._pre_fit_accuracy = np.array([])
 
-        self._averaging_metric_loss = averaging_metric_loss
-        self._averaging_metric_accuracy = averaging_metric_accuracy
+        self._averaging_metric = averaging_metric
         self._averaging_method = averaging_method #std_dev, weighted_avg
 
-    def get_averaging_metric_accuracy(self):
-        return self._averaging_metric_accuracy
-    def get_averaging_metric_loss(self):
-        return self._averaging_metric_loss
+    def get_averaging_metric(self):
+        return self._averaging_metric
 
-    def set_averaging_metric_accuracy(self, averaging_metric_accuracy):
-        self._averaging_metric_accuracy = averaging_metric_accuracy
-    def set_averaging_metric_loss(self, averaging_metric_loss):
-        self._averaging_metric_loss = averaging_metric_loss
+    def set_averaging_metric(self, averaging_metric):
+        self._averaging_metric = averaging_metric
 
     def set_averaging_method(self, averaging_method):
         self._averaging_method = averaging_method
@@ -58,7 +52,7 @@ class User:
         # https://www.tensorflow.org/beta/tutorials/keras/basic_classification
         # same seed value for consistency sake, across all trainings too
         """
-        trains the model for the user
+        trains the model for the user instance
         and updates the weights and history attribute for the user too
         """
 
@@ -75,8 +69,7 @@ class User:
             # based on the strat set for the user
             new_weights = self.get_averaging_method()(user = self,
                                         weights = weights,
-                                        accuracy = self.get_averaging_metric_accuracy(),
-                                        loss = self.get_averaging_metric_loss())
+                                        metric = self.get_averaging_metric())
             model.set_weights(new_weights)
 
         else:
@@ -110,18 +103,18 @@ class User:
 
 
     def get_data(self, ignore_first_n = 0,
-                 loss = False, accuracy = False,
+                 metric = "accuracy",
                  pre = False, post = False):
-        if (loss == accuracy) or (pre == post):
+        if (metric not in ["accuracy", "loss"]) or (pre == post):
 
             raise Exception("Please select one from \
                     accuracy or loss and one from pre or post")
-        if loss:
+        if metric == "loss":
             if pre:
                 data = self.get_pre_fit_loss()
             else:
                 data = self.get_post_fit_loss()
-        else:
+        elif metric == "accuracy":
             if pre:
                 data = self.get_pre_fit_accuracy()
             else:
