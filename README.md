@@ -20,11 +20,23 @@ Optionally, include `tensorflow_federated` in the above statement as well.
 More info found [here](https://medium.com/@sankarshan7/how-to-run-jupyter-notebook-in-server-which-is-at-multi-hop-distance-a02bc8e78314)
 
 ### Create a 2 hop ssh tunnel to the work machine
-```ssh -L 8888:localhost:8889 kts1@csgate.ucc.ie -t ssh -L 8889:localhost:8890 kts1@csg25-05.ucc.ie```
+```ssh -L <PORT1>:localhost:<PORT2> kts1@csgate.ucc.ie -t ssh -L <PORT2>:localhost:<PORT3> kts1@csg25-05.ucc.ie```
+
+Example:
+
+```ssh -L 6543:localhost:6542 kts1@csgate.ucc.ie -t ssh -L 6542:localhost:6541 kts1@csg25-05.ucc.ie```
 
 ### On the work machine, run the following command
-```jupyter lab --no-browser --port 8890```
+```jupyter lab --no-browser --port <PORT3>```
+
+Example:
+
+```jupyter lab --no-browser --port 6541```
 
 ### On your machine, go to the browser and run
-```localhost:8888```
+```localhost:<PORT1>```
+
+Example:
+
+```localhost:6543```
 
