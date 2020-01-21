@@ -9,9 +9,7 @@ def draw_graphs(user, loss = True, accuracy = True):
     recent fit performed on it
     """
 
-    history = user.get_history()
-    history_dict = history[-1].history
-
+    history_dict = user.get_history_metrics()
     loss_values = history_dict['loss']
     val_loss_values = history_dict['val_loss']
     acc_values = history_dict["sparse_categorical_accuracy"]

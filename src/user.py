@@ -9,6 +9,7 @@ class User:
         self._id = user_id
         self._model = model
         self._history = []
+        self._history_metrics = None
         self._train_class = train_class
         self._train_data = train_data
         self._val_class = val_class
@@ -223,7 +224,18 @@ class User:
 
     def add_history(self, history):
         self._history.append(history)
-
+        self.add_history_metrics(history)
+        
+    def add_history_metrics(self, history):
+        if self._history_metrics == None:
+            self._history_metrics = history.history
+        else:
+            for key in self._history_metrics.keys():
+                self._history_metrics[key] + history.history[key]
+        
+    def get_history_metrics(self):
+        return self._history_metrics
+        
     def get_weights(self):
         return self.get_model().get_weights()
 
