@@ -34,7 +34,7 @@ def init_model(init_seed=None):
     return model
 
 
-def init_users(df, averaging_methods, averaging_metric = "accuracy", seed = None):
+def init_users(df, averaging_methods, averaging_metric="accuracy", seed=None, test_size=0.2, val_size=0.2):
     """
     Requires the DF to contain a "User" column giving numeric identity to a user
     0 to unique_user_count-1
@@ -58,9 +58,11 @@ def init_users(df, averaging_methods, averaging_metric = "accuracy", seed = None
 
         df_val, df_val_class,  df_val_user,\
         df_test, df_test_class, df_test_user,\
-        df_train, df_train_class, df_train_user = split_dataframe(df = df, 
+        df_train, df_train_class, df_train_user = split_dataframe(df=df, 
                                                                   for_user=user_id, 
-                                                                  seed = seed)
+                                                                  seed=seed,
+                                                                  val_size=val_size,
+                                                                  test_size=test_size)
         user_id = i
         if df_train.shape[0]==0:
             print(f"User {user_id} has no data, no instance created...")
@@ -88,7 +90,7 @@ def init_users(df, averaging_methods, averaging_metric = "accuracy", seed = None
 
 
 
-def split_dataframe(df, for_user = None, val_size = 0.2, test_size =  0.2, seed = None):
+def split_dataframe(df, for_user=None, val_size=0.2, test_size=0.2, seed=None):
     """
     split the dataframe into train, validation and test splits based on the supplied percentage
     value. The percentage values are relative to the overall dataset size. Same seed is used
@@ -125,3 +127,25 @@ def split_dataframe(df, for_user = None, val_size = 0.2, test_size =  0.2, seed 
     return df_val, df_val_class,  df_val_user,\
         df_test, df_test_class, df_test_user, \
         df_train, df_train_class, df_train_user
+
+
+def split_dataframe_tff(df, test_size = 0.2, seed = None):
+    
+    
+    users = list(df["User"].unique())
+    
+    COL_NAMES = list(df.columns.values)
+    output_train = pd.DataFrame(columns = COL_NAMES)
+    output_test = pd.DataFrame(columns = COL_NAMES)
+    
+    for user_id in users:
+        user_df = df[df["User"]==user_id]
+        
+    
+        user_df_train, user_df_test = train_test_split(user_df,
+                                         test_size = test_size,
+                                         random_state = seed)
+        
+        output_train = output_train.append(user_df_train, ignore_index=True)
+        output_test = output_test.append(user_df_test, ignore_index=True)
+    return output_train, output_test
