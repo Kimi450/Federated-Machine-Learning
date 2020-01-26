@@ -72,12 +72,13 @@ class User:
                                         weights = weights,
                                         metric = self.get_averaging_metric())
             model.set_weights(new_weights)
-
+            print("New weights",np.array_equal(original_user_weights, new_weights))
         else:
             model.set_weights(weights)
 
         e = self.evaluate(verbose = verbose_evaluate)
         self.add_pre_fit_evaluation(e)
+        print(self.get_id(), e)
         # sanity check to see they all have the same init weights
         # print(self.get_id())
         # print(model.get_weights())
@@ -175,22 +176,22 @@ class User:
         return self._id
 
     def get_train_class(self):
-        return self._train_class.values
+        return self._train_class
 
     def get_train_data(self):
-        return self._train_data.values
+        return self._train_data
 
     def get_val_class(self):
-        return self._val_class.values
+        return self._val_class
 
     def get_val_data(self):
-        return self._val_data.values
+        return self._val_data
 
     def get_test_class(self):
-        return self._test_class.values
+        return self._test_class
 
     def get_test_data(self):
-        return self._test_data.values
+        return self._test_data
 
     def set_model(self, model):
         self._model = model
@@ -216,8 +217,23 @@ class User:
     def set_test_data(self, test_data):
         self._test_data = test_data
 
+    def add_train_class(self, train_class):
+        self._train_class = np.concatenate((self._train_class, train_class))
 
+    def add_train_data(self, train_data):
+        self._train_data = np.concatenate((self._train_data, train_data))
 
+    def add_val_class(self, val_class):
+        self._val_class = np.concatenate((self._val_class, val_class))
+
+    def add_val_data(self, val_data):
+        self._val_data = np.concatenate((self._val_data, val_data))
+
+    def add_test_class(self, test_class):
+        self._test_class = np.concatenate((self._test_class, test_class))
+
+    def add_test_data(self, test_data):
+        self._test_data = np.concatenate((self._test_data, test_data))
 
     def get_history(self):
         return self._history
@@ -231,7 +247,7 @@ class User:
             self._history_metrics = history.history
         else:
             for key in self._history_metrics.keys():
-                self._history_metrics[key] + history.history[key]
+                self._history_metrics[key] = self._history_metrics[key] + history.history[key]
         
     def get_history_metrics(self):
         return self._history_metrics

@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 def init_model(init_seed=None):
     """
-    initialise and return a model 
+    initialise and return a model
     """
     model = keras.Sequential([
         keras.layers.Flatten(),
@@ -33,18 +33,44 @@ def init_model(init_seed=None):
 
     return model
 
+def init_conv_model(labels,image_shape, init_seed=None):
+    """
+    initialise and return a model
+    """
+    model = keras.Sequential([
+        keras.layers.Flatten(),
+#         keras.layers.Dense(4096, activation='relu',
+#             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
+#         keras.layers.Dense(1024, activation='relu',
+#             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
+        keras.layers.Dense(128, activation='relu',
+            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
+        keras.layers.Dense(32, activation='relu',
+            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
+        keras.layers.Dense(8, activation='softmax',
+            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed))
+    ])
+
+    model.compile(
+        optimizer = 'adam',
+        loss = 'sparse_categorical_crossentropy',
+        metrics = [tf.keras.metrics.SparseCategoricalAccuracy()]
+    )
+
+    return model
+
 
 def init_users(df, averaging_methods, averaging_metric="accuracy", seed=None, test_size=0.2, val_size=0.2):
     """
     Requires the DF to contain a "User" column giving numeric identity to a user
     0 to unique_user_count-1
-    
+
     Averaging method is a list of methods out of which a random one is selected
-    
+
     initialise users based on dataframe given and assign random averaging method
     to them based on the list passed in.
     returns a dictionary of users(key: user object) and a global user object
-    """    
+    """
     print("Initialising User instances...")
     users = dict()
     num_users = df["User"].nunique()
@@ -58,8 +84,8 @@ def init_users(df, averaging_methods, averaging_metric="accuracy", seed=None, te
 
         df_val, df_val_class,  df_val_user,\
         df_test, df_test_class, df_test_user,\
-        df_train, df_train_class, df_train_user = split_dataframe(df=df, 
-                                                                  for_user=user_id, 
+        df_train, df_train_class, df_train_user = split_dataframe(df=df,
+                                                                  for_user=user_id,
                                                                   seed=seed,
                                                                   val_size=val_size,
                                                                   test_size=test_size)
@@ -69,19 +95,19 @@ def init_users(df, averaging_methods, averaging_metric="accuracy", seed=None, te
             continue
 
         model = init_model(init_seed = seed)
-        
+
         option = np.random.RandomState(seed).randint(0,len(averaging_methods))
 
         users[user_id] = User(user_id=user_id,
                           model = model,
                           averaging_method = averaging_methods[option],
                           averaging_metric = averaging_metric,
-                          train_class = df_train_class,
-                          train_data = df_train,
-                          val_class = df_val_class,
-                          val_data = df_val,
-                          test_class = df_test_class,
-                          test_data = df_test)
+                          train_class = df_train_class.values,
+                          train_data = df_train.values,
+                          val_class = df_val_class.values,
+                          val_data = df_val.values,
+                          test_class = df_test_class.values,
+                          test_data = df_test.values)
 
     global_user = users.pop(-1)
     global_user.set_averaging_method(averaging_methods[0])
@@ -94,7 +120,7 @@ def split_dataframe(df, for_user=None, val_size=0.2, test_size=0.2, seed=None):
     """
     split the dataframe into train, validation and test splits based on the supplied percentage
     value. The percentage values are relative to the overall dataset size. Same seed is used
-    for reproducability. 
+    for reproducability.
     Empty dataframes if no data present
     """
     # split into train, validation and test data using sklearn and return dfs for each
@@ -106,7 +132,7 @@ def split_dataframe(df, for_user=None, val_size=0.2, test_size=0.2, seed=None):
         df = pd.DataFrame()
         return (df for _ in range(9))
 
-    
+
     df_train, df_test = train_test_split(df,
                                          test_size = test_size,
                                          random_state = seed)
