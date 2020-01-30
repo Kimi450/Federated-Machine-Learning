@@ -37,19 +37,44 @@ def init_conv_model(labels,image_shape, init_seed=None):
     """
     initialise and return a model
     """
-    model = keras.Sequential([
-        keras.layers.Flatten(),
-#         keras.layers.Dense(4096, activation='relu',
-#             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
-#         keras.layers.Dense(1024, activation='relu',
-#             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
-        keras.layers.Dense(128, activation='relu',
-            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
-        keras.layers.Dense(32, activation='relu',
-            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
-        keras.layers.Dense(8, activation='softmax',
-            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed))
-    ])
+    model = keras.Sequential()
+    model.add(keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=image_shape))
+    model.add(keras.layers.Conv2D(64, (3, 3), activation='relu'))
+    model.add(keras.layers.MaxPooling2D((2, 2)))
+    model.add(keras.layers.Conv2D(64, (3, 3), activation='relu'))
+    
+#     model.add(keras.layers.MaxPooling2D((2, 2)))
+    model.add(keras.layers.Flatten())
+    model.add(keras.layers.Dense(128, activation='relu',
+            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed))),
+    model.add(keras.layers.Dense(8, activation='softmax',
+            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
+
+#     model = tf.keras.models.Sequential([
+#         keras.layers.Flatten(),
+#         keras.layers.Conv2D(32, kernel_size=(5, 5), activation=tf.keras.activations.relu),
+#         keras.layers.MaxPooling2D(pool_size=(2, 2)),
+#         keras.layers.BatchNormalization(axis = 1),
+#         keras.layers.Dropout(0.22), 
+#         keras.layers.Conv2D(32, kernel_size=(5, 5), activation=tf.keras.activations.relu),
+#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
+#         keras.layers.BatchNormalization(axis = 1),
+#         keras.layers.Dropout(0.25),
+#         keras.layers.Conv2D(32, kernel_size=(4, 4), activation=tf.keras.activations.relu),
+#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
+#         keras.layers.BatchNormalization(axis = 1),
+#         keras.layers.Dropout(0.15),
+#         keras.layers.Conv2D(32, kernel_size=(3, 3), activation=tf.keras.activations.relu),
+#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
+#         keras.layers.BatchNormalization(axis = 1),
+#         keras.layers.Dropout(0.15),
+#         keras.layers.Flatten(),    
+#         keras.layers.Dense(256, activation=tf.keras.activations.relu,kernel_regularizer=keras.regularizers.l2(0.001)),
+#         #keras.layers.Dropout(0.25),
+#         keras.layers.Dense(64, activation=tf.keras.activations.relu,kernel_regularizer=keras.regularizers.l2(0.001)),
+#         #keras.layers.Dropout(0.1),
+#         keras.layers.Dense(len(labels), activation=tf.keras.activations.softmax)
+#     ])
 
     model.compile(
         optimizer = 'adam',

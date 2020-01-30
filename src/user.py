@@ -72,7 +72,6 @@ class User:
                                         weights = weights,
                                         metric = self.get_averaging_metric())
             model.set_weights(new_weights)
-            print("New weights",np.array_equal(original_user_weights, new_weights))
         else:
             model.set_weights(weights)
 
@@ -90,7 +89,8 @@ class User:
             epochs = epochs,
             verbose = verbose_fit,
             shuffle = False,
-            # batch_size = 2**8, #4k
+            batch_size = 2**8, #4k
+
             # use_multiprocessing = True,
             validation_data = (val_data, val_class)
         )
