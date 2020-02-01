@@ -99,7 +99,8 @@ class User:
         self.add_post_fit_evaluation(e)
 
         # update user data
-        self.add_history(history)
+#         self.add_history(history) # to save memory, not doing this
+        self.add_history_metrics(history)
 
         return
 
@@ -235,12 +236,11 @@ class User:
     def add_test_data(self, test_data):
         self._test_data = np.concatenate((self._test_data, test_data))
 
-    def get_history(self):
+    def get_history_object(self):
         return self._history
 
-    def add_history(self, history):
+    def add_history_object(self, history):
         self._history.append(history)
-        self.add_history_metrics(history)
         
     def add_history_metrics(self, history):
         if self._history_metrics == []:

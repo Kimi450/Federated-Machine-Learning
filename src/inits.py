@@ -12,7 +12,7 @@ def init_model(init_seed=None):
     initialise and return a model
     """
     model = keras.Sequential([
-        keras.layers.Flatten(),
+        keras.layers.Flatten(), 
 #         keras.layers.Dense(4096, activation='relu',
 #             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
 #         keras.layers.Dense(1024, activation='relu',
@@ -36,6 +36,8 @@ def init_model(init_seed=None):
 def init_conv_model(labels,image_shape, init_seed=None):
     """
     initialise and return a model
+    cant be fully reproducible 
+    https://rampeer.github.io/2019/06/12/keras-pain.html
     """
     model = keras.Sequential()
     model.add(keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=image_shape, kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
