@@ -43,11 +43,15 @@ def init_conv_model(labels,image_shape, init_seed=None):
     model.add(keras.layers.Conv2D(32, (3, 3), activation='relu', input_shape=image_shape, kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
     model.add(keras.layers.Conv2D(64, (3, 3), activation='relu', kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
     model.add(keras.layers.MaxPooling2D((2, 2)))
-    model.add(keras.layers.Conv2D(64, (3, 3), activation='relu', kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
-    
+    model.add(keras.layers.Conv2D(128, (3, 3), activation='relu', kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
+    model.add(keras.layers.MaxPooling2D((2, 2)))
+    model.add(keras.layers.Conv2D(128, (3, 3), activation='relu', kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
+    model.add(keras.layers.MaxPooling2D((2, 2)))
+    model.add(keras.layers.Conv2D(256, (3, 3), activation='relu', kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
+
 #     model.add(keras.layers.MaxPooling2D((2, 2)))
     model.add(keras.layers.Flatten())
-    model.add(keras.layers.Dense(128, activation='relu',
+    model.add(keras.layers.Dense(256, activation='relu',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed))),
     model.add(keras.layers.Dense(8, activation='softmax',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))

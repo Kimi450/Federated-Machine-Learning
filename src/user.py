@@ -219,22 +219,40 @@ class User:
         self._test_data = test_data
 
     def add_train_class(self, train_class):
-        self._train_class = np.concatenate((self._train_class, train_class))
+        if self._train_class.size == 0:
+            self.set_train_class(train_class)
+        else:
+            self._train_class = np.concatenate((self._train_class, train_class))
 
     def add_train_data(self, train_data):
-        self._train_data = np.concatenate((self._train_data, train_data))
+        if self._train_data.size == 0:
+            self.set_train_data(train_data)
+        else:
+            self._train_data = np.concatenate((self._train_data, train_data))
 
     def add_val_class(self, val_class):
-        self._val_class = np.concatenate((self._val_class, val_class))
+        if self._val_class.size == 0:
+            self.set_val_class(val_class)
+        else:
+            self._val_class = np.concatenate((self._val_class, val_class))
 
     def add_val_data(self, val_data):
-        self._val_data = np.concatenate((self._val_data, val_data))
+        if self._val_data.size == 0:
+            self.set_val_data(val_data)
+        else:
+            self._val_data = np.concatenate((self._val_data, val_data))
 
     def add_test_class(self, test_class):
-        self._test_class = np.concatenate((self._test_class, test_class))
+        if self._test_class.size == 0:
+            self.set_test_class(test_class)
+        else:
+            self._test_class = np.concatenate((self._test_class, test_class))
 
     def add_test_data(self, test_data):
-        self._test_data = np.concatenate((self._test_data, test_data))
+        if self._test_data.size == 0:
+            self.set_test_data(test_data)
+        else:
+            self._test_data = np.concatenate((self._test_data, test_data))
 
     def get_history_object(self):
         return self._history
