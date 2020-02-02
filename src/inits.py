@@ -206,3 +206,81 @@ def split_dataframe_tff(df, test_size = 0.2, seed = None):
         output_train = output_train.append(user_df_train, ignore_index=True)
         output_test = output_test.append(user_df_test, ignore_index=True)
     return output_train, output_test
+
+
+def init_users_image(files, averaging_methods, averaging_metric="accuracy", majority_split=0.7, test_size = 0.2, val_size = 0.2, shape=(80,80,3), seed=None, return_global_user=False):
+    users = {}
+    keys = list(files.keys())
+    if return_global_user:
+        keys += [-1]
+    # initialise users
+    for class_id in keys:
+        model = init_conv_model(keys, shape, seed)
+#         model = init_model()
+
+        option = np.random.RandomState(seed).randint(0,len(averaging_methods))
+        users[class_id] = User(user_id=class_id,
+                  model = model,
+                  averaging_method = averaging_methods[option],
+                  averaging_metric = averaging_metric,
+                  train_class = np.array([]),
+                  train_data = np.array([]),
+                  val_class = np.array([]),
+                  val_data = np.array([]), 
+                  test_class = np.array([]),
+                  test_data = np.array([]))
+    
+    # for class ids in keys, we will now create a majority and rest (of the data) split
+    if return_global_user:
+        global_user = users.pop(-1)
+        global_user.set_averaging_method(averaging_methods[0])
+        keys = keys[:-1]
+
+    for class_id in keys:
+        # uint8 because values were of range 0-255 and this will cover it. Saves memory 
+        # by not using float32
+        images = np.asarray(files[class_id]).astype("uint8")
+        # shuffle first pls
+        majority_data, rest_data = np.split(images, [int(majority_split * len(images))])
+        rest_data_split = np.array_split(rest_data,len(keys)-1)  
+        
+        rest_data_index = 0
+        for user_id in keys:
+            if user_id == class_id:
+                train_data, train_class, test_data, test_class, val_data, val_class = \
+                    train_test_val_split(majority_data, class_id, test_size, val_size)
+            else:
+                raw_data = rest_data_split[rest_data_index]
+                train_data, train_class, test_data, test_class, val_data, val_class = \
+                    train_test_val_split(raw_data, class_id, test_size, val_size)
+                rest_data_index += 1
+
+            users[user_id].add_test_class(test_class)
+            users[user_id].add_test_data(test_data)
+            users[user_id].add_val_data(val_data)
+            users[user_id].add_val_class(val_class)
+            users[user_id].add_train_data(train_data)
+            users[user_id].add_train_class(train_class)
+    
+    if return_global_user:
+        for user in users.values():
+            global_user.add_test_class(user.get_test_class())
+            global_user.add_test_data(user.get_test_data())
+            global_user.add_val_data(user.get_val_data())
+            global_user.add_val_class(user.get_val_class())
+            global_user.add_train_data(user.get_train_data())
+            global_user.add_train_class(user.get_train_class())
+        return global_user
+                
+    return users
+
+def train_test_val_split(np_data, class_id, test_size, val_size):
+    test_data, train_data = np.split(np_data, [int(test_size * len(np_data))])
+    val_size = val_size/(1-test_size)
+    val_data, test_data = np.split(test_data, [int(val_size * len(test_data))])
+    
+    train_class = np.full((train_data.shape[0]),class_id)
+    test_class = np.full((test_data.shape[0]),class_id)
+    val_class = np.full((val_data.shape[0]),class_id)
+#     print(f"              {val_class.shape[0] == val_data.shape[0]}")
+    return train_data, train_class, test_data, test_class, val_data, val_class
