@@ -12,7 +12,7 @@ My project is based on implementing the way in which Google does this, and then 
 ## Virtual environment setup
 Setup a virtual environment using [venv](https://docs.python.org/3/library/venv.html) or [virtualenv](https://help.dreamhost.com/hc/en-us/articles/115000695551-Installing-and-using-virtualenv-with-Python-3) or [conda](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) (recommended when not using `tensorflow-federated`) and then install the following packages:
 
-```install tensorflow scipy numpy pandas scikit-learn matplotlib jupyterlab```
+```install tensorflow scipy numpy pandas scikit-learn matplotlib jupyterlab pillow```
 
 Note: Latest version of tensorflow includes `tensorflow-gpu`, but you may need to include it manually
 

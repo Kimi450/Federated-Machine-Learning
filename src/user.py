@@ -9,7 +9,7 @@ class User:
         self._id = user_id
         self._model = model
         self._history = []
-        self._history_metrics = None
+        self._history_metrics = []
         self._train_class = train_class
         self._train_data = train_data
         self._val_class = val_class
@@ -72,12 +72,12 @@ class User:
                                         weights = weights,
                                         metric = self.get_averaging_metric())
             model.set_weights(new_weights)
-
         else:
             model.set_weights(weights)
 
         e = self.evaluate(verbose = verbose_evaluate)
         self.add_pre_fit_evaluation(e)
+        print(self.get_id(), e)
         # sanity check to see they all have the same init weights
         # print(self.get_id())
         # print(model.get_weights())
@@ -89,7 +89,8 @@ class User:
             epochs = epochs,
             verbose = verbose_fit,
             shuffle = False,
-            # batch_size = 2**8, #4k
+            batch_size = 2**8, #4k
+
             # use_multiprocessing = True,
             validation_data = (val_data, val_class)
         )
@@ -98,7 +99,8 @@ class User:
         self.add_post_fit_evaluation(e)
 
         # update user data
-        self.add_history(history)
+#         self.add_history(history) # to save memory, not doing this
+        self.add_history_metrics(history)
 
         return
 
@@ -175,22 +177,22 @@ class User:
         return self._id
 
     def get_train_class(self):
-        return self._train_class.values
+        return self._train_class
 
     def get_train_data(self):
-        return self._train_data.values
+        return self._train_data
 
     def get_val_class(self):
-        return self._val_class.values
+        return self._val_class
 
     def get_val_data(self):
-        return self._val_data.values
+        return self._val_data
 
     def get_test_class(self):
-        return self._test_class.values
+        return self._test_class
 
     def get_test_data(self):
-        return self._test_data.values
+        return self._test_data
 
     def set_model(self, model):
         self._model = model
@@ -216,22 +218,54 @@ class User:
     def set_test_data(self, test_data):
         self._test_data = test_data
 
+    def add_train_class(self, train_class):
+        if self._train_class.size == 0:
+            self.set_train_class(train_class)
+        else:
+            self._train_class = np.concatenate((self._train_class, train_class))
 
+    def add_train_data(self, train_data):
+        if self._train_data.size == 0:
+            self.set_train_data(train_data)
+        else:
+            self._train_data = np.concatenate((self._train_data, train_data))
 
+    def add_val_class(self, val_class):
+        if self._val_class.size == 0:
+            self.set_val_class(val_class)
+        else:
+            self._val_class = np.concatenate((self._val_class, val_class))
 
-    def get_history(self):
+    def add_val_data(self, val_data):
+        if self._val_data.size == 0:
+            self.set_val_data(val_data)
+        else:
+            self._val_data = np.concatenate((self._val_data, val_data))
+
+    def add_test_class(self, test_class):
+        if self._test_class.size == 0:
+            self.set_test_class(test_class)
+        else:
+            self._test_class = np.concatenate((self._test_class, test_class))
+
+    def add_test_data(self, test_data):
+        if self._test_data.size == 0:
+            self.set_test_data(test_data)
+        else:
+            self._test_data = np.concatenate((self._test_data, test_data))
+
+    def get_history_object(self):
         return self._history
 
-    def add_history(self, history):
+    def add_history_object(self, history):
         self._history.append(history)
-        self.add_history_metrics(history)
         
     def add_history_metrics(self, history):
-        if self._history_metrics == None:
+        if self._history_metrics == []:
             self._history_metrics = history.history
         else:
             for key in self._history_metrics.keys():
-                self._history_metrics[key] + history.history[key]
+                self._history_metrics[key] = self._history_metrics[key] + history.history[key]
         
     def get_history_metrics(self):
         return self._history_metrics

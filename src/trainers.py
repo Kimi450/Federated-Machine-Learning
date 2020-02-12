@@ -84,7 +84,8 @@ def train_fed(epochs, rounds, users,
                 # gather everyones models/weights in a dict
                 # and pass it to train users in next round
                 new_weights[user.get_id()] = user.get_weights()
-            
+        elif strat == "local_trainings_only":    
+            new_weights = None
         if verbose:
             message = f"{'*'*32} {'DONE':^4} {'*'*32}"
             print(message)

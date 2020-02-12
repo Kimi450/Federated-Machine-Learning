@@ -1,6 +1,8 @@
 import h5py
 import pandas as pd
 import numpy as np
+import os
+from PIL import Image
 
 def read_file(file):
     """
@@ -68,3 +70,37 @@ def create_hdf5(df,name, seed=None):
             grp.create_dataset('label',data=target.values)
     return n
 
+
+def load_image(infilename):
+    img = Image.open(infilename)
+    img = img.resize((80,80))
+    data = np.asarray(img)
+    return data
+
+
+    
+def save_image(np_array, output_filename) :
+    im = Image.fromarray(np_array, "RGB")
+    im.save(output_filename)     
+    
+def map_images(data_dir, verbose = False):
+    files = {}
+    CLASSES = {}
+    VALID_IMAGE_EXTENSIONS = [".jpg", ".jpeg", ".png"] # valid extensions
+
+    for class_id, class_dir in enumerate(os.listdir(data_dir)):
+        class_name = class_dir
+        class_dir = os.path.join(data_dir, class_dir)
+        files[class_id] = []
+        CLASSES[class_id] = class_name
+        for file in os.listdir(class_dir):
+
+            ext = os.path.splitext(file)[1]
+            if ext in VALID_IMAGE_EXTENSIONS:
+
+                np_im = load_image(os.path.join(class_dir,file))
+                files[class_id].append(np_im)
+#                 save_image(np_im,"i.jpg")
+        if verbose:
+            print(f"Done: {class_dir}")
+    return CLASSES, files
