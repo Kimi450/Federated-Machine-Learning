@@ -49,38 +49,11 @@ def init_conv_model(labels,image_shape, init_seed=None):
     model.add(keras.layers.MaxPooling2D((2, 2)))
     model.add(keras.layers.Conv2D(256, (3, 3), activation='relu', kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
 
-#     model.add(keras.layers.MaxPooling2D((2, 2)))
     model.add(keras.layers.Flatten())
     model.add(keras.layers.Dense(256, activation='relu',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed))),
     model.add(keras.layers.Dense(8, activation='softmax',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
-
-#     model = tf.keras.models.Sequential([
-#         keras.layers.Flatten(),
-#         keras.layers.Conv2D(32, kernel_size=(5, 5), activation=tf.keras.activations.relu),
-#         keras.layers.MaxPooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.22), 
-#         keras.layers.Conv2D(32, kernel_size=(5, 5), activation=tf.keras.activations.relu),
-#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.25),
-#         keras.layers.Conv2D(32, kernel_size=(4, 4), activation=tf.keras.activations.relu),
-#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.15),
-#         keras.layers.Conv2D(32, kernel_size=(3, 3), activation=tf.keras.activations.relu),
-#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.15),
-#         keras.layers.Flatten(),    
-#         keras.layers.Dense(256, activation=tf.keras.activations.relu,kernel_regularizer=keras.regularizers.l2(0.001)),
-#         #keras.layers.Dropout(0.25),
-#         keras.layers.Dense(64, activation=tf.keras.activations.relu,kernel_regularizer=keras.regularizers.l2(0.001)),
-#         #keras.layers.Dropout(0.1),
-#         keras.layers.Dense(len(labels), activation=tf.keras.activations.softmax)
-#     ])
 
     model.compile(
         optimizer = 'adam',
@@ -208,7 +181,7 @@ def split_dataframe_tff(df, test_size = 0.2, seed = None):
     return output_train, output_test
 
 
-def init_users_image(files, averaging_methods, averaging_metric="accuracy", majority_split=0.7, test_size = 0.2, val_size = 0.2, shape=(80,80,3), seed=None, return_global_user=False):
+def init_users_image(files, averaging_methods, averaging_metric="accuracy", majority_split=0.7, test_size = 0.2, val_size = 0.2, shape=(80,80,3), seed=None, return_global_user=False, split_method="probabilistic"):
     users = {}
     keys = list(files.keys())
     if return_global_user:
@@ -241,9 +214,10 @@ def init_users_image(files, averaging_methods, averaging_metric="accuracy", majo
         # by not using float32
         images = np.asarray(files[class_id]).astype("uint8")
         # shuffle first pls
-        majority_data, rest_data = np.split(images, [int(majority_split * len(images))])
-        rest_data_split = np.array_split(rest_data,len(keys)-1)  
-        
+        if split_method == "probabilistic":
+            majority_data, rest_data_split = probabilistic_split(images,majority_split,len(keys))
+        elif split_method == "exact":
+            majority_data, rest_data_split = exact_split(images,majority_split,len(keys))
         rest_data_index = 0
         for user_id in keys:
             if user_id == class_id:
@@ -284,3 +258,26 @@ def train_test_val_split(np_data, class_id, test_size, val_size):
     val_class = np.full((val_data.shape[0]),class_id)
 #     print(f"              {val_class.shape[0] == val_data.shape[0]}")
     return train_data, train_class, test_data, test_class, val_data, val_class
+
+
+def probabilistic_split(full_data, majority_split, count):
+    probability = majority_split
+    prob_mask = np.random.sample(len(full_data))<probability
+    majority_data, rest_data = full_data[prob_mask], full_data[np.invert(prob_mask)]
+    
+    ratio = len(rest_data)/(count-1)
+    rest_data_split, user_data = [], []
+    for others in range(count-1-1):
+        rest_probability = ratio/(len(rest_data))
+        
+        prob_mask = np.random.sample(len(rest_data))<rest_probability
+        user_data, rest_data = rest_data[prob_mask], rest_data[np.invert(prob_mask)]
+
+        rest_data_split.append(user_data)        
+    rest_data_split.append(rest_data)
+    return majority_data, np.asarray(rest_data_split)
+
+def exact_split(full_data, majority_split, count):
+    majority_data, rest_data = np.split(full_data, [int(majority_split * len(full_data))])
+    rest_data_split = np.array_split(rest_data,count-1)
+    return majority_data, rest_data_split

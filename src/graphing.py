@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 import numpy as np
-def draw_graphs(user, loss = True, accuracy = True, save_as = None ):
+import os
+def draw_graphs(user, loss = True, accuracy = True, save_as=None, path="../out", ext=".png" ):
     # this is from the book 74,75
     # history = model.fit(...)
     """
@@ -24,7 +25,7 @@ def draw_graphs(user, loss = True, accuracy = True, save_as = None ):
         plt.ylabel("sparse_categorical_accuracy")
         plt.legend()
         if save_as:
-            plt.savefig(f"accuracy_{save_as}")
+            plt.savefig(os.path.join(path,f'{save_as}-accuracy{ext}'))    
         plt.show()
         plt.clf()
     if accuracy:
@@ -34,7 +35,7 @@ def draw_graphs(user, loss = True, accuracy = True, save_as = None ):
         plt.ylabel('Loss')
         plt.legend()
         if save_as:
-            plt.savefig(f"loss_{save_as}")
+            plt.savefig(os.path.join(path,f'{save_as}-loss{ext}'))    
         plt.show()
         plt.clf()
         
@@ -123,7 +124,7 @@ def userwise_stats_df(users,ignore_first_n = 0,
 
 def avg_user_stats(users, std_dev_fill = False, min_max_fill = False,
                    metric = "accuracy", pre = True, post = True,
-                   ignore_first_n = 0, save_as = None, final_values = False):
+                   ignore_first_n = 0, save_as=None, ext=".png",path="../out", final_values = False):
     
     """
     prints graphs based on per user data and optionally returns the final metric 
@@ -154,7 +155,7 @@ def avg_user_stats(users, std_dev_fill = False, min_max_fill = False,
     
     if pre:
         if final_values:
-            _print_finals(df = df, position = "Pre", metric = metric, save_as = save_as)
+            _print_finals(df=df, position="Pre", metric=metric, save_as=save_as, path=path)
             
         _plot_with_fill(df = df, x_axis = user_ids,
                         position = "Pre",
@@ -165,7 +166,7 @@ def avg_user_stats(users, std_dev_fill = False, min_max_fill = False,
     
     if post:
         if final_values:
-            _print_finals(df = df, position = "Post", metric = metric,save_as = save_as)
+            _print_finals(df=df, position="Post", metric=metric, save_as=save_as, path=path)
         
         _plot_with_fill(df = df, x_axis = user_ids,
                         position = "Post",
@@ -180,13 +181,13 @@ def avg_user_stats(users, std_dev_fill = False, min_max_fill = False,
     plt.title(f"Average {metric} per User with fill type: {fill_type}")
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     if save_as:
-        plt.savefig(save_as)
+        plt.savefig(os.path.join(path,f'{save_as}-{metric}{ext}'))
     plt.show()
     plt.clf()
     return df
 
 
-def _print_finals(df, position, metric, save_as):
+def _print_finals(df, position, metric, save_as, path):
     """
     prints the final averaged value for metric and position defined
     """
@@ -196,7 +197,7 @@ def _print_finals(df, position, metric, save_as):
     print(finals)
     if save_as:
         #df.to_csv(f'{save_as}.csv', mode='a', header=False)
-        finals.to_csv(f'{save_as}.csv')        
+        finals.to_csv(os.path.join(path,f'{save_as}-{metric}-{position}.csv')) 
     print(f"Averaged: {finals['Final Value'].mean()}\n")
 
 
@@ -278,7 +279,7 @@ def roundwise_stats_df(users,ignore_first_n = 0,
 
 def avg_round_stats(users, std_dev_fill = False, min_max_fill = False,
                     metric = "accuracy", pre = True, post = True,
-                    ignore_first_n = 0, save_as = None, final_values = False):
+                    ignore_first_n = 0, save_as=None, ext=".png", path="../out", final_values = False):
     
     
     """
@@ -312,8 +313,7 @@ def avg_round_stats(users, std_dev_fill = False, min_max_fill = False,
             print(finals)
             if save_as:
                 #df.to_csv(f'{save_as}.csv', mode='a', header=False)
-                finals.to_csv(f'{save_as}.csv')        
-
+                finals.to_csv(os.path.join(path,f'{save_as}-{metric}-pre.csv')) 
 
         _plot_with_fill(df = df, x_axis = rounds,
                         position = "Pre",
@@ -329,8 +329,8 @@ def avg_round_stats(users, std_dev_fill = False, min_max_fill = False,
             print(finals,end="\n\n")
             if save_as:
                 #df.to_csv(f'{save_as}.csv', mode='a', header=False)
-                finals.to_csv(f'{save_as}.csv')        
-    
+                finals.to_csv(os.path.join(path,f'{save_as}-{metric}-post.csv')) 
+
         _plot_with_fill(df = df, x_axis = rounds,
                         position = "Post",
                         metric = metric,
@@ -345,7 +345,7 @@ def avg_round_stats(users, std_dev_fill = False, min_max_fill = False,
     plt.title(f"Average {metric} per Round with fill type: {fill_type}")
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     if save_as:
-        plt.savefig(save_as)
+        plt.savefig(os.path.join(path,f'{save_as}-{metric}{ext}'))
     plt.show()
     plt.clf()
     return df
