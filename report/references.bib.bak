@@ -1,0 +1,27 @@
+@article{bre2018prediction,
+  title={Prediction of wind pressure coefficients on building surfaces using artificial neural networks},
+  author={Bre, Facundo and Gimenez, Juan M and Fachinotti, V{\'\i}ctor D},
+  journal={Energy and Buildings},
+  volume={158},
+  pages={1429--1441},
+  year={2018},
+  publisher={Elsevier}
+}
+
+@article{neuralnets,
+  title={Neural Networks and Deep Learning},
+  author={Michael A. Nielsen},
+  year={2015},
+  publisher={Determination Press}
+}
+
+@book{deeplearning,
+author = {Chollet, Francois},
+title = {Deep Learning with Python},
+year = {2017},
+isbn = {1617294438},
+publisher = {Manning Publications Co.},
+address = {USA},
+edition = {1st}
+}
+  
