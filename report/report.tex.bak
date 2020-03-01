@@ -1,15 +1,17 @@
-\documentclass[10pt]{article}
+\documentclass[12pt]{article}
 
 \usepackage{graphicx}
 \usepackage{float}
+\usepackage{extsizes}
 \usepackage{tocloft}
 \usepackage{caption}
+%\usepackage{url}
+\usepackage{amsmath}
 
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
 
-\usepackage[backend=biber, style=IEEE]{biblatex}
-\addbibresource{references.bib}
-
+\usepackage[backend=biber, style=IEEE, sorting=nty]{biblatex}
+\addbibresource{resources/references.bib}
 
 \begin{document}
 \makeatletter
@@ -17,7 +19,7 @@
 % title page
 \begin{titlepage}
 	\begin{center}
-		\line(1,0){300}\\
+		\line(1,0){300}\\				
 		[0.32cm]
 		\huge{\bfseries Federated Machine Learning}\\
 		[0.16cm]		
@@ -26,12 +28,15 @@
 		\textsc{\LARGE A research project}\\
 		[10cm]
 	\end{center}
-	\begin{flushright}
+	\begin{center}
 		\textsc{\large Karan Samani}\\
 		1161081087\\
-		BSc. Computer Science (Hons.)\\
+		Final Year Project BSc. Computer Science (Hons.)\\
+		Supervisor: Dr. Derek Bridge\\
+		Department of Computer Science\\
+		University College Cork\\
 		\@date
-	\end{flushright}
+	\end{center}
 \end{titlepage}
 \cleardoublepage
 
@@ -39,18 +44,33 @@
 \pagenumbering{roman}
 \section*{Abstract}
 \addcontentsline{toc}{section}{\numberline{}Declaration}
-Federated machine learning is the idea (from Google) of anonymised machine learning (or rather deep learning). It is a way to get a Neural Network trained on everyones data, but without having direct access to everyones data.
-
-Traditionally, a Neural Network would require a lot of data from users to train a model that is fairly accurate. But with the federated approach, the users dont have to share their data with anyone else to obtain a better overall model. Instead, they train a model locally no their own data, and then send the weights and biases of the model (the original user data cannot be recreated with these weights and biases) to a server which then averages them and sends them to you all the users. Because the weight and biases are being sent, instead of the users actual data (like their images), privacy is maintained and essentially a model is trained using anonymised data from several users.
-
-My project is based on implementing the way in which Google does this, and then implementing several more strategies proposed by Derek and comparing their outcome. At a high level, these strategies include discarding the weights of users in certain conditions or using a weighted average of their weights and biases.\\
+In this report we will see what is the motivation behind the need of a federated process for machine learning, a process that preserves privacy. A brief overview of how machine learning and neural networks work will be provided which is required to understand how the federated learning process works. After doing so, we will be moving onto the implementing the federated approach proposed by Google.
+\\\\
+Google's approach will be implemented from scratch and also by using Tensorflow's Federated framework. The later being used as a sanity check to confirm that the implementation from scratch is indeed correct, doing so by running a few experiments. After doing so, we will move on to exploring extended approaches to the federated learning idea based on a weighted and selective approach on a global level and a user level.
+\\\\
+At the end we will have a few experiments to compare all the approaches, which are, traditional machine learning, federated learning and the several extended approaches that will be explored.
 \clearpage
-\section*{Declaration}
+\section*{Declaration of Originality}
 \addcontentsline{toc}{section}{\numberline{}Abstract}
+%\begin{center}
+%\large \textbf{Declaration of Originality}
+%\end{center}
+In signing this declaration, you are conforming, in writing, that the submitted work is entirely your own original work, except where clearly attributed otherwise, and that it has not been submitted partly or wholly for any other educational award.
+\\\\
+I hereby declare that:
+\begin{itemize}
+  \item this is all my own work, unless clearly indicated otherwise, with full and proper accreditation;
+  \item with respect to my own work: none of it has been submitted at any educational institution contributing in any way to an educational award;
+  \item with respect to another’s work: all text, diagrams, code, or ideas, whether verbatim, paraphrased or otherwise modified or adapted, have been duly attributed to the source in a scholarly manner, whether from books, papers, lecture notes or any other student’s work, whether published or unpublished, electronically or in print.
+\end{itemize}
+\noindent Signed:\dotfill
+\\\\
+Date:\dotfill
 \clearpage
 
 \section*{Acknowledgements}
-Thanks to Dr. Derek Bridge for dealing with me over the last few months, pushing me to my limits and giving support as and when required.\\\\
+Thanks to Dr. Derek Bridge for being my supervisor and dealing with me over the last few months, pushing me to my limits and supporting me throughout the year. Ever since first year, I wanted to do my final year project with him and the experience of doing so has lived up to my expectations. 
+\\\\
 Thanks to the Alexander Baran-Harper's channel on YouTube where I learnt how to use use LaTeX.
 \addcontentsline{toc}{section}{\numberline{}Acknowledgements}
 \clearpage
@@ -72,113 +92,171 @@ Thanks to the Alexander Baran-Harper's channel on YouTube where I learnt how to 
 \pagenumbering{arabic}
 
 
-\section{Artificial Intelligence (dont know where to put this chapter}\label{sec:ai}
-\subsection{What is AI?}
-Artificial Intelligence can be described as the ability for a system to show “intelligence”. Intelligence, as Dr. Derek Bridge put it, is the ability for a system to act autonomously and rationally when faced with disorder, uncertainty, imprecision and intractability. A subset of AI is called Machine Learning. ML is a broad field of AI application where explicit programming is not required for the system to recognise patterns and learn. The area of Neural Networks (and Deep Learning) is the one that will be explored in this project.
+
+
+
+\section{Introduction}
+\subsection{Background}
+Modern day edge devices have a wealth of data on them and have more than enough computation power to run complex calculations on them with ease. These devices can range from a personal computer to a smart phone. In a world where data is power, access to the data on these devices is highly advantageous.
+\\\\
+Artificial Intelligence (AI) can be described as the ability for a system to show “intelligence”. Intelligence, as Dr. Derek Bridge put it, is the ability for a system to act autonomously and rationally when faced with disorder, uncertainty, imprecision and intractability. Machine Learning, a branch of AI, is based on the idea of creating a model that recognises patterns from data to be able to solve problems. To be able to do so effectively, one must have access to a lot of data. More data equates to a higher probability of having a more robust and better overall model. If a model can look and learn from more data, the chances are that it can generalise well, and that is the ideal goal. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{ai.png}
+	\includegraphics[width=6cm]{resources/ai.png}
 	\caption{High level visual representation of what fields there are in the study of AI.}
 	\label{fig:ai}
 \end{figure}
-\subsection{Neural Networks}
-The idea of neural networks is not new. In fact, it has been around for decades, but it only really took off in recent years with the emergence of better and more affordable hardware. The basic idea behind the workings of a neural network are quite straight forward. To start off, I must explain what the basic block for a neural network is, a perceptron.
+\noindent The solution to having well trained models seems straight forward. Use the vast amounts data from the edge devices to train a model that, in theory, should be fairly accurate. To do so, the users must give their data to a server so that the server can then train the model on the data that was just provided to it by the edge users. This trained model can then be used by everyone to predict unseen samples. But there are some more complications. Users may not want to share their data but still want the benefits of having a model trained on everyone's data. 
+\subsection{Motivation}
+Artificial Intelligence, specifically Machine Learning, was supposed to be the idea that took the world by storm. A piece of software that could make a machine essentially autonomous. It was supposed to be better in every way, never getting tired, reaching at least the same competency levels as humans and quite possibly even better. So much so that the media started talking about AI putting people out of a job and eventually taking over the world at some point by making far fetched references to the popular movie series Terminator. 
 \\\\
-A perceptron can be thought of as a node that takes in a weighted sum of its inputs, runs the value through a function (called the activation function) and outputs a value to be used later. The activation function below is a step function that outputs a $1$ if the weighted sum is more than a certain value. The input labelled $1$ in Figure \ref{fig:perceptron} is used to represent a bias $b$ that is always added to the weighted sum before inputting the value into the activation function. Note that the weighted sum can be written in a vectorised format.
+Needless to say, this is not accurate. The idea of a general purpose AI, formally called Artificial General Intelligence, is no where near attainable. Current AI applications are good at specific tasks, and only those tasks because they have a narrow scope. Even with their narrow scope, there are more topics that need to be addressed. Such as the security issues that arise with better AI systems. One can use AI to create cyberweapons that can be used for hacking and spreading misinformation. Along with cyberwarfare, AI can be used to make traditional weapons more lethal. For instance with drones using image recognition amongst other things to target specific areas. At first glance this seems like a good idea as it should result in less casualties. But, AI systems are not 100\% accurate so they could lead to an accidental strike. And if someone is able to hack into the system, they can make the drones target literally anything and anyone. Even in the right hands this technology can lead to disasters, let alone the wrong hands. Then there is the privacy aspect as well where people may not want to share their potentially sensitive private data under the fear that it can be misused. The idea of privacy will be the focus of this project.
+\subsection{Privacy concerns}
+There are numerous examples where people may not want to share their personal data. For instance, for the training of a model that deals with predictive text, the input data would require essentially everything that a user may type into their device. It is pretty obvious to see why some people may not want to share the messages and other content that they type on their devices. It is a clear invasion of their privacy.
+\\\\
+Another application could be training on images for classification purposes. People may not want to share images, which may include sensitive images, that they have stored on their devices with a third party. This can be extended to an even more sensitive topic of medical imaging where people may not want to share something like the X-Rays of their bodies.
+\\\\
+In general, people are sceptical of sharing personal data. But there is still the need to train a model that has had exposure to as much data as possible. 
+\subsection{Outline for the fix (rename this)}
+This was the motivation behind the idea of Federated Learning which was an idea proposed by Google in 2016~\cite{konen2016federated}. The idea of not having to share your data with someone else and yet still have the benefits of having a model that has exposure to their data. This will be the main point of interest in this report. 
+\\\\
+Google's approach towards federated learning will be further explain in later chapters. Following Google's approach, several extended ideas based on weighted and selective approaches will be discussed and their implementation explained. Along with that, outputs from some experiments to show how the extensions compare with Google's approach of federated learning and the traditional approach of machine learning in this context. 
+\section{Literature Review}
+\subsection{Machine learning}
+Machine learning is a very broad field which includes a lot of different learning methodologies. Learning can take place in a supervised context where the dataset is labelled, or in an unsupervised context where the data is not labelled. 
+\\\\\
+For unsupervised learning, the most well known algorithm is k-means clustering. This algorithm aims to find structure within the dataset and aims to cluster the closely related groups together into a total of $k$ clusters. The caveat here is that the value of $k$, the number of clusters, needs to be known before hand. Although there is a way to find an optimal value for $k$ when its value it not known. This is done by producing a graph of Inertia vs k, where inertia is the measure of how dense are the clusters formed. This graph is called an elbow curve because it produces a curve that looks like an elbow. And the point at which the graph turns, the elbow (3 in Figure \ref{fig:kmeans}), can be thought of as a good value of $k$ for the dataset. An extension to k-means is k-means++ where through clever selection of the initial points, a better result is obtained.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{resources/kmeans.png}
+	\caption{Elbow curve~\cite{web:kmeans}.}
+	\label{fig:kmeans}
+\end{figure}
+\noindent In supervised learning, the task is to learn a function that maps an input to an output, based on sample input-output pairs. In this project, the focus is on supervised learning where the aim is not to find structure within a dataset but rather trying to learn how to map the input data to a desired output. There are quite a few methods of finding the right function that fits the dataset, ranging from simple functions to very complicated functions.
+\\\\
+One of the simplest approaches for supervised learning is called Linear Regression, which aims to solve regression problems. The data that is provided to it are pairs consisting of input features (as a vector) and the desired output. Based on the set of input pairs provided, linear regression tries to find a linear function, which is a set of coefficients $\beta$ for all the features, that fits the dataset well. The set of input pairs provided is called the training set. To find the best possible function to fit the data, the idea of a loss function is used. This essentially says how distant the predictions are from the desired output. Loss in this case is usually mean squared error (MSE). The error $e$, as shown below, is the difference between the actual value and the predicted value.
+$$\mbox{MSE} = \frac{1}{n}\sum_{t=1}^{n}e_t^2$$
+The values of $\beta$ that fit the dataset the best would be the one with the lowest value for MSE on the training data. A naive way to solve this problem would be to iterate over all the infinitely many $\beta$s and run predictions on the training set to give an output. Use that output and the desired output to calculate the loss values for all the $\beta$ combinations. The $\beta$ values that give the lowest MSE value (loss) would be chosen as the solution. But there are more sophisticated methods of solving this like calculus and gradient descent. The latter can intuitively be thought as taking, usually small, steps in the direction that reduces the loss. 
+\\\\
+Logistic Regression follows the same basic principle as linear regression but is used for classification purposes instead. Classification problems are about predicting if a sample belongs to a certain class or not. The input data for this is similar to linear regression with it being a pair of input features (as a vector) but the desired output being a label representing a class of objects (like ``dog''). Logistic regression still works off of building linear models using $\beta$ under the hood and predicts numbers that are probabilities of a certain input being part of a certain class. For the prediction, input features are passed through a sigmoid function $\sigma$ (also called the logit function) which outputs a number between 0 and 1, lets call this $h_\beta$. 
+$$\sigma(z) = \frac{1}{1 + e^{(-z)}}$$
+$$h_\beta(x) = \sigma(x\beta)$$
+These numbers are interpreted as the probability of the input being part of a class, usually the positive class (a class which requires action and is labelled as 1). Based on the probability, the input is classified to a class $\hat{y}$. The idea of reducing the loss still applies, but a more complication loss function is used in this case.
+$$\hat{y} = \left\{ 
+    \begin{array}{ll} 
+      0 & \mbox{if \textit{Prob}}(\hat{y} = 1 | x) < 0.5 \\
+      1 & \mbox{if \textit{Prob}}(\hat{y} = 1 | x) \geq 0.5
+    \end{array}
+  \right.
+$$
+Linear regression and logistic regression are both based off of a linear function so they cant deal with complex data very well. Decision trees are an alternative that can better fit complex datasets can be used for both, regression and classification problems. They are very readable compared to other approaches. At a very high level, the structure of the tree dictates what path a sample input should take. The inner nodes in split the data based on conditions and the leafs represent the decisions made on the samples. A different loss function is used to optimise the answer. But even decision trees are not complex enough for the needs of this project.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=8cm]{resources/decisiontree.png}
+	\caption{A very simple decision tree~\cite{phdthesis}.}
+\end{figure}
+\noindent Neural networks have become the go to solution in recent times for pretty much all problems. They can cater to a wide range of problems, including very complex problems such as image classification, image localisation and natural language processing. They outperform pretty much any other approaches on almost every task. This is why they will be used exclusively in this project.  
+\subsection{Neural Networks}\label{sec:neuralnets}
+Neural networks, as seen before, are a subset of machine learning. Neural networks are not a new idea, they have been around for decades. But they only really took off in recent years with the emergence of better and more affordable hardware. The basic idea behind the workings of a neural network are quite straight forward. A model is defined and data is passed through it to make predictions. Then, based on the loss, some adjustments are made to the parameters learnt. This whole process is repeated by iterating over the dataset a set number of times during the training process. To start off, the idea of a neuron must be explained which are the basic building blocks of a neural network.
+\\\\
+\subsection{Neurons}
+A neuron can be thought of as a node that takes in a weighted sum of its inputs, passes it through a function (called the activation function) and outputs a value to be used later. The inputs received are from either the input layer neurons or the hidden layer neurons. The activation function used below is a step function that outputs a $1$ if the weighted sum is more than a certain value ($0$ in this case), otherwise it outputs a $0$. The input data point labelled $1$ in Figure \ref{fig:neuron} is used to represent a bias $b$. Because the input is $1$, multiplying it with a weight is guaranteed to give a value which will act as a number that is always used in the summing process later before the value is passed into the activation function. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=6cm]{resources/neuron.png}
+	\caption{Major components of a neuron~\cite{web:neuron}.}
+	\label{fig:neuron}
+\end{figure}
+\noindent Note that, for brevity, the weighted sum can be written in a vectorised format.
 $$w \cdot x \equiv \sum_j w_j x_j$$
-\begin{eqnarray}
-  \mbox{output} = \left\{ 
+$$  \mbox{output} = \left\{ 
     \begin{array}{ll} 
       0 & \mbox{if } w\cdot x \leq 0 \\
       1 & \mbox{if } w\cdot x > 0
     \end{array}
   \right.
-\end{eqnarray}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=6cm]{perceptron.png}
-	\caption{Major components of a perceptron.}
-	\textsf{\small (https://blog.knoldus.com/introduction-to-perceptron-neural-network/)}
-	\label{fig:perceptron}
-\end{figure}
-The activation function can be swapped out from the step function that was being used earlier to something else, for instance ReLU (what we will be using) which takes the max of either 0 or the weighted sum.
+$$
+The activation function can be swapped out from the step function that was being used earlier with some other activation function such as ReLU (Rectified Logic Unit), sigmoid function, etc. ReLU takes the max of either 0 or the weighted sum and uses that as its output. 
 \begin{eqnarray}
   \mbox{output}&=& \mbox{max}\left\{0,w\cdot x + b\right\}
 \end{eqnarray}
-In a neural network, there are layers of such perceptrons. Each layer connected to another in a different way. The basic stages are to feed data through to make predictions, compare them with the actual predictions and then use an algorithm called back propagation to update the values of the weights for every perceptron (referred to as nodes from now on). More information on this and the idea of neural networks can be found in the (online) book "Neural Networks and Deep Learning, Michael A. Nielsen"\cite{neuralnets} and the book "Deep Learning with Python, Francois Chollet"\cite{deeplearning}
-\subsubsection{Dense Layers}
-The way the nodes are connected to each other is called the architecture of the network. Densely connected layers of nodes can be seen in Figure \ref{fig:densenet}. In these, all the nodes are connected to every node in the subsequent layer.
+\subsection{Architecture}
+In a neural network, there are layers of such neurons. These are usually broken down in three parts, the input layer, the hidden layer and then the output layer. The input layer is not actually a layer of neurons but rather just a representation of the input data as a layer that connects to the hidden layers. The hidden layers can contain any number of layers with any number of neurons for the layers.
+\\\\
+After the hidden layers is the output layer. This layer is responsible for outputting the predictions. The output layer usually has its own activation function which depends on the application, i.e., if it is a classification problem or a regression problem. Since this project focuses on multi-class classification problems, we will be using the softmax activation function for the output layer. 
+\\\\
+% start here-------------------
+The layered structure described above is called the architecture of the model. Some of the common used architectures are densely connected layers (Section~\ref{subsubsec:dense}) and convolutional layers (Section~\ref{subsubsec:conv}). More information on the aforementioned and more architectures can be found in the book about Deep Learning by F. Chollet~\cite{deeplearning}.
+\subsubsection{Dense}\label{subsubsec:dense}
+These are one of the most straight forward architectures and are generally the way most neural networks end. They are quite useful when placed as the last few layers, especially for classification purposes. In these, all the nodes are connected to every node in the subsequent layer. The input for these layers are flattened data, which can be thought of as a list of input data where nested lists are not allowed. An example can be seen in Figure \ref{fig:densenet}. 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=6cm]{densenet.png}
-	\caption{Basic neural network architecture\cite{bre2018prediction}.}
+	\includegraphics[width=8cm]{resources/densenet.png}
+	\caption{Basic dense neural network~\cite{bre2018prediction}}
 	\label{fig:densenet}
 \end{figure}
-\subsubsection{Convolutional Layers}
-These are more complicated than the previously mentioned dense layers. Without going into too much unnecessary details, the basic idea is that the layers in this architecture try to find patterns in the input data and then output the presence of them. 
+\subsubsection{Convolutional}\label{subsubsec:conv}
+These are more complicated than the previously mentioned dense layers. The input data here is structured and not flattened, unlike dense nodes. Their basic idea is to find patterns in the input data and make them more abstract as the layer count increases. They indicate the presence of certain shapes. Most common use for convolutional layers is in image classification.
 \\\\
-A convolutional layer has a kernel or a window that is used to look over the input data and recognise patterns localised in that window. Every layer has a "depth" number of sub-layers which represent the patterns that the layer is trying to learn and the subsequent layers are connected to these. For instance, with the depth being 3, the convolutional layer looks for 3 patterns in that layer. Figure \ref{fig:convnet} does a good job of giving an idea about how this process works. But the main concept remains the same. There are underlying weights that are being tweaked to learn patterns.
+A convolutional layer has a window (called the kernel) that is used to look over the input data and recognise patterns localised in that window. Every layer has a ``depth'' number of sub-layers which can be thought of as the number of patterns that the layer is trying to recognise and they are called the feature maps of the layer. For example if the depth is 3, the convolutional layer has 3 feature maps and will look at 3 kinds of patterns. The nodes in the following convolutional layer are connected to every node in the window of the previous layer, including the sub-layers as well. The set of weights that connect a node to the sub-layer nodes in the following layer are the same within the window. Figure \ref{fig:convnet} does a good job of giving an idea about how this looks.
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=8cm]{convnet.png}
-	\caption{How a convolution works\cite[(Page 125, Chapter 5)]{deeplearning}.}
+	\includegraphics[width=8cm]{resources/convnet.png}
+	\caption{How a convolution works~\cite{deeplearning}.}%page 125, chapter 5
 	\label{fig:convnet}
 \end{figure}
-At the end of a series of convolutional layers, there is a series of dense layers that are used to give the predicted output(s). 
+Convolutional layers are often followed by some maxpooling layers, which reduce the output size from the convolutional layers. This can be done for many reasons, such as saving memory and making the computations required less intensive. At the end of a series of convolutional layers, there is a series of dense layers that are used to give the predicted output(s). 
 \clearpage
+\subsection{Training}
+For a neural network to work, the weights with which the nodes are connected need to be tweaked and the process of doing so is called training the model. The model is trained on a training set, which is a subset of the whole dataset. This is done to avoid leakage between the testing data and the training data. We will go through the high level algorithm with which neural networks are trained. More information on this and the idea of neural networks can be found in the (online) book ``Neural Networks and Deep Learning, Michael A. Nielsen''~\cite{neuralnets} and the book ``Deep Learning with Python, Francois Chollet''~\cite{deeplearning}.
+\\\\
+The model is initialised with random weights before training begins. After that, the training data is then through the model to make predictions. These predictions are then compared with the actual values, and the loss is calculated using a loss function. For regression, mse is used and for classification sparse categorical crossentropy is used. The details in which they work are not required, but the idea of finding out how far off the predictions were from the actual value still holds. Using an methods like gradient descent or Adam (based on gradient descent and other methods, an algorithm called back propagation tweaks the weights in a way that would hopefully reduce the loss. These updates can be made based on every example, batches of examples or the entire dataset as a whole. Generally, the batched approach is taken and the entire dataset is broken down into batches of training data. 
+\\\\
+This whole process of predicting, calculating loss and tweaking the weights can be done several times by iterating over the whole training set several times. The number of times that the entire training set has been gone over is called the number of epochs that the network was trained on. This needs to be tweaked manually as it could lead to under fitting or over fitting the model. Which means, the model is too general or too specific, respectively, to be useful in actual usage.
+\subsection{Differential Privacy}
+linkage attacks, netflix and imdb data to identify
+only good for large dataset, else bad 
+	complex
+	easier to do real data and anonymise 
+	
+	
+deidentify data
+	outliers
+	fields
+ 	
+want to decouple learning about an individual and learning about the population
 
+analysis output is not dependant on a particular individual and will be the sameif they are not incuded
 
+adjacent dataset
+	n+1 and n sized dataset
 
-\section{Background}
-\subsection{Introduction}
-Modern day edge devices have a wealth of data on them and have more than enough computation power to run complex calculations on them with ease. These devices can range from a personal computer to a smart phone. In a world where data is power, access to the data on these devices is highly advantageous.
-\\\\
-Machine Learning, a branch of Artificial Intelligence (AI), is based on the idea of creating a model that recognises patterns from data to be able to solve prediction problems. To be able to do so effectively, one must have access to a lot of data. More data equates to a higher probability of having a more robust and better overall model. If a model can look and learn from more data, the chances are that it can generalise well, and that is the ideal goal. 
-\\\\
-The solution to having well trained models seems simple now. Just use the vast amounts data from the edge devices to train a model, correct? To do so, the users must give their data to a server so that the server can then train the model on the data that was just provided to it by the edge users. This trained model can then be used by everyone to predict unseen samples. But what if the users don't want to share their data but still want the benefits of having a model trained on everyone's data?
-\subsection{Motivation}
-There are numerous instances where people may not want to share their personal data. For instance, for the training of a model that deals with predictive text, the input data would require essentially everything that a user may type into their device. It is pretty obvious to see why some people may not want to share the messages and other content that they type on their devices. It is a clear invasion of their privacy.
-\\\\
-Another application could be training on images for classification purposes. People may not want to share images, which may include sensitive images, that they have stored on their devices with a third party. This can be extended to an even more sensitive topic of medical imaging where people may not want to share something like the X-Rays of their bodies.
-\\\\
-In general, people are sceptical of sharing personal data. But we still want to train a model that has had exposure to as much data as possible. Is there a compromise?
+	algo m
+	
 
 \subsection{Federated Machine Learning}
-This was the motivation behind the idea of Federated Machine Learning. The idea of privacy, the idea of not having to share your data with someone else and yet still have the benefits of having a model that has exposure to their data.
+Traditionally in ML, a server (lets call this this central agent) would have access to all the data. Presumably collected by all the edge users (lets call these just users) sending their data to the central agent. The central agent would then train a single model using all the data that it has and anyone could then access the model to use it. 
 \\\\
-Traditional ML where everyone sends their data to a server, a central user, and the model is trained on everyone's data on the server. In Federated ML, an identical copy of the model is sent to every participating edge user. 
-(Section~\ref{sec:ai}) 
-\clearpage
-\section{Literature Review}
-How to train 
-Google doing it
-Privacy
-Federated
-Runing on edge too
-Differential 
-
-\subsection{What has been done, not mine but others}
-\subsection{Google doing it}
-\subsection{Privary}
-\subsection{Differntial privacy}
+In Federated ML, there is no concept of having access to all the data. So as a workaround, an identical copy of the model is sent to every participating user. All the users then train their local copy of the model on just their own local data. This would usually be done without the user explicitly running the training command. The devices would start the training process for their model based on certain conditions such as whether or not the devices are currently charging, if they are on WiFi, have been idle for some time (for instance night time), etc. After the training process has been completed, the model would have learnt some parameters (the weights for the neuron connections, as seen in Section~\ref{sec:neuralnets}). These weights are then sent to a central agent which would average the weights received from all the users and send the averaged weights back to the users. Instead of sending all the weights, an alternative would be to send only the changes made to the weights. The latter is what Google does. After receiving the updated weights from the central agent, the users would update their local models with these new averaged weights and start the training process again. This back and forth of training, averaging and training again can take place several times. At the end (if there is an end), the resulting product can be pretty close to the traditional ML approach. Although, it must be noted that depending on the application, it may not be close or some changes may be required. 
+\subsubsection{Benefits}
+Federated machine learning has a few benefits. Firstly and most importantly, all the training takes places on the only the edge devices. This means that the users do not have to share their data with anyone. The only data they share are the parameters learnt from the training process that took place on their local data. And it is impossible to recreate the original data from the just the parameters. Add to that the idea of Secure Aggregation~\cite{secagg} and one can very confidently say that the idea of privacy is held up to the highest standard. Secure aggregation is where the data is aggregated in stages. Instead of all averaging being done at the server where some data can possibly be reverse engineered, there are intermediary steps where the data is averaged and then the central agent finally averages those averages. But we will not be focussing on secure aggregating in this project. 
+\\\\
+Secondly, the fact that all the training runs on edge devices means that there is no need for an investment into building a large training infrastructure by a company. The edge devices will do all the hard work of the model training and share the results which a central agent would then use quite trivially. So this is a better use of resources as a whole as idle devices would not just stay idle and would take part in the training process.
+\subsubsection{Drawbacks}
+As mentioned before, the federated approach can lead to similar performance as the the traditional approach. But this depends on the distribution of the data as we will see in later sections (\ref{subsec:imageset}. If the dataset amongst all the users is very similar, then the overall result of the federated process can be very similar to the traditional approach. But if the users have skewed datasets, as is the case in real life, the traditional approach is generally better. It is a trade-off of privacy vs. model performance that must be decided upon when deciding between the federated approach and the traditional approach respectively.
+\subsection{What has been done by others}
 
 \clearpage
-\section{How to train}
-
-\clearpage
-\section{running on edge}
-
-\clearpage
-\section{Core Design}
-\subsection{building an desinging this}
-\subsection{implemenatation}
+n\section{Core Design}
+\subsection{building and designing this}
+\subsection{Implemenatation}
 \subsection{Global}
-\subsection{google implementation}
-\subsection{my implementation}
+\subsection{My implementation}
+\subsection{Google's Tensorflow version}
+Sanity check was close enough to mine
 \clearpage
-\section{exnteded ideas}
+\section{Extended Ideas}
 \subsection{Central Server}
-
 \subsubsection{Weighted Average}
 \subsubsection{Excluding based on std dev}
 \subsubsection{Local only}
@@ -187,23 +265,58 @@ Differential
 \subsubsection{Excluding based on std dev}
 \subsubsection{Local only}
 \subsubsection{testing}
+
+\clearpage
 \section{Datasets used}
+Dataset and expereiments the same
 
-\clearpage
-\section{testing other weights on global data}
+Or diff chapters for images 
+• Comoing up with decent model
+• Traditional ml results
 
-\clearpage
-\section{tensorflow}
-
-\clearpage
-\section{modily}
+\subsection{Gestures dataset}\label{subsec:gestureset}
+found issues so moved on
+\subsection{Image dataset}\label{subsec:imageset}
 h5 files
-\clearpage
-\section{each dataset output experimentation}
-artificial users
 
+artificial users
+\clearpage
+\section{Experimentation/Testing}
+\subsection{Designing the framework}
+%\subsection{Implementing the framework}
+\subsection{Graphing}
 For each dataset show the otuput we got
 
+\clearpage
+\section{Testing user weights on global data}
+
+Analysis\\
+Design\\
+Implementation\\
+Evaluation\\
+Conclusions\\
+
+third person
+\\
+present or past tense
+
+design talks about apckages and stuff. convince them its good
+describe test set
+Can just saw 6 other graphs were xyz for whatever reason
+Give a reason to why im shoeing something
+
+\clearpage
+\section{Conclusions and future work}
+can use "i" in here
+\section{notes}
+Not written in the passice
+	Name the agent
+	Describe the system
+		Give it a name
+		User
+		Name parts of the system
+		Edge agent, central agent
+Present and past
 \clearpage
 \printbibliography[title={Bibliography}]
 

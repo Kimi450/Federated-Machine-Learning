@@ -82,7 +82,7 @@
       <file>report.bcf</file>
     </requires>
     <requires type="editable">
-      <file>references.bib</file>
+      <file>resources/references.bib</file>
     </requires>
   </external>
 </requests>

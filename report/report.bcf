@@ -163,7 +163,7 @@
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortingtemplatename</bcf:key>
-      <bcf:value>none</bcf:value>
+      <bcf:value>nty</bcf:value>
     </bcf:option>
     <bcf:option type="singlevalued">
       <bcf:key>sortsets</bcf:key>
@@ -2180,27 +2180,59 @@
   <!-- CITATION DATA -->
   <!-- SECTION 0 -->
   <bcf:bibdata section="0">
-    <bcf:datasource type="file" datatype="bibtex">references.bib</bcf:datasource>
+    <bcf:datasource type="file" datatype="bibtex">resources/references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="3">neuralnets</bcf:citekey>
-    <bcf:citekey order="4">deeplearning</bcf:citekey>
-    <bcf:citekey order="5">bre2018prediction</bcf:citekey>
-    <bcf:citekey order="6">bre2018prediction</bcf:citekey>
-    <bcf:citekey order="7">deeplearning</bcf:citekey>
-    <bcf:citekey order="8">deeplearning</bcf:citekey>
+    <bcf:citekey order="6">konen2016federated</bcf:citekey>
+    <bcf:citekey order="7">web:kmeans</bcf:citekey>
+    <bcf:citekey order="8">web:kmeans</bcf:citekey>
+    <bcf:citekey order="9">phdthesis</bcf:citekey>
+    <bcf:citekey order="10">phdthesis</bcf:citekey>
+    <bcf:citekey order="11">web:neuron</bcf:citekey>
+    <bcf:citekey order="12">web:neuron</bcf:citekey>
+    <bcf:citekey order="13">deeplearning</bcf:citekey>
+    <bcf:citekey order="14">bre2018prediction</bcf:citekey>
+    <bcf:citekey order="15">bre2018prediction</bcf:citekey>
+    <bcf:citekey order="16">deeplearning</bcf:citekey>
+    <bcf:citekey order="17">deeplearning</bcf:citekey>
+    <bcf:citekey order="18">neuralnets</bcf:citekey>
+    <bcf:citekey order="19">deeplearning</bcf:citekey>
+    <bcf:citekey order="20">secagg</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
-  <bcf:sortingtemplate name="none">
+  <bcf:sortingtemplate name="nty">
     <bcf:sort order="1">
-      <bcf:sortitem order="1">citeorder</bcf:sortitem>
+      <bcf:sortitem order="1">presort</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="2" final="1">
+      <bcf:sortitem order="1">sortkey</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="3">
+      <bcf:sortitem order="1">sortname</bcf:sortitem>
+      <bcf:sortitem order="2">author</bcf:sortitem>
+      <bcf:sortitem order="3">editor</bcf:sortitem>
+      <bcf:sortitem order="4">translator</bcf:sortitem>
+      <bcf:sortitem order="5">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="6">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="4">
+      <bcf:sortitem order="1">sorttitle</bcf:sortitem>
+      <bcf:sortitem order="2">title</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="5">
+      <bcf:sortitem order="1">sortyear</bcf:sortitem>
+      <bcf:sortitem order="2">year</bcf:sortitem>
+    </bcf:sort>
+    <bcf:sort order="6">
+      <bcf:sortitem order="1">volume</bcf:sortitem>
+      <bcf:sortitem literal="1" order="2">0</bcf:sortitem>
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
   <bcf:datalist section="0"
-                name="none/global//global/global"
+                name="nty/global//global/global"
                 type="entry"
-                sortingtemplatename="none"
+                sortingtemplatename="nty"
                 sortingnamekeytemplatename="global"
                 labelprefix=""
                 uniquenametemplatename="global"

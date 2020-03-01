@@ -8,76 +8,92 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\hbox to\@tempdima {\hfil }List of Figures}{vi}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Artificial Intelligence (dont know where to put this chapter}{1}%
+\contentsline {section}{\numberline {1}Introduction}{1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}What is AI?}{1}%
+\contentsline {subsection}{\numberline {1.1}Background}{1}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2}Neural Networks}{1}%
+\contentsline {subsection}{\numberline {1.2}Motivation}{2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {1.2.1}Dense Layers}{2}%
+\contentsline {subsection}{\numberline {1.3}Privacy concerns}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {1.2.2}Convolutional Layers}{3}%
+\contentsline {subsection}{\numberline {1.4}Outline for the fix (rename this)}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2}Background}{5}%
+\contentsline {section}{\numberline {2}Literature Review}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Introduction}{5}%
+\contentsline {subsection}{\numberline {2.1}Machine learning}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Motivation}{5}%
+\contentsline {subsection}{\numberline {2.2}Neural Networks}{7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3}Federated Machine Learning}{6}%
+\contentsline {subsection}{\numberline {2.3}Neurons}{7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Literature Review}{7}%
+\contentsline {subsection}{\numberline {2.4}Architecture}{8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}What has been done, not mine but others}{7}%
+\contentsline {subsubsection}{\numberline {2.4.1}Dense}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Google doing it}{7}%
+\contentsline {subsubsection}{\numberline {2.4.2}Convolutional}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Privary}{7}%
+\contentsline {subsection}{\numberline {2.5}Training}{11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Differntial privacy}{7}%
+\contentsline {subsection}{\numberline {2.6}Differential Privacy}{11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}How to train}{8}%
+\contentsline {subsection}{\numberline {2.7}Federated Machine Learning}{12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}running on edge}{9}%
+\contentsline {subsubsection}{\numberline {2.7.1}Benefits}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Core Design}{10}%
+\contentsline {subsubsection}{\numberline {2.7.2}Drawbacks}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}building an desinging this}{10}%
+\contentsline {subsection}{\numberline {2.8}Google doing it}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}implemenatation}{10}%
+\contentsline {subsection}{\numberline {2.9}Privacy}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.3}Global}{10}%
+\contentsline {subsection}{\numberline {2.10}What has been done by others}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.4}google implementation}{10}%
+\contentsline {section}{\numberline {3}Core Design}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.5}my implementation}{10}%
+\contentsline {subsection}{\numberline {3.1}building and designing this}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}exnteded ideas}{11}%
+\contentsline {subsection}{\numberline {3.2}Implemenatation}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.1}Central Server}{11}%
+\contentsline {subsection}{\numberline {3.3}Global}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.1.1}Weighted Average}{11}%
+\contentsline {subsection}{\numberline {3.4}My implementation}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.1.2}Excluding based on std dev}{11}%
+\contentsline {subsection}{\numberline {3.5}Google's Tensorflow version}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.1.3}Local only}{11}%
+\contentsline {section}{\numberline {4}Extended Ideas}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {7.2}Peer to Peer}{11}%
+\contentsline {subsection}{\numberline {4.1}Central Server}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.2.1}Weighted Average}{11}%
+\contentsline {subsubsection}{\numberline {4.1.1}Weighted Average}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.2.2}Excluding based on std dev}{11}%
+\contentsline {subsubsection}{\numberline {4.1.2}Excluding based on std dev}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.2.3}Local only}{11}%
+\contentsline {subsubsection}{\numberline {4.1.3}Local only}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {7.2.4}testing}{11}%
+\contentsline {subsection}{\numberline {4.2}Peer to Peer}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Datasets used}{11}%
+\contentsline {subsubsection}{\numberline {4.2.1}Weighted Average}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}testing other weights on global data}{12}%
+\contentsline {subsubsection}{\numberline {4.2.2}Excluding based on std dev}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {10}tensorflow}{13}%
+\contentsline {subsubsection}{\numberline {4.2.3}Local only}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {11}modily}{14}%
+\contentsline {subsubsection}{\numberline {4.2.4}testing}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {12}each dataset output experimentation}{15}%
+\contentsline {section}{\numberline {5}Datasets used}{17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.1}Gestures dataset}{17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Image dataset}{17}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Experimentation/Testing}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}Designing the framework}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2}Graphing}{18}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Testing user weights on global data}{19}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Conclusions and future work}{20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}notes}{20}%

@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'report.blg'
-[370] biber-MSWIN64:322> INFO - === 
-[473] Biber.pm:415> INFO - Reading 'report.bcf'
-[1148] Biber.pm:943> INFO - Found 3 citekeys in bib section 0
-[1185] Biber.pm:4256> INFO - Processing section 0
-[1186] Utils.pm:75> INFO - Globbing data source 'references.bib'
-[1211] Utils.pm:91> INFO - Globbed data source 'references.bib' to references.bib
-[1246] Biber.pm:4455> INFO - Looking for bibtex format file 'references.bib' for section 0
-[1254] bibtex.pm:1653> INFO - LaTeX decoding ...
-[1271] bibtex.pm:1471> INFO - Found BibTeX data source 'references.bib'
-[1426] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[1426] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[1426] Biber.pm:4084> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
-[1426] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[1433] bbl.pm:652> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[1442] bbl.pm:755> INFO - Output to report.bbl
+[119] biber-MSWIN64:322> INFO - === 
+[147] Biber.pm:415> INFO - Reading 'report.bcf'
+[327] Biber.pm:943> INFO - Found 8 citekeys in bib section 0
+[366] Biber.pm:4256> INFO - Processing section 0
+[366] Utils.pm:75> INFO - Globbing data source 'resources/references.bib'
+[384] Utils.pm:91> INFO - Globbed data source 'resources/references.bib' to resources/references.bib
+[406] Biber.pm:4455> INFO - Looking for bibtex format file 'resources/references.bib' for section 0
+[411] bibtex.pm:1653> INFO - LaTeX decoding ...
+[432] bibtex.pm:1471> INFO - Found BibTeX data source 'resources/references.bib'
+[587] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[587] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[587] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[587] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[612] bbl.pm:652> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[619] bbl.pm:755> INFO - Output to report.bbl

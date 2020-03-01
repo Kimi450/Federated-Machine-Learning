@@ -18,60 +18,7 @@
 
 
 \refsection{0}
-  \datalist[entry]{none/global//global/global}
-    \entry{neuralnets}{article}{}
-      \name{author}{1}{}{%
-        {{hash=afe17482fc813e497188aee3b3783879}{%
-           family={Nielsen},
-           familyi={N\bibinitperiod},
-           given={Michael\bibnamedelima A.},
-           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
-      }
-      \list{publisher}{1}{%
-        {Determination Press}%
-      }
-      \strng{namehash}{afe17482fc813e497188aee3b3783879}
-      \strng{fullhash}{afe17482fc813e497188aee3b3783879}
-      \strng{bibnamehash}{afe17482fc813e497188aee3b3783879}
-      \strng{authorbibnamehash}{afe17482fc813e497188aee3b3783879}
-      \strng{authornamehash}{afe17482fc813e497188aee3b3783879}
-      \strng{authorfullhash}{afe17482fc813e497188aee3b3783879}
-      \field{sortinit}{3}
-      \field{sortinithash}{a37a8ef248a93c322189792c34fc68c9}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Neural Networks and Deep Learning}
-      \field{year}{2015}
-    \endentry
-    \entry{deeplearning}{book}{}
-      \name{author}{1}{}{%
-        {{hash=5836fc1fa037e340c8b5591da3207608}{%
-           family={Chollet},
-           familyi={C\bibinitperiod},
-           given={Francois},
-           giveni={F\bibinitperiod}}}%
-      }
-      \list{location}{1}{%
-        {USA}%
-      }
-      \list{publisher}{1}{%
-        {Manning Publications Co.}%
-      }
-      \strng{namehash}{5836fc1fa037e340c8b5591da3207608}
-      \strng{fullhash}{5836fc1fa037e340c8b5591da3207608}
-      \strng{bibnamehash}{5836fc1fa037e340c8b5591da3207608}
-      \strng{authorbibnamehash}{5836fc1fa037e340c8b5591da3207608}
-      \strng{authornamehash}{5836fc1fa037e340c8b5591da3207608}
-      \strng{authorfullhash}{5836fc1fa037e340c8b5591da3207608}
-      \field{sortinit}{4}
-      \field{sortinithash}{e071e0bcb44634fab398d68ad04e69f4}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{edition}{1st}
-      \field{isbn}{1617294438}
-      \field{title}{Deep Learning with Python}
-      \field{year}{2017}
-    \endentry
+  \datalist[entry]{nty/global//global/global}
     \entry{bre2018prediction}{article}{}
       \name{author}{3}{}{%
         {{hash=ae888f52e602ce2f55b7f0edb6283f6a}{%
@@ -99,8 +46,8 @@
       \strng{authorbibnamehash}{f77a21e3ce7718d5e7be0a41642834fa}
       \strng{authornamehash}{f77a21e3ce7718d5e7be0a41642834fa}
       \strng{authorfullhash}{f77a21e3ce7718d5e7be0a41642834fa}
-      \field{sortinit}{5}
-      \field{sortinithash}{5dd416adbafacc8226114bc0202d5fdd}
+      \field{sortinit}{B}
+      \field{sortinithash}{8de16967003c7207dae369d874f1456e}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{journaltitle}{Energy and Buildings}
@@ -109,6 +56,228 @@
       \field{year}{2018}
       \field{pages}{1429\bibrangedash 1441}
       \range{pages}{13}
+    \endentry
+    \entry{deeplearning}{book}{}
+      \name{author}{1}{}{%
+        {{hash=5836fc1fa037e340c8b5591da3207608}{%
+           family={Chollet},
+           familyi={C\bibinitperiod},
+           given={Francois},
+           giveni={F\bibinitperiod}}}%
+      }
+      \list{location}{1}{%
+        {USA}%
+      }
+      \list{publisher}{1}{%
+        {Manning Publications Co.}%
+      }
+      \strng{namehash}{5836fc1fa037e340c8b5591da3207608}
+      \strng{fullhash}{5836fc1fa037e340c8b5591da3207608}
+      \strng{bibnamehash}{5836fc1fa037e340c8b5591da3207608}
+      \strng{authorbibnamehash}{5836fc1fa037e340c8b5591da3207608}
+      \strng{authornamehash}{5836fc1fa037e340c8b5591da3207608}
+      \strng{authorfullhash}{5836fc1fa037e340c8b5591da3207608}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{1st}
+      \field{isbn}{1617294438}
+      \field{title}{Deep Learning with Python}
+      \field{year}{2017}
+    \endentry
+    \entry{web:neuron}{online}{}
+      \name{author}{1}{}{%
+        {{hash=242ea2af70d3cca14f28b22ffdc4d6f0}{%
+           family={JustinB},
+           familyi={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{242ea2af70d3cca14f28b22ffdc4d6f0}
+      \strng{fullhash}{242ea2af70d3cca14f28b22ffdc4d6f0}
+      \strng{bibnamehash}{242ea2af70d3cca14f28b22ffdc4d6f0}
+      \strng{authorbibnamehash}{242ea2af70d3cca14f28b22ffdc4d6f0}
+      \strng{authornamehash}{242ea2af70d3cca14f28b22ffdc4d6f0}
+      \strng{authorfullhash}{242ea2af70d3cca14f28b22ffdc4d6f0}
+      \field{sortinit}{J}
+      \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://blog.knoldus.com/introduction-to-perceptron-neural-network/}}
+      \field{title}{Introduction to Perceptron: Neural Network}
+      \field{year}{2017}
+    \endentry
+    \entry{konen2016federated}{misc}{}
+      \name{author}{4}{}{%
+        {{hash=56660736d75eaca4a2482417345d1863}{%
+           family={Konečný},
+           familyi={K\bibinitperiod},
+           given={Jakub},
+           giveni={J\bibinitperiod}}}%
+        {{hash=707fa44f08f047ab822f84fe38c69dfb}{%
+           family={McMahan},
+           familyi={M\bibinitperiod},
+           given={H.\bibnamedelimi Brendan},
+           giveni={H\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=86066638fba5b4dc33bcee0bcba473cf}{%
+           family={Ramage},
+           familyi={R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=972f2a6c228c82719a54368d49838fd7}{%
+           family={Richtárik},
+           familyi={R\bibinitperiod},
+           given={Peter},
+           giveni={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{9ca9d2617d6443d6ec1f0a85f2e8cee6}
+      \strng{fullhash}{749b28addca8ff6bbed2938cf7e1872f}
+      \strng{bibnamehash}{749b28addca8ff6bbed2938cf7e1872f}
+      \strng{authorbibnamehash}{749b28addca8ff6bbed2938cf7e1872f}
+      \strng{authornamehash}{9ca9d2617d6443d6ec1f0a85f2e8cee6}
+      \strng{authorfullhash}{749b28addca8ff6bbed2938cf7e1872f}
+      \field{sortinit}{K}
+      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{cs.LG}
+      \field{eprinttype}{arXiv}
+      \field{title}{Federated Optimization: Distributed Machine Learning for On-Device Intelligence}
+      \field{year}{2016}
+      \verb{eprint}
+      \verb 1610.02527
+      \endverb
+    \endentry
+    \entry{phdthesis}{thesis}{}
+      \name{author}{1}{}{%
+        {{hash=404558ca7f36939e5e5f28c2332fde6c}{%
+           family={Moodley},
+           familyi={M\bibinitperiod},
+           given={Avashlin},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{404558ca7f36939e5e5f28c2332fde6c}
+      \strng{fullhash}{404558ca7f36939e5e5f28c2332fde6c}
+      \strng{bibnamehash}{404558ca7f36939e5e5f28c2332fde6c}
+      \strng{authorbibnamehash}{404558ca7f36939e5e5f28c2332fde6c}
+      \strng{authornamehash}{404558ca7f36939e5e5f28c2332fde6c}
+      \strng{authorfullhash}{404558ca7f36939e5e5f28c2332fde6c}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{month}{01}
+      \field{title}{Language Identification With Decision Trees: Identification Of Individual Words In The South African Languages}
+      \field{type}{phdthesis}
+      \field{year}{2016}
+      \verb{doi}
+      \verb 10.13140/RG.2.2.25539.81445
+      \endverb
+    \endentry
+    \entry{neuralnets}{article}{}
+      \name{author}{1}{}{%
+        {{hash=afe17482fc813e497188aee3b3783879}{%
+           family={Nielsen},
+           familyi={N\bibinitperiod},
+           given={Michael\bibnamedelima A.},
+           giveni={M\bibinitperiod\bibinitdelim A\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Determination Press}%
+      }
+      \strng{namehash}{afe17482fc813e497188aee3b3783879}
+      \strng{fullhash}{afe17482fc813e497188aee3b3783879}
+      \strng{bibnamehash}{afe17482fc813e497188aee3b3783879}
+      \strng{authorbibnamehash}{afe17482fc813e497188aee3b3783879}
+      \strng{authornamehash}{afe17482fc813e497188aee3b3783879}
+      \strng{authorfullhash}{afe17482fc813e497188aee3b3783879}
+      \field{sortinit}{N}
+      \field{sortinithash}{98cf339a479c0454fe09153a08675a15}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Neural Networks and Deep Learning}
+      \field{year}{2015}
+    \endentry
+    \entry{web:kmeans}{online}{}
+      \name{author}{1}{}{%
+        {{hash=bfc20e44e1a314e3595fdd4503d0ce37}{%
+           family={{RJ Nowling}},
+           familyi={R\bibinitperiod}}}%
+      }
+      \strng{namehash}{bfc20e44e1a314e3595fdd4503d0ce37}
+      \strng{fullhash}{bfc20e44e1a314e3595fdd4503d0ce37}
+      \strng{bibnamehash}{bfc20e44e1a314e3595fdd4503d0ce37}
+      \strng{authorbibnamehash}{bfc20e44e1a314e3595fdd4503d0ce37}
+      \strng{authornamehash}{bfc20e44e1a314e3595fdd4503d0ce37}
+      \strng{authorfullhash}{bfc20e44e1a314e3595fdd4503d0ce37}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{http://rnowling.github.io/math/2015/07/11/customer-segmentation-bps-multinomial.html}}
+      \field{title}{Customer Segmentation with the BigPetStore Multinomial Model}
+      \field{year}{2015}
+    \endentry
+    \entry{secagg}{inproceedings}{}
+      \name{author}{9}{}{%
+        {{hash=a2195b165a73fdc64f90707a66510ec6}{%
+           family={Segal},
+           familyi={S\bibinitperiod},
+           given={Aaron},
+           giveni={A\bibinitperiod}}}%
+        {{hash=540723ef5556f5b48e1bc648c3aafff8}{%
+           family={Marcedone},
+           familyi={M\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+        {{hash=79af8278e13748b963a5ba192533c9b5}{%
+           family={Kreuter},
+           familyi={K\bibinitperiod},
+           given={Benjamin},
+           giveni={B\bibinitperiod}}}%
+        {{hash=86066638fba5b4dc33bcee0bcba473cf}{%
+           family={Ramage},
+           familyi={R\bibinitperiod},
+           given={Daniel},
+           giveni={D\bibinitperiod}}}%
+        {{hash=707fa44f08f047ab822f84fe38c69dfb}{%
+           family={McMahan},
+           familyi={M\bibinitperiod},
+           given={H.\bibnamedelimi Brendan},
+           giveni={H\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=93d6484d9d4a1d16f8e7c613030633ec}{%
+           family={Seth},
+           familyi={S\bibinitperiod},
+           given={Karn},
+           giveni={K\bibinitperiod}}}%
+        {{hash=b5068fa6c52ad4193971201b160dfa57}{%
+           family={Bonawitz},
+           familyi={B\bibinitperiod},
+           given={Keith},
+           giveni={K\bibinitperiod}}}%
+        {{hash=3be8b33b00cd438013b02816f7f45368}{%
+           family={Patel},
+           familyi={P\bibinitperiod},
+           given={Sarvar},
+           giveni={S\bibinitperiod}}}%
+        {{hash=9c72a73cdab75ff72f0eb6bf5368d696}{%
+           family={Ivanov},
+           familyi={I\bibinitperiod},
+           given={Vladimir},
+           giveni={V\bibinitperiod}}}%
+      }
+      \strng{namehash}{4e329437b420de59a0d3182a3de90f3f}
+      \strng{fullhash}{dedbf5bfd7f7d9b7afca16c256907d3f}
+      \strng{bibnamehash}{dedbf5bfd7f7d9b7afca16c256907d3f}
+      \strng{authorbibnamehash}{dedbf5bfd7f7d9b7afca16c256907d3f}
+      \strng{authornamehash}{4e329437b420de59a0d3182a3de90f3f}
+      \strng{authorfullhash}{dedbf5bfd7f7d9b7afca16c256907d3f}
+      \field{sortinit}{S}
+      \field{sortinithash}{c319cff79d99c853d775f88277d4e45f}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{CCS}
+      \field{title}{Practical Secure Aggregation for Privacy-Preserving Machine Learning}
+      \field{year}{2017}
     \endentry
   \enddatalist
 \endrefsection
