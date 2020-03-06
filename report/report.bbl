@@ -197,26 +197,6 @@
       \field{title}{Neural Networks and Deep Learning}
       \field{year}{2015}
     \endentry
-    \entry{web:kmeans}{online}{}
-      \name{author}{1}{}{%
-        {{hash=bfc20e44e1a314e3595fdd4503d0ce37}{%
-           family={{RJ Nowling}},
-           familyi={R\bibinitperiod}}}%
-      }
-      \strng{namehash}{bfc20e44e1a314e3595fdd4503d0ce37}
-      \strng{fullhash}{bfc20e44e1a314e3595fdd4503d0ce37}
-      \strng{bibnamehash}{bfc20e44e1a314e3595fdd4503d0ce37}
-      \strng{authorbibnamehash}{bfc20e44e1a314e3595fdd4503d0ce37}
-      \strng{authornamehash}{bfc20e44e1a314e3595fdd4503d0ce37}
-      \strng{authorfullhash}{bfc20e44e1a314e3595fdd4503d0ce37}
-      \field{sortinit}{R}
-      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{howpublished}{\url{http://rnowling.github.io/math/2015/07/11/customer-segmentation-bps-multinomial.html}}
-      \field{title}{Customer Segmentation with the BigPetStore Multinomial Model}
-      \field{year}{2015}
-    \endentry
     \entry{secagg}{inproceedings}{}
       \name{author}{9}{}{%
         {{hash=a2195b165a73fdc64f90707a66510ec6}{%

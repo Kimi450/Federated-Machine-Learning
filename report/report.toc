@@ -16,25 +16,25 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3}Privacy concerns}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4}Outline for the fix (rename this)}{3}%
+\contentsline {subsection}{\numberline {1.4}Outline of the report}{3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Literature Review}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Machine learning}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Neural Networks}{7}%
+\contentsline {subsection}{\numberline {2.2}Neural Networks}{6}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Neurons}{7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4}Architecture}{8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.1}Dense}{9}%
+\contentsline {subsubsection}{\numberline {2.4.1}Dense}{8}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.4.2}Convolutional}{9}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5}Training}{11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.6}Differential Privacy}{11}%
+\contentsline {subsection}{\numberline {2.6}Differential Privacy}{12}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.7}Federated Machine Learning}{12}%
 \defcounter {refsection}{0}\relax 
@@ -42,58 +42,66 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.7.2}Drawbacks}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.8}Google doing it}{14}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.9}Privacy}{14}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.10}What has been done by others}{14}%
-\defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3}Core Design}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}building and designing this}{15}%
+\contentsline {subsection}{\numberline {3.1}Universal strategies}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Implemenatation}{15}%
+\contentsline {subsubsection}{\numberline {3.1.1}Training, validation and testing splits}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Global}{15}%
+\contentsline {subsubsection}{\numberline {3.1.2}Data representation}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}My implementation}{15}%
+\contentsline {subsection}{\numberline {3.2}Global model}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.5}Google's Tensorflow version}{15}%
+\contentsline {subsubsection}{\numberline {3.2.1}Design}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Extended Ideas}{16}%
+\contentsline {subsubsection}{\numberline {3.2.2}Implementation}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Central Server}{16}%
+\contentsline {subsection}{\numberline {3.3}Federated model}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Weighted Average}{16}%
+\contentsline {subsubsection}{\numberline {3.3.1}Design}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Excluding based on std dev}{16}%
+\contentsline {subsubsection}{\numberline {3.3.2}Implementation}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.3}Local only}{16}%
+\contentsline {subsection}{\numberline {3.4}Google's Tensorflow version}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Peer to Peer}{16}%
+\contentsline {subsubsection}{\numberline {3.4.1}Design}{18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.1}Weighted Average}{16}%
+\contentsline {subsubsection}{\numberline {3.4.2}Implementation}{18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2}Excluding based on std dev}{16}%
+\contentsline {section}{\numberline {4}Extended Ideas}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.3}Local only}{16}%
+\contentsline {subsection}{\numberline {4.1}Central Server}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.4}testing}{16}%
+\contentsline {subsubsection}{\numberline {4.1.1}Weighted Average}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Datasets used}{17}%
+\contentsline {subsubsection}{\numberline {4.1.2}Excluding based on std dev}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Gestures dataset}{17}%
+\contentsline {subsubsection}{\numberline {4.1.3}Local only}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Image dataset}{17}%
+\contentsline {subsection}{\numberline {4.2}Peer to Peer}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Experimentation/Testing}{18}%
+\contentsline {subsubsection}{\numberline {4.2.1}Weighted Average}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.1}Designing the framework}{18}%
+\contentsline {subsubsection}{\numberline {4.2.2}Excluding based on std dev}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {6.2}Graphing}{18}%
+\contentsline {subsubsection}{\numberline {4.2.3}Local only}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}Testing user weights on global data}{19}%
+\contentsline {subsubsection}{\numberline {4.2.4}testing}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {8}Conclusions and future work}{20}%
+\contentsline {section}{\numberline {5}Datasets used}{20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {9}notes}{20}%
+\contentsline {subsection}{\numberline {5.1}Gestures dataset}{20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.2}Image dataset}{20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Experimentation/Testing}{21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.1}Designing the framework}{21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {6.2}Graphing}{21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}Testing user weights on global data}{22}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {8}Conclusions and future work}{23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {9}notes}{23}%
