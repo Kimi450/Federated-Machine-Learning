@@ -268,11 +268,16 @@ def probabilistic_split(full_data, majority_split, count):
     ratio = len(rest_data)/(count-1)
     rest_data_split, user_data = [], []
     for others in range(count-1-1):
-        rest_probability = ratio/(len(rest_data))
+        len_rest_data = len(rest_data)
+        if len_rest_data == 0:
+            rest_probability = 1
+        else:
+            rest_probability = ratio/len_rest_data
         
-        prob_mask = np.random.sample(len(rest_data))<rest_probability
-        user_data, rest_data = rest_data[prob_mask], rest_data[np.invert(prob_mask)]
-
+        prob_mask = np.random.sample(len_rest_data)<rest_probability
+        user_data = rest_data[prob_mask]
+        rest_data = rest_data[np.invert(prob_mask)]
+        
         rest_data_split.append(user_data)        
     rest_data_split.append(rest_data)
     return majority_data, np.asarray(rest_data_split)

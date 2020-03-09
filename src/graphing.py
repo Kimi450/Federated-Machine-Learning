@@ -25,7 +25,7 @@ def draw_graphs(user, loss = True, accuracy = True, save_as=None, path="../out",
         plt.ylabel("sparse_categorical_accuracy")
         plt.legend()
         if save_as:
-            plt.savefig(os.path.join(path,f'{save_as}-accuracy{ext}'))    
+            plt.savefig(os.path.join(path,f'{save_as}-accuracy{ext}'), bbox_inches="tight")    
         plt.show()
         plt.clf()
     if accuracy:
@@ -35,7 +35,7 @@ def draw_graphs(user, loss = True, accuracy = True, save_as=None, path="../out",
         plt.ylabel('Loss')
         plt.legend()
         if save_as:
-            plt.savefig(os.path.join(path,f'{save_as}-loss{ext}'))    
+            plt.savefig(os.path.join(path,f'{save_as}-loss{ext}'), bbox_inches="tight")    
         plt.show()
         plt.clf()
         
@@ -181,7 +181,7 @@ def avg_user_stats(users, std_dev_fill = False, min_max_fill = False,
     plt.title(f"Average {metric} per User with fill type: {fill_type}")
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     if save_as:
-        plt.savefig(os.path.join(path,f'{save_as}-{metric}{ext}'))
+        plt.savefig(os.path.join(path,f'{save_as}-{metric}{ext}'), bbox_inches="tight")
     plt.show()
     plt.clf()
     return df
@@ -345,7 +345,7 @@ def avg_round_stats(users, std_dev_fill = False, min_max_fill = False,
     plt.title(f"Average {metric} per Round with fill type: {fill_type}")
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
     if save_as:
-        plt.savefig(os.path.join(path,f'{save_as}-{metric}{ext}'))
+        plt.savefig(os.path.join(path,f'{save_as}-{metric}{ext}'), bbox_inches="tight")
     plt.show()
     plt.clf()
     return df
