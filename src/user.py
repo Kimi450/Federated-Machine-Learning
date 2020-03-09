@@ -77,7 +77,6 @@ class User:
 
         e = self.evaluate(verbose = verbose_evaluate)
         self.add_pre_fit_evaluation(e)
-        print(self.get_id(), e)
         # sanity check to see they all have the same init weights
         # print(self.get_id())
         # print(model.get_weights())
