@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 
 \usepackage{graphicx}
+\usepackage[linesnumbered,noline,titlenumbered,ruled]{algorithm2e}
 \usepackage{float}
 \usepackage{extsizes}
 \usepackage{tocloft}
@@ -9,6 +10,20 @@
 \usepackage{amsmath}
 \usepackage[all]{nowidow}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\SetKwFunction{FFedCore}{federated\_learning\_core}%
+\SetKwFunction{FFedCoreUser}{user}%
+\SetKwFunction{FFedCoreServer}{server}%
+\SetKwFunction{FAvg}{average}%
+
+\SetStartEndCondition{ }{}{}%
+\SetKwProg{Fn}{def}{\string:}{}
+\SetKwFunction{Range}{range}%%
+\SetKw{KwTo}{in}\SetKwFor{For}{for}{\string:}{}%
+\SetKwIF{If}{ElseIf}{Else}{if}{:}{elif}{else:}{}%
+\SetKwFor{While}{while}{:}{fintq}%
+\newcommand{\forcond}[2]{#1 \KwTo #2}
+\AlgoDontDisplayBlockMarkers\SetAlgoNoEnd\SetAlgoNoLine%
 
 \usepackage[backend=biber, style=IEEE, sorting=nty]{biblatex}
 \addbibresource{resources/references.bib}
@@ -222,17 +237,58 @@ analysis output is not dependant on a particular individual and will be the same
 adjacent dataset
 	n+1 and n sized dataset, algo m
 \subsection{Federated Machine Learning}\label{subsec:fedml}
-TODO:
-	Redo this
-	Do a better job, important
-	lacks detail
-	add a diagram
-	pseudocode is needed with notations like Mi for models, edge devices, etc
-	not clean enough	
-	
-Traditionally in ML, a server (lets call this this central agent) would have access to all the data. Presumably collected by all the edge users (lets call these just users) sending their data to the central agent. The central agent would then train a single model using all the data that it has and anyone could then access the model to use it. 
+Traditionally in ML, a server (we call this the central agent $C$) would have access to all the data. The data is presumably collected by all the edge users (we refer to them as users $U_1$ to $U_i$) sending their local data $d_i$ to $C$. With access to all the data, $C$ would train a single model $M$ using all the data that it has and then anyone could then access $M$ to make predictions. 
 \\\\
-In Federated ML, there is no concept of having access to all the data. So as a workaround, an identical copy of the model is sent to every participating user. All the users then train their local copy of the model on just their own local data. This would usually be done without the user explicitly running the training command. The devices would start the training process for their model based on certain conditions such as whether or not the devices are currently charging, if they are on WiFi, have been idle for some time (for instance night time), etc. After the training process has been completed, the model would have learnt some parameters (the weights for the neuron connections, as seen in Section~\ref{sec:neuralnets}). These weights are then sent to a central agent which would average the weights received from all the users and send the averaged weights back to the users. Instead of sending all the weights, an alternative would be to send only the changes made to the weights. The latter is what Google does. After receiving the updated weights from the central agent, the users would update their local models with these new averaged weights and start the training process again. This back and forth of training, averaging and training again can take place several times. At the end (if there is an end), the resulting product can be pretty close to the traditional ML approach. Although, it must be noted that depending on the application, it may not be close or some changes may be required. 
+In Federated ML, there is no concept of having access to all the data. This means that $C$ does not have access to any data $d_i$ from user $U_i$. So as a workaround, we perform the training on the $U_i$'s device itself. To be able do so, an identical copy of $M$ is sent from $C$ to every participating $u_i$ such that user $U_i$ receives model $M_i$. 
+\\\\
+Once $U_i$ receives $M_i$, it can start training its $M_i$ on its local data $d_i$. The training process for $M_i$ generally starts based on certain conditions being met such as the device being plugged in for charging, WiFi connection, usage, etc. After the local training process for $U_i$ has been completed, $M_i$ would have learnt some parameters. These parameters are the weights for the that connect the neurons of the neural network as seen in Section~\ref{sec:neuralnets}. User $U_i$ then sends its learnt weights $w_i$ to $C$. The algorithm for this can be seen in Algorithm~\ref{algo:fedcore_user}. Instead of sending all the weights, an alternative would be to send only the changes made to the weights, which is what Google does.
+\begin{center}\begin{algorithm}[H]
+\texttt{\Fn{\FFedCoreUser{new\_weights}}{
+	$M_i$.set\_weights(new\_weights)\\
+	\For{\forcond{$e$}{$local\_epochs$}}{
+		$M_i$.train()
+	}
+	$M_i$.send\_weights\_to\_server()
+	\caption{User side processing}\label{algo:fedcore_user}
+}
+}
+\end{algorithm}\end{center}
+\noindent When $C$ receives $w_i$ from all participating users, it uses those weights to calculate the averaged weights $w_{avg}$. The averaged weights $w_{avg}$ are then sent from $C$ to all $U_i$ in $U$, where every $U_i$ would set the weights $w_i$ for their $M_i$ with the new averaged weights $w_{avg}$.
+\begin{center}\begin{algorithm}[H]
+\texttt{\Fn{\FFedCoreServer{weights}}{
+	$w_{avg}$ = average(weights)\label{algo:fedcore_server:line:2}\\
+    send\_to\_all\_users($w_{avg}$)
+    \caption{Server side processing}\label{algo:fedcore_server}
+}
+}
+\end{algorithm}\end{center}
+\noindent The average in Algorithm~\ref{algo:fedcore_server} line~\ref{algo:fedcore_server:line:2} is calculated by summing all received $w_i$ and dividing by the number of $w_i$ received, as seen in equation~\ref{eq:avg}.
+\begin{equation}
+w_{avg} = \frac{\sum_{i=1}^{n} w_i}{n}
+\end{equation}\label{eq:avg}
+\noindent When the users have set the weights of their model $M_i$ to be $w_{avg}$, they can start the training process again. This back and forth of training, averaging and training again can take place several times. These are called $rounds$ of training. After a few rounds, the resulting product can be pretty close to the traditional ML approach. Although, it must be noted that depending on the application, it may not be close or some changes may be required. 
+\\\\
+The overall algorithm for federated learning is described in Algorithm~\ref{algo:fedcore}, and with the help of Figure~\ref{fig:fedcore} does a good job of explaining how everything works together. It starts off with $C$ sending the initial model to the all the users. After that, for every round $r_i$ of federated learning, all the users set their weights to the new averaged weights and share their current weights with $C$. $C$ would then calculate the new averaged weights and the whole process takes place again for a set number of rounds.
+\begin{center}\begin{algorithm}[H]
+\Fn{\FFedCore{model}}{
+	$C$.send\_to\_users(model)\\
+    new\_weights = model.weights\\
+    \For{\forcond{$r_i$}{$rounds$}}{
+    	\For{\forcond{$u_i$}{$users$}}{
+	        $u_i$(new\_weights)
+        }
+        new\_weights = server(weights)
+    }
+  \caption{Federated Learning Core overall algorithm}\label{algo:fedcore}
+
+}
+\end{algorithm}\end{center}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{resources/fedml.png}
+	\caption{Federated learning.}
+	\label{fig:fedcore}
+\end{figure}
 \subsubsection{Benefits}
 Federated machine learning has a few benefits. Firstly and most importantly, all the training takes places on the only the edge devices. This means that the users do not have to share their data with anyone. The only data they share are the parameters learnt from the training process that took place on their local data. And it is impossible to recreate the original data from just the parameters. Add to that the idea of Secure Aggregation~\cite{secagg} and one can very confidently say that the idea of privacy is held up to the highest standard. Secure aggregation is where the data is aggregated in stages. Instead of all averaging being done at the server where some data can possibly be reverse engineered, there are intermediary steps where the data is averaged and then the central agent finally averages those averages. Sometimes, noise is also added during this process. But we will not be focussing on secure aggregation in this project. 
 \\\\
@@ -267,6 +323,17 @@ As this approach is pretty straight forward, its implementation using Keras was 
 After doing so, the model's \texttt{fit} method, which is the method that runs the training process, is called to initiate the training process. We provide the training and validation data to the model. Keras evaluates the model on the training and validation data as the training process progresses and produces metrics of accuracy and loss. These metrics are stored in the list data structure in the \texttt{global\_model} object. We use this data to plot graphs and analyse the model's performance over time.
 \subsection{Federated model}\label{subsec:fedml-core}
 With the global model done and a benchmark in place, we can discuss the federated model. It is exactly explained before in Section~\ref{sec:fedml}
+\begin{algorithm}[H]
+\texttt{$M_i$.set\_weights(new\_weights)\\
+	store($M_i$.evaluate())\\
+	\For{\forcond{$e$}{$local\_epochs$}}{
+		$M_i$.train()
+	}
+	store($M_i$.evaluate())\\
+	$M_i$.send\_weights\_to\_server()
+	\caption{Process taking place on the device for $U_i$}
+}
+\end{algorithm}
 \subsubsection{Design}
 There is an obvious need to simulate users and a central agent in this approach and to keep data localised to those agents. This is where the idea of using a User object as described in Section~\ref{subsubsec:datarep} helps a lot to keep the data localised to a particular user. 
 
