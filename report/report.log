@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  7 MAR 2020 20:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  13 MAR 2020 17:18
 entering extended mode
 **./report.tex
 (report.tex
@@ -796,7 +796,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 240--245
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 268--272
+Underfull \hbox (badness 10000) in paragraph at lines 270--274
 
  []
 
@@ -804,67 +804,78 @@ Underfull \hbox (badness 10000) in paragraph at lines 268--272
 <resources/fedml.png, id=88, 891.33pt x 553.06625pt>
 File: resources/fedml.png Graphic file (type png)
 <use resources/fedml.png>
-Package pdftex.def Info: resources/fedml.png  used on input line 288.
+Package pdftex.def Info: resources/fedml.png  used on input line 289.
 (pdftex.def)             Requested size: 390.0pt x 241.9912pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 293--296
-
- []
-
-[14 <./resources/fedml.png>] [15]
-Underfull \hbox (badness 10000) in paragraph at lines 301--304
+ [14]
+Underfull \hbox (badness 10000) in paragraph at lines 294--297
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 307--310
+[15 <./resources/fedml.png>] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 302--305
 
  []
 
 
-Overfull \hbox (13.84709pt too wide) in paragraph at lines 307--310
-\OT1/cmr/m/n/12 The func-tion do-ing the split would take in five ar-gu-ments, 
-\OT1/cmtt/m/n/12 dataframe\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 for[]user\OT1/cmr/
-m/n/12 ,
+Underfull \hbox (badness 10000) in paragraph at lines 308--313
+
  []
 
-[16
+
+Underfull \hbox (badness 10000) in paragraph at lines 308--313
+
+ []
+
+[17
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 317--320
-
- []
-
-[17]
-Underfull \hbox (badness 10000) in paragraph at lines 321--324
+Underfull \hbox (badness 10000) in paragraph at lines 314--319
 
  []
 
 
-LaTeX Warning: Reference `sec:fedml' on page 18 undefined on input line 325.
+Underfull \hbox (badness 10000) in paragraph at lines 314--319
+
+ []
+
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 328--331
+
+ []
+
+[19]
+Underfull \hbox (badness 10000) in paragraph at lines 339--342
+
+ []
 
 
-Overfull \hbox (287.5189pt too wide) in paragraph at lines 325--336
+LaTeX Warning: Reference `sec:fedml' on page 20 undefined on input line 343.
+
+
+Overfull \hbox (287.5189pt too wide) in paragraph at lines 343--354
 \OT1/cmr/m/n/12 er-ated model. It is ex-actly ex-plained be-fore in Sec-tion []
  $[]$ 
  []
 
-[18] [19] [20
-
-] [21
-
-] [22
+[20] [21] [22
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 383--388
+Underfull \hbox (badness 10000) in paragraph at lines 377--380
 
  []
 
 [23
 
-] [24
+]
+Underfull \hbox (badness 10000) in paragraph at lines 400--405
+
+ []
+
+[24
 
 ] [25
+
+] [26
 
 ] (report.aux)
 
@@ -875,10 +886,10 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11872 strings out of 481565
- 216375 string characters out of 2914179
- 844168 words of memory out of 3000000
- 26974 multiletter control sequences out of 15000+200000
+ 11874 strings out of 481565
+ 216400 string characters out of 2914179
+ 844185 words of memory out of 3000000
+ 26976 multiletter control sequences out of 15000+200000
  541275 words of font info for 55 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,18n,56p,1288b,1214s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -898,9 +909,9 @@ grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/karan/AppDa
 ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/User
 s/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12
 .pfb>
-Output written on report.pdf (32 pages, 592523 bytes).
+Output written on report.pdf (33 pages, 599404 bytes).
 PDF statistics:
- 170 PDF objects out of 1000 (max. 8388607)
+ 173 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 
