@@ -10,6 +10,7 @@
 \usepackage{amsmath}
 \usepackage[all]{nowidow}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\newcommand{\comment}[1]{}
 
 \SetKwFunction{FFedCore}{federated\_learning\_core}%
 \SetKwFunction{FFedCoreUser}{user}%
@@ -227,7 +228,7 @@ For a neural network to work, the weights with which the neurons are connected n
 The model is initialised with random weights before training begins. After that, the training data is then through the model to make predictions. These predictions are then compared with the actual values, and the loss is calculated using a loss function. For regression, mse is used and for classification sparse categorical crossentropy is used. The details in which they work are not required, but the idea of finding out how far off the predictions were from the actual value still holds. Using an methods like gradient descent or Adam (based on gradient descent and other methods, an algorithm called back propagation tweaks the weights in a way that would hopefully reduce the loss. These updates can be made based on every example, batches of examples or the entire dataset as a whole. Generally, the batched approach is taken and the entire dataset is broken down into batches of training data. 
 \\\\
 This whole process of predicting, calculating loss and tweaking the weights can be done several times by iterating over the whole training set several times. The number of times that the entire training set has been gone over is called the number of epochs that the network was trained on. This needs to be tweaked manually as it could lead to under-fitting or over-fitting the model. Which means, the model is too general or too specific, respectively, to be useful in actual usage.
-\subsection{Differential Privacy (MIGHT OMIT THIS)}
+\comment{\subsection{Differential Privacy (MIGHT OMIT THIS)}
 linkage attacks, netflix and imdb data to identify
 only good for large dataset, else bad 
 	complex
@@ -241,6 +242,7 @@ analysis output is not dependant on a particular individual and will be the same
 
 adjacent dataset
 	n+1 and n sized dataset, algo m
+}
 \subsection{Federated Machine Learning}\label{subsec:fedml}
 Traditionally in ML, a server would have access to all the data. We call this server the central agent $C$. The data on the central agent is collected from a set of upto $n$ edge users which we call $U$. Each edge user i of U, represented as $U_i$, sends their data to the central agent. User $i$'s data is represented as $D_i$. Using all the data $C$ has access to, $D = \bigcup_{i=1}^{n} D_i$, it would train a single model $M$ which then anyone could then access to make predictions. 
 \\\\
@@ -371,9 +373,9 @@ The more sophisticated approach, which based on the idea of stratification addre
 }
 \end{algorithm}\end{center}
 % clearly bad
-Once the data is ready, it is essential to find a model $M$ that performs well on the given data. This is done by empirically finding the best model for the given data. The process involves a lot of experiments with different model architectures and tweaking of hyper-parameters. The model with the best metrics on the validation data is selected as $M$. This is a crucial step, as when we conduct experiments with the same dataset in a federated setting, the same model $M$ will sent to every user $U_i$ during the initialisation process. The reason behind this is to have a fair set of experiments where the model is not specifically chosen to work well in a federated environment. After the model is found, data can be fed into it to train the model. The metrics during the training process are recorded so that we can analyse the performance of the model post training.
+Once the data is ready, it is essential to find a model $M$ that performs well on the given data. The process of finding an $M$ that fits the dataset well is an empirical one. It involves numerous experiments with different model architectures and tweaking of hyper-parameters. The model with the best metrics on the validation data is selected as $M$. This is a crucial step, as when we conduct experiments with the same dataset in a federated setting, the same model $M$ will sent to every user $U_i$ during the initialisation process. The reason behind this is to have a fair set of experiments where the model is not specifically chosen to work well in a federated environment. After the model is found, data can be fed into it to train the model. The metrics during the training process are recorded so that we can analyse the performance of the model post training. At the very end we can evaluate the model on the test data to get one final set of metrics that truly represent the performance of the model. 
 \subsubsection{Implementation}
-The implementation follows the same fundamental structure seen in the design. We have looked at the process for the approach involved finding a way to split the data, selecting a model, to store the data, to pass the data to the model for training and then recording the metrics to analyse the performance. Now we look at how these ideas are implemented in Python. 
+The implementation follows the same fundamental structure seen in the design. We looked at the design process for the approach which involved finding a way to split the data, selecting a model, storing the data, passing the data to the model for training and recording the metrics to analyse the performance of the model. Now we look at how these ideas are implemented in Python. 
 \\\\
 Using the process described in Section~\ref{subsubsec:split}, the dataset is read in and split into training, validation and test data. The splitting is done with the stratified splitting approach as described in algorithm~\ref{algo:strat_collection}. This split data is stored in User objects as described in Section~\ref{subsubsec:datarep}. The user object for an arbitrary user $U_i$ is represented as $UO_i$.
 \\\\
