@@ -34,41 +34,27 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.5}Training}{11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.6}Differential Privacy (MIGHT OMIT THIS)}{12}%
+\contentsline {subsection}{\numberline {2.6}Federated Machine Learning}{12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.7}Federated Machine Learning}{12}%
+\contentsline {subsubsection}{\numberline {2.6.1}Benefits}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.7.1}Benefits}{15}%
+\contentsline {subsubsection}{\numberline {2.6.2}Drawbacks}{15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.7.2}Drawbacks}{16}%
+\contentsline {section}{\numberline {3}Core Design}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Core Design}{17}%
+\contentsline {subsection}{\numberline {3.1}Non-Federated Learning}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Universal strategies}{17}%
+\contentsline {subsubsection}{\numberline {3.1.1}Design}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.1.1}Data representation}{17}%
+\contentsline {subsubsection}{\numberline {3.1.2}Implementation}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.1.2}Training, validation and testing splits}{19}%
+\contentsline {subsection}{\numberline {3.2}Federated Learning}{18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Global Approach}{20}%
+\contentsline {subsubsection}{\numberline {3.2.1}Design}{18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.1}Design}{20}%
+\contentsline {subsubsection}{\numberline {3.2.2}Implementation}{20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.2}Implementation}{22}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Federated model}{24}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.1}Design}{24}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.3.2}Implementation}{26}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}TensorFlow Federated}{26}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.1}Overview}{26}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.2}Design}{26}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.4.3}Implementation}{26}%
+\contentsline {subsection}{\numberline {3.3}TensorFlow Federated}{24}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {4}Extended Ideas}{27}%
 \defcounter {refsection}{0}\relax 
@@ -90,24 +76,32 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5}Evaluation}{28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.0.1}Data separation}{28}%
+\contentsline {subsection}{\numberline {5.1}tff}{28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Data separation}{32}%
+\contentsline {subsection}{\numberline {5.2}trainmodel}{28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Designing the framework}{32}%
+\contentsline {subsection}{\numberline {5.3}mpdel}{29}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}Gestures dataset}{33}%
+\contentsline {subsubsection}{\numberline {5.3.1}Data separation}{29}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.3.1}Description}{33}%
+\contentsline {subsection}{\numberline {5.4}data separation}{31}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Image dataset}{33}%
+\contentsline {subsection}{\numberline {5.5}Training, validation and testing splits}{33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.4.1}Description}{33}%
+\contentsline {subsection}{\numberline {5.6}Designing the framework}{34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.5}Graphing}{34}%
+\contentsline {subsection}{\numberline {5.7}Gestures dataset}{34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.6}Testing user weights on global data}{34}%
+\contentsline {subsubsection}{\numberline {5.7.1}Description}{34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusions and future work}{35}%
+\contentsline {subsection}{\numberline {5.8}Image dataset}{34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}notes}{35}%
+\contentsline {subsubsection}{\numberline {5.8.1}Description}{34}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.9}Graphing}{35}%
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {5.10}Testing user weights on global data}{35}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {6}Conclusions and future work}{36}%
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {7}notes}{36}%

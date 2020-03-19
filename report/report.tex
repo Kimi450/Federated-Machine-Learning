@@ -266,13 +266,13 @@ Once $U_i$ receives $M_i$, it can start training its $M_i$ on its local data $D_
 \noindent When $C$ receives a set of upto $n$ weights $W_i$ from all the participating users, it uses them to calculate the average of the set of weights $W_{avg}$. The averaged weights $W_{avg}$ are then sent from $C$ to every $U_i$ in $U$. This can be seen in Algorithm~\ref{algo:fedcore_server}.
 \begin{center}\begin{algorithm}[H]
 \texttt{\Fn{\FFedCoreServer{$set_of_weights$}}{%\bigcup_{i=1}^{n}W_i
-	$W_{avg}$ = average($set_of_weights$)\label{algo:fedcore_server:line:2}\\
+	$W_{avg}$ = average($set_of_weights$)\label{algo:fedcore_server:line:avg}\\
     send\_to\_all\_users($W_{avg}$)
     \caption{Server side processing}\label{algo:fedcore_server}
 }
 }
 \end{algorithm}\end{center}
-\noindent The averaging process is the reason why we need to use the same architecture for all models $M_i$. Without the same architecture, the shape for every $W_i$ would be different and therefore we would not be able to calculate an averaged $W_{avg}$ that would be compatible with every $M_i$. The averaging mentioned in in Algorithm~\ref{algo:fedcore_server} line~\ref{algo:fedcore_server:line:2} is calculated by summing all received $W_i$ and dividing by the number of $W_i$ received, as seen in equation~\ref{eq:avg}.
+\noindent The averaging process is the reason why we need to use the same architecture for all models $M_i$. Without the same architecture, the shape for every $W_i$ would be different and therefore we would not be able to calculate an averaged $W_{avg}$ that would be compatible with every $M_i$. The averaging mentioned in in Algorithm~\ref{algo:fedcore_server} line~\ref{algo:fedcore_server:line:avg} is calculated by summing all received $W_i$ and dividing by the number of $W_i$ received, as seen in equation~\ref{eq:avg}.
 \begin{equation}\label{eq:avg}
 	W_{avg} = \frac{\sum_{i=1}^{n} W_i}{n}
 \end{equation}
@@ -282,7 +282,7 @@ Algorithm~\ref{algo:fedcore} and Figure~\ref{fig:fedcore} provide a high level r
 \begin{center}\begin{algorithm}[H]
 \Fn{\FFedCore{model}}{
 	central\_agent.send\_to\_users(model)\\
-    new\_weights = model.weights\\
+    new\_weights = None\\
     \For{\forcond{round}{$rounds$}}{
 	    weights = [ ]\\
         \For{\forcond{user}{$users$}}{
@@ -310,101 +310,58 @@ As mentioned before, the federated approach can lead to similar performance as t
 
 \section{Core Design}
 In this section, the design and implementation aspect of the basic approaches will be discussed before moving on to discussing the extended ideas explored in this project. 
-\\\\
-We first start off by giving an overview of the technologies used in this project. The language of choice for this project was Python. The biggest reason for choosing Python was because of the Keras library. Keras is a Python deep learning library which (in this project) uses with TensorFlow as its back-end. Keras provides a user friendly API to use Tensorflow to build neural networks in Python. We chose to use TensorFlow as Keras' back-end because we will be using TensorFlow Federated (TFF) in Section~\ref{subsec:tff} as a  sanity check to confirm that our implementation of federated learning matches that of Google. TFF provides a framework using which people can build a federated learning system. Matplotlib is a Python library used for plotting graphs and it was used extensively in this project. It allowed us to review the learning progress of the neural network and be able to compare the performance of different approaches explored in this project. Pandas and numpy were two more libraries which were used for data representation throughout the project.
-\subsection{Universal strategies}
-Listed here are the techniques and strategies used throughout the project. 
-\subsubsection{Data representation}\label{subsubsec:datarep}
-As this is a project about exploring different ideas of federated learning, so there was no need to spend time on the networking aspect of federated learning by having networked users. Instead, we needed to come up with a way to simulate users who only have access to their local data and their local model. In other words, a way where only $U_i$ can access $M_i$ and $D_i$. To do so, we chose an objected oriented approach.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{resources/classes_User.png}
-	\caption{UML class diagram for the class User.}
-	\label{fig:classes_user}
-\end{figure}
-\noindent A User class was defined to store all the data local to a user. The UML diagram for this class can be seen in Figure~\ref{fig:classes_user}. Instances of this user class are used to represent an arbitrary user $U_i$. The data stored on $U_I$ includes the training, validation and test data, the model of the neural network and the history of the metrics obtained during the training of the model. The training, validation and test data are stored as numpy array. Numpy arrays were used over standard Python array lists because of their vectorised operations  which make them faster and more concise than using Python's array based lists. Another reason to user numpy arrays was because of the fact that Keras models require their input to be numpy arrays or pandas DataFrames. Storing the data as numpy arrays standardises the structure of the object for use throughout the project and increases re-usability of the code. The Keras model is stored in $U_i$ as well along with the metrics being stored in an array list data structure.
-\subsubsection{Training, validation and testing splits}\label{subsubsec:split}
-As a rule of thumb, any dataset provided needs to be split up into the three parts, training, validation and testing data to avoid leakage. A common strategy was used through the project to ensure consistency amongst all experiments. This strategy is explained in this section.
-\\\\
-The dataset provided is usually in a csv file and is read into a DataFrame using the API that pandas provides. To have flexibility, we extract the data as a numpy array from the DataFrame and work directly with the array. We split the array into three parts, training, validation and test data, where they have 60\%, 20\% and 20\% of the data respectively. This split ratio is the industry standard when it comes to three splits like we do in this project. Every split has a specific task. The training data is used exclusively for training the model. The validation data is used to see how the model performs on unseen data that is not the test data. We can inspect this data, analyse how the model performs on it and tweak the model appropriately. We do not do the same with the test data. The purpose of having a validation set is to avoid leaking knowledge of the test set into the training process of the model. The validation set is not directly used in the training of the model. The test set is used at the very end to evaluate the final performance of the model.
-\\\\
-To implement the splitting, context specific functions were defined each of which would be used based on the input data type. The parameters for the functions would include \texttt{full\_data}, \texttt{for\_user}, \texttt{val\_size}, \texttt{test\_size} and \texttt{seed}. The values for \texttt{test\_size} and \texttt{val\_size} in this project were 0.2 and 0.2 respectively, giving giving 0.6 to the training set. These fractions represent the fraction of the whole input dataset to be allocated to the three named subsets. The logic of the splitting requires the input data to first be split into training and test data on the specified split ratios of 0.8 and 0.2 respectively. Then the training data must be split into training and validation data. As the split now takes place on 80\% of the input data, we need to adjust \texttt{val\_size} to ensure that the correct split ratios are maintained with respect to the full input data size. To do so, \texttt{val\_size} needs to be recalculated as in equation~\ref{eq:val_size}. The training set is then split into training and validation data based on the new \texttt{val\_size}.
-%	\texttt{val\_size} = \frac{\texttt{val\_size}}{\texttt{1-test\_size}}
-\begin{equation}\label{eq:val_size}
-	val\_size = \frac{val\_size}{1-test\_size}
-\end{equation}
-The \texttt{seed} ensures reproducibility because of the shuffling involved in the splitting method provided by scikit-learn. The parameter \texttt{for\_user} is used to split the data pertaining to only a specific user in the dataset.
-
-%\subsubsection{Training and metrics}
-%For evaluation purposes, a history of the metrics was to be maintained. 
-\subsection{Global Approach}\label{subsec:global-approach}
-Before talking about federated approach, we first need to set in place the traditional machine learning approach. For this, the idea of an imaginary user is utilised. We refer to this user as the $global\_user$. The $global\_user$ assumes that we have access to data from every user. We set the metrics from this approach as \textit{the} benchmark to beat. If any federated approach can be close to these metrics, then we can say that we can preserve privacy whilst maintaining a similar level of performance.
+\subsection{Non-Federated Learning}\label{subsec:global-approach}
+Before talking about federated learning, we first need to set in place the traditional machine learning approach. For this, the idea of an imaginary user is utilised. We refer to this user as the $global\_user$. The $global\_user$ assumes that we have access to data from every user. We set the metrics from this approach as \textit{the} benchmark to beat. If any federated approach can be close to these metrics, then we can say that we can preserve privacy whilst maintaining a similar level of performance.
 \subsubsection{Design}
-This approach is quite straight forward on its own, but the decisions taken here affect the federated approaches as well. Most notably with the choice of the model used in this approach. The high level view into the design process for this approach involve finding a way to split the data, selecting a model, storing the data, passing the data to the model for training and recording the metrics to analyse the performance of the model. 
+This approach is quite straight forward in terms of what is to be done. The data is readily available to be used, so the first first step is to pass the training data into the model for training. The second one is to record how well the model performs on the training and validation data for every epoch of training.
+%approach involves finding a way to split the data, selecting a model, passing the data to the model for training and recording the metrics to analyse the performance of the model. 
 \\\\
-There are two ways to split the data, the na\"ive way and a more sophisticated way based on the idea of stratification. The na\"ive way was to take the dataset as a whole, and split it based on the given ratios to get training, validation and test data. The idea of having these three splits is explained in Section~\ref{subsubsec:split}. The dataset provided generally is an ordered set of user specific data. If this dataset was split without shuffling, then almost certainly data from the last recorded user $U_n$ would not be present in the training data, but it would be in the test data. Similarly, validation data might be data from just one particular user $U_i$ and nothing else. One could suggest that shuffling the dataset before the splitting would fix this, but that is not the case. It would be better than the plain na\"ive approach described above, but data from a user $U_i$ might still end up being under represented in either of the three categories of data that we store.
+With the dataset readily available for use, we need to select a model that fits the dataset well. We will look at how to find a dataset specific model in Section~\ref{sec:experiments} where we perform experiments on different datasets. Given that the data and model are now ready to be used, we can pass the training data into the model to train it. The training process described in Section~\ref{subsec:training} is carried out and the model is trained on the training data for a number of epochs. To ensure that we can review the progress of the model, we also make sure that we evaluate the model between every epoch of training on the validation and testing data. This can then be plotted on a metric versus epoch graph to visualise the model's performance over time. For the final performance score of the model, we can evaluate the model after the training process has been completed on the completely unseen test data.
+\subsubsection{Implementation}
+With the approach being straight forward, its implementation is quite trivial. To be able to discuss the implementation, an overview of the technologies used in this project is required. The language of choice for this project was Python and the biggest reason for choosing it was the Keras library for deep learning. In this project, it uses with TensorFlow as its back-end to perform calculations. Keras provides a user friendly API to use Tensorflow to build neural networks with ease in Python. We chose to use TensorFlow as Keras' back-end because we will be using TensorFlow Federated (TFF) in Section~\ref{subsec:tff} as a sanity check to confirm that our implementation of federated learning matches that of Google. TFF provides a framework which allows people to build a federated learning system without having to deal with the low level details. Another library used extensively was Matplotlib. Matplotlib is a Python library used for plotting graphs which. It allowed us to review the learning progress of the neural network and be able to compare the performance of different approaches explored in this project. Pandas and numpy were two more extensively used libraries that were used for data representation throughout the project.
 \\\\
-The more sophisticated approach, which based on the idea of stratification addresses the issue of users being under represented in the training, validation or test data. In this approach, we split every user's data into the three the parts. Then, for every part, we take the union over every user. This union then acts as the data for the $global\_user$. For instance, after splitting every user's data, we will take every user's test data and union it to get a collection of test data from all the users. This collection of test data acts as the test data for the the $global\_user$. With this approach we can ensure that every user is represented in accordance with the size of their dataset. This can be visualised in Figure~\ref{fig:split}.
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{resources/split.png}
-	\caption{A visual representation of the data splitting approaches.}
-	\label{fig:split}
-\end{figure}
-% clearly bad
-\noindent To store this data, we use the idea of a User object which is described in Section~\ref{subsubsec:datarep}. Algorithm~\ref{algo:strat_collection} illustrates the stratified split idea well by using pseudocode. For every user, the data is split and added to a collection of the same type of data. After iterating through all the users, a $global\_user$ object as described in Section~\ref{subsubsec:datarep} is instantiated and the data stored in it. Then the $global_user$ object is returned for further usage. 
+The model $M$ that is used here is initialised in Keras. The initialisation process is essentially selecting an architecture that works well on the dataset and then compiling it for further use, like training. Keras models require the input for the training process to be data in one of either two formats, pandas DataFrames or numpy arrays. We choose the latter as the way to store the data that we have to make it easier to pass data into the model for training and evaluation. Keras also requires the features of the data to be separate from the label associated with a sample. The low level control on the numpy arrays also allows us to perform more specific tasks, such as this separation of features and labels, on the dataset as and when required.
+\\\\
+To train the model, we use the API that Keras provides for its models. A method called \texttt{fit} is associated to the model object which is used to train the model. The arguments passed into the method are the training data, validation data, epochs and the batch size. The training data is used to train the model. The validation data is used to gain some insight into how the model performs on data that is not the training data. Epochs is the number which specifies the number of times the training process iterates over the entire training data. The batch size dictates the number of samples in the training data that must be processed before changes to the weights of $M$ can be made. A simple call to this method on the model object will result in our model being trained on the training data.
+\\\\
+We also need to record the performance of the model over time to be able to plot graphs using matplotlib. Keras, whilst training, maintains a history of the metrics obtained between epochs on the model object. Between epochs, the model is evaluated on the training and validation data, and the result is stored in a dictionary in the model object. This dictionary can be accessed to get what is essentially the progress report for the model on the validation and training data. We use this data to plot the graphs to see how well the model is performing. 
+\\\\
+\subsection{Federated Learning}\label{subsec:fedml-core}
+With the non-federated learning approach in place, we can discuss the federated approach in a similar way. This approach is exactly as explained before in Section~\ref{sec:fedml} and as such, this section will not include a lot of details which were explained previously. 
+\subsubsection{Design}
+In any federated approach explored, there is an obvious need to simulate users that take part in the process. But there is no point in  implementing a network of users when the idea of users can be simulated on just one machine. These simulated users have one main goal, they must not be able to access data from other users. We needed to come up with a way to simulate users who only have access to their local data and their local model. In other words, a way where only $U_i$ can access $M_i$ and $D_i$. To do so, we chose an objected oriented approach where the users would be represented as objects $U_i$. These objects would contain all the information relevant to a given user and nothing more. This means that user object $U_i$ would have access to $M_i$ and $D_i$. It is to be noted that for a given dataset, all user models $M_i$ are the same as model $M$ which was selected for the $global_user$. 
+\\\\
+The core federated learning algorithm used here is the same as Google's algorithm~\ref{algo:fedcore} described in Section~\ref{subsec:fedml}. But it's design was altered just a little bit to allow us to review the progress of the federated learning process and accommodate our for choice of not representing $C$ as a distinct user. 
+\\\\
+The decision to not represent $C$ as an object was taken because its functionality could be incorporated in the logic of the algorithm itself. This is done by replacing line~\ref{algo:fedcore:line:server} in algorithm~\ref{algo:fedcore} by line~\ref{algo:fedcore_server:line:avg} in algorithm~\ref{algo:fedcore_server}. As for being being able to review progress at the end, we had to store evaluation metrics of the model on the test data before and after the local training process. These evaluations were done during every round of federated training. We call these evaluations $pre\_fit$ and $post\_fit$ evaluations respectively. The $pre\_fit$ evaluations allow us to see the model's performance with the averaged weights and the $post\_fit$ evaluations allow us to see the model's performance with the weights after local training is performed. This helps us see how well the averaged weights and post training weights fit an arbitrary user $U_i$'s test data $D_i$. 
+\\\\
+We augment algorithms~\ref{algo:fedcore} and~\ref{algo:fedcore_user} to reflect these changes which results in algorithms~\ref{algo:fedcentral} and~\ref{algo:fedcentral_user}. The averaging in line~\ref{algo:fedcentral:avg} still uses equation~\ref{eq:avg}.
 \begin{center}\begin{algorithm}[H]
-\Fn{\FDataSplit{users}}{
-	unioned\_train = [ ]\\
-	unioned\_validation = [ ]\\
-	unioned\_test = [ ]\\
-    \For{\forcond{$U_i$}{$users$}}{
-	    train, validation, test = split\_user\_data($U_i$)\\
-	    unioned\_train.append(train)\\
-	    unioned\_validation.append(validation)\\
-	    unioned\_test.append(test)\\
-    }
-    global\_user = User()\\
-    global\_user.set\_train\_data(unioned\_train)\\
-    global\_user.set\_validation\_data(unioned\_validation)\\
-    global\_user.set\_test\_data(unioned\_test)\\
-    \textbf{return} global\_user
-  \caption{Stratified data collection for the global user}\label{algo:strat_collection}
+\texttt{\Fn{\FFedCoreUser{new\_weights}}{
+	\If{new\_weights != None}{
+		$M_i$.set\_weights(new\_weights)\\	
+	}
+    evaluation = user.evaluate\_model()\\
+	user.add\_pre\_fit\_evaluation(evaluation)\\
+	\For{\forcond{$e$}{$local\_epochs$}}{
+		$M_i$.train()
+	}
+    evaluation = user.evaluate\_model()\\
+    user.add\_post\_fit\_evaluation(evaluation)\\ 
+   	$M_i$.send\_weights\_to\_server()
+	return $M_i$.weights
+	\caption{User side processing}\label{algo:fedcentral_user}
+}
 }
 \end{algorithm}\end{center}
-% clearly bad
-Once the data is ready, it is essential to find a model $M$ that performs well on the given data. The process of finding an $M$ that fits the dataset well is an empirical one. It involves numerous experiments with different model architectures and tweaking of hyper-parameters. The model with the best metrics on the validation data is selected as $M$. This is a crucial step, as when we conduct experiments with the same dataset in a federated setting, the same model $M$ will sent to every user $U_i$ during the initialisation process. The reason behind this is to have a fair set of experiments where the model is not specifically chosen to work well in a federated environment. After the model is found, data can be fed into it to train the model. The metrics during the training process are recorded so that we can analyse the performance of the model post training. At the very end we can evaluate the model on the test data to get one final set of metrics that truly represent the performance of the model. 
-\subsubsection{Implementation}
-The implementation follows the same fundamental structure seen in the design. We looked at the design process for the approach which involved finding a way to split the data, selecting a model, storing the data, passing the data to the model for training and recording the metrics to analyse the performance of the model. Now we look at how these ideas are implemented in Python. 
-\\\\
-Using the process described in Section~\ref{subsubsec:split}, the dataset is read in and split into training, validation and test data. The splitting is done with the stratified splitting approach as described in algorithm~\ref{algo:strat_collection}. This split data is stored in User objects as described in Section~\ref{subsubsec:datarep}. The user object for an arbitrary user $U_i$ is represented as $UO_i$.
-\\\\
-We have to then try to find a model $M$ that performs well on the dataset. Keras provides an API to construct a model with relative ease. It allows us to construct a layer of neurons and stack them on top of each other to build an architecture suitable for our needs. The layers include, but are not limited to, the layers mentioned in Section~\ref{subsec:arch}. To find the best $M$, several different architectures were tested on the dataset in question. The tests included training the model on the training data and then plotting a graph of metric versus epoch to see how the metrics progress over time. The metric of choice was generally accuracy. The plots were made for both, the performance of the model on the training data and the validation data. Efforts were made to ensure that the model was not suffering from over-fitting or under-fitting. The plots were very useful in checking for that. An indication of over-fitting is that the metrics of the validation data and training data begin to diverge. In this case, the model is made a bit simpler. Techniques include reducing the number of neurons, number of layers, adding regularization or adding a dropout layer (where certain neuron outputs are ignored). A sign of under-fitting is that the metrics are too ``bad", for instance the accuracy being too low. In this case, we can do the opposite of what we do in the case of over-fitting. All of these techniques can be easily implemented in Keras using the API it provides to create and edit layers. 
-\\\\
-After $M$ is selected, passing in the data for training is trivial. A method called \texttt{fit} associated to the model object is used for the training of the model. The arguments passed in are the training data, validation data, epochs and the batch size. The training data is what the model trains on and the validation data is used for performance review. Epochs is the number which specifies the number of times the training process iterates over the whole training data. The batch size dictates the number of samples in the training data that must be processed before changes to the weights of $M$ can be made.
-\\\\
-The model, whilst training, maintains a history of the metrics. After every epoch, the model is evaluated on the training and validation data, and the result is stored in a dictionary in the model object. This can be accessed by us and used to plot the aforementioned graphs in matplotlib. 
-\\\\
-\subsection{Federated model}\label{subsec:fedml-core}
-With the global model in place we can discuss the federated model. This federated model is exactly as explained before in Section~\ref{sec:fedml} and as such, this section will not include a lot of details which were explained previously. 
-\subsubsection{Design}
-As we do not deal with actual users in this project, in any federated approach explored, there is an obvious need to simulate users that take part in the process. The simulated users must not be able to access data from other users. This is achieved by having User objects who only have access to data local to them. Their structure is described in Section~\ref{subsubsec:datarep}. 
-\\\\
-First, the environment in which we operate must be set up. The input data $D_i$ for every user $U_i$ is split as per Section~\ref{subsubsec:split} and stored in in the user object $UO_i$. There is no need to initialise a central agent $C$ as a user as well. This is because we can incorporate its functionality in the logic of the algorithm itself without the need of an explicit entity for $C$. For a given dataset, we select the same model $M$ as the one chosen in the global approach in Section~\ref{subsec:global-approach}. Model $M$ is broadcast to every user such that user $U_i$ has model $M_i$. This model is stored in $UO_i$ as well to maintain the idea of locality. We then decide on the number of rounds for which the federated learning process runs. We decided on using a high number so we could observe how the process runs over a long period of time. 
-\\\\
-Once the initialisation has been completed, the federated training process can begin. The algorithm here is the same as algorithm~\ref{algo:fedcore}. There is only one change and one addition to it. The change is that instead of the call being made to the central agent in line~\ref{algo:fedcore:line:server} for averaging, the functionality is incorporated in the algorithm itself. The addition is adding explicit evaluations of the model before and after the training process, which we call $pre\_fit$ and $post\_fit$ evaluations respectively. This is done to see the model's performance on the averaged weights (random weights at the start) and the weights after performing local training. This helps us see how well the averaged weights and post training weights fit an arbitrary user $U_i$'s test data $D_i$. We augment algorithm~\ref{algo:fedcore} to reflect these changes which results in algorithm~\ref{algo:fedcentral}. The averaging in line~\ref{algo:fedcentral:avg} still uses equation~\ref{eq:avg}.
 \begin{center}\begin{algorithm}[H]
 \Fn{\FFedCore{model}}{
-    $C$.send\_to\_users(model)\\
-    new\_weights = model.weights\\
+    send\_to\_users(model)\\
+    new\_weights = None\\
     \For{\forcond{round}{$rounds$}}{
 	    weights = [ ]\\
         \For{\forcond{user}{$users$}}{
-           evaluation = user.evaluate\_model()\\
-           user.add\_pre\_fit\_evaluation(evaluation)\\
-           user\_weights = user(new\_weights)\\
-           evaluation = user.evaluate\_model()\\
-           user.add\_post\_fit\_evaluation(evaluation)\\           
+           user\_weights = user(new\_weights)\\          
            weights.append(user\_weights)\\
         }
         new\_weights = average(weights)\label{algo:fedcentral:avg}
@@ -412,17 +369,41 @@ Once the initialisation has been completed, the federated training process can b
   \caption{Federated Learning}\label{algo:fedcentral}
 }
 \end{algorithm}\end{center}
-\noindent Going through the algorithm, we see that there is a set number of rounds for which the federated learning process is conducted. The process starts off with an evaluation of the model on the users test data and storing that information as the $pre\_fit$ evaluation collection in $UO_i$.. Because no more changes are made to the environment, we can do the evaluation on test data without the fear of leakage. Every user $U_i$ then trains their $M_i$ on their $D_i$ to get the updated weights $W_i$ for their $M_i$. After the training, the evaluation is conducted again on the test data and then stored in the $post\_fit$ evaluation collection in $UO_i$. The weights $W_i$ returned by the user are then stored in the main algorithm. This is done by every user such that at the end of the user loop, every user's weights stored. This set of weights is passed in to the averaging function that returns an averaged version of the weights. The averaging function is based on equation~\ref{eq:avg}. These weights are then passed onto the users in the next round of federated learning, where they initialise their models with the new averaged weights and conduct the whole process again.
-
+\noindent The algorithm starts off by sending the model $M$ to every user. Each user then refers to their model as $M_i$. Then, before the model is trained by the user, it is evaluated on the users test data and that information stored in the collection of $pre\_fit$ evaluations for the user. We can do the evaluation on test data without the fear of leakage because we do not use the results to make changes to the model. Every user $U_i$ then trains their model on their training data to get the updated weights $W_i$ for their $M_i$. After the training, the evaluation is conducted once again on the test data and then stored in the collection of $post\_fit$ evaluations. The updated weights $W_i$ are returned by every user are stored in the main algorithm. This set of weights is passed in to the averaging function that returns an average of the weights called $W_{avg}$. The averaging function is based on equation~\ref{eq:avg}. These weights are then passed onto the users in the next round of federated learning, where they initialise their models with the new averaged weights and conduct the whole process again. After a set number of rounds, the federated learning process ends. In this project, we decided to use a high number so we could observe how the process runs over a long period of time. 
 \subsubsection{Implementation}
-The implementation begins the same way by splitting the data as in Section~\ref{subsubsec:split} and storing it in user objects defined in Python as seen in Section~\ref{subsubsec:datarep}. But first, we must deal with the fact that the dataset provided here is a combination of every user's data in one csv file. So before using the splitting logic on it, we must first read in the dataset using pandas and assign users the data that should be local to them. The logic behind this is specific to the dataset being used, and will be discussed in Section~\ref{subsec:datasep} where we conduct experiments on actual datasets. But the crux of the matter is to read in the dataset and separate the data specific to every user and then apply to splits to the user's local data.
-
-
+The first thing that had to be implemented was the User class. It is used to store all the data local to a user. Instances of this user class are used to represent an arbitrary user $U_i$. The data stored on $U_I$ includes the training, validation and test data, the model of the neural network and the history of the metrics obtained during the training of the model. The training, validation and test data are stored as numpy arrays. Numpy arrays were used over standard Python array lists because of their vectorised operations which make them faster and more concise than using Python's array based lists. Another reason to user numpy arrays was because of the fact that Keras models require their input to be numpy arrays or pandas DataFrames. Storing the data as numpy arrays standardises the structure of the object for use throughout the project and increases re-usability of the code. The Keras model is stored in $U_i$ as well along with the $pre\_fit$ and $post\_fit$ metrics which are stored in numpy arrays. The UML diagram for this class can be seen in Figure~\ref{fig:classes_user}. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{resources/classes_User.png}
+	\caption{UML class diagram for the class User.}
+	\label{fig:classes_user}
+\end{figure}
+\noindent Then for every user in the dataset, we must instantiate a user object $U_i$ to represent them. The data relevant to the user is stored in this object after that. The details of this process will be explored in Section~\ref{sec:experiments}. After initialising the users, implementing the main algorithm was the next goal. 
+\\\\
+The algorithm starts off by sending $M$ to all the users which would ordinarily be done in a networked fashion but since we are using simulated users, a simple for loop suffices. In the loop, a copy of the compiled Keras model $M$ is stored in every $U_i$ which the users then refer to as $M_i$. After doing so, the federated learning process can begin. This process was implemented as a function, \texttt{train\_fed}, to increase re-usability throughout the project. This function would take in arguments such as \texttt{epochs}, \texttt{rounds} and more, to allow for flexibility in terms of how to run the training process. In it we conduct a set number of rounds of federated learning in which the training of the user's model and the sharing and averaging of the weights takes place.
+\\\\
+To train all the user models, we iterate over all the users and call the \texttt{train} method on every $U_i$. In the \texttt{train} method, we make use of the API Keras provides for its models. Using the \texttt{set\_weights} method of $M_i$, we can set the weights of the model to be the weights that we pass into the method. For the first round of federated learning, we do not set the weights to be anything new. But for subsequent rounds, the averaged weights $W_{avg}$ are passed into the \texttt{set\_weights} method which set the weight of $M_i$ to be $W_{avg}$. After doing so, the model is evaluated on the test data by using the \texttt{evaluate} method of $U_i$. This method intern uses the \texttt{evaluate} method provided by Keras to run evaluation on their models on give data, test data in our case. This data is then stored in the numpy arrays dedicated to storing $pre_fit$ metrics such as \textit{accuracy} and \textit{loss}. Then a simple call to the \texttt{fit} method of the model will train it on the training data that we pass into the method for a given number of epochs. After the training, we once again call the \texttt{evaluate} method of $U_i$ to evaluate the model on the test data and record the metrics in the numpy arrays. As mentioned before, Keras also maintains history of the metrics during the training process in the model object. This history is reset every time the \texttt{fit} method is called. So, after every local training process we store the metrics from this history in $U_i$ as well in a Python list. We can use this information to plot more graphs and review the progress of the learning process, but this time on a more granular level because this is a history of \textit{epoch} evaluations. The $pre_fit$ and $post_fit$ evaluations we store are \textit{round based} evaluations.
+\\\\
+Once all the users have been trained, their weights need to be averaged. To make the averaging process more modular, an class dedicated to averaging was implemented. This class is called Average. The UML diagram for the final version of the class Average can be seen in Figure~\ref{fig:classes_average}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{resources/classes_Average.png}
+	\caption{UML class diagram for the class Average.}
+	\label{fig:classes_user}
+\end{figure}
+\noindent Residing in this class are static methods that deal with different kinds of averaging, one of which is the implementation of the averaging function in equation~\ref{eq:avg}. The method is provided with a reference to all $U_i$ in the form of a dictionary. With access to $U_i$ comes access to model $M_i$ for the user as well. The \texttt{get\_weights} method associated to $M_i$ is used to extract the weights $W_i$ from model $M_i$. This is done for every user and then those weights are used to calculate the averaged weights $W_{avg}$. Keras models store their weights as a list of numpy arrays. To be able to use numpy's quick calculations we cast the list into a numpy array of numpy arrays. To calculate the average, we iterate over all the users. When doing so we use the \texttt{get\_weights} method to get the weights (which is a list of numpy arrays), cast it to a numpy array of numpy arrays and then take the sum of the weights from all the users. This means that at the end of the loop we can divide by the number of users and get $W_{avg}$. $W_{avg}$ is then returned into the main function \texttt{train\_fed} where it will be fed back to all the users for the next round of federated learning where they initialise their models $M_i$ with weights $W_{avg}$. After a set number of federated learning rounds have been performed, we can stop the process and plot graphs from the metrics we had stored along the way. Our choice of choosing a high number of rounds lets us know at exactly what point the metrics start plateauing, and we can then say that training after that point is not necessary. 
 \subsection{TensorFlow Federated}\label{subsec:tff}
-Sanity check was close enough to mine
-\subsubsection{Overview}
-\subsubsection{Design}
-\subsubsection{Implementation}
+In this section we will talk about simulating federated learning using TensorFlow Federated (TFF). The design aspect of this will not be discussed as it is the same as the federated approach we just discussed. Instead, we will focus on the implementation of federated learning using TFF. We implemented this approach for it to serve as a sanity check to see if our implementation as described in Section~\ref{subsec:fedml-core} is sound. 
+\\\\
+TensorFlow Federated is a framework for that allows for computation on decentralised data. TFF essentially has its own underlying language that can be accessed with Python. The building blocks of which are federated computations, which are computations that take place in a federated setting. TFF has two layers, the Federated Learning (FL) layer and the Federated Core (FC) layer. The Federated Learning layer allows high level plugging of Keras models into the TFF framework. We can perform basic tasks like the federated training process or evaluation without having to deal with the lower level concepts. The Federated Core layer provides us with low level control over the algorithms used in federated learning. In this section, we will be using the FL layer and not the FC layer as we do not need to implement custom algorithms. 
+\\\\
+TFF provides detailed documentation and tutorials on how to implemented federated learning. The implementation here is based on those tutorials. We will assume that the dataset here is preprocessed and ready to be used, details on how this was achieved for experiments can be seen in Section~\ref{sec:experiments}. The basic idea is that every user's data is to be put into a Dataset object that is part of TensorFlow's data representation library \texttt{tff.data}. The Dataset object corresponding to every user is then put into a Python list which will be used going forward. A model architecture is then defined using Keras, but unlike the other approaches we have seen so far, we do not compile the model. This is done at a later stage in the process. A function is defined that constructs and returns a Keras model. We call it \texttt{create\_model}. For models to be used in TFF, they need to be wrapped in a Model interface that is part of TFF's learning library \texttt{tff.learning}. This interface exposes methods that TFF needs to carry out training and other federated operations on the model in a federated setting. TFF will wrap the model for us by invoking a call to the function \texttt{tff.learning.from\_keras\_model}. We pass the non-compiled model from \texttt{create\_model} into this function, along with other parameters like the loss function, metrics functions and a sample of the dataset. The sample of the dataset is provided for initialisation purposes. This process of constructing the model and wrapping the model is placed into a function as well. We call this function \texttt{model\_fn}.
+\\\\
+We can now initiate the federated learning process with TFF. A simple call to the function \texttt{tff.learning.build\_federated\_averaging\_process} with \texttt{model\_fn} as the parameter constructs a Federated Averaging algorithm and packages everything into a \texttt{tff.utils.IterativeProcess} which we call \texttt{iterative\_process}. This constructs everything that needs to be done on the central agent and on the user's end, including compiling the model distributing them to users. It essentially implements everything that takes place in a round loop iteration in algorithm~\ref{algo:fedcore}. We can now initialise \texttt{iterative\_process} by calling the \texttt{initialize} method on it which returns the server state which we call \texttt{state}. A single round of federated averaging is performed by making a call to the \texttt{next} method on the initialised \texttt{iterative\_process} object. We pass \texttt{state} and the training data into the \texttt{next} method which returns the updated server state \texttt{state} and the metrics at the end of the round. The method call causes all the local training on the simulated users, sharing and averaging of the weights and reinitialising the users models with the averaged weights to take place. Running the \texttt{next} method for a number of times representing the rounds of federated learning we want to perform. 
+\\\\
+At the end of the training, we must evaluate the model. For that we make a call to \texttt{tff.learning.build\_federated\_evaluation} and pass in the \texttt{model\_fn} we defined. This initialises the federated computations that need to take place for this process returns the corresponding federated computation object. We pass in the trained model and testing data into this to receive the metrics of the evaluation of the model on the training data. The trained model containing the averaged weights can be accessed from the server state that is returned after a round of federated learning. These metrics represent the performance of this implementation of federated learning using TFF. The comparison of the TFF implementation and our implementation of federated learning can be seen in Section~\ref{sec:experiments}. The results showed that the two implementation did not differ massively, which meant that our implementation was logically sound and that we could use it for further experiments.
+\\\\
+We decided not to use the TFF implementation because of the learning curve required in working with the FC layer of TFF. It was more intuitive to work with a sound implementation that we had built up from scratch instead of having to hack together our extended ideas using the TFF framework. 
 \clearpage
 \section{Extended Ideas}\label{sec:ext-ideas}
 \subsection{Central Server}
@@ -436,6 +417,11 @@ Sanity check was close enough to mine
 \clearpage
 
 \section{Evaluation}\label{sec:experiments}
+
+
+tensorflow gpu
+
+
 Experiments using two distinct datasets were conducted to compare the performance of all the ideas. The first dataset was based on hand gestures and the second dataset was based on images. These datasets, the experiments conducted on them and the results obtained are described in Sections~\ref{subsec:gestureset} and~\ref{subsec:imageset} respectively.
 \\\\
 To make the whole process as fair as possible, a model that performed well on a given dataset with the traditional ML approach was found emperically. Using the traditional approach, a model was found whose performance was good.
@@ -444,8 +430,20 @@ To make the whole process as fair as possible, a model that performed well on a 
 So before using the splitting logic on it, we must first read in the dataset using pandas and split it based on the users. The logic behind this is specific to the dataset, and will be discussed in Section~\ref{sec:experiments} where we conduct experiments on actual datasets
 • Comoing up with decent model
 • Traditional ml results
+\subsection{tff}
+Since the data is already a tf.data.Dataset, preprocessing can be accomplished using Dataset transformations. Here, we flatten the 28x28 images into 784-element arrays, shuffle the individual examples, organize them into batches, and renames the features from pixels and label to x and y for use with Keras. We also throw in a repeat over the data set to run several epochs.
+
+talk about hdf5
+]
+\subsection{trainmodel}
+. epoch*rounds = rounds
+
+We have to then try to find a model $M$ that performs well on the dataset. Keras provides an API to construct a model with relative ease. It allows us to construct a layer of neurons and stack them on top of each other to build an architecture suitable for our needs. The layers include, but are not limited to, the layers mentioned in Section~\ref{subsec:arch}. To find the best $M$, several different architectures were tested on the dataset in question. The tests included training the model on the training data and then plotting a graph of metric versus epoch to see how the metrics progress over time. The metric of choice was generally accuracy. The plots were made for both, the performance of the model on the training data and the validation data. Efforts were made to ensure that the model was not suffering from over-fitting or under-fitting. The plots were very useful in checking for that. An indication of over-fitting is that the metrics of the validation data and training data begin to diverge. In this case, the model is made a bit simpler. Techniques include reducing the number of neurons, number of layers, adding regularization or adding a dropout layer (where certain neuron outputs are ignored). A sign of under-fitting is that the metrics are too ``bad", for instance the accuracy being too low. In this case, we can do the opposite of what we do in the case of over-fitting. All of these techniques can be easily implemented in Keras using the API it provides to create and edit layers. 
+
+\subsection{mpdel}
+Once the data is ready, it is essential to find a model $M$ that performs well on the given data. The process of finding an $M$ that fits the dataset well is an empirical one. It involves numerous experiments with different model architectures and tweaking of hyper-parameters. The model with the best metrics on the validation data is selected as $M$. This is a crucial step, as when we conduct experiments with the same dataset in a federated setting, the same model $M$ will sent to every user $U_i$ during the initialisation process. The reason behind this is to have a fair set of experiments where the model is not specifically chosen to work well in a federated environment. 
 \subsubsection{Data separation}\label{subsubsec:datasep}
-\LARGE{INCOMPLETE}
+\textbf{\LARGE INCOMPLETE}
 After explaining how to split the data for a given user, we need to look at how to allocate data to a specific user in the first place. Datasets can come in many shapes and forms. Some datasets are structured in csv files and some datasets are structured using a directory structure. Sometimes they come with explicit user identities, specifying what part of the dataset belongs to what user, and some come without any user identity. Here we will explain at two ways in which datasets are delivered that are most relevant to this project.
 \\\\
 In the case where the dataset is delivered in a csv file with a column dedicated to indicate the user ID that a sample belongs to, the separation is trivial. The idea is to iterate over the csv file and based on the user IDs, separate the data. To do so, the csv file is read into a pandas DataFrame. We can call this $df$. As the user ID column indicates what user a sample of data belongs to, filtering $df$ on the user ID column is enough to separate the data. Pandas DataFrames have a filter functionality which allows us to do this with ease. First, we find the unique user IDs in the column which we can easily do using the DataFrame API. We then iterate over all the user IDs and filter $df$ so it return DataFrames that contain data only for a particular user. We maintain an array of references to these DataFrames and return it for further processing to split it as in Section~\ref{subsubsec:split}. Algorithm~\ref{algo:datasep-csv} shows the same in a Python based pseudocode below.
@@ -481,7 +479,55 @@ To implement the simulated federated data idea, we
   \caption{Data separation for csv files with user IDs}\label{algo:dataset-simulated}
 }
 \end{algorithm}\end{center}
-\subsection{Data separation}\label{subsec:datasep}
+
+
+The implementation begins the same way by splitting the data as in Section~\ref{subsubsec:split} and storing it in user objects defined in Python as seen in Section~\ref{subsubsec:datarep}. But first, we must deal with the fact that the dataset provided here is a combination of every user's data in one csv file. So before using the splitting logic on it, we must first read in the dataset using pandas and assign users the data that should be local to them. The logic behind this is specific to the dataset being used, and will be discussed in Section~\ref{subsec:datasep} where we conduct experiments on actual datasets. But the crux of the matter is to read in the dataset and separate the data specific to every user and then apply to splits to the user's local data.
+
+
+\subsection{data separation}
+With that in mind, we talk a little bit about the percentage of user data present in the three categories that we mentioned above. We talk about this here specific to the . There are two ways to split user based data, the na\"ive way and a more sophisticated way based on the idea of stratification. The na\"ive way is to take the whole dataset and just split it into training, validation and test data. If this were to be the case, then it is almost certain that there would be user data which would end up not being present in a given split. For example, it would lead to a situation where data from user $U_i$ would not be present in the training data at all, but possibly take up the entirety of the test data. One could suggest that shuffling the dataset before the splitting would fix this issue, but that is not the case. It is better than the plain na\"ive approach described above, but data from a user $U_i$ might still end up being under represented in either of the three categories of data that we store.
+\\\\
+The more sophisticated approach which based on the idea of stratification addresses the issue of users being under represented in the training, validation or test data. In this approach, we split every user's data into the three categories. Then, for each categories, we take the union categorical data for every user. This union then acts as the data for the $global\_user$. For example, after splitting every user's data, we will take every user's test data and union it to get a collection of test data from all the users. This collection of test data acts as the test data for the the $global\_user$. With this approach we can ensure that every user is represented in accordance with the size of their dataset. This can be visualised in Figure~\ref{fig:split}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{resources/split.png}
+	\caption{A visual representation of the data splitting approaches.}
+	\label{fig:split}
+\end{figure}
+% clearly bad
+\noindent To store this data, we use the idea of a User object which is described in Section~\ref{subsubsec:datarep}. Algorithm~\ref{algo:strat_collection} illustrates the stratified split idea well by using pseudocode. For every user, the data is split and added to a collection of the same type of data. After iterating through all the users, a $global\_user$ object as described in Section~\ref{subsubsec:datarep} is instantiated and the data stored in it. Then the $global_user$ object is returned for further usage. 
+\begin{center}\begin{algorithm}[H]
+\Fn{\FDataSplit{users}}{
+	unioned\_train = [ ]\\
+	unioned\_validation = [ ]\\
+	unioned\_test = [ ]\\
+    \For{\forcond{$U_i$}{$users$}}{
+	    train, validation, test = split\_user\_data($U_i$)\\
+	    unioned\_train.append(train)\\
+	    unioned\_validation.append(validation)\\
+	    unioned\_test.append(test)\\
+    }
+    global\_user = User()\\
+    global\_user.set\_train\_data(unioned\_train)\\
+    global\_user.set\_validation\_data(unioned\_validation)\\
+    global\_user.set\_test\_data(unioned\_test)\\
+    \textbf{return} global\_user
+  \caption{Stratified data collection for the global user}\label{algo:strat_collection}
+}
+\end{algorithm}\end{center}
+
+\subsection{Training, validation and testing splits}\label{subsubsec:split}
+As a rule of thumb, any dataset provided needs to be split up into the three parts, training, validation and testing data to avoid leakage. A common strategy was used through the project to ensure consistency amongst all experiments. This strategy is explained in this section.
+\\\\
+The dataset provided is usually in a csv file and is read into a DataFrame using the API that pandas provides. To have flexibility, we extract the data as a numpy array from the DataFrame and work directly with the array. We split the array into three parts, training, validation and test data, where they have 60\%, 20\% and 20\% of the data respectively. This split ratio is the industry standard when it comes to three splits like we do in this project. Every split has a specific task. The training data is used exclusively for training the model. The validation data is used to see how the model performs on unseen data that is not the test data. We can inspect this data, analyse how the model performs on it and tweak the model appropriately. We do not do the same with the test data. The purpose of having a validation set is to avoid leaking knowledge of the test set into the training process of the model. The validation set is not directly used in the training of the model. The test set is used at the very end to evaluate the final performance of the model.
+\\\\
+To implement the splitting, context specific functions were defined each of which would be used based on the input data type. The parameters for the functions would include \texttt{full\_data}, \texttt{for\_user}, \texttt{val\_size}, \texttt{test\_size} and \texttt{seed}. The values for \texttt{test\_size} and \texttt{val\_size} in this project were 0.2 and 0.2 respectively, giving giving 0.6 to the training set. These fractions represent the fraction of the whole input dataset to be allocated to the three named subsets. The logic of the splitting requires the input data to first be split into training and test data on the specified split ratios of 0.8 and 0.2 respectively. Then the training data must be split into training and validation data. As the split now takes place on 80\% of the input data, we need to adjust \texttt{val\_size} to ensure that the correct split ratios are maintained with respect to the full input data size. To do so, \texttt{val\_size} needs to be recalculated as in equation~\ref{eq:val_size}. The training set is then split into training and validation data based on the new \texttt{val\_size}.
+%	\texttt{val\_size} = \frac{\texttt{val\_size}}{\texttt{1-test\_size}}
+\begin{equation}\label{eq:val_size}
+	val\_size = \frac{val\_size}{1-test\_size}
+\end{equation}
+The \texttt{seed} ensures reproducibility because of the shuffling involved in the splitting method provided by scikit-learn. The parameter \texttt{for\_user} is used to split the data pertaining to only a specific user in the dataset.
+
 
 \subsection{Designing the framework}
 The testing framework was fairly simple, it involved iterating over the different scenarios and recording the results. There were 

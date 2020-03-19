@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  16 MAR 2020 17:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  19 MAR 2020 22:45
 entering extended mode
 **./report.tex
 (report.tex
@@ -557,23 +557,27 @@ d-pdfmode.def"
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count392
 \l__pdf_internal_box=\box57
-) (report.aux)
+) (report.aux
+
+LaTeX Warning: Label `fig:classes_user' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
 df.mkii"
@@ -625,36 +629,36 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
  (report.bbl)
-Package biblatex Info: Reference section=0 on input line 35.
-Package biblatex Info: Reference segment=0 on input line 35.
+Package biblatex Info: Reference section=0 on input line 36.
+Package biblatex Info: Reference segment=0 on input line 36.
  [1
 
 {C:/Users/karan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 66--71
+Underfull \hbox (badness 10000) in paragraph at lines 67--72
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 66--71
+Underfull \hbox (badness 10000) in paragraph at lines 67--72
 
  []
 
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 77--80
+Underfull \hbox (badness 10000) in paragraph at lines 78--81
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 85--88
+Underfull \hbox (badness 10000) in paragraph at lines 86--89
 
  []
 
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 91--95
+Underfull \hbox (badness 10000) in paragraph at lines 92--96
 
  []
 
@@ -676,52 +680,52 @@ Underfull \hbox (badness 10000) in paragraph at lines 91--95
 <resources/ai.png, id=28, 461.47406pt x 424.58624pt>
 File: resources/ai.png Graphic file (type png)
 <use resources/ai.png>
-Package pdftex.def Info: resources/ai.png  used on input line 124.
+Package pdftex.def Info: resources/ai.png  used on input line 125.
 (pdftex.def)             Requested size: 170.71652pt x 157.06853pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 119--127
+Underfull \hbox (badness 10000) in paragraph at lines 120--128
 
  []
 
 [1
 
  <./resources/ai.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 130--133
+Underfull \hbox (badness 10000) in paragraph at lines 131--134
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--139
+Underfull \hbox (badness 10000) in paragraph at lines 135--140
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 134--139
+Underfull \hbox (badness 10000) in paragraph at lines 135--140
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 140--143
+Underfull \hbox (badness 10000) in paragraph at lines 141--144
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--152
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--152
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--152
+Underfull \hbox (badness 10000) in paragraph at lines 146--153
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 152--156
+Underfull \hbox (badness 10000) in paragraph at lines 153--157
 
  []
 
@@ -729,30 +733,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 152--156
 <resources/decisiontree.png, id=45, 853.1875pt x 635.37375pt>
 File: resources/decisiontree.png Graphic file (type png)
 <use resources/decisiontree.png>
-Package pdftex.def Info: resources/decisiontree.png  used on input line 169.
+Package pdftex.def Info: resources/decisiontree.png  used on input line 170.
 (pdftex.def)             Requested size: 227.62204pt x 169.50755pt.
  [5]
-Underfull \hbox (badness 10000) in paragraph at lines 174--176
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 174--176
+Underfull \hbox (badness 10000) in paragraph at lines 175--177
 
  []
 
 <resources/neuron.png, id=52, 386.44376pt x 254.9525pt>
 File: resources/neuron.png Graphic file (type png)
 <use resources/neuron.png>
-Package pdftex.def Info: resources/neuron.png  used on input line 180.
+Package pdftex.def Info: resources/neuron.png  used on input line 181.
 (pdftex.def)             Requested size: 170.71652pt x 112.62682pt.
 [6 <./resources/decisiontree.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 198--204
+Underfull \hbox (badness 10000) in paragraph at lines 199--205
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 198--204
+Underfull \hbox (badness 10000) in paragraph at lines 199--205
 
  []
 
@@ -760,43 +764,43 @@ Underfull \hbox (badness 10000) in paragraph at lines 198--204
 <resources/densenet.png, id=63, 853.1875pt x 499.8675pt>
 File: resources/densenet.png Graphic file (type png)
 <use resources/densenet.png>
-Package pdftex.def Info: resources/densenet.png  used on input line 208.
+Package pdftex.def Info: resources/densenet.png  used on input line 209.
 (pdftex.def)             Requested size: 227.62204pt x 133.35664pt.
  [8]
 <resources/convnet.png, id=67, 428.802pt x 502.87875pt>
 File: resources/convnet.png Graphic file (type png)
 <use resources/convnet.png>
-Package pdftex.def Info: resources/convnet.png  used on input line 218.
+Package pdftex.def Info: resources/convnet.png  used on input line 219.
 (pdftex.def)             Requested size: 227.62204pt x 266.94649pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 213--221
+Underfull \hbox (badness 10000) in paragraph at lines 214--222
 
  []
 
 [9 <./resources/densenet.png>] [10 <./resources/convnet.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 225--230
+Underfull \hbox (badness 10000) in paragraph at lines 226--246
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 225--230
+Underfull \hbox (badness 10000) in paragraph at lines 226--246
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--252
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--252
 
  []
 
 [11
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 245--250
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 245--250
-
- []
-
-[12]
-Underfull \hbox (badness 10000) in paragraph at lines 276--280
+] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 278--282
 
  []
 
@@ -804,170 +808,234 @@ Underfull \hbox (badness 10000) in paragraph at lines 276--280
 <resources/fedml.png, id=88, 891.33pt x 553.06625pt>
 File: resources/fedml.png Graphic file (type png)
 <use resources/fedml.png>
-Package pdftex.def Info: resources/fedml.png  used on input line 297.
+Package pdftex.def Info: resources/fedml.png  used on input line 299.
 (pdftex.def)             Requested size: 390.0pt x 241.9912pt.
- [14]
-Underfull \hbox (badness 10000) in paragraph at lines 302--305
+
+Underfull \hbox (badness 10000) in paragraph at lines 304--307
 
  []
 
-[15 <./resources/fedml.png>] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 310--313
+[14 <./resources/fedml.png>] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 316--320
 
  []
 
-<resources/classes_User.png, id=99, 1256.695pt x 1268.74pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--329
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--329
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--329
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--329
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 321--329
+
+ []
+
+[16
+
+] [17]
+
+LaTeX Warning: Reference `sec:fedml' on page 18 undefined on input line 330.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--339
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--339
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 332--339
+
+ []
+
+[18] [19]
+<resources/classes_User.png, id=109, 1256.695pt x 1268.74pt>
 File: resources/classes_User.png Graphic file (type png)
 <use resources/classes_User.png>
-Package pdftex.def Info: resources/classes_User.png  used on input line 319.
+Package pdftex.def Info: resources/classes_User.png  used on input line 377.
 (pdftex.def)             Requested size: 390.0pt x 393.73125pt.
-[17
+ [20]
 
-] [18 <./resources/classes_User.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 325--331
+LaTeX Warning: Reference `fig:classes_average' on page 21 undefined on input li
+ne 387.
 
- []
+<resources/classes_Average.png, id=113, 611.28375pt x 366.36874pt>
+File: resources/classes_Average.png Graphic file (type png)
+<use resources/classes_Average.png>
+Package pdftex.def Info: resources/classes_Average.png  used on input line 390.
 
+(pdftex.def)             Requested size: 284.52756pt x 170.5274pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 325--331
-
- []
-
-[19]
-<resources/split.png, id=110, 784.9325pt x 222.8325pt>
-File: resources/split.png Graphic file (type png)
-<use resources/split.png>
-Package pdftex.def Info: resources/split.png  used on input line 348.
-(pdftex.def)             Requested size: 390.0pt x 110.71893pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 341--351
+Underfull \hbox (badness 10000) in paragraph at lines 381--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--351
-
- []
-
-[20] [21 <./resources/split.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 374--384
+Underfull \hbox (badness 10000) in paragraph at lines 381--393
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--384
+Underfull \hbox (badness 10000) in paragraph at lines 381--393
+
+ []
+
+[21 <./resources/classes_User.png>] [22] [23 <./resources/classes_Average.png>]
+
+Underfull \hbox (badness 10000) in paragraph at lines 396--407
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--384
+Underfull \hbox (badness 10000) in paragraph at lines 396--407
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--384
+Underfull \hbox (badness 10000) in paragraph at lines 396--407
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--384
+Underfull \hbox (badness 10000) in paragraph at lines 396--407
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 374--384
-
- []
-
-[22] [23]
-
-LaTeX Warning: Reference `sec:fedml' on page 24 undefined on input line 385.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 387--392
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 387--392
+Underfull \hbox (badness 10000) in paragraph at lines 396--407
 
  []
 
 [24] [25] [26] [27
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 435--438
-
- []
-
-
-LaTeX Warning: Reference `algo:datasep-csv' on page 28 undefined on input line 
-447.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 444--448
+Underfull \hbox (badness 10000) in paragraph at lines 425--428
 
  []
 
 [28
 
-] [29]
-Underfull \hbox (badness 10000) in paragraph at lines 462--465
-
- []
-
-
-Overfull \hbox (1.89978pt too wide) in paragraph at lines 462--465
-\OT1/cmr/m/n/20.74 To im-ple-ment the sim-u-lated fed-er-ated data idea,
- []
-
-[30] [31] [32] [33]
-Underfull \hbox (badness 10000) in paragraph at lines 499--504
-
- []
-
-[34
-
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 524--537
+
+LaTeX Warning: Reference `algo:datasep-csv' on page 29 undefined on input line 
+449.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 446--450
+
+ []
+
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 464--467
+
+ []
+
+[30]
+
+LaTeX Warning: Reference `subsubsec:datarep' on page 31 undefined on input line
+ 484.
+
+
+LaTeX Warning: Reference `subsec:datasep' on page 31 undefined on input line 48
+4.
+
+<resources/split.png, id=146, 784.9325pt x 222.8325pt>
+File: resources/split.png Graphic file (type png)
+<use resources/split.png>
+Package pdftex.def Info: resources/split.png  used on input line 493.
+(pdftex.def)             Requested size: 390.0pt x 110.71893pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 488--496
+
+ []
+
+[31]
+
+LaTeX Warning: Reference `subsubsec:datarep' on page 32 undefined on input line
+ 498.
+
+
+LaTeX Warning: Reference `subsubsec:datarep' on page 32 undefined on input line
+ 498.
+
+[32 <./resources/split.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 520--526
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 524--537
+Underfull \hbox (badness 10000) in paragraph at lines 520--526
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 524--537
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 524--537
+[33] [34]
+Underfull \hbox (badness 10000) in paragraph at lines 549--554
 
  []
 
 [35
 
-] [36] [37
+]
+Underfull \hbox (badness 10000) in paragraph at lines 574--587
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--587
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--587
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 574--587
+
+ []
+
+[36
+
+] [37
 
 ] (report.aux)
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11915 strings out of 481565
- 217203 string characters out of 2914179
- 847549 words of memory out of 3000000
- 27017 multiletter control sequences out of 15000+200000
- 544086 words of font info for 64 fonts, out of 3000000 for 9000
+ 11913 strings out of 481565
+ 217256 string characters out of 2914179
+ 848573 words of memory out of 3000000
+ 27014 multiletter control sequences out of 15000+200000
+ 541246 words of font info for 54 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,18n,56p,1542b,1222s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,18n,56p,1868b,1214s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\karan\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1200.pk><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/font
@@ -978,16 +1046,15 @@ l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/karan
 :/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmmi8.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmr12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr17.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/karan/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/karan/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users
-/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
-pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmtt12.pfb>
-Output written on report.pdf (44 pages, 761039 bytes).
+ype1/public/amsfonts/cm/cmr8.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/karan/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/karan/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.pfb><C:/User
+s/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt12
+.pfb>
+Output written on report.pdf (44 pages, 784951 bytes).
 PDF statistics:
- 217 PDF objects out of 1000 (max. 8388607)
+ 214 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

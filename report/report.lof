@@ -10,8 +10,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5}{\ignorespaces How a convolution works\nobreakspace {}\cite {deeplearning}.\relax }}{10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6}{\ignorespaces Federated learning.\relax }}{15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Federated learning.\relax }}{14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces UML class diagram for the class User.\relax }}{18}%
+\contentsline {figure}{\numberline {7}{\ignorespaces UML class diagram for the class User.\relax }}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8}{\ignorespaces A visual representation of the data splitting approaches.\relax }}{21}%
+\contentsline {figure}{\numberline {8}{\ignorespaces UML class diagram for the class Average.\relax }}{23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {9}{\ignorespaces A visual representation of the data splitting approaches.\relax }}{32}%
