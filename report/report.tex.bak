@@ -83,6 +83,7 @@ I hereby declare that:
   \item with respect to my own work: none of it has been submitted at any educational institution contributing in any way to an educational award;
   \item with respect to another’s work: all text, diagrams, code, or ideas, whether verbatim, paraphrased or otherwise modified or adapted, have been duly attributed to the source in a scholarly manner, whether from books, papers, lecture notes or any other student’s work, whether published or unpublished, electronically or in print.
 \end{itemize}
+\vspace{10mm}
 \noindent Signed:\dotfill
 \\\\
 Date:\dotfill
@@ -348,8 +349,7 @@ We augment algorithms~\ref{algo:fedcore} and~\ref{algo:fedcore_user} to reflect 
 	}
     evaluation = user.evaluate\_model()\\
     user.add\_post\_fit\_evaluation(evaluation)\\ 
-   	$M_i$.send\_weights\_to\_server()
-	return $M_i$.weights
+	\textbf{return} $M_i$.weights
 	\caption{User side processing}\label{algo:fedcentral_user}
 }
 }
@@ -369,7 +369,7 @@ We augment algorithms~\ref{algo:fedcore} and~\ref{algo:fedcore_user} to reflect 
   \caption{Federated Learning}\label{algo:fedcentral}
 }
 \end{algorithm}\end{center}
-\noindent The algorithm starts off by sending the model $M$ to every user. Each user then refers to their model as $M_i$. Then, before the model is trained by the user, it is evaluated on the users test data and that information stored in the collection of $pre\_fit$ evaluations for the user. We can do the evaluation on test data without the fear of leakage because we do not use the results to make changes to the model. Every user $U_i$ then trains their model on their training data to get the updated weights $W_i$ for their $M_i$. After the training, the evaluation is conducted once again on the test data and then stored in the collection of $post\_fit$ evaluations. The updated weights $W_i$ are returned by every user are stored in the main algorithm. This set of weights is passed in to the averaging function that returns an average of the weights called $W_{avg}$. The averaging function is based on equation~\ref{eq:avg}. These weights are then passed onto the users in the next round of federated learning, where they initialise their models with the new averaged weights and conduct the whole process again. After a set number of rounds, the federated learning process ends. In this project, we decided to use a high number so we could observe how the process runs over a long period of time. 
+\noindent The algorithm starts off by sending the model $M$ to every user. Each user then refers to their model as $M_i$. Then, before the model is trained by the user, it is evaluated on the users test data and that information stored in the collection of $pre\_fit$ evaluations for the user. We can do the evaluation on test data without the fear of leakage because we do not use the results to make changes to the model. Every user $U_i$ then trains their model on their training data to get the updated weights $W_i$ for their $M_i$. After the training, the evaluation is conducted once again on the test data and then stored in the collection of $post\_fit$ evaluations. The updated weights $W_i$ are returned by every user and stored in the main algorithm. This set of weights is passed in to the averaging function that returns an average of the weights called $W_{avg}$. The averaging function is based on equation~\ref{eq:avg}. These weights are then passed onto the users in the next round of federated learning, where they initialise their models with the new averaged weights and conduct the whole process again. After a set number of rounds, the federated learning process ends. In this project, we decided to use a high number so we could observe how the process runs over a long period of time. 
 \subsubsection{Implementation}
 The first thing that had to be implemented was the User class. It is used to store all the data local to a user. Instances of this user class are used to represent an arbitrary user $U_i$. The data stored on $U_I$ includes the training, validation and test data, the model of the neural network and the history of the metrics obtained during the training of the model. The training, validation and test data are stored as numpy arrays. Numpy arrays were used over standard Python array lists because of their vectorised operations which make them faster and more concise than using Python's array based lists. Another reason to user numpy arrays was because of the fact that Keras models require their input to be numpy arrays or pandas DataFrames. Storing the data as numpy arrays standardises the structure of the object for use throughout the project and increases re-usability of the code. The Keras model is stored in $U_i$ as well along with the $pre\_fit$ and $post\_fit$ metrics which are stored in numpy arrays. The UML diagram for this class can be seen in Figure~\ref{fig:classes_user}. 
 \begin{figure}[H]
@@ -384,7 +384,14 @@ The algorithm starts off by sending $M$ to all the users which would ordinarily 
 \\\\
 To train all the user models, we iterate over all the users and call the \texttt{train} method on every $U_i$. In the \texttt{train} method, we make use of the API Keras provides for its models. Using the \texttt{set\_weights} method of $M_i$, we can set the weights of the model to be the weights that we pass into the method. For the first round of federated learning, we do not set the weights to be anything new. But for subsequent rounds, the averaged weights $W_{avg}$ are passed into the \texttt{set\_weights} method which set the weight of $M_i$ to be $W_{avg}$. After doing so, the model is evaluated on the test data by using the \texttt{evaluate} method of $U_i$. This method intern uses the \texttt{evaluate} method provided by Keras to run evaluation on their models on give data, test data in our case. This data is then stored in the numpy arrays dedicated to storing $pre_fit$ metrics such as \textit{accuracy} and \textit{loss}. Then a simple call to the \texttt{fit} method of the model will train it on the training data that we pass into the method for a given number of epochs. After the training, we once again call the \texttt{evaluate} method of $U_i$ to evaluate the model on the test data and record the metrics in the numpy arrays. As mentioned before, Keras also maintains history of the metrics during the training process in the model object. This history is reset every time the \texttt{fit} method is called. So, after every local training process we store the metrics from this history in $U_i$ as well in a Python list. We can use this information to plot more graphs and review the progress of the learning process, but this time on a more granular level because this is a history of \textit{epoch} evaluations. The $pre_fit$ and $post_fit$ evaluations we store are \textit{round based} evaluations.
 \\\\
-Once all the users have been trained, their weights need to be averaged. To make the averaging process more modular, an class dedicated to averaging was implemented. This class is called Average. Residing in it are static methods that deal with different kinds of averaging, one of which is the implementation of the averaging function in equation~\ref{eq:avg}. The method is provided with a reference to all $U_i$ in the form of a dictionary. With access to $U_i$ comes access to model $M_i$ for the user as well. The \texttt{get\_weights} method associated to $M_i$ is used to extract the weights $W_i$ from model $M_i$. This is done for every user and then those weights are used to calculate the averaged weights $W_{avg}$. Keras models store their weights as a list of numpy arrays. To be able to use numpy's quick calculations we cast the list into a numpy array of numpy arrays. To calculate the average, we iterate over all the users. When doing so we use the \texttt{get\_weights} method to get the weights (which is a list of numpy arrays), cast it to a numpy array of numpy arrays and then take the sum of the weights from all the users. This means that at the end of the loop we can divide by the number of users and get $W_{avg}$. $W_{avg}$ is then returned into the main function \texttt{train\_fed} where it will be fed back to all the users for the next round of federated learning where they initialise their models $M_i$ with weights $W_{avg}$. After a set number of federated learning rounds have been performed, we can stop the process and plot graphs from the metrics we had stored along the way. Our choice of choosing a high number of rounds lets us know at exactly what point the metrics start plateauing, and we can then say that training after that point is not necessary. 
+Once all the users have been trained, their weights need to be averaged. To make the averaging process more modular, an class dedicated to averaging was implemented. This class is called Average. The UML diagram for the final version of the class Average can be seen in Figure~\ref{fig:classes_Average}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm]{resources/classes_Average.png}
+	\caption{UML class diagram for the class Average.}
+	\label{fig:classes_user}
+\end{figure}
+\noindent Residing in this class are static methods that deal with different kinds of averaging, one of which is the implementation of the averaging function in equation~\ref{eq:avg}. The method is provided with a reference to all $U_i$ in the form of a dictionary. With access to $U_i$ comes access to model $M_i$ for the user as well. The \texttt{get\_weights} method associated to $M_i$ is used to extract the weights $W_i$ from model $M_i$. This is done for every user and then those weights are used to calculate the averaged weights $W_{avg}$. Keras models store their weights as a list of numpy arrays. To be able to use numpy's quick calculations we cast the list into a numpy array of numpy arrays which is still referred to as $W_i$. We also initialise a numpy array full of zeros with the same shape as $W_i$ and name it $new\_weights$. This is used to collect the sum of all the weights as we iterate over all the users to calculate the average. As we iterate over the users, we use the \texttt{get\_weights} method to get the weights (which is a list of numpy arrays), cast it to a numpy array of numpy arrays and then add it to $new\_weights$. The shape of $new\_weights$ never changes throughout the whole process. This means that at the end of the loop we can divide $new\_weights$ by the number of users and get $W_{avg}$. $W_{avg}$ is then returned into the main function \texttt{train\_fed} where it will be fed back to all the users for the next round of federated learning where they initialise their models $M_i$ with weights $W_{avg}$. After a set number of federated learning rounds have been performed, we can stop the process and plot graphs from the metrics we had stored along the way. Our choice of choosing a high number of rounds lets us know at exactly what point the metrics start plateauing, and we can then say that training after that point is not necessary. 
 \subsection{TensorFlow Federated}\label{subsec:tff}
 In this section we will talk about simulating federated learning using TensorFlow Federated (TFF). The design aspect of this will not be discussed as it is the same as the federated approach we just discussed. Instead, we will focus on the implementation of federated learning using TFF. We implemented this approach for it to serve as a sanity check to see if our implementation as described in Section~\ref{subsec:fedml-core} is sound. 
 \\\\
@@ -398,15 +405,98 @@ At the end of the training, we must evaluate the model. For that we make a call 
 \\\\
 We decided not to use the TFF implementation because of the learning curve required in working with the FC layer of TFF. It was more intuitive to work with a sound implementation that we had built up from scratch instead of having to hack together our extended ideas using the TFF framework. 
 \clearpage
+
+
+
 \section{Extended Ideas}\label{sec:ext-ideas}
-\subsection{Central Server}
+In this section, we introduce several extensions to Google's federated learning idea. These extensions are based on different averaging methodologies in a central and peer-to-peer averaging context.
+\subsection{Central}
+Google's version of federated learning is implemented in the context of central averaging. This is where a \textit{central} agent $C$ that handles the process of averaging the set weights sent from a set of users. In Google's approach described in Section~\ref{subsec:fedml-core} the averaging is done in a unbiased way where every participating user's weights are weighed equally and they are all included in the averaging process. This was previously illustrated in equation~\ref{eq:avg}. We will now look at some ideas where that is not the case. 
 \subsubsection{Weighted Average}
-\subsubsection{Excluding based on std dev}
-\subsubsection{Local only}
+In weighted averaging, the idea is to weigh the weights of certain users more than others in the averaging process. The criteria on doing so are the latest evaluations that the users obtain when evaluating their model on their testing data. The evaluations provided by user $U_i$ are referred to as $E_i$. Previously, the only thing that the users had to send to $C$ were their weights $W_i$. But now, the users must also send their evaluation $E_i$ to $C$, along with their weights $W_i$. This allows $C$ to make decisions on which weights should be weighted more when computing the averaged weights.
+\\\\
+For example, let us consider two users $U_x$ and $U_y$ with their latest evaluations being $E_x$ and $E_y$. If the value of $E_x$ is 100 and $E_y$ is 50, where higher is better, then $W_x$ will be weighted twice as much as $W_y$ in the weighted average $W_{avg}$. To achieve that, we compute the sum of $W_x \times E_x$ and $W_y \times E_y$ and divide it by $E_x + E_y$. This results in a weighted average $W_{avg}$ for users $U_x$ and $U_y$ where $W_x$ is weighted twice as much as $W_y$ in accordance with their respective evaluations. This can be generalised into an equation with $n$ users as seen in equation~\ref{eq:weighted-avg}.
+\begin{equation}\label{eq:weighted-avg}
+	W_{avg} = \frac{\sum_{i=1}^{n} \left({W_i \times E_i}\right)}{\sum_{i=1}^{n} {E_i}}
+\end{equation}
+In the case where the choice of metric is such that a lower value is better than a higher one, such as in loss, we replace $E_i$ by its inverse $\frac{1}{E_i}$ in equation~\ref{eq:weighted-avg}.
+\\\\
+The design of the federated learning process with weighted averaging is very similar to what is described in Section~\ref{subsec:fedml-core} with the only a couple of changes. The first change is that the user must also share their latest evaluations along with their weights. We change algorithms~\ref{algo:fedcentral_user} and~\ref{algo:fedcentral} to algorithms~\ref{algo:fedcentral-weightedavg_user} and~\ref{algo:fedcentral-weightedavg} respectively to reflect this change.
+\begin{center}\begin{algorithm}[H]
+\texttt{\Fn{\FFedCoreUser{new\_weights}}{
+	\If{new\_weights != None}{
+		$M_i$.set\_weights(new\_weights)\\	
+	}
+    evaluation = user.evaluate\_model()\\
+	user.add\_pre\_fit\_evaluation(evaluation)\\
+	\For{\forcond{$e$}{$local\_epochs$}}{
+		$M_i$.train()
+	}
+    evaluation = user.evaluate\_model()\\
+    user.add\_post\_fit\_evaluation(evaluation)\\ 
+	\textbf{return} $M_i$.weights, evaluation
+	\caption{User side processing}\label{algo:fedcentral-weightedavg_user}
+}
+}
+\end{algorithm}\end{center}
+\begin{center}\begin{algorithm}[H]
+\Fn{\FFedCore{model}}{
+    send\_to\_users(model)\\
+    new\_weights = None\\
+    \For{\forcond{round}{$rounds$}}{
+	    data = [ ]\\
+        \For{\forcond{user}{$users$}}{
+           user\_weights, user\_evaluation = user(new\_weights)\\
+           data.append((user\_weights, user\_evaluation))\\
+        }
+        new\_weights = average(data)\label{algo:fedcentral-weightedavg:avg}
+    }
+  \caption{Federated Learning}\label{algo:fedcentral-weightedavg}
+}
+\end{algorithm}\end{center}
+The second change is that we make line~\ref{algo:fedcentral-weightedavg:avg} in algorithm~\ref{algo:fedcentral-weightedavg} use equation~\ref{eq:weighted-avg} instead of equation~\ref{eq:avg}. Doing so successfully converts Google's federated learning process based on equal averaging into one that works on weighted averages instead.
+\\\\
+As for the \textit{implementation} of this idea, it was fairly trivial because of the way the framework was implemented in Section~\ref{subsec:fedml-core}. The only thing to be changed in the implementation was the averaging function. It had to be swapped out with a weighted averaging function that is in accordance with equation~\ref{eq:weighted-avg}. To do so, another static method is implemented in the class Average to compute the weighted average. This method is once again provided with a reference to all users in a dictionary data structure. With access to $U_i$ we also get access to its model $M_i$ and its latest evaluation $E_i$, both of which are stored in $U_i$. We start off by initialising a numpy array full of zeros with the same shape as $W_i$ and name it $new\_weights$. We use this to collect the sum of the weights as we iterate over all the users to calculate the weighted average. As we iterate though the users, we get the weights of the user's model by using the \texttt{get\_weights} method on $M_i$. We convert the returned weights $W_i$, a list of numpy arrays, into a numpy array of numpy arrays for quick calculations and concise code. We then retrieve $E_i$ to be multiplied with $W_i$. In the case where the metric for $E_i$ is accuracy, we perform a scalar multiplication of the weights with the accuracy. In the case where the metric for $E_i$ is loss, we perform a scalar multiplication of the weight with the inverse of the loss. We store the resulting weights by adding them to $new\_weights$ in every iteration. The shape of $new\_weights$ never changes throughout the entire process. We also keep a sum of all the evaluations $E_i$ used, which we call $E_sum$. After iterating over all the users, we divide $new\_weights$ by $E_sum$ to get $W_{avg}$ and return it back to the main algorithm for the next federated learning round. This process is in accordance with equation~\ref{eq:weighted-avg} which is used to calculate the weighted average.
+\subsubsection{Selective Inclusion}
+In selective inclusion, the idea is to once again use the evaluations in the averaging process. But instead of using every user's weights in the averaging process, we only select a subset of the users that fit the criteria to be included in the averaging process. The criteria here is that their evaluations are within a certain range. More specifically, their evaluations are at most one standard deviation worse than the mean of all the participating users. The averaged weights are then calculated from weights of the users who fulfil this criteria. Naturally, this approach requires the user $U_i$ to share their latest evaluation $E_i$ along with their weights $W_i$ to the central agent $C$ for averaging. Since this is already done in algorithms~\ref{algo:fedcentral-weightedavg_user} and~\ref{algo:fedcentral-weightedavg}, there are no changes required in the algorithms for this approach and we can continue to use those two algorithms here as well.
+\\\\
+Let us take an example to illustrate how this idea works with a user $U_x$. The evaluation on the test data for $U_x$ is $E_x$ with the metric being accuracy. The mean and standard deviation for the metrics over all users $U$ is $\bar{E}$ and $\sigma(E)$ respectively. The weights $W_x$ of user $U_x$ are included in the averaging process, if and only if $E_x$ is greater than or equal to $\bar{E}-\sigma(E)$. If the criteria of $E_x >= \bar{E}-\sigma(E)$ is not fulfilled, then $W_x$ is excluded from the averaging process. If $U_x$ is the only user to be excluded from the averaging, then the averaged weights are calculated by summing up the weights of all other users and dividing them by $n-1$. We subtract $1$ because $W_x$ is not included in the averaging process. This can be written in a generalised form as seen in equation~\ref{eq:selective-avg} which relies on equations~\ref{eq:selective-avg-mean} and~\ref{eq:selective-avg-stddev}.
+\begin{equation}\label{eq:selective-avg-mean}
+	\bar{E} = \frac{\sum_{i=1}^{n}{E_i}}{n}
+\end{equation}
+\begin{equation}\label{eq:selective-avg-stddev}
+	\sigma(E) = \sqrt{\sum_{i=1}^{n}{\frac{\left( {E_i - \bar{E}} \right)^{2}}{n}}}
+\end{equation}
+\begin{equation}\label{eq:selective-avg}
+	W_{avg} = \frac{\sum_{i=1}^{n} \begin{cases}
+		W_i, & \text{if }E_i>=\left(\bar{E}-\sigma(E)\right)\\
+		0,   & else
+	\end{cases}}
+	{\sum_{i=1}^{n} \begin{cases}
+		1, & \text{if }E_i>=\left(\bar{E}-\sigma(E)\right)\\
+		0,   & else
+	\end{cases}}
+\end{equation}
+\\\\
+In the case where the evaluation metric is loss, where a lower number is better, we need to make some changes to the equation. Equation~\ref{eq:selective-avg} caters to a metric where a higher value is better. To make it work for loss, the criteria must be changed from $E_i >= \bar{E}-\sigma(E)$ to $E_i <= \bar{E}+\sigma(E)$ and then it will work for a metric where a lower value is better.
+\\\\
+The \textit{implementation} of this idea is once again made trivial by the fact that the only change from the weighted average approach is the need for a new averaging function which conforms with equation~\ref{eq:selective-avg}. To do so, a static method implementing equation~\ref{eq:selective-avg} is added to the the Average class. The method is given a reference to all the users objects in a dictionary data structure. With access to $U_i$ comes access to all the data stored in $U_i$ as well, such as the model $M_i$ and latest evaluation $E_i$. We initialise a numpy array full of zeros with the same shape as the weights $W_i$. This is referred to as $new\_weights$ and is used to collect the sum of the weights from users who fulfil the inclusion criteria. We also maintain a counter $contributers$ to count the number of users contributing to the averaging process by fulfilling the criteria. As this approach requires the mean $\bar{E}$ and standard deviation $\sigma(E)$ of all the evaluations $E$ from all the users $U$, we must first compute these values. To do so, we iterate over all the users and collect their $E_i$ into a numpy array called $E$. Then we use the API that numpy provides on its arrays to calculate the $\bar{E}$ and $\sigma(E)$. Calling the function \texttt{mean} on the numpy array of all evaluations $E$ returns the mean value of $E$. Similarly, calling the function \texttt{std} on $E$ returns the standard deviation in $E$. One we have all this data ready, we can once again iterate over the users in a loop where we check if $U_i$ satisfies the criteria of $E_i >= \bar{E}-\sigma(E)$ in the case where the metric being used is accuracy. In the case of the metric being loss, we use $E_i <= \bar{E}+\sigma(E)$. If the use satisfies the criteria, we add their weights $W_i$ to $new\_weights$ and increase $contibuters$ by one. To get $W_i$, we use the \texttt{get\_weights} method associated with the Keras model $M_i$. This returns a list of numpy arrays which we once again convert into a numpy array of numpy arrays for quick calculations and concise code. The shape of $new\_weights$ never changes in this whole process. At the end of the loop, we divide $new\_weigths$ by $contributers$ to get the averaged weights $W_{avg}$ and return it to the main algorithm for use in subsequent federated learning rounds. 
+
 \subsection{Peer to Peer}
+In this section we will explore how federated learning can be implemented in a peer-to-peer context. Previously, the users would send their data to a central agent $C$ which would average their weights based on the averaging function and return the averaged weights back to the users. This process is a round of federated learning. But in this section, we get rid of $C$ and treat every user as a $C$. 
+
+But now we get rid of the single central agent and treat every user as a central agent. Every user now sends their weights to every other user instead of sending 
+
+standard fed learning is the same
 \subsubsection{Weighted Average}
 \subsubsection{Excluding based on std dev}
-\subsubsection{Local only}
+\subsection{Local only}
+	• Extended ideas
+		Swap averaging functions
+		Everything stays the same
+		implementation as a parargraph even
+		Talk about averagin class
+
 \clearpage
 
 \section{Evaluation}\label{sec:experiments}
