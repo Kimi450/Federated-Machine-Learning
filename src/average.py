@@ -212,13 +212,21 @@ class Average:
 
         for user in users.values():
             curr_metric = Average._latest_user_metric(user,pre,post,metric)
-            if curr_metric >= (avg-std_dev):
+            if metric == "loss":
+                criteria = curr_metric <= (avg+std_dev)
+            else:
+                criteria = curr_metric >= (avg-std_dev)
+
+            if criteria:
                 user_weights = np.asarray(user.get_weights())
                 users_used.add(user.get_id())
                 #nested array of [weights] and [biases]
                 new_weights += user_weights
             else:
-                print(f"User {user.get_id()}: {curr_metric} < {avg-std_dev}")
+                if metric == "loss":
+                    print(f"User {user.get_id()}: {curr_metric} > {avg+std_dev}")
+                else:
+                    print(f"User {user.get_id()}: {curr_metric} < {avg-std_dev}")
         new_weights = new_weights/len(users_used)
         return new_weights.tolist()
 
@@ -248,13 +256,20 @@ class Average:
 
         print(f"User {user.get_id()}: -> ")
         for user_id, curr_metric in evals.items():
-            if curr_metric >= (avg-std_dev):
+            if metric == "loss":
+                criteria = curr_metric <= (avg+std_dev)
+            else:
+                criteria = curr_metric >= (avg-std_dev)
+            if criteria:
                 user_weights = np.asarray(weights[user_id])
                 users_used.add(user_id)
                 #nested array of [weights] and [biases]
                 new_weights += user_weights
             else:
-                output=f"User {user_id}: {curr_metric} < {avg-std_dev}"
+                if metric == "loss":
+                    output=f"User {user_id}: {curr_metric} > {avg+std_dev}"
+                else:
+                    output=f"User {user_id}: {curr_metric} < {avg-std_dev}"
                 print(output)
         new_weights = new_weights/len(users_used)
         return new_weights.tolist()
