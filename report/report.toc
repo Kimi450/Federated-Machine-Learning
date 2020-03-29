@@ -14,13 +14,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.2}Motivation}{2}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.3}Privacy concerns}{3}%
+\contentsline {subsection}{\numberline {1.3}Privacy Concerns}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4}Outline of the report}{3}%
+\contentsline {subsection}{\numberline {1.4}Report Outline}{3}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Literature Review}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1}Machine learning}{4}%
+\contentsline {subsection}{\numberline {2.1}Machine Learning}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.2}Neural Networks}{6}%
 \defcounter {refsection}{0}\relax 
@@ -66,40 +66,40 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {4.2}Peer to Peer}{31}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.1}Weighted Average}{32}%
+\contentsline {subsubsection}{\numberline {4.2.1}Weighted Average}{34}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2}Excluding based on std dev}{32}%
+\contentsline {subsubsection}{\numberline {4.2.2}Selective Inclusion}{36}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Local only}{32}%
+\contentsline {subsection}{\numberline {4.3}Localised Training}{38}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Evaluation}{33}%
+\contentsline {section}{\numberline {5}Evaluation}{41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}tff}{33}%
+\contentsline {subsection}{\numberline {5.1}tff}{41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}trainmodel}{33}%
+\contentsline {subsection}{\numberline {5.2}trainmodel}{41}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}mpdel}{34}%
+\contentsline {subsection}{\numberline {5.3}mpdel}{42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.3.1}Data separation}{34}%
+\contentsline {subsubsection}{\numberline {5.3.1}Data separation}{42}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}data separation}{36}%
+\contentsline {subsection}{\numberline {5.4}data separation}{44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.5}Training, validation and testing splits}{38}%
+\contentsline {subsection}{\numberline {5.5}Training, validation and testing splits}{46}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.6}Designing the framework}{39}%
+\contentsline {subsection}{\numberline {5.6}Designing the framework}{47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.7}Gestures dataset}{39}%
+\contentsline {subsection}{\numberline {5.7}Gestures dataset}{47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.7.1}Description}{39}%
+\contentsline {subsubsection}{\numberline {5.7.1}Description}{47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.8}Image dataset}{39}%
+\contentsline {subsection}{\numberline {5.8}Image dataset}{47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.8.1}Description}{39}%
+\contentsline {subsubsection}{\numberline {5.8.1}Description}{47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.9}Graphing}{40}%
+\contentsline {subsection}{\numberline {5.9}Graphing}{48}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.10}Testing user weights on global data}{40}%
+\contentsline {subsection}{\numberline {5.10}Testing user weights on global data}{48}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusions and future work}{41}%
+\contentsline {section}{\numberline {6}Conclusions and future work}{49}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {7}notes}{41}%
+\contentsline {section}{\numberline {7}notes}{49}%

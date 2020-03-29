@@ -86,7 +86,7 @@
       \field{title}{Deep Learning with Python}
       \field{year}{2017}
     \endentry
-    \entry{web:neuron}{online}{}
+    \entry{web:neuron}{misc}{}
       \name{author}{1}{}{%
         {{hash=242ea2af70d3cca14f28b22ffdc4d6f0}{%
            family={JustinB},
@@ -102,9 +102,14 @@
       \field{sortinithash}{c45040a764d616897e7f5b30174d7b92}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{howpublished}{\url{https://blog.knoldus.com/introduction-to-perceptron-neural-network/}}
       \field{title}{Introduction to Perceptron: Neural Network}
       \field{year}{2017}
+      \verb{urlraw}
+      \verb https://blog.knoldus.com/introduction-to-perceptron-neural-network/
+      \endverb
+      \verb{url}
+      \verb https://blog.knoldus.com/introduction-to-perceptron-neural-network/
+      \endverb
     \endentry
     \entry{konen2016federated}{misc}{}
       \name{author}{4}{}{%
