@@ -327,6 +327,8 @@ class Average:
 
             curr_metric = Average._latest_user_metric(user,pre,post, metric)
             if metric == "loss":
+                if curr_metric == 0:
+                    curr_metric = 10**(-6)
                 curr_metric = 1/curr_metric
             acc_sum += curr_metric
             # weighted average
@@ -361,6 +363,8 @@ class Average:
 
             curr_metric = evals[user_id]
             if metric == "loss":
+                if curr_metric == 0:
+                    curr_metric = 10**(-6)
                 curr_metric = 1/curr_metric
             acc_sum += curr_metric
             # weighted average
