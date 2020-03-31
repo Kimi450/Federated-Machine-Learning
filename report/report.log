@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  29 MAR 2020 03:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  31 MAR 2020 14:52
 entering extended mode
 **./report.tex
 (report.tex
@@ -991,112 +991,105 @@ Underfull \hbox (badness 10000) in paragraph at lines 536--541
 
  []
 
-[36] [37]
-Underfull \hbox (badness 10000) in paragraph at lines 542--545
+[36] [37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 542--547
 
  []
 
-[38] [39]
-Underfull \hbox (badness 10000) in paragraph at lines 570--573
+
+Underfull \hbox (badness 10000) in paragraph at lines 542--547
 
  []
 
-[40]
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 572--577
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 572--577
+
+ []
+
+[40] [41]
 Underfull \hbox (badness 10000) in paragraph at lines 580--583
 
  []
 
-[41
 
-]
-
-LaTeX Warning: Reference `algo:datasep-csv' on page 42 undefined on input line 
-604.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 601--605
+Underfull \hbox (badness 10000) in paragraph at lines 599--602
 
  []
 
-[42]
-Underfull \hbox (badness 10000) in paragraph at lines 619--622
+[42
+
+]
+
+LaTeX Warning: Reference `algo:datasep-csv' on page 43 undefined on input line 
+610.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 607--611
 
  []
 
 [43]
-
-LaTeX Warning: Reference `subsubsec:datarep' on page 44 undefined on input line
- 639.
-
-
-LaTeX Warning: Reference `subsec:datasep' on page 44 undefined on input line 63
-9.
-
-<resources/split.png, id=188, 784.9325pt x 222.8325pt>
-File: resources/split.png Graphic file (type png)
-<use resources/split.png>
-Package pdftex.def Info: resources/split.png  used on input line 648.
-(pdftex.def)             Requested size: 390.0pt x 110.71893pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 643--651
+Underfull \hbox (badness 10000) in paragraph at lines 625--628
 
  []
 
 [44]
 
 LaTeX Warning: Reference `subsubsec:datarep' on page 45 undefined on input line
- 653.
+ 645.
 
 
-LaTeX Warning: Reference `subsubsec:datarep' on page 45 undefined on input line
- 653.
+LaTeX Warning: Reference `subsec:datasep' on page 45 undefined on input line 64
+5.
 
-[45 <./resources/split.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 675--681
+<resources/split.png, id=191, 784.9325pt x 222.8325pt>
+File: resources/split.png Graphic file (type png)
+<use resources/split.png>
+Package pdftex.def Info: resources/split.png  used on input line 654.
+(pdftex.def)             Requested size: 390.0pt x 110.71893pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 649--657
+
+ []
+
+[45]
+
+LaTeX Warning: Reference `subsubsec:datarep' on page 46 undefined on input line
+ 659.
+
+
+LaTeX Warning: Reference `subsubsec:datarep' on page 46 undefined on input line
+ 659.
+
+[46 <./resources/split.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 681--687
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 675--681
+Underfull \hbox (badness 10000) in paragraph at lines 681--687
 
  []
 
-[46] [47]
-Underfull \hbox (badness 10000) in paragraph at lines 704--709
+[47] [48]
+Underfull \hbox (badness 10000) in paragraph at lines 715--723
 
  []
 
-[48
+[49] [50
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 729--742
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 729--742
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 729--742
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 729--742
-
- []
-
-[49
-
-]
-Overfull \hbox (6.29555pt too wide) in paragraph at lines 743--743
+Overfull \hbox (6.29555pt too wide) in paragraph at lines 734--734
 []\OT1/cmr/m/n/12 JustinB, \OT1/cmr/m/it/12 In-tro-duc-tion to per-cep-tron: Ne
 u-ral net-work\OT1/cmr/m/n/12 , 2017. [On-line]. Avail-
  []
 
-[50
+[51
 
 ] (report.aux)
 
@@ -1107,13 +1100,13 @@ Package logreq Info: Writing requests to 'report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 11929 strings out of 481565
- 217622 string characters out of 2914179
- 856691 words of memory out of 3000000
- 27030 multiletter control sequences out of 15000+200000
- 541246 words of font info for 54 fonts, out of 3000000 for 9000
+ 11927 strings out of 481565
+ 217586 string characters out of 2914179
+ 858691 words of memory out of 3000000
+ 27028 multiletter control sequences out of 15000+200000
+ 540644 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,18n,56p,3209b,1214s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,18n,56p,3210b,1216s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\karan\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1200.pk><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/font
@@ -1131,9 +1124,9 @@ ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users
 /karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
 pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
 ts/cm/cmtt12.pfb>
-Output written on report.pdf (57 pages, 841995 bytes).
+Output written on report.pdf (58 pages, 843444 bytes).
 PDF statistics:
- 259 PDF objects out of 1000 (max. 8388607)
+ 262 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  46 words of extra memory for PDF output out of 10000 (max. 10000000)
 
