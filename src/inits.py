@@ -12,7 +12,7 @@ def init_model(init_seed=None):
     initialise and return a model
     """
     model = keras.Sequential([
-        keras.layers.Flatten(), 
+        keras.layers.Flatten(),
 #         keras.layers.Dense(4096, activation='relu',
 #             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
 #         keras.layers.Dense(1024, activation='relu',
@@ -36,7 +36,7 @@ def init_model(init_seed=None):
 def init_conv_model(labels,image_shape, init_seed=None):
     """
     initialise and return a model
-    cant be fully reproducible 
+    cant be fully reproducible
     https://rampeer.github.io/2019/06/12/keras-pain.html
     """
     model = keras.Sequential()
@@ -49,38 +49,11 @@ def init_conv_model(labels,image_shape, init_seed=None):
     model.add(keras.layers.MaxPooling2D((2, 2)))
     model.add(keras.layers.Conv2D(256, (3, 3), activation='relu', kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
 
-#     model.add(keras.layers.MaxPooling2D((2, 2)))
     model.add(keras.layers.Flatten())
     model.add(keras.layers.Dense(256, activation='relu',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed))),
     model.add(keras.layers.Dense(8, activation='softmax',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)))
-
-#     model = tf.keras.models.Sequential([
-#         keras.layers.Flatten(),
-#         keras.layers.Conv2D(32, kernel_size=(5, 5), activation=tf.keras.activations.relu),
-#         keras.layers.MaxPooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.22), 
-#         keras.layers.Conv2D(32, kernel_size=(5, 5), activation=tf.keras.activations.relu),
-#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.25),
-#         keras.layers.Conv2D(32, kernel_size=(4, 4), activation=tf.keras.activations.relu),
-#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.15),
-#         keras.layers.Conv2D(32, kernel_size=(3, 3), activation=tf.keras.activations.relu),
-#         keras.layers.AveragePooling2D(pool_size=(2, 2)),
-#         keras.layers.BatchNormalization(axis = 1),
-#         keras.layers.Dropout(0.15),
-#         keras.layers.Flatten(),    
-#         keras.layers.Dense(256, activation=tf.keras.activations.relu,kernel_regularizer=keras.regularizers.l2(0.001)),
-#         #keras.layers.Dropout(0.25),
-#         keras.layers.Dense(64, activation=tf.keras.activations.relu,kernel_regularizer=keras.regularizers.l2(0.001)),
-#         #keras.layers.Dropout(0.1),
-#         keras.layers.Dense(len(labels), activation=tf.keras.activations.softmax)
-#     ])
 
     model.compile(
         optimizer = 'adam',
@@ -111,7 +84,7 @@ def init_users(df, averaging_methods, averaging_metric="accuracy", seed=None, te
         i = user_id # for global user to get all the data
 
         if user_id < 0: # for global user with id -1
-            user_id = None # this will cause global user to have no data 
+            user_id = None # this will cause global user to have no data
 
         df_val, df_val_class,  df_val_user,\
         df_test, df_test_class, df_test_user,\
@@ -120,7 +93,6 @@ def init_users(df, averaging_methods, averaging_metric="accuracy", seed=None, te
                                                                   seed=seed,
                                                                   val_size=val_size,
                                                                   test_size=test_size)
-        
         user_id = i
         if df_train.shape[0]==0 and user_id>=0:
             print(f"User {user_id} has no data, no instance created...")
@@ -163,9 +135,9 @@ def split_dataframe(df, for_user=None, val_size=0.2, test_size=0.2, seed=None):
     Empty dataframes if no data present
     """
     # split into train, validation and test data using sklearn and return dfs for each
-    if for_user!=None:
-        df = df[df["User"] == for_user]
     if for_user==None or df.shape[0] == 0:
+        df = df[df["User"] == for_user]
+    if df.shape[0] == 0:
         # if no data for the user, then return 9 empty dfs as per the api
         # print(f"Dataframe for user {user} is of shape {df.shape}, no data. Skipping...")
         df = pd.DataFrame()
@@ -195,28 +167,28 @@ def split_dataframe(df, for_user=None, val_size=0.2, test_size=0.2, seed=None):
 
 
 def split_dataframe_tff(df, test_size = 0.2, seed = None):
-    
-    
+
+
     users = list(df["User"].unique())
-    
+
     COL_NAMES = list(df.columns.values)
     output_train = pd.DataFrame(columns = COL_NAMES)
     output_test = pd.DataFrame(columns = COL_NAMES)
-    
+
     for user_id in users:
         user_df = df[df["User"]==user_id]
-        
-    
+
+
         user_df_train, user_df_test = train_test_split(user_df,
                                          test_size = test_size,
                                          random_state = seed)
-        
+
         output_train = output_train.append(user_df_train, ignore_index=True)
         output_test = output_test.append(user_df_test, ignore_index=True)
     return output_train, output_test
 
 
-def init_users_image(files, averaging_methods, averaging_metric="accuracy", majority_split=0.7, test_size = 0.2, val_size = 0.2, shape=(80,80,3), seed=None, return_global_user=False):
+def init_users_image(files, averaging_methods, averaging_metric="accuracy", majority_split=0.7, test_size = 0.2, val_size = 0.2, shape=(80,80,3), seed=None, return_global_user=False, split_method="probabilistic"):
     users = {}
     keys = list(files.keys())
     if return_global_user:
@@ -234,10 +206,10 @@ def init_users_image(files, averaging_methods, averaging_metric="accuracy", majo
                   train_class = np.array([]),
                   train_data = np.array([]),
                   val_class = np.array([]),
-                  val_data = np.array([]), 
+                  val_data = np.array([]),
                   test_class = np.array([]),
                   test_data = np.array([]))
-    
+
     # for class ids in keys, we will now create a majority and rest (of the data) split
     if return_global_user:
         global_user = users.pop(-1)
@@ -245,13 +217,14 @@ def init_users_image(files, averaging_methods, averaging_metric="accuracy", majo
         keys = keys[:-1]
 
     for class_id in keys:
-        # uint8 because values were of range 0-255 and this will cover it. Saves memory 
+        # uint8 because values were of range 0-255 and this will cover it. Saves memory
         # by not using float32
         images = np.asarray(files[class_id]).astype("uint8")
         # shuffle first pls
-        majority_data, rest_data = np.split(images, [int(majority_split * len(images))])
-        rest_data_split = np.array_split(rest_data,len(keys)-1)  
-        
+        if split_method == "probabilistic":
+            majority_data, rest_data_split = probabilistic_split(images,majority_split,len(keys))
+        elif split_method == "exact":
+            majority_data, rest_data_split = exact_split(images,majority_split,len(keys))
         rest_data_index = 0
         for user_id in keys:
             if user_id == class_id:
@@ -269,7 +242,7 @@ def init_users_image(files, averaging_methods, averaging_metric="accuracy", majo
             users[user_id].add_val_class(val_class)
             users[user_id].add_train_data(train_data)
             users[user_id].add_train_class(train_class)
-    
+
     if return_global_user:
         for user in users.values():
             global_user.add_test_class(user.get_test_class())
@@ -279,16 +252,44 @@ def init_users_image(files, averaging_methods, averaging_metric="accuracy", majo
             global_user.add_train_data(user.get_train_data())
             global_user.add_train_class(user.get_train_class())
         return global_user
-                
+
     return users
 
 def train_test_val_split(np_data, class_id, test_size, val_size):
     test_data, train_data = np.split(np_data, [int(test_size * len(np_data))])
     val_size = val_size/(1-test_size)
     val_data, test_data = np.split(test_data, [int(val_size * len(test_data))])
-    
+
     train_class = np.full((train_data.shape[0]),class_id)
     test_class = np.full((test_data.shape[0]),class_id)
     val_class = np.full((val_data.shape[0]),class_id)
 #     print(f"              {val_class.shape[0] == val_data.shape[0]}")
     return train_data, train_class, test_data, test_class, val_data, val_class
+
+
+def probabilistic_split(full_data, majority_split, count):
+    probability = majority_split
+    prob_mask = np.random.sample(len(full_data))<probability
+    majority_data, rest_data = full_data[prob_mask], full_data[np.invert(prob_mask)]
+
+    ratio = len(rest_data)/(count-1)
+    rest_data_split, user_data = [], []
+    for others in range(count-1-1):
+        len_rest_data = len(rest_data)
+        if len_rest_data == 0:
+            rest_probability = 1
+        else:
+            rest_probability = ratio/len_rest_data
+
+        prob_mask = np.random.sample(len_rest_data)<rest_probability
+        user_data = rest_data[prob_mask]
+        rest_data = rest_data[np.invert(prob_mask)]
+
+        rest_data_split.append(user_data)
+    rest_data_split.append(rest_data)
+    return majority_data, np.asarray(rest_data_split)
+
+def exact_split(full_data, majority_split, count):
+    majority_data, rest_data = np.split(full_data, [int(majority_split * len(full_data))])
+    rest_data_split = np.array_split(rest_data,count-1)
+    return majority_data, rest_data_split
