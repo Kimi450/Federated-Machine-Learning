@@ -114,6 +114,7 @@ Thanks to the Alexander Baran-Harper's channel on YouTube where I learnt how to 
 \listoffigures
 \addcontentsline{toc}{section}{\numberline{}List of Figures}
 \cleardoublepage
+\listofalgorithms
 
 
 % project work
@@ -595,7 +596,7 @@ To be able to use TF-GPU on an Nvidia GPU, we had to install the prerequisite dr
 All Keras models have computations that are structured in a TensorFlow graph. These graphs can get quite large, especially for more complex models. Add to that the fact that we are training multiple models in a given experiment and also storing external data meant that storing all this in the memory would require a lot of space. The machine we used did not have sufficient RAM to store everything in memory, so as a cheap work around we decided to use swap space. With the use of a large swap space, the OS would be able swap out chunks of memory to and from the hard disk as and when required. It essentially acts as a slower extension to the RAM. Without this, the experiments would run of memory, stop running and crash the system. So even though it was slower to use swap space, it was the solution we went with as it was the simplest solution to the problem of running out of memory. 
 \\\\
 To run the experiments, we used JupyterLab. JupyterLab is a web based user interface for Project Jupyter. It allows us to run snippets of code in cells instead of running everything at once and stores their state in memory. This means that we do not need to run all the code in one go and can instead run parts of code split up into cells. It is a popular tool that people in the industry use for machine learning related tasks as it can be computationally expensive to rerun snippets of code every time. 
-\subsection{Framework}
+\subsection{Framework}\label{subsec:framework}
 We will now look at the generic testing framework that was used in this project. The metric of choice for all the averaging processes in this project was accuracy. 
 epoch*rounds = rounds
 
@@ -731,32 +732,35 @@ The \texttt{implementation} was quite time consuming in terms of implementing it
 We use pyplot from the matplotlib library, which we call \texttt{plt}, for plotting the graphs. The column in $df_{idea, round}$ containing the averages of all users for every round is used to plot the main line. To do so, we provide to the \texttt{plot} method of \texttt{plt} a list of number of the rounds for the x-axis and averages of both $pre\_fit$ and $post\_fit$ evaluations individually for the y-axis to be able to plot the two lines. They are colour coded with $pre\_fit$ being red and $post\_fit$ being blue. We then fill the region around the main line based on the filling strategy. To do so, we use the \texttt{fill\_between} method of \texttt{plt}. This method takes in a list of numbers representing the rounds for the x-axis and takes in two parameters as arrays for the limits of the fill region. For these, based on the filling strategy, we pass in different data. For the $std\_dev\_fill$, we provide $average\_array + standard\_deviation\_array$ as the upper limit and $average\_array - standard\_deviation\_array$ as the lower limit. For the $min\_mix\_fill$ we, call the \texttt{fill\_between} twice. The first time we give the array of minimum evaluations for the lower limit and the array of averages as the upper limit. For the second call, we provide the array of averages as the lower limit and the array of maximum evaluations for the upper limit. An alpha value of $0.08$ is used to colour the regions as a lighter shade of the main colour. The method then fills the region based on the upper and lower limit using the specific colour and alpha value that we chose. After both the lines and their regions have been plotted, we are finished with the plotting process and return the $df_{idea, round}$ DataFrame for usage in collecting the summary report as previously described. The graphs are also saved to disk using the \texttt{savefig} method. Figure~\ref{fig:sample_graph} is a sample of the evaluations versus rounds graph with the $min\_max\_fill$ filling strategy. 
 \\\\
 The same basic process, with a few changes, is followed for the evaluations versus users graph. The process is also still done for both $pre\_fit$ and $post\_fit$ evaluations. The user IDs are now used for the x-axis instead of the rounds. The statistics are calculated from the evaluations over the rounds for a user instead of over the users for a round. They are now user specific statistics and not round specific statistics. The same methods allow us to get them, but we call the methods on individual user's collection of evaluations instead of the evaluations of all users for a given round. The final evaluation value is also return as part of the statistics. These statistics and compiled into a DataFrame which is used for the plotting process as described above. The final values are organised into a separate DataFrame which is returned as $df_{idea, user}$ for use in collecting the summary report later. For the global user who performs non-federated learning, we only plot the line of evaluations obtained from the history object of the Keras model. 
-\subsection{Gestures dataset}\label{subsec:gestureset}
-give links for the dataset
+\subsection{Postures Dataset}\label{subsec:gestureset}
+In this and the following section, we will talk about the experiments conducted on specific datasets. This particular dataset, named ``MoCap Hand Postures Data Set'', was acquired from the UCI Machine Learning Repository~\cite{Dua:2019} as a csv file. It was the first dataset we used to conduct experiments. It is a dataset where a Vicon motion capture camera system was used to record data about 12 users performing 5 hand postures using their left hand. The data that we get are coordinates from a glove, with markers on it, that was worn on the left hand of the user.  
 \\\\
-Since the data is already a tf.data.Dataset, preprocessing can be accomplished using Dataset transformations. Here, we flatten the 28x28 images into 784-element arrays, shuffle the individual examples, organize them into batches, and renames the features from pixels and label to x and y for use with Keras. We also throw in a repeat over the data set to run several epochs.
-
-talk about hdf5
-scaling
-artificial users 
-\subsubsection{Description}
+The markers were broken down into two sets. The first set of markers was on placed the back of the glove in a rigid patter and was used to establish the local coordinate system for the hand. The second set was attached to the thumb and the fingers. This second set of markers were not labelled, so their positions were not explicitly tracked. This meant that there was no relation between the markers of two given records. Due to the resolution of the capture volume and self-occlusion due to the orientation and configuration of the hand and fingers, a lot of the records have missing marker values. Due to the manner in which the data was captured, there was also a chance that there was a near duplicate record that originated from the same user. The fact that two records could not be directly compared and a lot of marker values were missing made this quite an awkward dataset to work on, but we still gave it a shot to see how it worked with our ideas. The 
+\\\\
+Some preprocessing was performed on the dataset by the providers before sharing it. This included removing records with less than three marker values and transforming the coordinates to the local coordinate system of the record containing them. We assumed that this also takes care of scaling the data to the scale of the local coordinate system. The dataset came with columns for the x, y and z coordinates for all the markers, a column to label the hand posture and a column to label the user the data belongs to. The labels for the hand postures were enumerated as numbers.
 \subsubsection{Data separation}
-In the case where the dataset is delivered in a csv file with a column dedicated to indicate the user ID that a sample belongs to, the separation is trivial. The idea is to iterate over the csv file and based on the user IDs, separate the data. To do so, the csv file is read into a pandas DataFrame. We can call this $df$. As the user ID column indicates what user a sample of data belongs to, filtering $df$ on the user ID column is enough to separate the data. Pandas DataFrames have a filter functionality which allows us to do this with ease. First, we find the unique user IDs in the column which we can easily do using the DataFrame API. We then iterate over all the user IDs and filter $df$ so it return DataFrames that contain data only for a particular user. We maintain an array of references to these DataFrames and return it for further processing to split it as in Section~\ref{subsubsec:split}. Algorithm~\ref{algo:datasep-csv} shows the same in a Python based pseudocode below.
-\begin{center}\begin{algorithm}[H]
-\Fn{\FDataSepCsv{df}}{
-	user\_dfs = [ ]\\
-	\# returns a list of unique user IDs\\
-	user\_ids = df["UserID"].unique() \\
-	\For{\forcond{$user_id$}{$user_ids$}}{
-		\# returns a DataFrame with data for user with ID $user_id$\\
-	    df\_user = df[df["UserID"] == user\_id]\\
-		user\_dfs.append(df\_user)
-    }
-  	\textbf{return} user\_dfs
-  \caption{Data separation for csv files with user IDs}\label{algo:dataset-csv}
-}
-\end{algorithm}\end{center}
+All the ideas about federated learning we have seen in this project assumed that every user knew what data belonged to them. In the section about user initialisations, we once again assumed that the user knows what data belongs to them. But in an experiment, that is not the case. The data needs to be separated by allocating to the users the data that belongs to them. The process for doing so in this dataset was very simple. The dataset came with a column ``UserID'' which labelled every record with the user ID of the user that the record was from. 
+\\\\
+The idea is to read in the csv file and impute the missing values with zeros. Then iterate over records in the csv file and based on the ``UserID'' column, separate the data to allocate them to the simulated user representations. 
+\\\\
+To \textit{implement} this, the csv file is read into a pandas DataFrame using the \texttt{read\_csv} method provided by the pandas library. We call this DataFrame $df$. Before doing any work on the separation, we need to impute the missing values in the records. They were noted down as ``?'' which we then replaced with zeros. To do so, we first use the \texttt{replace} method on $df$ to replace the ``?'' with a special numpy value called \texttt{nan}. These \texttt{nan}'s are then replaced by zeros using the \texttt{fillna} method on $df$. We can can then move on to allocating data to the users to the point where the we can split them into training, testing and validation data before starting the training process.
+\\\\
+As the ``UserID'' column indicates what user a record belong to, filtering the $df$ on the user ID column is enough to separate the data. Pandas DataFrames have a filter functionality that allows us to do this with ease. First, we find the unique user IDs in the column which we can easily do by calling the \texttt{nunique} method on the $df$. We then iterate over all the user IDs and filter $df$ based on the user ID $i$ so it returns a DataFrame that contain data only for a particular user $U_i$. The DataFrame containing data for user $i$ is called $df_i$. This $df_i$ is then split into training, testing and validation data for the user and resulting partitions stored in a User object. The same process is done for every federated user represented by the user IDs so we have User objects initialised with the three part data. 
+%\begin{center}\begin{algorithm}[H]
+%\Fn{\FDataSepCsv{df}}{
+%	\# returns a list of unique user IDs\\
+%	user\_ids = df["UserID"].unique() \\
+%	\For{\forcond{$user_id$}{$user_ids$}}{
+%		\# returns a DataFrame with data for user with ID $user_id$\\
+%	    df\_user = df[df["UserID"] == user\_id]\\
+%	    
+%		user\_dfs.append(df\_user)
+%    }
+%  \caption{Data separation for csv files with user IDs}\label{algo:dataset-csv}
+%}
+%\end{algorithm}\end{center}
 \subsubsection{Model Selection}
+After the User objects have been initialised with the data, we need to allocate the models to them as well to start with experimentation process.
 \subsubsection{Results}
 Local Training\\
 TensorFlow Federated\\
@@ -770,15 +774,20 @@ found issues so moved on
 
 tff 
 
-\subsubsection{Testing user weights on global data}
+\subsubsection{Sanity check using TFF}
 shuffle
 df split
 model selection
 In the case of a csv file, we can use the \texttt{read\_csv} method that pandas provides. In the case of traversing a directory structure, we 
+talk about hdf5
+
+Since the data is already a tf.data.Dataset, preprocessing can be accomplished using Dataset transformations. Here, we flatten the 28x28 images into 784-element arrays, shuffle the individual examples, organize them into batches, and renames the features from pixels and label to x and y for use with Keras. We also throw in a repeat over the data set to run several epochs.
 
 
  tesorflow federated
 \subsection{Image dataset}\label{subsec:imageset}
+This dataset, named ``Natural Images''~\cite{roy2018effects}, was acquired from Kaggle.
+
 \subsubsection{Data Separation}
 In the case where the dataset is delivered using a directory structure and no user IDs, we have some freedom in terms of the separated. We can use the idea of \textit{simulated federated data}. This is where artificial users are created and given certain characteristics. A sample of a characteristic which we will look at later in section~\ref{subsec:imageset} is image affinity. We can create users have a higher affinity to a certain class of images more than classes, i.e., a user who has 80\% of their images as cats and the other 20\% are random pictures from the given dataset. The 80-20 ratio, as mentioned previously, can be changed to any other ratio we may want to experiment with because it is was artificially set by us in the first place. The directory structure indicates the classes of images, for instance, images in a directory called \textit{cat} are labelled as \textit{cat}.
 \\\\
@@ -802,7 +811,6 @@ To implement the simulated federated data idea, we
 numpy directly
 
 how seeds means that results are comparable 
-\subsubsection{Description}
 \subsubsection{Model Selection}
 \subsubsection{Results}
 Local Training\\

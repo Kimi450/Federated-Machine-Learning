@@ -1,0 +1,24 @@
+Install conda and create an environment with the relevant packages in it.
+
+`conda activate new_env_name`
+if this gives issues, then do `source ~/.bashrc` and then the command
+
+export PATH=~/anaconda3/bin:$PATH 
+source ~/.bashrc 
+conda activate env 
+jupyter lab --no-browser --port=6541
+
+
+General tips:
+If the kernel just crashes, shut down all kernels and restart.
+Yo bois, if you guys get ResourceExhausted OOM error, remove the ``with tf.device(DEVICE):``  line. That line will force tf to use the device memory and not spillover to say standard RAM.
+
+
+SCP to transfer data:
+scp -r -oProxyCommand="C:\Windows\System32\OpenSSH\ssh.exe -W %h:%p kts1@csgate.ucc.ie" ./testing kts1@csg25-05.ucc.ie:
+
+scp -r -oProxyCommand="C:\Windows\System32\OpenSSH\ssh.exe -W %h:%p kts1@csgate.ucc.ie" kts1@csg25-05.ucc.ie:~/proj/out ./
+
+scp -r dir -o "ProxyJump kts1@csgate.ucc.ie" kts1@csg25-05.ucc.ie:dest/path
+
+

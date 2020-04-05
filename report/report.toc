@@ -16,102 +16,98 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {1.3}Privacy Concerns}{3}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4}Report Outline}{3}%
+\contentsline {subsection}{\numberline {1.4}Report Outline}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {2}Literature Review}{4}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Machine Learning}{4}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Neural Networks}{6}%
+\contentsline {subsection}{\numberline {2.2}Neural Networks}{7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Neurons}{7}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.4}Architecture}{8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.4.1}Dense}{8}%
+\contentsline {subsubsection}{\numberline {2.4.1}Dense}{9}%
 \defcounter {refsection}{0}\relax 
 \contentsline {subsubsection}{\numberline {2.4.2}Convolutional}{9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.5}Training}{11}%
+\contentsline {subsection}{\numberline {2.5}Training}{12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.6}Federated Machine Learning}{12}%
+\contentsline {subsection}{\numberline {2.6}Federated Machine Learning}{13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.6.1}Benefits}{15}%
+\contentsline {subsubsection}{\numberline {2.6.1}Benefits}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {2.6.2}Drawbacks}{15}%
+\contentsline {subsubsection}{\numberline {2.6.2}Drawbacks}{16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Core Design}{16}%
+\contentsline {section}{\numberline {3}Core Design}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Non-Federated Learning}{16}%
+\contentsline {subsection}{\numberline {3.1}Non-Federated Learning}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.1.1}Design}{16}%
+\contentsline {subsubsection}{\numberline {3.1.1}Design}{17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.1.2}Implementation}{17}%
+\contentsline {subsubsection}{\numberline {3.1.2}Implementation}{18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Federated Learning}{18}%
+\contentsline {subsection}{\numberline {3.2}Federated Learning}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.1}Design}{18}%
+\contentsline {subsubsection}{\numberline {3.2.1}Design}{19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {3.2.2}Implementation}{20}%
+\contentsline {subsubsection}{\numberline {3.2.2}Implementation}{21}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}TensorFlow Federated}{24}%
+\contentsline {subsection}{\numberline {3.3}TensorFlow Federated}{25}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Extensions to Federated Learning}{27}%
+\contentsline {section}{\numberline {4}Extensions to Federated Learning}{28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.1}Centralised Averaging}{27}%
+\contentsline {subsection}{\numberline {4.1}Centralised Averaging}{28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.1}Weighted Average}{27}%
+\contentsline {subsubsection}{\numberline {4.1.1}Weighted Average}{28}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.1.2}Selective Inclusion}{29}%
+\contentsline {subsubsection}{\numberline {4.1.2}Selective Inclusion}{30}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.2}Peer to Peer}{32}%
+\contentsline {subsection}{\numberline {4.2}Peer to Peer}{33}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.1}Weighted Average}{34}%
+\contentsline {subsubsection}{\numberline {4.2.1}Weighted Average}{35}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {4.2.2}Selective Inclusion}{37}%
+\contentsline {subsubsection}{\numberline {4.2.2}Selective Inclusion}{38}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {4.3}Localised Training}{39}%
+\contentsline {subsection}{\numberline {4.3}Localised Training}{40}%
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}Experimentation}{42}%
+\contentsline {section}{\numberline {5}Experimentation}{43}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.1}Setup}{42}%
+\contentsline {subsection}{\numberline {5.1}Setup}{43}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.2}Framework}{43}%
+\contentsline {subsection}{\numberline {5.2}Framework}{44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.2.1}Design}{43}%
+\contentsline {subsubsection}{\numberline {5.2.1}Design}{44}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.2.2}Implementation}{46}%
+\contentsline {subsubsection}{\numberline {5.2.2}Implementation}{47}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.3}User Initialisation}{48}%
+\contentsline {subsection}{\numberline {5.3}User Initialisation}{49}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.3.1}Global User}{49}%
+\contentsline {subsubsection}{\numberline {5.3.1}Global User}{50}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.3.2}Federated Users}{55}%
+\contentsline {subsubsection}{\numberline {5.3.2}Federated Users}{56}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.4}Graphing}{55}%
+\contentsline {subsection}{\numberline {5.4}Graphing}{56}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.5}Gestures dataset}{58}%
+\contentsline {subsection}{\numberline {5.5}Postures Dataset}{59}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.5.1}Description}{59}%
+\contentsline {subsubsection}{\numberline {5.5.1}Data separation}{60}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.5.2}Data separation}{59}%
+\contentsline {subsubsection}{\numberline {5.5.2}Model Selection}{61}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.5.3}Model Selection}{59}%
+\contentsline {subsubsection}{\numberline {5.5.3}Results}{61}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.5.4}Results}{59}%
+\contentsline {subsubsection}{\numberline {5.5.4}Sanity check using TFF}{62}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.5.5}Testing user weights on global data}{60}%
+\contentsline {subsection}{\numberline {5.6}Image dataset}{62}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {5.6}Image dataset}{60}%
+\contentsline {subsubsection}{\numberline {5.6.1}Data Separation}{62}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.6.1}Data Separation}{60}%
+\contentsline {subsubsection}{\numberline {5.6.2}Model Selection}{63}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.6.2}Description}{61}%
+\contentsline {subsubsection}{\numberline {5.6.3}Results}{63}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.6.3}Model Selection}{61}%
+\contentsline {subsubsection}{\numberline {5.6.4}Testing user weights on global data}{63}%
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.6.4}Results}{61}%
-\defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{\numberline {5.6.5}Testing user weights on global data}{61}%
-\defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Conclusions and future work}{62}%
+\contentsline {section}{\numberline {6}Conclusions and future work}{64}%

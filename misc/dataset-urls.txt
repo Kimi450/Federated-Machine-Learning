@@ -1,0 +1,5 @@
+Gestures dataset:
+https://archive.ics.uci.edu/ml/datasets/MoCap+Hand+Postures
+
+Images dataset:
+https://www.kaggle.com/prasunroy/natural-images

@@ -86,6 +86,42 @@
       \field{title}{Deep Learning with Python}
       \field{year}{2017}
     \endentry
+    \entry{Dua:2019}{misc}{}
+      \name{author}{2}{}{%
+        {{hash=eea1505410ff15d1a2b081186aad5dbb}{%
+           family={Dua},
+           familyi={D\bibinitperiod},
+           given={Dheeru},
+           giveni={D\bibinitperiod}}}%
+        {{hash=00949829ae497e5a94a73f886a7d0b51}{%
+           family={Graff},
+           familyi={G\bibinitperiod},
+           given={Casey},
+           giveni={C\bibinitperiod}}}%
+      }
+      \list{institution}{2}{%
+        {University of California, Irvine, School of Information}%
+        {Computer Sciences}%
+      }
+      \strng{namehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{fullhash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{bibnamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authorbibnamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authornamehash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \strng{authorfullhash}{43f1da911d4e973a5ddbb30a2509e1f4}
+      \field{sortinit}{D}
+      \field{sortinithash}{c438b3d5d027251ba63f5ed538d98af5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{{UCI} Machine Learning Repository}
+      \field{year}{2017}
+      \verb{urlraw}
+      \verb http://archive.ics.uci.edu/ml
+      \endverb
+      \verb{url}
+      \verb http://archive.ics.uci.edu/ml
+      \endverb
+    \endentry
     \entry{web:neuron}{misc}{}
       \name{author}{1}{}{%
         {{hash=242ea2af70d3cca14f28b22ffdc4d6f0}{%
@@ -201,6 +237,49 @@
       \field{labeltitlesource}{title}
       \field{title}{Neural Networks and Deep Learning}
       \field{year}{2015}
+    \endentry
+    \entry{roy2018effects}{article}{}
+      \name{author}{4}{}{%
+        {{hash=70f7d3ec15e8a74c35f7ae672deccd9e}{%
+           family={Roy},
+           familyi={R\bibinitperiod},
+           given={Prasun},
+           giveni={P\bibinitperiod}}}%
+        {{hash=8974576d1af429dc43e123df9a313b53}{%
+           family={Ghosh},
+           familyi={G\bibinitperiod},
+           given={Subhankar},
+           giveni={S\bibinitperiod}}}%
+        {{hash=3e40b5bc082cd15438169af70b8a6db4}{%
+           family={Bhattacharya},
+           familyi={B\bibinitperiod},
+           given={Saumik},
+           giveni={S\bibinitperiod}}}%
+        {{hash=74f5b5740a32e8c3bb179e51576ac756}{%
+           family={Pal},
+           familyi={P\bibinitperiod},
+           given={Umapada},
+           giveni={U\bibinitperiod}}}%
+      }
+      \strng{namehash}{8140af587618794d232a2684cf617cb9}
+      \strng{fullhash}{da8fc252f0ced1227395aa4cd3bd24ce}
+      \strng{bibnamehash}{da8fc252f0ced1227395aa4cd3bd24ce}
+      \strng{authorbibnamehash}{da8fc252f0ced1227395aa4cd3bd24ce}
+      \strng{authornamehash}{8140af587618794d232a2684cf617cb9}
+      \strng{authorfullhash}{da8fc252f0ced1227395aa4cd3bd24ce}
+      \field{sortinit}{R}
+      \field{sortinithash}{b9c68a358aea118dfa887b6e902414a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:1807.10108}
+      \field{title}{Effects of Degradations on Deep Neural Network Architectures}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb https://www.kaggle.com/prasunroy/natural-images
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/prasunroy/natural-images
+      \endverb
     \endentry
     \entry{secagg}{inproceedings}{}
       \name{author}{9}{}{%
