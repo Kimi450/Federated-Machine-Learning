@@ -7,21 +7,21 @@ from user import User
 
 from sklearn.model_selection import train_test_split
 
-def init_model(init_seed=None):
+def init_model(init_seed=None, input_shape=(36,)):
     """
     initialise and return a model
     """
     model = keras.Sequential([
-        keras.layers.Flatten(),
+        keras.layers.Flatten(input_shape=input_shape),
 #         keras.layers.Dense(4096, activation='relu',
 #             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
-#         keras.layers.Dense(1024, activation='relu',
-#             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
-#         keras.layers.Dense(128, activation='relu',
-#             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
+        keras.layers.Dense(512, activation='relu',
+            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
+        keras.layers.Dense(128, activation='relu',
+            kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
         keras.layers.Dense(32, activation='relu',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed)),
-        keras.layers.Dense(6, activation='softmax',
+        keras.layers.Dense(5, activation='softmax',
             kernel_initializer=keras.initializers.glorot_uniform(seed=init_seed))
     ])
 
@@ -80,7 +80,6 @@ def init_users(df, averaging_methods, averaging_metric="accuracy", seed=None, te
     num_users = df["User"].nunique()
 
     for user_id in range(-1,num_users):
-
         i = user_id # for global user to get all the data
 
         if user_id < 0: # for global user with id -1
@@ -135,14 +134,13 @@ def split_dataframe(df, for_user=None, val_size=0.2, test_size=0.2, seed=None):
     Empty dataframes if no data present
     """
     # split into train, validation and test data using sklearn and return dfs for each
-    if for_user==None or df.shape[0] == 0:
+    if for_user!=None:
         df = df[df["User"] == for_user]
     if df.shape[0] == 0:
         # if no data for the user, then return 9 empty dfs as per the api
         # print(f"Dataframe for user {user} is of shape {df.shape}, no data. Skipping...")
         df = pd.DataFrame()
         return (df for _ in range(9))
-
 
     df_train, df_test = train_test_split(df,
                                          test_size = test_size,
@@ -161,6 +159,7 @@ def split_dataframe(df, for_user=None, val_size=0.2, test_size=0.2, seed=None):
     df_val   = df_val.  drop(df_train.columns[[0,1]], axis=1)
     df_train = df_train.drop(df_train.columns[[0,1]], axis=1)
     df_test  = df_test. drop(df_test. columns[[0,1]], axis=1)
+    
     return df_val, df_val_class,  df_val_user,\
         df_test, df_test_class, df_test_user, \
         df_train, df_train_class, df_train_user
@@ -269,7 +268,7 @@ def train_test_val_split(np_data, class_id, test_size, val_size):
 
 def probabilistic_split(full_data, majority_split, count):
     probability = majority_split
-    prob_mask = np.random.sample(len(full_data))<probability
+    prob_mask = np.random.sample(len(full_data))<=probability
     majority_data, rest_data = full_data[prob_mask], full_data[np.invert(prob_mask)]
 
     ratio = len(rest_data)/(count-1)
@@ -281,7 +280,7 @@ def probabilistic_split(full_data, majority_split, count):
         else:
             rest_probability = ratio/len_rest_data
 
-        prob_mask = np.random.sample(len_rest_data)<rest_probability
+        prob_mask = np.random.sample(len_rest_data)<=rest_probability
         user_data = rest_data[prob_mask]
         rest_data = rest_data[np.invert(prob_mask)]
 
