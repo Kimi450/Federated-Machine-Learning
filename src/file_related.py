@@ -17,6 +17,8 @@ def read_file(file):
 
     # imputation
     df.fillna(0,inplace=True) # fill nulls with 0
+    df = df.iloc[1:] # remove the first 0s
+    df["Class"] -= 1
     return df
 
 def shuffle_df(df, seed=None):
