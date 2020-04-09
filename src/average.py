@@ -18,16 +18,16 @@ class Average:
     def _raise(ex):
         raise ex
 
-    def _latest_user_metric(user, pre, post, metric):
+    def _latest_user_metric(user, pre, post, metric, data_type="test"):
         """
         returns the users metric (acc or loss) on their own model
         using their own test data, based on prefit or postfit of the model
         """
         data = None
         if metric == "accuracy":
-            data = user.get_latest_accuracy(pre = pre, post = post)
+            data = user.get_latest_accuracy(pre = pre, post = post, data_type=data_type)
         elif metric == "loss":
-            data = user.get_latest_loss(pre = pre, post = post)
+            data = user.get_latest_loss(pre = pre, post = post,data_type=data_type)
         else:
             raise Exception("Please select loss or accuracy as metric")
         return data
@@ -143,7 +143,7 @@ class Average:
         original_weights = user.get_weights()
         for user_id,weight in weights.items():
             user.set_weights(weight)
-            eval_data = user.evaluate(verbose = False)
+            eval_data = user.evaluate(verbose = False, data_type = "val") # evaluate on train and val data instead of test data to avoid leakage
             if metric == "loss":
                 eval_data = eval_data[0]
             elif metric == "accuracy":
@@ -203,7 +203,7 @@ class Average:
         latest_metrics = []
         for user in users.values():
             #print(user.get_latest_accuracy(pre = pre, post = post))
-            value = Average._latest_user_metric(user,pre,post,metric)
+            value = Average._latest_user_metric(user,pre,post,metric,data_type="val")
             latest_metrics.append(value)
 
         latest_metrics = np.asarray(latest_metrics)
@@ -211,7 +211,7 @@ class Average:
         avg = latest_metrics.mean()
 
         for user in users.values():
-            curr_metric = Average._latest_user_metric(user,pre,post,metric)
+            curr_metric = Average._latest_user_metric(user,pre,post,metric,data_type="val")
             if metric == "loss":
                 criteria = curr_metric <= (avg+std_dev)
             else:
@@ -325,7 +325,7 @@ class Average:
             user_weights = np.asarray(user.get_weights())
             users_used.add(user.get_id())
 
-            curr_metric = Average._latest_user_metric(user,pre,post, metric)
+            curr_metric = Average._latest_user_metric(user,pre,post, metric,data_type="val")
             if metric == "loss":
                 if curr_metric == 0:
                     curr_metric = 10**(-6)

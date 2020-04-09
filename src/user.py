@@ -22,6 +22,12 @@ class User:
         self._pre_fit_loss = np.array([])
         self._pre_fit_accuracy = np.array([])
 
+        self._post_fit_loss_val = np.array([])
+        self._post_fit_accuracy_val = np.array([])
+        self._pre_fit_loss_val = np.array([])
+        self._pre_fit_accuracy_val = np.array([])
+
+        
         self._averaging_metric = averaging_metric
         self._averaging_method = averaging_method #std_dev, weighted_avg
 
@@ -37,11 +43,16 @@ class User:
     def get_averaging_method(self):
         return self._averaging_method
 
-    def evaluate(self, verbose = True):
+    def evaluate(self, verbose=True, data_type="test"):
         """returns the loss and accuracy for the given User instance
         on test data"""
-        test_data = self.get_test_data()
-        test_class = self.get_test_class()
+        if data_type == "test":
+            test_data = self.get_test_data()
+            test_class = self.get_test_class()
+        elif data_type == "val": # for p2p version to avoid leakage
+            test_data = self.get_val_data()
+            test_class = self.get_val_class()
+            
         model = self.get_model()
         evaluation = model.evaluate(test_data,
                                     test_class,
@@ -77,6 +88,9 @@ class User:
 
         e = self.evaluate(verbose = verbose_evaluate)
         self.add_pre_fit_evaluation(e)
+        
+        e = self.evaluate(verbose = verbose_evaluate, data_type="val")
+        self.add_pre_fit_evaluation(e,data_type="val")
         # sanity check to see they all have the same init weights
         # print(self.get_id())
         # print(model.get_weights())
@@ -96,7 +110,9 @@ class User:
 
         e = self.evaluate(verbose = verbose_evaluate)
         self.add_post_fit_evaluation(e)
-
+        e = self.evaluate(verbose = verbose_evaluate, data_type="val")
+        self.add_post_fit_evaluation(e,data_type="val")
+        
         # update user data
 #         self.add_history(history) # to save memory, not doing this
         self.add_history_metrics(history)
@@ -133,42 +149,76 @@ class User:
         return self._post_fit_accuracy
     def get_post_fit_loss(self):
         return self._post_fit_loss
-
-    def get_latest_accuracy(self, pre, post):
+    
+    def get_pre_fit_loss_val(self):
+        return self._pre_fit_loss_val
+    def get_pre_fit_accuracy_val(self):
+        return self._pre_fit_accuracy_val
+    def get_post_fit_accuracy_val(self):
+        return self._post_fit_accuracy_val
+    def get_post_fit_loss_val(self):
+        return self._post_fit_loss_val
+    
+    def get_latest_accuracy(self, pre, post, data_type="test"):
         data = None
         if pre:
-            data = self.get_pre_fit_accuracy()
+            if data_type=="test":
+                data = self.get_pre_fit_accuracy()
+            elif data_type=="val":
+                data = self.get_pre_fit_accuracy_val()
         elif post:
-            data = self.get_post_fit_accuracy()
+            if data_type=="test":
+                data = self.get_post_fit_accuracy()
+            elif data_type=="val":
+                data = self.get_post_fit_accuracy_val()
         else:
             print("Please select one of pre or post as True")
             return None
         return data[-1]
 
-    def get_latest_loss(self, pre, post):
+    def get_latest_loss(self, pre, post, data_type="test"):
         data = None
 
         if pre:
-            data = self.get_pre_fit_loss()
+            if data_type == "test":
+                data = self.get_pre_fit_loss()
+            elif data_type == "val":
+                data = self.get_pre_fit_loss_val()
         elif post:
-            data = self.get_post_fit_loss()
+            if data_type == "test":
+                data = self.get_post_fit_loss()
+            elif data_type == "val":
+                data = self.get_post_fit_loss_val()
+            
         else:
             print("Please select one of pre or post as True")
             return None
         return data[-1]
 
-    def add_pre_fit_evaluation(self, pre_fit_evaluation):
-        self._pre_fit_loss = np.append(self.get_pre_fit_loss(),
-                                       pre_fit_evaluation[0])
-        self._pre_fit_accuracy = np.append(self.get_pre_fit_accuracy(),
-                                           pre_fit_evaluation[1])
-
-    def add_post_fit_evaluation(self,post_fit_evaluation):
-        self._post_fit_loss = np.append(self.get_post_fit_loss(),
-                                        post_fit_evaluation[0])
-        self._post_fit_accuracy = np.append(self.get_post_fit_accuracy(),
-                                            post_fit_evaluation[1])
-
+    def add_pre_fit_evaluation(self, pre_fit_evaluation,data_type="test"):
+        if data_type=="test":
+            self._pre_fit_loss = np.append(self.get_pre_fit_loss(),
+                                           pre_fit_evaluation[0])
+            self._pre_fit_accuracy = np.append(self.get_pre_fit_accuracy(),
+                                               pre_fit_evaluation[1])
+        elif data_type=="val":
+            self._pre_fit_loss_val = np.append(self.get_pre_fit_loss_val(),
+                                           pre_fit_evaluation[0])
+            self._pre_fit_accuracy_val = np.append(self.get_pre_fit_accuracy_val(),
+                                               pre_fit_evaluation[1])
+            
+    def add_post_fit_evaluation(self,post_fit_evaluation,data_type="test"):
+        if data_type=="test":
+            self._post_fit_loss = np.append(self.get_post_fit_loss(),
+                                            post_fit_evaluation[0])
+            self._post_fit_accuracy = np.append(self.get_post_fit_accuracy(),
+                                                post_fit_evaluation[1])
+        elif data_type=="val":
+            self._post_fit_loss_val = np.append(self.get_post_fit_loss_val(),
+                                            post_fit_evaluation[0])
+            self._post_fit_accuracy_val = np.append(self.get_post_fit_accuracy_val(),
+                                                post_fit_evaluation[1])
+            
     def get_model(self):
         return self._model
 
