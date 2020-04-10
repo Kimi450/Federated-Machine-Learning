@@ -1,21 +1,29 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {1}{\ignorespaces High level visual representation of what fields there are in the study of AI.\relax }}{2}%
+\contentsline {figure}{\numberline {1}{\ignorespaces High level visual representation of what fields there are in the study of AI.\relax }}{1}{figure.caption.5}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {2}{\ignorespaces A very simple decision tree\nobreakspace {}\cite {phdthesis}.\relax }}{6}%
+\contentsline {figure}{\numberline {2}{\ignorespaces A very simple decision tree\nobreakspace {}\cite {phdthesis}.\relax }}{6}{figure.caption.6}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {3}{\ignorespaces Major components of a neuron\nobreakspace {}\cite {web:neuron}.\relax }}{8}%
+\contentsline {figure}{\numberline {3}{\ignorespaces Major components of a neuron\nobreakspace {}\cite {web:neuron}.\relax }}{7}{figure.caption.7}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {4}{\ignorespaces Basic dense neural network\nobreakspace {}\cite {bre2018prediction}\relax }}{9}%
+\contentsline {figure}{\numberline {4}{\ignorespaces Basic dense neural network\nobreakspace {}\cite {bre2018prediction}\relax }}{9}{figure.caption.8}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {5}{\ignorespaces How a convolution works\nobreakspace {}\cite {deeplearning}.\relax }}{10}%
+\contentsline {figure}{\numberline {5}{\ignorespaces How a convolution works\nobreakspace {}\cite {deeplearning}.\relax }}{10}{figure.caption.9}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {6}{\ignorespaces Federated learning.\relax }}{15}%
+\contentsline {figure}{\numberline {6}{\ignorespaces Federated learning.\relax }}{14}{figure.caption.10}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {7}{\ignorespaces Methods and attributes of the User class.\relax }}{22}%
+\contentsline {figure}{\numberline {7}{\ignorespaces Methods and attributes of the User class.\relax }}{21}{figure.caption.11}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {8}{\ignorespaces Methods and attributes of the Average class.\relax }}{24}%
+\contentsline {figure}{\numberline {8}{\ignorespaces Methods and attributes of the Average class.\relax }}{23}{figure.caption.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {9}{\ignorespaces A visual representation of the data splitting approaches.\relax }}{51}%
+\contentsline {figure}{\numberline {9}{\ignorespaces A visual representation of the data splitting approaches.\relax }}{50}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {10}{\ignorespaces An example to show the sausage graph idea.\relax }}{57}%
+\contentsline {figure}{\numberline {10}{\ignorespaces An example to show the sausage graph idea.\relax }}{56}{figure.caption.14}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {11}{\ignorespaces Architecture of the model used for the postures dataset.\relax }}{61}{figure.caption.15}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {12}{\ignorespaces short}}{62}{figure.caption.16}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {13}{\ignorespaces Architecture of the model used for the images dataset.\relax }}{71}{figure.caption.20}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {14}{\ignorespaces short}}{73}{figure.caption.21}%

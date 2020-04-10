@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  6 APR 2020 00:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  10 APR 2020 20:18
 entering extended mode
 **./report.tex
 (report.tex
@@ -175,6 +175,24 @@ Package tocloft Info: The document has section divisions on input line 51.
 \cfttabindent=\skip97
 \cfttabnumwidth=\skip98
 )
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/makecell\makecell.
+sty"
+Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\array.sty"
+Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
+\col@sep=\dimen143
+\ar@mcellbox=\box55
+\extrarowheight=\dimen144
+\NC@list=\toks17
+\extratabsurround=\skip99
+\backup@length=\skip100
+\ar@cellbox=\box56
+)
+\rotheadsize=\dimen145
+\c@nlinenum=\count183
+\TeXr@lab=\toks18
+)
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\caption.st
 y"
 Package: caption 2020/01/03 v3.4h Customizing captions (AR)
@@ -183,23 +201,166 @@ Package: caption 2020/01/03 v3.4h Customizing captions (AR)
 ty"
 Package: caption3 2020/01/03 v1.8h caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 61.
-\captionmargin=\dimen143
-\captionmargin@=\dimen144
-\captionwidth=\dimen145
-\caption@tempdima=\dimen146
-\caption@indent=\dimen147
-\caption@parindent=\dimen148
-\caption@hangindent=\dimen149
+\captionmargin=\dimen146
+\captionmargin@=\dimen147
+\captionwidth=\dimen148
+\caption@tempdima=\dimen149
+\caption@indent=\dimen150
+\caption@parindent=\dimen151
+\caption@hangindent=\dimen152
 Package caption Info: Standard document class detected.
 )
-\c@caption@flags=\count183
-\c@continuedfloat=\count184
+\c@caption@flags=\count184
+\c@continuedfloat=\count185
 Package caption Info: float package is loaded.
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hyperref.
+sty"
+Package: hyperref 2020/01/14 v7.00d Hypertext links for LaTeX
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds.
+sty"
+Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexc
+mds.sty"
+Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infwar
+err.sty"
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys\kvsetk
+eys.sty"
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvdefinekeys\kvd
+efinekeys.sty"
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/pdfescape\pdfesc
+ape.sty"
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hycolor\hycolor.st
+y"
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/letltxmacro\letltx
+macro.sty"
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/auxhook\auxhook.st
+y"
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\kvoption
+s.sty"
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen153
+\Hy@linkcounter=\count186
+\Hy@pagecounter=\count187
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\pd1enc.de
+f"
+File: pd1enc.def 2020/01/14 v7.00d Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/intcalc\intcalc.
+sty"
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/etexcmds\etexcmd
+s.sty"
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count188
+Package hyperref Info: Hyper figures OFF on input line 4547.
+Package hyperref Info: Link nesting OFF on input line 4552.
+Package hyperref Info: Hyper index ON on input line 4555.
+Package hyperref Info: Plain pages OFF on input line 4562.
+Package hyperref Info: Backreferencing OFF on input line 4567.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4800.
+\c@Hy@tempcnt=\count189
+ ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty"
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5159.
+\XeTeXLinkMargin=\dimen154
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bitset\bitset.st
+y"
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/bigintcalc\bigin
+tcalc.sty"
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
+)
+))
+\Fld@menulength=\count190
+\Field@Width=\dimen155
+\Fld@charsize=\dimen156
+Package hyperref Info: Hyper figures OFF on input line 6430.
+Package hyperref Info: Link nesting OFF on input line 6435.
+Package hyperref Info: Hyper index ON on input line 6438.
+Package hyperref Info: backreferencing OFF on input line 6445.
+Package hyperref Info: Link coloring OFF on input line 6450.
+Package hyperref Info: Link coloring with OCG OFF on input line 6455.
+Package hyperref Info: PDF/A mode OFF on input line 6460.
+LaTeX Info: Redefining \ref on input line 6500.
+LaTeX Info: Redefining \pageref on input line 6504.
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/atbegshi\atbegsh
+i.sty"
+Package: atbegshi 2019/12/05 v1.19 At begin shipout hook (HO)
+)
+\Hy@abspage=\count191
+\c@Item=\count192
+\c@Hfootnote=\count193
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\hpdftex.d
+ef"
+File: hpdftex.def 2020/01/14 v7.00d Hyperref driver for pdfTeX
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/atveryend\atveryen
+d.sty"
+Package: atveryend 2019-12-11 v1.11 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+)
+\Fld@listcount=\count194
+\c@bookmark@seq@number=\count195
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/rerunfilecheck\rer
+unfilecheck.sty"
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/uniquecounter\un
+iquecounter.sty"
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+86.
+)
+\Hy@SectionHShift=\skip101
 )
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.st
 y"
 Package: amsmath 2020/01/20 v2.17e AMS math features
-\@mathmargin=\skip99
+\@mathmargin=\skip102
 
 For additional information on amsmath, use the `?' option.
 
@@ -210,53 +371,53 @@ Package: amstext 2000/06/29 v2.01 AMS text
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty
 "
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks17
-\ex@=\dimen150
+\@emptytoks=\toks19
+\ex@=\dimen157
 ))
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty
 "
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen151
+\pmbraise@=\dimen158
 )
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty
 "
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count185
+\inf@bad=\count196
 LaTeX Info: Redefining \frac on input line 227.
-\uproot@=\count186
-\leftroot@=\count187
+\uproot@=\count197
+\leftroot@=\count198
 LaTeX Info: Redefining \overline on input line 389.
-\classnum@=\count188
-\DOTSCASE@=\count189
+\classnum@=\count199
+\DOTSCASE@=\count266
 LaTeX Info: Redefining \ldots on input line 486.
 LaTeX Info: Redefining \dots on input line 489.
 LaTeX Info: Redefining \cdots on input line 610.
-\Mathstrutbox@=\box55
-\strutbox@=\box56
-\big@size=\dimen152
+\Mathstrutbox@=\box57
+\strutbox@=\box58
+\big@size=\dimen159
 LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
-\macc@depth=\count190
-\c@MaxMatrixCols=\count191
-\dotsspace@=\muskip16
-\c@parentequation=\count192
-\dspbrk@lvl=\count193
-\tag@help=\toks18
-\row@=\count194
-\column@=\count195
-\maxfields@=\count196
-\andhelp@=\toks19
-\eqnshift@=\dimen153
-\alignsep@=\dimen154
-\tagshift@=\dimen155
-\tagwidth@=\dimen156
-\totwidth@=\dimen157
-\lineht@=\dimen158
-\@envbody=\toks20
-\multlinegap=\skip100
-\multlinetaggap=\skip101
-\mathdisplay@stack=\toks21
+\macc@depth=\count267
+\c@MaxMatrixCols=\count268
+\dotsspace@=\muskip17
+\c@parentequation=\count269
+\dspbrk@lvl=\count270
+\tag@help=\toks20
+\row@=\count271
+\column@=\count272
+\maxfields@=\count273
+\andhelp@=\toks21
+\eqnshift@=\dimen160
+\alignsep@=\dimen161
+\tagshift@=\dimen162
+\tagwidth@=\dimen163
+\totwidth@=\dimen164
+\lineht@=\dimen165
+\@envbody=\toks22
+\multlinegap=\skip103
+\multlinetaggap=\skip104
+\mathdisplay@stack=\toks23
 LaTeX Info: Redefining \[ on input line 2859.
 LaTeX Info: Redefining \] on input line 2860.
 )
@@ -264,108 +425,83 @@ LaTeX Info: Redefining \] on input line 2860.
 y"
 Package: nowidow 2011/09/20 1.0 Easily prevent widows and orphans
 Package: nowidow 
-
-("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/kvoptions\kvoption
-s.sty"
-Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
-
-("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/ltxcmds\ltxcmds.
-sty"
-Package: ltxcmds 2019/12/15 v1.24 LaTeX kernel commands for general use (HO)
 )
-("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvsetkeys\kvsetk
-eys.sty"
-Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
-)))
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/caption\subcaption
+.sty"
+Package: subcaption 2020/01/22 v1.3d Sub-captions (AR)
+\c@subfigure=\count274
+\c@subtable=\count275
+)
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/biblatex\biblatex.
 sty"
 Package: biblatex 2019/12/01 v3.14 programmable bibliographies (PK/MW)
 
-("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/pdftexcmds\pdftexc
-mds.sty"
-Package: pdftexcmds 2019/11/24 v0.31 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/infwarerr\infwar
-err.sty"
-Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-)
-("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/iftex\iftex.sty"
-Package: iftex 2019/11/07 v1.0c TeX engine tests
-)
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/etoolbox\etoolbox.
 sty"
 Package: etoolbox 2019/09/21 v2.5h e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count197
+\etb@tempcnta=\count276
 )
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/logreq\logreq.sty"
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count198
+\lrq@indent=\count277
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/logreq\logreq.def"
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
-)) ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/url\url.sty"
-\Urlmuskip=\muskip17
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-\c@tabx@nest=\count199
-\c@listtotal=\count266
-\c@listcount=\count267
-\c@liststart=\count268
-\c@liststop=\count269
-\c@citecount=\count270
-\c@citetotal=\count271
-\c@multicitecount=\count272
-\c@multicitetotal=\count273
-\c@instcount=\count274
-\c@maxnames=\count275
-\c@minnames=\count276
-\c@maxitems=\count277
-\c@minitems=\count278
-\c@citecounter=\count279
-\c@maxcitecounter=\count280
-\c@savedcitecounter=\count281
-\c@uniquelist=\count282
-\c@uniquename=\count283
-\c@refsection=\count284
-\c@refsegment=\count285
-\c@maxextratitle=\count286
-\c@maxextratitleyear=\count287
-\c@maxextraname=\count288
-\c@maxextradate=\count289
-\c@maxextraalpha=\count290
-\c@abbrvpenalty=\count291
-\c@highnamepenalty=\count292
-\c@lownamepenalty=\count293
-\c@maxparens=\count294
-\c@parenlevel=\count295
-\blx@tempcnta=\count296
-\blx@tempcntb=\count297
-\blx@tempcntc=\count298
-\blx@maxsection=\count299
-\blx@maxsegment@0=\count300
-\blx@notetype=\count301
-\blx@parenlevel@text=\count302
-\blx@parenlevel@foot=\count303
-\blx@sectionciteorder@0=\count304
-\blx@entrysetcounter=\count305
-\labelnumberwidth=\skip102
-\labelalphawidth=\skip103
-\biblabelsep=\skip104
-\bibitemsep=\skip105
-\bibnamesep=\skip106
-\bibinitsep=\skip107
-\bibparsep=\skip108
-\bibhang=\skip109
+))
+\c@tabx@nest=\count278
+\c@listtotal=\count279
+\c@listcount=\count280
+\c@liststart=\count281
+\c@liststop=\count282
+\c@citecount=\count283
+\c@citetotal=\count284
+\c@multicitecount=\count285
+\c@multicitetotal=\count286
+\c@instcount=\count287
+\c@maxnames=\count288
+\c@minnames=\count289
+\c@maxitems=\count290
+\c@minitems=\count291
+\c@citecounter=\count292
+\c@maxcitecounter=\count293
+\c@savedcitecounter=\count294
+\c@uniquelist=\count295
+\c@uniquename=\count296
+\c@refsection=\count297
+\c@refsegment=\count298
+\c@maxextratitle=\count299
+\c@maxextratitleyear=\count300
+\c@maxextraname=\count301
+\c@maxextradate=\count302
+\c@maxextraalpha=\count303
+\c@abbrvpenalty=\count304
+\c@highnamepenalty=\count305
+\c@lownamepenalty=\count306
+\c@maxparens=\count307
+\c@parenlevel=\count308
+\blx@tempcnta=\count309
+\blx@tempcntb=\count310
+\blx@tempcntc=\count311
+\blx@maxsection=\count312
+\blx@maxsegment@0=\count313
+\blx@notetype=\count314
+\blx@parenlevel@text=\count315
+\blx@parenlevel@foot=\count316
+\blx@sectionciteorder@0=\count317
+\blx@entrysetcounter=\count318
+\labelnumberwidth=\skip105
+\labelalphawidth=\skip106
+\biblabelsep=\skip107
+\bibitemsep=\skip108
+\bibnamesep=\skip109
+\bibinitsep=\skip110
+\bibparsep=\skip111
+\bibhang=\skip112
 \blx@bcfin=\read2
 \blx@bcfout=\write3
 \blx@langwohyphens=\language78
-\c@mincomprange=\count306
-\c@maxcomprange=\count307
-\c@mincompwidth=\count308
+\c@mincomprange=\count319
+\c@maxcomprange=\count320
+\c@mincompwidth=\count321
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -377,88 +513,88 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'IEEE.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count309
-\c@savedafterword=\count310
-\c@annotator=\count311
-\c@savedannotator=\count312
-\c@author=\count313
-\c@savedauthor=\count314
-\c@bookauthor=\count315
-\c@savedbookauthor=\count316
-\c@commentator=\count317
-\c@savedcommentator=\count318
-\c@editor=\count319
-\c@savededitor=\count320
-\c@editora=\count321
-\c@savededitora=\count322
-\c@editorb=\count323
-\c@savededitorb=\count324
-\c@editorc=\count325
-\c@savededitorc=\count326
-\c@foreword=\count327
-\c@savedforeword=\count328
-\c@holder=\count329
-\c@savedholder=\count330
-\c@introduction=\count331
-\c@savedintroduction=\count332
-\c@namea=\count333
-\c@savednamea=\count334
-\c@nameb=\count335
-\c@savednameb=\count336
-\c@namec=\count337
-\c@savednamec=\count338
-\c@translator=\count339
-\c@savedtranslator=\count340
-\c@shortauthor=\count341
-\c@savedshortauthor=\count342
-\c@shorteditor=\count343
-\c@savedshorteditor=\count344
-\c@labelname=\count345
-\c@savedlabelname=\count346
-\c@institution=\count347
-\c@savedinstitution=\count348
-\c@lista=\count349
-\c@savedlista=\count350
-\c@listb=\count351
-\c@savedlistb=\count352
-\c@listc=\count353
-\c@savedlistc=\count354
-\c@listd=\count355
-\c@savedlistd=\count356
-\c@liste=\count357
-\c@savedliste=\count358
-\c@listf=\count359
-\c@savedlistf=\count360
-\c@location=\count361
-\c@savedlocation=\count362
-\c@organization=\count363
-\c@savedorganization=\count364
-\c@origlocation=\count365
-\c@savedoriglocation=\count366
-\c@origpublisher=\count367
-\c@savedorigpublisher=\count368
-\c@publisher=\count369
-\c@savedpublisher=\count370
-\c@language=\count371
-\c@savedlanguage=\count372
-\c@origlanguage=\count373
-\c@savedoriglanguage=\count374
-\c@pageref=\count375
-\c@savedpageref=\count376
-\shorthandwidth=\skip110
-\shortjournalwidth=\skip111
-\shortserieswidth=\skip112
-\shorttitlewidth=\skip113
-\shortauthorwidth=\skip114
-\shorteditorwidth=\skip115
-\locallabelnumberwidth=\skip116
-\locallabelalphawidth=\skip117
-\localshorthandwidth=\skip118
-\localshortjournalwidth=\skip119
-\localshortserieswidth=\skip120
-\localshorttitlewidth=\skip121
-\localshortauthorwidth=\skip122
-\localshorteditorwidth=\skip123
+\c@afterword=\count322
+\c@savedafterword=\count323
+\c@annotator=\count324
+\c@savedannotator=\count325
+\c@author=\count326
+\c@savedauthor=\count327
+\c@bookauthor=\count328
+\c@savedbookauthor=\count329
+\c@commentator=\count330
+\c@savedcommentator=\count331
+\c@editor=\count332
+\c@savededitor=\count333
+\c@editora=\count334
+\c@savededitora=\count335
+\c@editorb=\count336
+\c@savededitorb=\count337
+\c@editorc=\count338
+\c@savededitorc=\count339
+\c@foreword=\count340
+\c@savedforeword=\count341
+\c@holder=\count342
+\c@savedholder=\count343
+\c@introduction=\count344
+\c@savedintroduction=\count345
+\c@namea=\count346
+\c@savednamea=\count347
+\c@nameb=\count348
+\c@savednameb=\count349
+\c@namec=\count350
+\c@savednamec=\count351
+\c@translator=\count352
+\c@savedtranslator=\count353
+\c@shortauthor=\count354
+\c@savedshortauthor=\count355
+\c@shorteditor=\count356
+\c@savedshorteditor=\count357
+\c@labelname=\count358
+\c@savedlabelname=\count359
+\c@institution=\count360
+\c@savedinstitution=\count361
+\c@lista=\count362
+\c@savedlista=\count363
+\c@listb=\count364
+\c@savedlistb=\count365
+\c@listc=\count366
+\c@savedlistc=\count367
+\c@listd=\count368
+\c@savedlistd=\count369
+\c@liste=\count370
+\c@savedliste=\count371
+\c@listf=\count372
+\c@savedlistf=\count373
+\c@location=\count374
+\c@savedlocation=\count375
+\c@organization=\count376
+\c@savedorganization=\count377
+\c@origlocation=\count378
+\c@savedoriglocation=\count379
+\c@origpublisher=\count380
+\c@savedorigpublisher=\count381
+\c@publisher=\count382
+\c@savedpublisher=\count383
+\c@language=\count384
+\c@savedlanguage=\count385
+\c@origlanguage=\count386
+\c@savedoriglanguage=\count387
+\c@pageref=\count388
+\c@savedpageref=\count389
+\shorthandwidth=\skip113
+\shortjournalwidth=\skip114
+\shortserieswidth=\skip115
+\shorttitlewidth=\skip116
+\shortauthorwidth=\skip117
+\shorteditorwidth=\skip118
+\locallabelnumberwidth=\skip119
+\locallabelalphawidth=\skip120
+\localshorthandwidth=\skip121
+\localshortjournalwidth=\skip122
+\localshortserieswidth=\skip123
+\localshorttitlewidth=\skip124
+\localshortauthorwidth=\skip125
+\localshorteditorwidth=\skip126
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
@@ -472,19 +608,19 @@ Package biblatex Info: ... file 'biblatex.def' found.
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/biblatex\biblatex.
 def"
 File: biblatex.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
-\c@textcitecount=\count377
-\c@textcitetotal=\count378
-\c@textcitemaxnames=\count379
-\c@biburlbigbreakpenalty=\count380
-\c@biburlbreakpenalty=\count381
-\c@biburlnumpenalty=\count382
-\c@biburlucpenalty=\count383
-\c@biburllcpenalty=\count384
+\c@textcitecount=\count390
+\c@textcitetotal=\count391
+\c@textcitemaxnames=\count392
+\c@biburlbigbreakpenalty=\count393
+\c@biburlbreakpenalty=\count394
+\c@biburlnumpenalty=\count395
+\c@biburlucpenalty=\count396
+\c@biburllcpenalty=\count397
 \biburlbigskip=\muskip18
 \biburlnumskip=\muskip19
 \biburlucskip=\muskip20
 \biburllcskip=\muskip21
-\c@smartand=\count385
+\c@smartand=\count398
 )
 Package biblatex Info: Trying to load bibliography style 'IEEE'...
 Package biblatex Info: ... file 'IEEE.bbx' found.
@@ -510,8 +646,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/biblatex/bbx\stand
 ard.bbx"
 File: standard.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count386
-\c@bbx:relatedtotal=\count387
+\c@bbx:relatedcount=\count399
+\c@bbx:relatedtotal=\count400
 ))))
 Package biblatex Info: Trying to load citation style 'IEEE'...
 Package biblatex Info: ... file 'IEEE.cbx' found.
@@ -525,8 +661,8 @@ Package biblatex Info: ... file 'numeric-comp.cbx' found.
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/biblatex/cbx\numer
 ic-comp.cbx"
 File: numeric-comp.cbx 2019/12/01 v3.14 biblatex citation style (PK/MW)
-\c@cbx@tempcnta=\count388
-\c@cbx@tempcntb=\count389
+\c@cbx@tempcnta=\count401
+\c@cbx@tempcntb=\count402
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -549,46 +685,52 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 cfg"
 File: biblatex.cfg 
 ))
-\@quotelevel=\count390
-\@quotereset=\count391
+\@quotelevel=\count403
+\@quotereset=\count404
 
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/l3backend\l3backen
 d-pdfmode.def"
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count392
-\l__pdf_internal_box=\box57
-) (report.aux)
+\l__kernel_color_stack_int=\count405
+\l__pdf_internal_box=\box59
+) (report.aux
+
+LaTeX Warning: Label `tab:sometab' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 44.
-LaTeX Font Info:    ... okay on input line 44.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 48.
+LaTeX Font Info:    ... okay on input line 48.
 
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-p
 df.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count393
-\scratchdimen=\dimen159
-\scratchbox=\box58
-\nofMPsegments=\count394
-\nofMParguments=\count395
-\everyMPshowfont=\toks22
-\MPscratchCnt=\count396
-\MPscratchDim=\dimen160
-\MPnumerator=\count397
-\makeMPintoPDFobject=\count398
-\everyMPtoPDFconversion=\toks23
+\scratchcounter=\count406
+\scratchdimen=\dimen166
+\scratchbox=\box60
+\nofMPsegments=\count407
+\nofMParguments=\count408
+\everyMPshowfont=\toks24
+\MPscratchCnt=\count409
+\MPscratchDim=\dimen167
+\MPnumerator=\count410
+\makeMPintoPDFobject=\count411
+\everyMPtoPDFconversion=\toks25
 )
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/epstopdf-pkg\epsto
 pdf-base.sty"
@@ -596,11 +738,7 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 
 ("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/grfext\grfext.sty"
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-
-("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/kvdefinekeys\kvd
-efinekeys.sty"
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-))
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 85.
 Package grfext Info: Graphics extension search list:
@@ -609,7 +747,32 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
 )
 Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
+\AtBeginShipoutBox=\box61
+Package hyperref Info: Link coloring OFF on input line 48.
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/hyperref\nameref.s
+ty"
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/refcount\refcount.
+sty"
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+)
+("C:\Users\karan\AppData\Local\Programs\MiKTeX 2.9\tex/generic/gettitlestring\g
+ettitlestring.sty"
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count412
+)
+LaTeX Info: Redefining \ref on input line 48.
+LaTeX Info: Redefining \pageref on input line 48.
+LaTeX Info: Redefining \nameref on input line 48.
+ (report.out) (report.out)
+\@outlinefile=\write4
+\openout4 = `report.out'.
+
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
 
@@ -625,36 +788,36 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'report.bbl' found.
  (report.bbl)
-Package biblatex Info: Reference section=0 on input line 44.
-Package biblatex Info: Reference segment=0 on input line 44.
+Package biblatex Info: Reference section=0 on input line 48.
+Package biblatex Info: Reference segment=0 on input line 48.
  [1
 
 {C:/Users/karan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 75--80
+Underfull \hbox (badness 10000) in paragraph at lines 79--84
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 75--80
+Underfull \hbox (badness 10000) in paragraph at lines 79--84
 
  []
 
 [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 86--89
+Underfull \hbox (badness 10000) in paragraph at lines 90--93
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 95--98
+Underfull \hbox (badness 10000) in paragraph at lines 99--102
 
  []
 
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 101--105
+Underfull \hbox (badness 10000) in paragraph at lines 105--109
 
  []
 
@@ -663,576 +826,795 @@ Underfull \hbox (badness 10000) in paragraph at lines 101--105
 ] (report.toc [4
 
 ])
-\tf@toc=\write4
-\openout4 = `report.toc'.
+\tf@toc=\write5
+\openout5 = `report.toc'.
 
  [5] (report.lof)
-\tf@lof=\write5
-\openout5 = `report.lof'.
+\tf@lof=\write6
+\openout6 = `report.lof'.
 
  [6
 
 ] (report.loa)
-\tf@loa=\write6
-\openout6 = `report.loa'.
+\tf@loa=\write7
+\openout7 = `report.loa'.
 
-<resources/ai.png, id=28, 461.47406pt x 424.58624pt>
-File: resources/ai.png Graphic file (type png)
-<use resources/ai.png>
-Package pdftex.def Info: resources/ai.png  used on input line 135.
-(pdftex.def)             Requested size: 170.71652pt x 157.06853pt.
+ [7
 
-Underfull \hbox (badness 10000) in paragraph at lines 130--138
+] (report.lot)
+\tf@lot=\write8
+\openout8 = `report.lot'.
 
- []
 
-[1
+[8
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 141--144
+<resources/ai.png, id=417, 461.47406pt x 424.58624pt>
+File: resources/ai.png Graphic file (type png)
+<use resources/ai.png>
+Package pdftex.def Info: resources/ai.png  used on input line 146.
+(pdftex.def)             Requested size: 170.71652pt x 157.06853pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 141--149
 
  []
 
-[2 <./resources/ai.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 145--150
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.151 \subsection
+                 {Motivation} [1
+
+ <./resources/ai.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 152--155
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 145--150
+Underfull \hbox (badness 10000) in paragraph at lines 156--161
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 151--154
+Underfull \hbox (badness 10000) in paragraph at lines 156--161
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 162--165
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--174
 
  []
 
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 156--163
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 156--163
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 156--163
+Underfull \hbox (badness 10000) in paragraph at lines 174--178
 
  []
 
 [4]
-Underfull \hbox (badness 10000) in paragraph at lines 163--167
-
- []
-
-[5]
-<resources/decisiontree.png, id=49, 853.1875pt x 635.37375pt>
+<resources/decisiontree.png, id=446, 853.1875pt x 635.37375pt>
 File: resources/decisiontree.png Graphic file (type png)
 <use resources/decisiontree.png>
-Package pdftex.def Info: resources/decisiontree.png  used on input line 180.
+Package pdftex.def Info: resources/decisiontree.png  used on input line 191.
 (pdftex.def)             Requested size: 227.62204pt x 169.50755pt.
- [6 <./resources/decisiontree.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 185--187
+ [5]
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 185--187
+Underfull \hbox (badness 10000) in paragraph at lines 196--198
 
  []
 
-<resources/neuron.png, id=57, 386.44376pt x 254.9525pt>
+<resources/neuron.png, id=458, 386.44376pt x 254.9525pt>
 File: resources/neuron.png Graphic file (type png)
 <use resources/neuron.png>
-Package pdftex.def Info: resources/neuron.png  used on input line 191.
+Package pdftex.def Info: resources/neuron.png  used on input line 202.
 (pdftex.def)             Requested size: 170.71652pt x 112.62682pt.
-[7]
-Underfull \hbox (badness 10000) in paragraph at lines 209--215
+[6 <./resources/decisiontree.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 220--226
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 209--215
+Underfull \hbox (badness 10000) in paragraph at lines 220--226
 
  []
 
-[8 <./resources/neuron.png>]
-<resources/densenet.png, id=66, 853.1875pt x 499.8675pt>
+[7 <./resources/neuron.png>]
+<resources/densenet.png, id=478, 853.1875pt x 499.8675pt>
 File: resources/densenet.png Graphic file (type png)
 <use resources/densenet.png>
-Package pdftex.def Info: resources/densenet.png  used on input line 219.
+Package pdftex.def Info: resources/densenet.png  used on input line 230.
 (pdftex.def)             Requested size: 227.62204pt x 133.35664pt.
-<resources/convnet.png, id=67, 428.802pt x 502.87875pt>
+ [8]
+<resources/convnet.png, id=486, 428.802pt x 502.87875pt>
 File: resources/convnet.png Graphic file (type png)
 <use resources/convnet.png>
-Package pdftex.def Info: resources/convnet.png  used on input line 229.
+Package pdftex.def Info: resources/convnet.png  used on input line 240.
 (pdftex.def)             Requested size: 227.62204pt x 266.94649pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 224--232
+Underfull \hbox (badness 10000) in paragraph at lines 235--243
 
  []
 
-[9 <./resources/densenet.png>] [10 <./resources/convnet.png>] [11]
-Underfull \hbox (badness 10000) in paragraph at lines 236--256
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 236--256
+[9 <./resources/densenet.png>] [10 <./resources/convnet.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 247--267
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--262
+Underfull \hbox (badness 10000) in paragraph at lines 247--267
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 257--262
+Underfull \hbox (badness 10000) in paragraph at lines 268--273
 
  []
 
-[12
 
-] [13]
-Underfull \hbox (badness 10000) in paragraph at lines 288--292
+Underfull \hbox (badness 10000) in paragraph at lines 268--273
 
  []
 
-[14]
-<resources/fedml.png, id=91, 891.33pt x 553.06625pt>
+[11
+
+] [12]
+Underfull \hbox (badness 10000) in paragraph at lines 299--303
+
+ []
+
+[13]
+<resources/fedml.png, id=542, 891.33pt x 553.06625pt>
 File: resources/fedml.png Graphic file (type png)
 <use resources/fedml.png>
-Package pdftex.def Info: resources/fedml.png  used on input line 309.
+Package pdftex.def Info: resources/fedml.png  used on input line 320.
 (pdftex.def)             Requested size: 390.0pt x 241.9912pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--317
+Underfull \hbox (badness 10000) in paragraph at lines 325--328
 
  []
 
-[15 <./resources/fedml.png>] [16]
-Underfull \hbox (badness 10000) in paragraph at lines 326--330
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 331--339
+[14 <./resources/fedml.png>] [15]
+Underfull \hbox (badness 10000) in paragraph at lines 337--341
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--339
+Underfull \hbox (badness 10000) in paragraph at lines 342--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--339
+Underfull \hbox (badness 10000) in paragraph at lines 342--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--339
+Underfull \hbox (badness 10000) in paragraph at lines 342--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 331--339
-
- []
-
-[17
-
-] [18]
-
-LaTeX Warning: Reference `sec:fedml' on page 19 undefined on input line 340.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 342--349
+Underfull \hbox (badness 10000) in paragraph at lines 342--350
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--349
+Underfull \hbox (badness 10000) in paragraph at lines 342--350
+
+ []
+
+[16
+
+] [17]
+
+LaTeX Warning: Reference `sec:fedml' on page 18 undefined on input line 351.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--360
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 342--349
+Underfull \hbox (badness 10000) in paragraph at lines 353--360
 
  []
 
-[19]
+
+Underfull \hbox (badness 10000) in paragraph at lines 353--360
+
+ []
+
+[18]
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 364.
- [20]
-<resources/classes_User.png, id=112, 1256.695pt x 1268.74pt>
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 375.
+ [19]
+<resources/classes_User.png, id=611, 1256.695pt x 1268.74pt>
 File: resources/classes_User.png Graphic file (type png)
 <use resources/classes_User.png>
-Package pdftex.def Info: resources/classes_User.png  used on input line 386.
+Package pdftex.def Info: resources/classes_User.png  used on input line 397.
 (pdftex.def)             Requested size: 390.0pt x 393.73125pt.
- [21]
-<resources/classes_Average.png, id=116, 611.28375pt x 366.36874pt>
+ [20]
+<resources/classes_Average.png, id=627, 611.28375pt x 366.36874pt>
 File: resources/classes_Average.png Graphic file (type png)
 <use resources/classes_Average.png>
-Package pdftex.def Info: resources/classes_Average.png  used on input line 399.
+Package pdftex.def Info: resources/classes_Average.png  used on input line 410.
 
 (pdftex.def)             Requested size: 284.52756pt x 170.5274pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--402
+Underfull \hbox (badness 10000) in paragraph at lines 401--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--402
+Underfull \hbox (badness 10000) in paragraph at lines 401--413
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 390--402
+Underfull \hbox (badness 10000) in paragraph at lines 401--413
 
  []
 
-[22 <./resources/classes_User.png>] [23] [24 <./resources/classes_Average.png>]
+[21 <./resources/classes_User.png>] [22] [23 <./resources/classes_Average.png>]
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--416
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 405--416
+Underfull \hbox (badness 10000) in paragraph at lines 416--428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--416
+Underfull \hbox (badness 10000) in paragraph at lines 416--428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--416
+Underfull \hbox (badness 10000) in paragraph at lines 416--428
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 405--416
+Underfull \hbox (badness 10000) in paragraph at lines 416--428
 
  []
 
-[25] [26] [27]
-Underfull \hbox (badness 10000) in paragraph at lines 425--428
+
+Underfull \hbox (badness 10000) in paragraph at lines 416--428
 
  []
 
-[28
+[24] [25] [26]
+Underfull \hbox (badness 10000) in paragraph at lines 437--440
+
+ []
+
+[27
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 430--434
+Underfull \hbox (badness 10000) in paragraph at lines 442--446
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 466--469
+Underfull \hbox (badness 10000) in paragraph at lines 478--481
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 482--485
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 470--473
+Underfull \hbox (badness 10000) in paragraph at lines 500--505
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--505
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 488--493
+Underfull \hbox (badness 10000) in paragraph at lines 507--510
+
+ []
+
+[31] [32]
+Underfull \hbox (badness 10000) in paragraph at lines 543--548
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 488--493
+Underfull \hbox (badness 10000) in paragraph at lines 543--548
 
  []
 
-[31]
-Underfull \hbox (badness 10000) in paragraph at lines 495--498
-
- []
-
-[32] [33]
-Underfull \hbox (badness 10000) in paragraph at lines 531--536
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 549--556
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 531--536
-
- []
-
-[34]
-Underfull \hbox (badness 10000) in paragraph at lines 537--544
+Underfull \hbox (badness 10000) in paragraph at lines 549--556
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--544
+Underfull \hbox (badness 10000) in paragraph at lines 549--556
+
+ []
+
+[34] [35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 557--562
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 537--544
+Underfull \hbox (badness 10000) in paragraph at lines 557--562
 
  []
 
-[35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 545--550
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 545--550
-
- []
-
-[37] [38] [39]
-Underfull \hbox (badness 10000) in paragraph at lines 551--556
+[37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 563--568
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 551--556
+Underfull \hbox (badness 10000) in paragraph at lines 563--568
 
  []
 
-[40]
-Underfull \hbox (badness 10000) in paragraph at lines 581--586
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 581--586
-
- []
-
-[41] [42]
-Underfull \hbox (badness 10000) in paragraph at lines 589--591
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 593--598
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 589--591
+Underfull \hbox (badness 10000) in paragraph at lines 593--598
+
+ []
+
+[40] [41]
+Underfull \hbox (badness 10000) in paragraph at lines 601--603
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 592--599
+Underfull \hbox (badness 10000) in paragraph at lines 601--603
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 592--599
+Underfull \hbox (badness 10000) in paragraph at lines 604--611
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 592--599
+Underfull \hbox (badness 10000) in paragraph at lines 604--611
 
  []
 
-[43
 
-]
+Underfull \hbox (badness 10000) in paragraph at lines 604--611
 
-LaTeX Warning: Reference `subsec:propsplit' on page 44 undefined on input line 
-604.
-
-[44]
-Overfull \hbox (18.20204pt too wide) in paragraph at lines 646--646
- []|[]\OT1/cmr/m/n/12 users[]idea.get[]every[]users[]final[]pre[]fit[]post[]fit
-[]for[]$\OML/cmm/m/it/12 metric$\OT1/cmr/m/n/12 ()  
  []
 
+[42
 
-Overfull \hbox (33.73799pt too wide) in paragraph at lines 646--646
- []|[]\OT1/cmr/m/n/12 users[]idea.get[]final[]round[]average[]pre[]fit[]post[]f
+] [43]
+Overfull \hbox (18.20204pt too wide) in paragraph at lines 656--656
+ [][]|[]\OT1/cmr/m/n/12 users[]idea.get[]every[]users[]final[]pre[]fit[]post[]f
 it[]for[]$\OML/cmm/m/it/12 metric$\OT1/cmr/m/n/12 ()  
  []
 
-[45] [46]
 
-LaTeX Warning: Reference `subsec:graphing' on page 47 undefined on input line 6
-53.
+Overfull \hbox (33.73799pt too wide) in paragraph at lines 656--656
+ [][]|[]\OT1/cmr/m/n/12 users[]idea.get[]final[]round[]average[]pre[]fit[]post[
+]fit[]for[]$\OML/cmm/m/it/12 metric$\OT1/cmr/m/n/12 ()  
+ []
+
+[44] [45]
+
+LaTeX Warning: Reference `subsec:graphing' on page 46 undefined on input line 6
+63.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 649--660
+Underfull \hbox (badness 10000) in paragraph at lines 659--670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 649--660
+Underfull \hbox (badness 10000) in paragraph at lines 659--670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 649--660
+Underfull \hbox (badness 10000) in paragraph at lines 659--670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 649--660
+Underfull \hbox (badness 10000) in paragraph at lines 659--670
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 649--660
+Underfull \hbox (badness 10000) in paragraph at lines 659--670
 
  []
 
-[47] [48]
-<resources/split.png, id=204, 784.9325pt x 222.8325pt>
+[46] [47]
+<resources/split.png, id=905, 784.9325pt x 222.8325pt>
 File: resources/split.png Graphic file (type png)
 <use resources/split.png>
-Package pdftex.def Info: resources/split.png  used on input line 672.
+Package pdftex.def Info: resources/split.png  used on input line 682.
 (pdftex.def)             Requested size: 390.0pt x 110.71893pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 663--675
+Underfull \hbox (badness 10000) in paragraph at lines 673--685
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 663--675
+Underfull \hbox (badness 10000) in paragraph at lines 673--685
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 663--675
+Underfull \hbox (badness 10000) in paragraph at lines 673--685
 
  []
 
-[49] [50] [51 <./resources/split.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 696--702
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 696--702
-
- []
-
-[52]
-Underfull \hbox (badness 10000) in paragraph at lines 704--714
+[48] [49] [50 <./resources/split.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 706--711
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 704--714
+Underfull \hbox (badness 10000) in paragraph at lines 706--711
+
+ []
+
+[51]
+Underfull \hbox (badness 10000) in paragraph at lines 713--725
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 704--714
+Underfull \hbox (badness 10000) in paragraph at lines 713--725
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 704--714
-
- []
-
-[53] [54] [55]
-Underfull \hbox (badness 10000) in paragraph at lines 715--718
+Underfull \hbox (badness 10000) in paragraph at lines 713--725
 
  []
 
 
-LaTeX Warning: Reference `sample_graph' on page 56 undefined on input line 719.
+Underfull \hbox (badness 10000) in paragraph at lines 713--725
+
+ []
 
 
-<resources/sample_graph.png, id=228, 511.9125pt x 279.0425pt>
+Underfull \hbox (badness 10000) in paragraph at lines 713--725
+
+ []
+
+[52] [53] [54]
+Underfull \hbox (badness 10000) in paragraph at lines 726--729
+
+ []
+
+
+LaTeX Warning: Reference `sample_graph' on page 55 undefined on input line 730.
+
+
+<resources/sample_graph.png, id=956, 511.9125pt x 279.0425pt>
 File: resources/sample_graph.png Graphic file (type png)
 <use resources/sample_graph.png>
-Package pdftex.def Info: resources/sample_graph.png  used on input line 722.
+Package pdftex.def Info: resources/sample_graph.png  used on input line 733.
 (pdftex.def)             Requested size: 284.52756pt x 155.09607pt.
-[56]
-Underfull \hbox (badness 10000) in paragraph at lines 726--735
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 737--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 726--735
+Underfull \hbox (badness 10000) in paragraph at lines 737--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 726--735
+Underfull \hbox (badness 10000) in paragraph at lines 737--746
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 726--735
+Underfull \hbox (badness 10000) in paragraph at lines 737--746
 
  []
 
-[57 <./resources/sample_graph.png>] [58]
-Underfull \hbox (badness 10000) in paragraph at lines 736--741
+[56 <./resources/sample_graph.png>] [57]
+Underfull \hbox (badness 10000) in paragraph at lines 747--752
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 736--741
+Underfull \hbox (badness 10000) in paragraph at lines 747--752
+
+ []
+
+[58]
+Underfull \hbox (badness 10000) in paragraph at lines 753--773
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--773
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 753--773
 
  []
 
 [59]
-Underfull \hbox (badness 10000) in paragraph at lines 742--762
+<resources/posture_model.png, id=983, 295.1025pt x 187.902pt>
+File: resources/posture_model.png Graphic file (type png)
+<use resources/posture_model.png>
+Package pdftex.def Info: resources/posture_model.png  used on input line 777.
+(pdftex.def)             Requested size: 284.52756pt x 181.17233pt.
+ [60]
+<resources/posture_global_stdsplit-accuracy.png, id=989, 394.47375pt x 279.0425
+pt>
+File: resources/posture_global_stdsplit-accuracy.png Graphic file (type png)
+<use resources/posture_global_stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_global_stdsplit-accuracy.png  used o
+n input line 789.
+(pdftex.def)             Requested size: 175.49881pt x 124.14157pt.
+<resources/posture_localround-stdsplit-accuracy.png, id=990, 511.9125pt x 279.0
+425pt>
+File: resources/posture_localround-stdsplit-accuracy.png Graphic file (type png
+)
+<use resources/posture_localround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_localround-stdsplit-accuracy.png  us
+ed on input line 795.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+<resources/posture_centralround-stdsplit-accuracy.png, id=991, 511.9125pt x 279
+.0425pt>
+File: resources/posture_centralround-stdsplit-accuracy.png Graphic file (type p
+ng)
+<use resources/posture_centralround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_centralround-stdsplit-accuracy.png  
+used on input line 802.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+<resources/posture_stdround-stdsplit-accuracy.png, id=992, 511.9125pt x 279.042
+5pt>
+File: resources/posture_stdround-stdsplit-accuracy.png Graphic file (type png)
+<use resources/posture_stdround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_stdround-stdsplit-accuracy.png  used
+ on input line 808.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+<resources/posture_stdround_p2p-stdsplit-accuracy.png, id=993, 511.9125pt x 279
+.0425pt>
+File: resources/posture_stdround_p2p-stdsplit-accuracy.png Graphic file (type p
+ng)
+<use resources/posture_stdround_p2p-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_stdround_p2p-stdsplit-accuracy.png  
+used on input line 813.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+<resources/posture_weightround-stdsplit-accuracy.png, id=994, 511.9125pt x 279.
+0425pt>
+File: resources/posture_weightround-stdsplit-accuracy.png Graphic file (type pn
+g)
+<use resources/posture_weightround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_weightround-stdsplit-accuracy.png  u
+sed on input line 819.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+<resources/posture_weightround_p2p-stdsplit-accuracy.png, id=995, 511.9125pt x 
+279.0425pt>
+File: resources/posture_weightround_p2p-stdsplit-accuracy.png Graphic file (typ
+e png)
+<use resources/posture_weightround_p2p-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_weightround_p2p-stdsplit-accuracy.pn
+g  used on input line 824.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 783--829
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--762
+Underfull \hbox (badness 10000) in paragraph at lines 783--829
+
+ []
+
+[61 <./resources/posture_model.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 830--851
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 742--762
+Underfull \hbox (badness 10000) in paragraph at lines 830--851
 
  []
 
-[60] [61]
-Underfull \hbox (badness 10000) in paragraph at lines 792--795
+[62 <./resources/posture_global_stdsplit-accuracy.png> <./resources/posture_loc
+alround-stdsplit-accuracy.png> <./resources/posture_centralround-stdsplit-accur
+acy.png> <./resources/posture_stdround-stdsplit-accuracy.png> <./resources/post
+ure_stdround_p2p-stdsplit-accuracy.png> <./resources/posture_weightround-stdspl
+it-accuracy.png> <./resources/posture_weightround_p2p-stdsplit-accuracy.png>]
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 872--875
 
  []
 
-[62]
-Underfull \hbox (badness 10000) in paragraph at lines 816--824
+[64] [65] [66]
+Underfull \hbox (badness 10000) in paragraph at lines 916--929
 
  []
 
-[63] [64
+
+Overfull \hbox (11.17969pt too wide) in paragraph at lines 916--929
+\OT1/cmr/m/n/12 ob-jects. We can do so by in-stan-ti-at-ing the \OT1/cmtt/m/n/1
+2 hdf5[]client[]data.HDF5ClientData
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--929
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--929
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--929
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--929
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 916--929
+
+ []
+
+[67] [68]
+Underfull \hbox (badness 10000) in paragraph at lines 932--939
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 932--939
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 932--939
+
+ []
+
+[69]
+<resources/image_model.png, id=1059, 292.6935pt x 317.988pt>
+File: resources/image_model.png Graphic file (type png)
+<use resources/image_model.png>
+Package pdftex.def Info: resources/image_model.png  used on input line 943.
+(pdftex.def)             Requested size: 284.52756pt x 309.11757pt.
+ [70] [71 <./resources/image_model.png>]
+File: resources/posture_global_stdsplit-accuracy.png Graphic file (type png)
+<use resources/posture_global_stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_global_stdsplit-accuracy.png  used o
+n input line 953.
+(pdftex.def)             Requested size: 175.49881pt x 124.14157pt.
+File: resources/posture_localround-stdsplit-accuracy.png Graphic file (type png
+)
+<use resources/posture_localround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_localround-stdsplit-accuracy.png  us
+ed on input line 959.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+File: resources/posture_centralround-stdsplit-accuracy.png Graphic file (type p
+ng)
+<use resources/posture_centralround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_centralround-stdsplit-accuracy.png  
+used on input line 965.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+File: resources/posture_stdround-stdsplit-accuracy.png Graphic file (type png)
+<use resources/posture_stdround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_stdround-stdsplit-accuracy.png  used
+ on input line 971.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+File: resources/posture_stdround_p2p-stdsplit-accuracy.png Graphic file (type p
+ng)
+<use resources/posture_stdround_p2p-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_stdround_p2p-stdsplit-accuracy.png  
+used on input line 976.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+File: resources/posture_weightround-stdsplit-accuracy.png Graphic file (type pn
+g)
+<use resources/posture_weightround-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_weightround-stdsplit-accuracy.png  u
+sed on input line 982.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+File: resources/posture_weightround_p2p-stdsplit-accuracy.png Graphic file (typ
+e png)
+<use resources/posture_weightround_p2p-stdsplit-accuracy.png>
+Package pdftex.def Info: resources/posture_weightround_p2p-stdsplit-accuracy.pn
+g  used on input line 987.
+(pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
+ [72]
+Underfull \hbox (badness 10000) in paragraph at lines 995--1003
+
+ []
+
+[73] [74] [75] [76
 
 ]
-Overfull \hbox (6.29555pt too wide) in paragraph at lines 835--835
-[]\OT1/cmr/m/n/12 JustinB, \OT1/cmr/m/it/12 In-tro-duc-tion to per-cep-tron: Ne
-u-ral net-work\OT1/cmr/m/n/12 , 2017. [On-line]. Avail-
+Overfull \hbox (16.15718pt too wide) in paragraph at lines 1073--1073
+\OT1/cmr/m/n/12 Avail-able: []$\OT1/cmtt/m/n/12 https : / / blog . knoldus . co
+m / introduction -[] to -[] perceptron -[]
  []
 
-[65
 
-] (report.aux)
+Overfull \hbox (5.19052pt too wide) in paragraph at lines 1073--1073
+\OT1/cmr/m/n/12 on deep neu-ral net-work ar-chi-tec-tures,'' \OT1/cmr/m/it/12 a
+rXiv preprint arXiv:1807.10108\OT1/cmr/m/n/12 ,
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1076.
+[77
+
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1076.
+ (report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1076.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1076.
+
+Package rerunfilecheck Info: File `report.out' has not changed.
+(rerunfilecheck)             Checksum: 1D34E5956AB15441DB2BBA70BF63B2A1;3884.
+
 
 LaTeX Warning: There were undefined references.
+
+
+LaTeX Warning: There were multiply-defined labels.
 
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1076.
  ) 
 Here is how much of TeX's memory you used:
- 11954 strings out of 481565
- 218154 string characters out of 2914179
- 859225 words of memory out of 3000000
- 27051 multiletter control sequences out of 15000+200000
- 540337 words of font info for 51 fonts, out of 3000000 for 9000
+ 16205 strings out of 481565
+ 285993 string characters out of 2914179
+ 944401 words of memory out of 3000000
+ 30871 multiletter control sequences out of 15000+200000
+ 540637 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,56p,3228b,1218s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,21n,56p,3240b,1258s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\karan\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1200.pk><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/font
@@ -1243,16 +1625,17 @@ l/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/karan
 :/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
 cmmi6.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmmi8.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/karan/AppData/Local/Prog
-rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/karan/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users
-/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti12.
-pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfon
-ts/cm/cmtt12.pfb>
-Output written on report.pdf (72 pages, 905825 bytes).
+ype1/public/amsfonts/cm/cmr10.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/karan/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/karan/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users
+/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmti12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (86 pages, 1221569 bytes).
 PDF statistics:
- 308 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1229 PDF objects out of 1440 (max. 8388607)
+ 338 named destinations out of 1000 (max. 500000)
+ 568 words of extra memory for PDF output out of 10000 (max. 10000000)
 

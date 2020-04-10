@@ -122,6 +122,31 @@
       \verb http://archive.ics.uci.edu/ml
       \endverb
     \endentry
+    \entry{kaggle:model}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=960db1ebe14d4daee1d7fba0b525dedf}{%
+           family={gabrielloye},
+           familyi={g\bibinitperiod}}}%
+      }
+      \strng{namehash}{960db1ebe14d4daee1d7fba0b525dedf}
+      \strng{fullhash}{960db1ebe14d4daee1d7fba0b525dedf}
+      \strng{bibnamehash}{960db1ebe14d4daee1d7fba0b525dedf}
+      \strng{authorbibnamehash}{960db1ebe14d4daee1d7fba0b525dedf}
+      \strng{authornamehash}{960db1ebe14d4daee1d7fba0b525dedf}
+      \strng{authorfullhash}{960db1ebe14d4daee1d7fba0b525dedf}
+      \field{sortinit}{g}
+      \field{sortinithash}{62eb2aa29549e4fdbd3cb154ec5711cb}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Pytorch VGG16 Natural Images}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://www.kaggle.com/gabrielloye/pytorch-vgg16-natural-images
+      \endverb
+      \verb{url}
+      \verb https://www.kaggle.com/gabrielloye/pytorch-vgg16-natural-images
+      \endverb
+    \endentry
     \entry{web:neuron}{misc}{}
       \name{author}{1}{}{%
         {{hash=242ea2af70d3cca14f28b22ffdc4d6f0}{%
