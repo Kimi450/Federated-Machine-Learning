@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  12 APR 2020 01:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.2.14)  12 APR 2020 22:26
 entering extended mode
 **./report.tex
 (report.tex
@@ -840,7 +840,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 102--105
 [8
 
 ]
-<resources/ai.png, id=424, 461.47406pt x 424.58624pt>
+<resources/ai.png, id=434, 461.47406pt x 424.58624pt>
 File: resources/ai.png Graphic file (type png)
 <use resources/ai.png>
 Package pdftex.def Info: resources/ai.png  used on input line 149.
@@ -898,7 +898,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 177--181
  []
 
 [4]
-<resources/decisiontree.png, id=452, 853.1875pt x 635.37375pt>
+<resources/decisiontree.png, id=462, 853.1875pt x 635.37375pt>
 File: resources/decisiontree.png Graphic file (type png)
 <use resources/decisiontree.png>
 Package pdftex.def Info: resources/decisiontree.png  used on input line 194.
@@ -913,7 +913,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 199--201
 
  []
 
-<resources/neuron.png, id=464, 386.44376pt x 254.9525pt>
+<resources/neuron.png, id=474, 386.44376pt x 254.9525pt>
 File: resources/neuron.png Graphic file (type png)
 <use resources/neuron.png>
 Package pdftex.def Info: resources/neuron.png  used on input line 205.
@@ -929,13 +929,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 223--229
  []
 
 [7 <./resources/neuron.png>]
-<resources/densenet.png, id=484, 853.1875pt x 499.8675pt>
+<resources/densenet.png, id=494, 853.1875pt x 499.8675pt>
 File: resources/densenet.png Graphic file (type png)
 <use resources/densenet.png>
 Package pdftex.def Info: resources/densenet.png  used on input line 233.
 (pdftex.def)             Requested size: 227.62204pt x 133.35664pt.
  [8]
-<resources/convnet.png, id=492, 428.802pt x 502.87875pt>
+<resources/convnet.png, id=502, 428.802pt x 502.87875pt>
 File: resources/convnet.png Graphic file (type png)
 <use resources/convnet.png>
 Package pdftex.def Info: resources/convnet.png  used on input line 243.
@@ -973,7 +973,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 302--306
  []
 
 [13]
-<resources/fedml.png, id=548, 891.33pt x 553.06625pt>
+<resources/fedml.png, id=558, 891.33pt x 553.06625pt>
 File: resources/fedml.png Graphic file (type png)
 <use resources/fedml.png>
 Package pdftex.def Info: resources/fedml.png  used on input line 323.
@@ -1038,13 +1038,13 @@ Underfull \hbox (badness 10000) in paragraph at lines 356--363
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 378.
  [19]
-<resources/classes_User.png, id=619, 1256.695pt x 1268.74pt>
+<resources/classes_User.png, id=629, 1256.695pt x 1268.74pt>
 File: resources/classes_User.png Graphic file (type png)
 <use resources/classes_User.png>
 Package pdftex.def Info: resources/classes_User.png  used on input line 400.
 (pdftex.def)             Requested size: 390.0pt x 393.73125pt.
  [20]
-<resources/classes_Average.png, id=635, 611.28375pt x 366.36874pt>
+<resources/classes_Average.png, id=645, 611.28375pt x 366.36874pt>
 File: resources/classes_Average.png Graphic file (type png)
 <use resources/classes_Average.png>
 Package pdftex.def Info: resources/classes_Average.png  used on input line 413.
@@ -1103,111 +1103,111 @@ Underfull \hbox (badness 10000) in paragraph at lines 445--449
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 481--484
-
- []
-
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 485--488
+Underfull \hbox (badness 10000) in paragraph at lines 483--486
 
  []
 
 [29]
-Underfull \hbox (badness 10000) in paragraph at lines 503--508
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 503--508
+Underfull \hbox (badness 10000) in paragraph at lines 487--490
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 510--513
-
- []
-
-[31] [32]
-Underfull \hbox (badness 10000) in paragraph at lines 546--551
+Underfull \hbox (badness 10000) in paragraph at lines 505--510
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--551
+Underfull \hbox (badness 10000) in paragraph at lines 505--510
 
  []
 
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 552--559
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 512--515
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 552--559
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 552--559
-
- []
-
-[34] [35] [36]
-Underfull \hbox (badness 10000) in paragraph at lines 560--565
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 548--553
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 560--565
+Underfull \hbox (badness 10000) in paragraph at lines 548--553
+
+ []
+
+[33] [34]
+Underfull \hbox (badness 10000) in paragraph at lines 554--561
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 554--561
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 554--561
+
+ []
+
+[35] [36]
+Underfull \hbox (badness 10000) in paragraph at lines 562--567
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 562--567
 
  []
 
 [37] [38]
-Underfull \hbox (badness 10000) in paragraph at lines 566--571
+Underfull \hbox (badness 10000) in paragraph at lines 568--573
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 566--571
+Underfull \hbox (badness 10000) in paragraph at lines 568--573
 
  []
 
 [39]
-Underfull \hbox (badness 10000) in paragraph at lines 596--601
+Underfull \hbox (badness 10000) in paragraph at lines 598--603
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 596--601
+Underfull \hbox (badness 10000) in paragraph at lines 598--603
 
  []
 
 [40] [41]
-Underfull \hbox (badness 10000) in paragraph at lines 606--613
+Underfull \hbox (badness 10000) in paragraph at lines 608--615
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--613
+Underfull \hbox (badness 10000) in paragraph at lines 608--615
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 606--613
+Underfull \hbox (badness 10000) in paragraph at lines 608--615
 
  []
 
 [42
 
 ] [43]
-Overfull \hbox (18.20204pt too wide) in paragraph at lines 658--658
+Overfull \hbox (18.20204pt too wide) in paragraph at lines 660--660
  [][]|[]\OT1/cmr/m/n/12 users[]idea.get[]every[]users[]final[]pre[]fit[]post[]f
 it[]for[]$\OML/cmm/m/it/12 metric$\OT1/cmr/m/n/12 ()  
  []
 
 
-Overfull \hbox (33.73799pt too wide) in paragraph at lines 658--658
+Overfull \hbox (33.73799pt too wide) in paragraph at lines 660--660
  [][]|[]\OT1/cmr/m/n/12 users[]idea.get[]final[]round[]average[]pre[]fit[]post[
 ]fit[]for[]$\OML/cmm/m/it/12 metric$\OT1/cmr/m/n/12 ()  
  []
@@ -1215,226 +1215,226 @@ Overfull \hbox (33.73799pt too wide) in paragraph at lines 658--658
 [44]
 
 LaTeX Warning: Reference `subsec:graphing' on page 45 undefined on input line 6
-65.
+67.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 661--672
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 661--672
+Underfull \hbox (badness 10000) in paragraph at lines 663--674
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 661--672
+Underfull \hbox (badness 10000) in paragraph at lines 663--674
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 661--672
+Underfull \hbox (badness 10000) in paragraph at lines 663--674
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 661--672
+Underfull \hbox (badness 10000) in paragraph at lines 663--674
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 663--674
 
  []
 
 [45] [46] [47]
-<resources/split.png, id=913, 784.9325pt x 222.8325pt>
+<resources/split.png, id=925, 784.9325pt x 222.8325pt>
 File: resources/split.png Graphic file (type png)
 <use resources/split.png>
-Package pdftex.def Info: resources/split.png  used on input line 684.
+Package pdftex.def Info: resources/split.png  used on input line 686.
 (pdftex.def)             Requested size: 390.0pt x 110.71893pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 675--687
+Underfull \hbox (badness 10000) in paragraph at lines 677--689
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 675--687
+Underfull \hbox (badness 10000) in paragraph at lines 677--689
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 675--687
+Underfull \hbox (badness 10000) in paragraph at lines 677--689
 
  []
 
 [48] [49 <./resources/split.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 708--713
+Underfull \hbox (badness 10000) in paragraph at lines 710--715
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 708--713
+Underfull \hbox (badness 10000) in paragraph at lines 710--715
 
  []
 
 [50]
-Underfull \hbox (badness 10000) in paragraph at lines 715--727
+Underfull \hbox (badness 10000) in paragraph at lines 717--729
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--727
+Underfull \hbox (badness 10000) in paragraph at lines 717--729
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--727
+Underfull \hbox (badness 10000) in paragraph at lines 717--729
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--727
+Underfull \hbox (badness 10000) in paragraph at lines 717--729
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 715--727
+Underfull \hbox (badness 10000) in paragraph at lines 717--729
 
  []
 
 [51] [52] [53]
-Underfull \hbox (badness 10000) in paragraph at lines 728--731
+Underfull \hbox (badness 10000) in paragraph at lines 730--733
 
  []
 
 
-LaTeX Warning: Reference `sample_graph' on page 54 undefined on input line 732.
+LaTeX Warning: Reference `sample_graph' on page 54 undefined on input line 734.
 
 
-<resources/sample_graph.png, id=960, 511.9125pt x 279.0425pt>
+<resources/sample_graph.png, id=972, 511.9125pt x 279.0425pt>
 File: resources/sample_graph.png Graphic file (type png)
 <use resources/sample_graph.png>
-Package pdftex.def Info: resources/sample_graph.png  used on input line 735.
+Package pdftex.def Info: resources/sample_graph.png  used on input line 737.
 (pdftex.def)             Requested size: 284.52756pt x 155.09607pt.
 [54]
-Underfull \hbox (badness 10000) in paragraph at lines 739--748
+Underfull \hbox (badness 10000) in paragraph at lines 741--750
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--748
+Underfull \hbox (badness 10000) in paragraph at lines 741--750
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--748
+Underfull \hbox (badness 10000) in paragraph at lines 741--750
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 739--748
+Underfull \hbox (badness 10000) in paragraph at lines 741--750
 
  []
 
 [55 <./resources/sample_graph.png>] [56]
-Underfull \hbox (badness 10000) in paragraph at lines 749--754
+Underfull \hbox (badness 10000) in paragraph at lines 751--756
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 749--754
+Underfull \hbox (badness 10000) in paragraph at lines 751--756
 
  []
 
 [57]
-Underfull \hbox (badness 10000) in paragraph at lines 755--775
+Underfull \hbox (badness 10000) in paragraph at lines 757--777
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 755--775
+Underfull \hbox (badness 10000) in paragraph at lines 757--777
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 755--775
+Underfull \hbox (badness 10000) in paragraph at lines 757--777
 
  []
 
 [58]
-<resources/posture_model.png, id=987, 295.1025pt x 187.902pt>
+<resources/posture_model.png, id=999, 295.1025pt x 187.902pt>
 File: resources/posture_model.png Graphic file (type png)
 <use resources/posture_model.png>
-Package pdftex.def Info: resources/posture_model.png  used on input line 779.
+Package pdftex.def Info: resources/posture_model.png  used on input line 781.
 (pdftex.def)             Requested size: 284.52756pt x 181.17233pt.
  [59]
-<resources/posture_global_stdsplit-accuracy.png, id=993, 394.47375pt x 279.0425
-pt>
+<resources/posture_global_stdsplit-accuracy.png, id=1005, 394.47375pt x 279.042
+5pt>
 File: resources/posture_global_stdsplit-accuracy.png Graphic file (type png)
 <use resources/posture_global_stdsplit-accuracy.png>
 Package pdftex.def Info: resources/posture_global_stdsplit-accuracy.png  used o
-n input line 791.
+n input line 793.
 (pdftex.def)             Requested size: 175.49881pt x 124.14157pt.
-<resources/posture_localround-stdsplit-accuracy.png, id=994, 511.9125pt x 279.0
-425pt>
+<resources/posture_localround-stdsplit-accuracy.png, id=1006, 511.9125pt x 279.
+0425pt>
 File: resources/posture_localround-stdsplit-accuracy.png Graphic file (type png
 )
 <use resources/posture_localround-stdsplit-accuracy.png>
 Package pdftex.def Info: resources/posture_localround-stdsplit-accuracy.png  us
-ed on input line 797.
+ed on input line 799.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_centralround-stdsplit-accuracy.png, id=995, 511.9125pt x 279
-.0425pt>
+<resources/posture_centralround-stdsplit-accuracy.png, id=1007, 511.9125pt x 27
+9.0425pt>
 File: resources/posture_centralround-stdsplit-accuracy.png Graphic file (type p
 ng)
 <use resources/posture_centralround-stdsplit-accuracy.png>
 Package pdftex.def Info: resources/posture_centralround-stdsplit-accuracy.png  
-used on input line 804.
+used on input line 806.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_stdround-stdsplit-accuracy.png, id=996, 511.9125pt x 279.042
-5pt>
+<resources/posture_stdround-stdsplit-accuracy.png, id=1008, 511.9125pt x 279.04
+25pt>
 File: resources/posture_stdround-stdsplit-accuracy.png Graphic file (type png)
 <use resources/posture_stdround-stdsplit-accuracy.png>
 Package pdftex.def Info: resources/posture_stdround-stdsplit-accuracy.png  used
- on input line 810.
+ on input line 812.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_stdround_p2p-stdsplit-accuracy.png, id=997, 511.9125pt x 279
-.0425pt>
+<resources/posture_stdround_p2p-stdsplit-accuracy.png, id=1009, 511.9125pt x 27
+9.0425pt>
 File: resources/posture_stdround_p2p-stdsplit-accuracy.png Graphic file (type p
 ng)
 <use resources/posture_stdround_p2p-stdsplit-accuracy.png>
 Package pdftex.def Info: resources/posture_stdround_p2p-stdsplit-accuracy.png  
-used on input line 815.
+used on input line 817.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_weightround-stdsplit-accuracy.png, id=998, 511.9125pt x 279.
-0425pt>
+<resources/posture_weightround-stdsplit-accuracy.png, id=1010, 511.9125pt x 279
+.0425pt>
 File: resources/posture_weightround-stdsplit-accuracy.png Graphic file (type pn
 g)
 <use resources/posture_weightround-stdsplit-accuracy.png>
 Package pdftex.def Info: resources/posture_weightround-stdsplit-accuracy.png  u
-sed on input line 821.
+sed on input line 823.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_weightround_p2p-stdsplit-accuracy.png, id=999, 511.9125pt x 
-279.0425pt>
+<resources/posture_weightround_p2p-stdsplit-accuracy.png, id=1011, 511.9125pt x
+ 279.0425pt>
 File: resources/posture_weightround_p2p-stdsplit-accuracy.png Graphic file (typ
 e png)
 <use resources/posture_weightround_p2p-stdsplit-accuracy.png>
 Package pdftex.def Info: resources/posture_weightround_p2p-stdsplit-accuracy.pn
-g  used on input line 826.
+g  used on input line 828.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 785--831
+Underfull \hbox (badness 10000) in paragraph at lines 787--833
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 785--831
+Underfull \hbox (badness 10000) in paragraph at lines 787--833
 
  []
 
 [60 <./resources/posture_model.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 832--853
+Underfull \hbox (badness 10000) in paragraph at lines 834--855
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 832--853
+Underfull \hbox (badness 10000) in paragraph at lines 834--855
 
  []
 
@@ -1444,132 +1444,132 @@ acy.png> <./resources/posture_stdround-stdsplit-accuracy.png> <./resources/post
 ure_stdround_p2p-stdsplit-accuracy.png> <./resources/posture_weightround-stdspl
 it-accuracy.png> <./resources/posture_weightround_p2p-stdsplit-accuracy.png>]
 [62]
-Underfull \hbox (badness 10000) in paragraph at lines 874--916
+Underfull \hbox (badness 10000) in paragraph at lines 876--918
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 874--916
+Underfull \hbox (badness 10000) in paragraph at lines 876--918
 
  []
 
 [63] [64]
-Underfull \hbox (badness 10000) in paragraph at lines 917--920
+Underfull \hbox (badness 10000) in paragraph at lines 919--922
 
  []
 
 [65]
-Underfull \hbox (badness 10000) in paragraph at lines 921--934
+Underfull \hbox (badness 10000) in paragraph at lines 923--936
 
  []
 
 
-Overfull \hbox (11.17969pt too wide) in paragraph at lines 921--934
+Overfull \hbox (11.17969pt too wide) in paragraph at lines 923--936
 \OT1/cmr/m/n/12 ob-jects. We can do so by in-stan-ti-at-ing the \OT1/cmtt/m/n/1
 2 hdf5[]client[]data.HDF5ClientData
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 921--934
+Underfull \hbox (badness 10000) in paragraph at lines 923--936
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 921--934
+Underfull \hbox (badness 10000) in paragraph at lines 923--936
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 921--934
+Underfull \hbox (badness 10000) in paragraph at lines 923--936
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 921--934
+Underfull \hbox (badness 10000) in paragraph at lines 923--936
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 921--934
+Underfull \hbox (badness 10000) in paragraph at lines 923--936
 
  []
 
 [66] [67]
-Underfull \hbox (badness 10000) in paragraph at lines 937--944
+Underfull \hbox (badness 10000) in paragraph at lines 939--946
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 937--944
+Underfull \hbox (badness 10000) in paragraph at lines 939--946
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 937--944
+Underfull \hbox (badness 10000) in paragraph at lines 939--946
 
  []
 
 [68]
-<resources/image_model.png, id=1063, 292.6935pt x 317.988pt>
+<resources/image_model.png, id=1075, 292.6935pt x 317.988pt>
 File: resources/image_model.png Graphic file (type png)
 <use resources/image_model.png>
-Package pdftex.def Info: resources/image_model.png  used on input line 948.
+Package pdftex.def Info: resources/image_model.png  used on input line 950.
 (pdftex.def)             Requested size: 284.52756pt x 309.11757pt.
  [69] [70 <./resources/image_model.png>]
-<resources/posture_global_0.125-accuracy.png, id=1078, 387.4475pt x 279.0425pt>
+<resources/posture_global_0.125-accuracy.png, id=1090, 387.4475pt x 279.0425pt>
 
 File: resources/posture_global_0.125-accuracy.png Graphic file (type png)
 <use resources/posture_global_0.125-accuracy.png>
 Package pdftex.def Info: resources/posture_global_0.125-accuracy.png  used on i
-nput line 961.
+nput line 963.
 (pdftex.def)             Requested size: 175.49881pt x 126.39824pt.
-<resources/posture_localround-0.125-accuracy.png, id=1079, 511.9125pt x 279.042
+<resources/posture_localround-0.125-accuracy.png, id=1091, 511.9125pt x 279.042
 5pt>
 File: resources/posture_localround-0.125-accuracy.png Graphic file (type png)
 <use resources/posture_localround-0.125-accuracy.png>
 Package pdftex.def Info: resources/posture_localround-0.125-accuracy.png  used 
-on input line 967.
+on input line 969.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_centralround-0.125-accuracy.png, id=1080, 511.9125pt x 279.0
+<resources/posture_centralround-0.125-accuracy.png, id=1092, 511.9125pt x 279.0
 425pt>
 File: resources/posture_centralround-0.125-accuracy.png Graphic file (type png)
 
 <use resources/posture_centralround-0.125-accuracy.png>
 Package pdftex.def Info: resources/posture_centralround-0.125-accuracy.png  use
-d on input line 973.
+d on input line 975.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_stdround-0.125-accuracy.png, id=1081, 511.9125pt x 279.0425p
+<resources/posture_stdround-0.125-accuracy.png, id=1093, 511.9125pt x 279.0425p
 t>
 File: resources/posture_stdround-0.125-accuracy.png Graphic file (type png)
 <use resources/posture_stdround-0.125-accuracy.png>
 Package pdftex.def Info: resources/posture_stdround-0.125-accuracy.png  used on
- input line 979.
+ input line 981.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_stdround_p2p-0.125-accuracy.png, id=1082, 511.9125pt x 279.0
+<resources/posture_stdround_p2p-0.125-accuracy.png, id=1094, 511.9125pt x 279.0
 425pt>
 File: resources/posture_stdround_p2p-0.125-accuracy.png Graphic file (type png)
 
 <use resources/posture_stdround_p2p-0.125-accuracy.png>
 Package pdftex.def Info: resources/posture_stdround_p2p-0.125-accuracy.png  use
-d on input line 984.
+d on input line 986.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_weightround-0.125-accuracy.png, id=1083, 511.9125pt x 279.04
+<resources/posture_weightround-0.125-accuracy.png, id=1095, 511.9125pt x 279.04
 25pt>
 File: resources/posture_weightround-0.125-accuracy.png Graphic file (type png)
 <use resources/posture_weightround-0.125-accuracy.png>
 Package pdftex.def Info: resources/posture_weightround-0.125-accuracy.png  used
- on input line 990.
+ on input line 992.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_weightround_p2p-0.125-accuracy.png, id=1084, 511.9125pt x 27
+<resources/posture_weightround_p2p-0.125-accuracy.png, id=1096, 511.9125pt x 27
 9.0425pt>
 File: resources/posture_weightround_p2p-0.125-accuracy.png Graphic file (type p
 ng)
 <use resources/posture_weightround_p2p-0.125-accuracy.png>
 Package pdftex.def Info: resources/posture_weightround_p2p-0.125-accuracy.png  
-used on input line 995.
+used on input line 997.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 954--999
+Underfull \hbox (badness 10000) in paragraph at lines 956--1001
 
  []
 
@@ -1578,67 +1578,67 @@ ocalround-0.125-accuracy.png> <./resources/posture_centralround-0.125-accuracy.
 png> <./resources/posture_stdround-0.125-accuracy.png> <./resources/posture_std
 round_p2p-0.125-accuracy.png> <./resources/posture_weightround-0.125-accuracy.p
 ng> <./resources/posture_weightround_p2p-0.125-accuracy.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1035--1067
+Underfull \hbox (badness 10000) in paragraph at lines 1037--1069
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1035--1067
+Underfull \hbox (badness 10000) in paragraph at lines 1037--1069
 
  []
 
 [73] [74]
-<resources/posture_global_0.7-accuracy.png, id=1114, 387.4475pt x 279.0425pt>
+<resources/posture_global_0.7-accuracy.png, id=1126, 387.4475pt x 279.0425pt>
 File: resources/posture_global_0.7-accuracy.png Graphic file (type png)
 <use resources/posture_global_0.7-accuracy.png>
 Package pdftex.def Info: resources/posture_global_0.7-accuracy.png  used on inp
-ut line 1075.
+ut line 1077.
 (pdftex.def)             Requested size: 175.49881pt x 126.39824pt.
-<resources/posture_localround-0.7-accuracy.png, id=1115, 511.9125pt x 279.0425p
+<resources/posture_localround-0.7-accuracy.png, id=1127, 511.9125pt x 279.0425p
 t>
 File: resources/posture_localround-0.7-accuracy.png Graphic file (type png)
 <use resources/posture_localround-0.7-accuracy.png>
 Package pdftex.def Info: resources/posture_localround-0.7-accuracy.png  used on
- input line 1081.
+ input line 1083.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_centralround-0.7-accuracy.png, id=1116, 511.9125pt x 279.042
+<resources/posture_centralround-0.7-accuracy.png, id=1128, 511.9125pt x 279.042
 5pt>
 File: resources/posture_centralround-0.7-accuracy.png Graphic file (type png)
 <use resources/posture_centralround-0.7-accuracy.png>
 Package pdftex.def Info: resources/posture_centralround-0.7-accuracy.png  used 
-on input line 1087.
+on input line 1089.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_stdround-0.7-accuracy.png, id=1117, 511.9125pt x 279.0425pt>
+<resources/posture_stdround-0.7-accuracy.png, id=1129, 511.9125pt x 279.0425pt>
 
 File: resources/posture_stdround-0.7-accuracy.png Graphic file (type png)
 <use resources/posture_stdround-0.7-accuracy.png>
 Package pdftex.def Info: resources/posture_stdround-0.7-accuracy.png  used on i
-nput line 1093.
+nput line 1095.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_stdround_p2p-0.7-accuracy.png, id=1118, 511.9125pt x 279.042
+<resources/posture_stdround_p2p-0.7-accuracy.png, id=1130, 511.9125pt x 279.042
 5pt>
 File: resources/posture_stdround_p2p-0.7-accuracy.png Graphic file (type png)
 <use resources/posture_stdround_p2p-0.7-accuracy.png>
 Package pdftex.def Info: resources/posture_stdround_p2p-0.7-accuracy.png  used 
-on input line 1098.
+on input line 1100.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_weightround-0.7-accuracy.png, id=1119, 511.9125pt x 279.0425
+<resources/posture_weightround-0.7-accuracy.png, id=1131, 511.9125pt x 279.0425
 pt>
 File: resources/posture_weightround-0.7-accuracy.png Graphic file (type png)
 <use resources/posture_weightround-0.7-accuracy.png>
 Package pdftex.def Info: resources/posture_weightround-0.7-accuracy.png  used o
-n input line 1104.
+n input line 1106.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
-<resources/posture_weightround_p2p-0.7-accuracy.png, id=1120, 511.9125pt x 279.
+<resources/posture_weightround_p2p-0.7-accuracy.png, id=1132, 511.9125pt x 279.
 0425pt>
 File: resources/posture_weightround_p2p-0.7-accuracy.png Graphic file (type png
 )
 <use resources/posture_weightround_p2p-0.7-accuracy.png>
 Package pdftex.def Info: resources/posture_weightround_p2p-0.7-accuracy.png  us
-ed on input line 1109.
+ed on input line 1111.
 (pdftex.def)             Requested size: 175.49881pt x 95.66089pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1068--1113
+Underfull \hbox (badness 10000) in paragraph at lines 1070--1115
 
  []
 
@@ -1647,40 +1647,76 @@ alround-0.7-accuracy.png> <./resources/posture_centralround-0.7-accuracy.png> <
 ./resources/posture_stdround-0.7-accuracy.png> <./resources/posture_stdround_p2
 p-0.7-accuracy.png> <./resources/posture_weightround-0.7-accuracy.png> <./resou
 rces/posture_weightround_p2p-0.7-accuracy.png>] [77]
-Underfull \hbox (badness 10000) in paragraph at lines 1178--1184
+Underfull \hbox (badness 10000) in paragraph at lines 1180--1186
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1178--1184
+Underfull \hbox (badness 10000) in paragraph at lines 1180--1186
 
  []
 
-[78] [79] [80
+[78] [79]
+Underfull \hbox (badness 10000) in paragraph at lines 1188--1201
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1188--1201
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1188--1201
+
+ []
+
+[80
 
 ]
-Overfull \hbox (16.15718pt too wide) in paragraph at lines 1195--1195
+Underfull \hbox (badness 10000) in paragraph at lines 1202--1205
+
+ []
+
+[81]
+Underfull \hbox (badness 10000) in paragraph at lines 1212--1228
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1212--1228
+
+ []
+
+[82] [83]
+Overfull \hbox (16.15718pt too wide) in paragraph at lines 1229--1229
 \OT1/cmr/m/n/12 Avail-able: []$\OT1/cmtt/m/n/12 https : / / blog . knoldus . co
 m / introduction -[] to -[] perceptron -[]
  []
 
 
-Overfull \hbox (5.19052pt too wide) in paragraph at lines 1195--1195
+Overfull \hbox (28.91624pt too wide) in paragraph at lines 1229--1229
+[]\OT1/cmr/m/n/12 H. B. McMa-han, E. Moore, D. Ra-m-age, S. Hamp-son, \OT1/cmr/
+m/it/12 et al.\OT1/cmr/m/n/12 , ``Communication-
+ []
+
+
+Overfull \hbox (5.19052pt too wide) in paragraph at lines 1229--1229
 \OT1/cmr/m/n/12 on deep neu-ral net-work ar-chi-tec-tures,'' \OT1/cmr/m/it/12 a
 rXiv preprint arXiv:1807.10108\OT1/cmr/m/n/12 ,
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1198.
-[81
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1230.
+[84
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1198.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1230.
  (report.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1198.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1198.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1230.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1230.
 
 Package rerunfilecheck Info: File `report.out' has not changed.
-(rerunfilecheck)             Checksum: 925A266A764C1E4B6DC7CF5C78ADC381;3707.
+(rerunfilecheck)             Checksum: EE1B1CF3EC24F85DB5964D9E4A7A657F;3833.
 
 
 LaTeX Warning: There were undefined references.
@@ -1688,16 +1724,16 @@ LaTeX Warning: There were undefined references.
 Package logreq Info: Writing requests to 'report.run.xml'.
 \openout1 = `report.run.xml'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1198.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1230.
  ) 
 Here is how much of TeX's memory you used:
- 16305 strings out of 481565
- 290370 string characters out of 2914179
- 953468 words of memory out of 3000000
+ 16312 strings out of 481565
+ 290479 string characters out of 2914179
+ 953467 words of memory out of 3000000
  30949 multiletter control sequences out of 15000+200000
  540637 words of font info for 52 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,21n,56p,3240b,1258s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,21n,56p,3240b,1256s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\karan\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\
 tcrm1200.pk><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publi
 c/amsfonts/cm/cmbx12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/font
@@ -1716,9 +1752,9 @@ a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users
 fb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmti12.pfb><C:/Users/karan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
 ublic/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (90 pages, 1495780 bytes).
+Output written on report.pdf (93 pages, 1505987 bytes).
 PDF statistics:
- 1298 PDF objects out of 1440 (max. 8388607)
- 346 named destinations out of 1000 (max. 500000)
- 622 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1326 PDF objects out of 1440 (max. 8388607)
+ 353 named destinations out of 1000 (max. 500000)
+ 638 words of extra memory for PDF output out of 10000 (max. 10000000)
 

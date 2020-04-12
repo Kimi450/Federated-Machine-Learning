@@ -29,7 +29,7 @@ December\fi, \number \year}
 \SetKwFunction{FRoundsGraph}{rounds\_graph}%
 
 
-\SetKwFunction{FFedCentral}{federated\_learning\_central\_standard}%
+\SetKwFunction{FFedCentral}{federated\_learning\_central}%
 \SetKwFunction{FFedLocal}{federated\_learning\_local\_training}%
 \SetKwFunction{FFedPTP}{federated\_learning\_p2p}%
 
@@ -162,7 +162,7 @@ Another application could be training on images for classification purposes. Peo
 \\\\
 In general, people are sceptical of sharing personal data. But there is still the need to train a model that has had exposure to as much data as possible. 
 \subsection{Report Outline}
-The need for privacy was the motivation behind the idea of Federated Learning which was an idea proposed by Google in 2016~\cite{konen2016federated}. The idea of not having to share your data with someone else and yet still have the benefits of having a model that has exposure to their data will be the main point of interest in this report. 
+The need for privacy was the motivation behind the idea of Federated Learning which was an idea proposed by Google in 2016~\cite{mcmahan2016communication}. The idea of not having to share your data with someone else and yet still have the benefits of having a model that has exposure to their data will be the main point of interest in this report. 
 \\\\
 To start off, a brief overview of machine learning and neural networks will be provided in Sections~\ref{subsec:ml} and~\ref{sec:neuralnets} respectively. Then in Section~\ref{subsec:fedml} we will see how Google describe federated learning before discussing the design and implementation in Section~\ref{subsec:fedml-core}. Following Google's approach, several extended ideas based on weighted and selective approaches in a central and peer-to-peer environment will be discussed and their implementation explained in Section~\ref{sec:ext-ideas}. Along with that, outputs from the experiments to show how the extended ideas compare with Google's approach of federated learning and the traditional approach of machine learning in this context will be explained in Section~\ref{sec:experiments}. 
 \section{Literature Review}
@@ -459,7 +459,7 @@ The design of the federated learning process with weighted averaging is very sim
     evaluation = user.evaluate\_model()\\
     user.add\_post\_fit\_evaluation(evaluation)\\ 
 	\textbf{return} $M_i$.weights, evaluation
-	\caption{User side processing}\label{algo:fedcentral-weightedavg_user}
+	\caption{Central averaging user side processing}\label{algo:fedcentral-weightedavg_user}
 }
 }
 \end{algorithm}\end{center}
@@ -473,6 +473,8 @@ The design of the federated learning process with weighted averaging is very sim
            user\_weights, user\_evaluation = user(new\_weights)\\
            data.append((user\_weights, user\_evaluation))\\
         }
+        \# Below, different equations decide what kind of \\
+        \# averaging takes place\\
         new\_weights = average(data)\label{algo:fedcentral-weightedavg:avg}
     }
   \caption{Central Federated Learning}\label{algo:fedcentral-weightedavg}
@@ -523,7 +525,7 @@ We alter algorithms~\ref{algo:fedcentral_user} and~\ref{algo:fedcentral} to refl
 	}
     evaluation = user.evaluate\_model()\\
     user.add\_post\_fit\_evaluation(evaluation)\\ 
-	\caption{User side processing}\label{algo:fedp2p_user}
+	\caption{Peer-to-peer user side processing}\label{algo:fedp2p_user}
 }
 }
 \end{algorithm}\end{center}
@@ -578,7 +580,7 @@ The design for this idea is based off of the central federated learning framewor
     evaluation = user.evaluate\_model()\\
     user.add\_post\_fit\_evaluation(evaluation)\\ 
 	\textbf{return} $M_i$.weights
-	\caption{User side processing}\label{algo:fedlocal_user}
+	\caption{Local training user side processing}\label{algo:fedlocal_user}
 }
 }
 \end{algorithm}\end{center}
@@ -653,7 +655,7 @@ The design for the testing framework is quite simple in terms of what is to be d
 			universal\_test\_data\_evals.append(idea\_eval)
 	    }
     }
-  \caption{Federated Learning}\label{algo:experiments}
+  \caption{Experimentation Framework}\label{algo:experiments}
 }
 \end{algorithm}\end{center}
 We will now look at the details of the algorithm. For every idea we have discussed, we initialise a new set of users and then train them in accordance to the idea in question. After all the users have been trained for all the ideas, we initialise a $global\_user$ that and train it in a non-federated way. The number of epochs that the $global\_user$ trains on is $ROUNDS \times EPOCHS$. This is done for fairness. Every user in federated learning trains for $EPOCH$ number of times in every round of federated learning. So it is only fair that the $global\_user$ is given the same number of effective epochs as the users taking part in a federated learning process. After that, all the training has been done and only the reporting is left. The reporting process involves plotting graphs and storing different summaries of the idea with respect to a specific metric. For the training process we use accuracy, but for the summary we can take a note of both, loss and accuracy. So we iterate over both to gather their summaries. The summaries stored relate to the user and the rounds of federated learning. For the user, we store their final evaluation for both, the $post\_fit$ and $pre\_fit$ evaluations. And for the rounds, we store the average the evaluations of all users per round. This is once again done for both, $post\_fit$ and $pre\_fit$ evaluations. After doing so, we can get the relevant graphs for the $global\_user$ and store its evaluation. For every idea, we then evaluate all the users' models on the more universal test data that $global\_user$ holds. To do so, we iterate over the every user $U_{idea, i}$ for every idea and set the $global\_user$'s model with the $U_{idea, i}$'s model weights $W_{idea, i}$. We then evaluate the model, which now hosts $W_{idea, i}$, on the $global\_user$'s more generic test data and store the results. After doing so for every user of every idea and storing the results, we are done with the reporting. 
@@ -1054,11 +1056,11 @@ User 3 &  & 80.15\% & 92.00\% & 92.29\% & 91.14\% & 92.29\% & 91.62\%\\
 \hline
 User 4 &  & 82.18\% & 91.62\% & 86.03\% & 91.52\% & 92.29\% & 91.04\%\\
 \hline
+User 5 &  & 81.12\% & 92.10\% & 92.68\% & 91.91\% & 91.81\% & 91.52\%\\
+\hline
 User 6 &  & 82.27\% & 92.29\% & 92.68\% & 91.33\% & 91.91\% & 91.81\%\\
 \hline
 User 7 &  & 81.21\% & 92.10\% & 92.97\% & 90.85\% & 92.29\% & 91.23\%\\
-\hline
-User 5 &  & 81.12\% & 92.10\% & 92.68\% & 91.91\% & 91.81\% & 91.52\%\\
 \hline
 Average & 90.37\% & 80.97\% & 91.96\% & 91.55\% & 91.21\% & 92.21\% & 91.56\%\\
 \hline
@@ -1183,17 +1185,47 @@ With the experimentation process and their results discussed, we move on to the 
 %\subsubsection{Testing user weights on global data}
 \clearpage
 \section{Conclusions and future work}
-can use "i" in here
-
-
-The experiments we conducted show that the extended ideas we implemented did not give us a significant gain in overall performance. But, we did notice the points we raised earlier about the peer-to-peer approach providing a bit more privacy and more levelled out performance across all the users. 
-early stopping
-could have implemented the exact version of google with deltas being sent
-secure aggregation could have been explored
-run more experiments and avrage
+We started this report by looking at what machine learning is and how neural networks work. After doing so, we introduced the idea of federated learning which is a distributed form of training a neural network. In federated learning, every user trains a local model and then the weights from the models are averaged by a central agent and sent back to the users. This way the user's privacy is maintained and the knowledge from other users' models is incorporated into every user's model. We then introduced several extensions to this in the form of weighted averaging, where better performing models are weighted higher in the averaging process, and selective inclusion where certain user's are excluded from the averaging process based on their performance. These extensions were also then implemented in a peer-to-peer context where user's conduct weighted averaging and selective inclusion based on how well other users' models perform on their local data. The idea of localised training, where users do not share their weights at all, was also implemented. These ideas were then compared by running three sets of experiments on two different datasets. The main aim was to see if the extended provided a performance gain or if they provided more privacy at relatively the same performance.
+\\\\
+As seen from all the experiments that were conducted, none of the extended ideas resulted in a significant gain in overall performance when compared to Google's original idea of federated learning. But, the points raised earlier about the peer-to-peer approach providing a bit more privacy and more levelled out performance across all the users were quite interesting in my opinion. I believe that this is quite a significant find that needs to be explored further and more experiments need to be carried out for the same. With the edge devices getting more powerful by the day, it seems more and more viable that the decentralised peer-to-peer federated learning approach could be the future. In theory, it makes a lot of sense to me and the experiments showed great promise in the idea as well. One of its shortcomings was the fact that some user's seemed to be getting lower performance with it, but that could be a dataset specific characteristic. Maybe with models made specifically for a federated learning environment, it could do better overall as well. So I think that the peer-to-peer federated learning approach needs to be further explored in the future because of the promise it shows.
+\\\\
+In this project, I did not implement the idea of early stopping for the training which would probably help improve the performance. This is where the user's can stop training their model if its performance gets lower after a few epochs, and they would then revert the model back to its best performing state. This could have helped increase the overall performance for all the approaches. It's effect would have been interesting to note in the experiments. Another thing that could have been done is the sharing of deltas in the weights instead of the weights themselves. In a real world scenario, this would help reduce the bandwidth required to perform federated learning. Albeit very unlikely, it could have also had an effect on the performance of the all the federated learning ideas that were implemented. 
+\\\\
+The idea of secure aggregation when collecting the weights could also have been implemented and explored to see what, if any, effect it had on the federated learning ideas that were implemented in this project. The final thing that could have been done for more credible results was to have a framework that would report results from running the experiments several times and then reporting the averages from all those experiments. The results would have been more robust and more reliable this way, and a relatively small tweak to the testing framework can easily make this possible. 
+\comment{
+	summary
+	conclusions from work
+		what does the project contribute to the human knowledge 
+	future developments or line of eqnuiry suggested by the work
+}
+\subsection{Reflection}
+Throughout the course of this project, I got a better understanding of how neural networks work and details on how the underlying algorithms work. Working on this project required a lower level understanding of neural network and this knowledge was gained from the book "Deep Learning with Python"~\cite{deeplearning}. Knowledge on how to work with Keras well was also gained from the same book to the point where I can say that I am fairly comfortable using Keras. I do not know everything but I know enough to get started and work my way through things now. 
+\\\\
+Early on when I first started working on this project, I was overwhelmed by the work that was to be done and because of that I was not making good progress. But after setting realistic weekly goals, I started making steady progress and eventually started flying through the list of things that needed to be done. So organising myself was key in this process. The same applied to the code structure. I had to restructure and rewrite a lot of the code because I was not happy with how it was implemented at the start. Taking some time to work out the structure beforehand and not hacking away at the code proved to be more beneficial in the long term. 
+\subsection{Project Timeline}
+\comment{
+	reglection subsection
+		what did I learn, new skills, short comings (skill, method, time)
+	summary of project conduction
+		timeline 
+}
+In terms of the overall time aspect of this project, I believe I handled it relatively well. I started working on the project as soon as it was assigned to me in September, 2019. The first task to complete was to read the background information on the project, which included reading the paper on federated learning by Google~\cite{mcmahan2016communication} and the deep learning book~\cite{deeplearning} which was done in two weeks times. After that, I started building a model for the postures dataset for the non-federated approach and then eventually building the federated learning approach as Google does it. This took a total of two weeks. Then, to visually report on the experiments, I implemented the graphing framework. I also refactored a lot of code at this point for better structuring and some bug fixing which took about one week.
+\\\\
+After the basics were done, the extended ideas ideas were implemented for the next three weeks. And at the end, one week before the start of November, all the ideas and the implementation of the ideas was completed. My main aim was to finish implementation aspect of the project by the end of October so that I had time to study for the exams. It was an ambitious goal, but it was met in the end. In the last week, I spent time going over the TensorFlow documentation and seeing if my implementation was the same as the implementation in TensorFlow Federated. After that, the next time I worked on it was when college started in the second week of January. It was a bit unfortunate that I did not work on the project over the Christmas break, but it was not a big issue because I had quite a lot of my work done. I only read a paper on secure aggregation over the break.
+\\\\
+For the first week we were back to college in January, I worked on making TensorFlow Federated work the the postures dataset. The next three weeks were spent on implementing the local training idea and an experimentation framework to report the results. There was a delay here because of the memory limitations not allowing us to run everything in one go elegantly. After I was unable to find an elegant solution, I chose to use swap space as a workaround for the limitation. Another thing was was worked on during these three weeks is the work required for the images datasets. The implementation of the splitting strategy and everything associated with running experiments on this dataset. At this point it was about the middle of February, at which point I stopped coding and started focussing on the report with only minor fixes and adjustments of the code. The report writing lasted for about two months, which brings here to this point here, at the end.
+\comment{
+	basic thing
+	read book
+	google implementation
+	better graphinh 
+	extended ideas
+	repreodcuible
+	testing
+	results
+	report - 2 months 
+}
 \clearpage
 \printbibliography[title={Bibliography}]
-
-
 \end{document}
 

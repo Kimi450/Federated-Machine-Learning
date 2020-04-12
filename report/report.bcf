@@ -2183,7 +2183,7 @@
     <bcf:datasource type="file" datatype="bibtex">resources/references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="5">konen2016federated</bcf:citekey>
+    <bcf:citekey order="5">mcmahan2016communication</bcf:citekey>
     <bcf:citekey order="6">phdthesis</bcf:citekey>
     <bcf:citekey order="7">phdthesis</bcf:citekey>
     <bcf:citekey order="8">web:neuron</bcf:citekey>
@@ -2200,6 +2200,9 @@
     <bcf:citekey order="19">Dua:2019</bcf:citekey>
     <bcf:citekey order="20">roy2018effects</bcf:citekey>
     <bcf:citekey order="21">kaggle:model</bcf:citekey>
+    <bcf:citekey order="22">deeplearning</bcf:citekey>
+    <bcf:citekey order="23">mcmahan2016communication</bcf:citekey>
+    <bcf:citekey order="24">deeplearning</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

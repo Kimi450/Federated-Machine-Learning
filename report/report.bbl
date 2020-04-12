@@ -196,46 +196,44 @@
       \verb https://blog.knoldus.com/introduction-to-perceptron-neural-network/
       \endverb
     \endentry
-    \entry{konen2016federated}{misc}{}
+    \entry{mcmahan2016communication}{article}{}
+      \true{moreauthor}
+      \true{morelabelname}
       \name{author}{4}{}{%
-        {{hash=56660736d75eaca4a2482417345d1863}{%
-           family={Konečný},
-           familyi={K\bibinitperiod},
-           given={Jakub},
-           giveni={J\bibinitperiod}}}%
         {{hash=707fa44f08f047ab822f84fe38c69dfb}{%
            family={McMahan},
            familyi={M\bibinitperiod},
-           given={H.\bibnamedelimi Brendan},
+           given={H\bibnamedelima Brendan},
            giveni={H\bibinitperiod\bibinitdelim B\bibinitperiod}}}%
+        {{hash=4720b7685b2c38f8a5f238d67aac6c45}{%
+           family={Moore},
+           familyi={M\bibinitperiod},
+           given={Eider},
+           giveni={E\bibinitperiod}}}%
         {{hash=86066638fba5b4dc33bcee0bcba473cf}{%
            family={Ramage},
            familyi={R\bibinitperiod},
            given={Daniel},
            giveni={D\bibinitperiod}}}%
-        {{hash=972f2a6c228c82719a54368d49838fd7}{%
-           family={Richtárik},
-           familyi={R\bibinitperiod},
-           given={Peter},
-           giveni={P\bibinitperiod}}}%
+        {{hash=bd7751169aeb03f0e8ce6fd2a06822d3}{%
+           family={Hampson},
+           familyi={H\bibinitperiod},
+           given={Seth},
+           giveni={S\bibinitperiod}}}%
       }
-      \strng{namehash}{9ca9d2617d6443d6ec1f0a85f2e8cee6}
-      \strng{fullhash}{749b28addca8ff6bbed2938cf7e1872f}
-      \strng{bibnamehash}{749b28addca8ff6bbed2938cf7e1872f}
-      \strng{authorbibnamehash}{749b28addca8ff6bbed2938cf7e1872f}
-      \strng{authornamehash}{9ca9d2617d6443d6ec1f0a85f2e8cee6}
-      \strng{authorfullhash}{749b28addca8ff6bbed2938cf7e1872f}
-      \field{sortinit}{K}
-      \field{sortinithash}{d3edc18d54b9438a72c24c925bfb38f4}
+      \strng{namehash}{89789680d65b5101cf56190bd6cf7bcc}
+      \strng{fullhash}{26c982e1a9958a50c6700215ca8b3062}
+      \strng{bibnamehash}{26c982e1a9958a50c6700215ca8b3062}
+      \strng{authorbibnamehash}{26c982e1a9958a50c6700215ca8b3062}
+      \strng{authornamehash}{89789680d65b5101cf56190bd6cf7bcc}
+      \strng{authorfullhash}{26c982e1a9958a50c6700215ca8b3062}
+      \field{sortinit}{M}
+      \field{sortinithash}{2e5c2f51f7fa2d957f3206819bf86dc3}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{eprintclass}{cs.LG}
-      \field{eprinttype}{arXiv}
-      \field{title}{Federated Optimization: Distributed Machine Learning for On-Device Intelligence}
+      \field{journaltitle}{arXiv preprint arXiv:1602.05629}
+      \field{title}{Communication-efficient learning of deep networks from decentralized data}
       \field{year}{2016}
-      \verb{eprint}
-      \verb 1610.02527
-      \endverb
     \endentry
     \entry{phdthesis}{thesis}{}
       \name{author}{1}{}{%
