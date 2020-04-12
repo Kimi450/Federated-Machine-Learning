@@ -7,6 +7,10 @@
 \usepackage{tocloft}
 \usepackage{makecell}
 
+\newcommand{\dateasreq}{\ifcase \month \or January\or February\or March\or %
+April\or May \or June\or July\or August\or September\or October\or November\or %
+December\fi, \number \year} 
+
 \usepackage{caption}
 \usepackage[hidelinks]{hyperref}
 %\usepackage{url}
@@ -60,14 +64,13 @@
 %		\textsc{\LARGE A research project}\\
 		[10cm]
 	\end{center}
-	\begin{center}
+	\begin{center}	
 		\textsc{\large Karan Samani}\\
-		\textsc{\large 1161081087}\\
-		\textsc{\large Final Year Project BSc. Computer Science (Hons.)}\\
+		\textsc{\large Final Year Project - BSc. Computer Science (Hons.)}\\
 		\textsc{\large Supervisor: Dr. Derek Bridge}\\
 		\textsc{\large Department of Computer Science}\\
 		\textsc{\large University College Cork}\\
-		\textsc{\large \@date}
+		\textsc{\large \dateasreq}
 	\end{center}
 \end{titlepage}
 \cleardoublepage
@@ -103,8 +106,8 @@ Date:\dotfill
 
 \section*{Acknowledgements}
 Thanks to Dr. Derek Bridge for being my supervisor and dealing with me over the last few months, pushing me to my limits and supporting me throughout the year. Ever since first year, I wanted to do my final year project with him and the experience of doing so has lived up to my expectations. 
-\\\\
-Thanks to the Alexander Baran-Harper's channel on YouTube where I learnt how to use use LaTeX.
+%\\\\
+%Thanks to the Alexander Baran-Harper's channel on YouTube where I learnt how to use use LaTeX.
 \addcontentsline{toc}{section}{\numberline{}Acknowledgements}
 \clearpage
 
@@ -339,7 +342,7 @@ This approach is quite straight forward in terms of what is to be done. The data
 \\\\
 With the dataset readily available for use, we need to select a model that fits the dataset well. We will look at how to find a dataset specific model in Section~\ref{sec:experiments} where we perform experiments on different datasets. Given that the data and model are now ready to be used, we can pass the training data into the model to train it. The training process described in Section~\ref{subsec:training} is carried out and the model is trained on the training data for a number of epochs. To ensure that we can review the progress of the model, we also make sure that we evaluate the model between every epoch of training on the validation and testing data. This can then be plotted on a metric versus epoch graph to visualise the model's performance over time. For the final performance score of the model, we can evaluate the model after the training process has been completed on the completely unseen test data.
 \subsubsection{Implementation}
-With the approach being straight forward, its implementation is quite trivial. To be able to discuss the implementation, an overview of the technologies used in this project is required. The language of choice for this project was Python and the biggest reason for choosing it was the Keras library for deep learning. In this project, it uses with TensorFlow as its back-end to perform calculations. Keras provides a user friendly API to use Tensorflow to build neural networks with ease in Python. We chose to use TensorFlow as Keras' back-end because we will be using TensorFlow Federated (TFF) in Section~\ref{subsec:tff} as a sanity check to confirm that our implementation of federated learning matches that of Google. TFF provides a framework which allows people to build a federated learning system without having to deal with the low level details. Another library used extensively was Matplotlib. Matplotlib is a Python library used for plotting graphs which. It allowed us to review the learning progress of the neural network and be able to compare the performance of different approaches explored in this project. Pandas and numpy were two more extensively used libraries that were used for data representation throughout the project.
+With the approach being straight forward, its implementation is quite trivial. To be able to discuss the implementation, an overview of the technologies used in this project is required. The language of choice for this project was Python and the biggest reason for choosing it was the Keras~\cite{chollet2015keras} library for deep learning. In this project, it uses with TensorFlow as its back-end to perform calculations. Keras provides a user friendly API to use Tensorflow to build neural networks with ease in Python. We chose to use TensorFlow as Keras' back-end because we will be using TensorFlow Federated (TFF) in Section~\ref{subsec:tff} as a sanity check to confirm that our implementation of federated learning matches that of Google. TFF provides a framework which allows people to build a federated learning system without having to deal with the low level details. Another library used extensively was Matplotlib. Matplotlib is a Python library used for plotting graphs which. It allowed us to review the learning progress of the neural network and be able to compare the performance of different approaches explored in this project. Pandas and numpy were two more extensively used libraries that were used for data representation throughout the project.
 \\\\
 The model $M$ that is used here is initialised in Keras. The initialisation process is essentially selecting an architecture that works well on the dataset and then compiling it for further use, like training. Keras models require the input for the training process to be data in one of either two formats, pandas DataFrames or numpy arrays. We choose the latter as the way to store the data that we have to make it easier to pass data into the model for training and evaluation. Keras also requires the features of the data to be separate from the label associated with a sample. The low level control on the numpy arrays also allows us to perform more specific tasks, such as this separation of features and labels, on the dataset as and when required.
 \\\\
@@ -599,7 +602,6 @@ So far we have seen the theory behind several different ways in which we can per
 
 \section{Experimentation}\label{sec:experiments}
 In this section we will discuss the experiments that were conducted on two distinct datasets using the ideas that have been described in this project. The aim of the experiments was to compare the performance of all the ideas and analyse if one idea had a distinct advantage over another idea. The first dataset was based on hand gestures and the second dataset was based on images. The experiments on the the two datasets are discussed in Sections~\ref{subsec:gestureset} and~\ref{subsec:imageset} respectively.
-\\\\
 \subsection{Setup}
 To start conducting the experiments, we had to first setup the environment by installing the previously mentioned packages like TensorFlow, Keras, matplotlib, numpy, scikit-learn, pandas, JupyterLab and pillow. We had anticipated the eventual usage of fairly complex models in this project which are computationally intensive to train. To ensure that the experiments ran to completion within a reasonable amount of time, we had to find a way to utilise the machine's GPU which can parallelise the computations better than a CPU. TensorFlow 2.0 comes bundled with TensorFlow GPU (TF-GPU) which allows us to specify what device we would like to run computations on, the CPU or the GPU. This flexibility allows us to use the right option for every experiment. In the case of having a simpler model, it is often the case that the CPU trains the models quicker than the GPU because of the higher clock speeds. The GPU is better for tasks where a lot of tasks can run in parallel. 
 \\\\
@@ -780,7 +782,7 @@ To select the model for this dataset, we first initialised the global user and t
 \end{figure}
 \noindent We use Keras to build the models, starting off with a flatten layer that flattens the data into a 1D numpy array. The subsequent layers are made with \texttt{Dense} layer objects with node counts of 512, 128, 32 and 5. The final layer is the \texttt{Dense} layer with five nodes in it and they represent the five postures in this dataset. The initial weights of the model are seeded as mentioned before. The compiled version of this architecture is used by the global user and federated users. We store a copy of this model in every user's User object for them to use locally.
 \subsubsection{Results}
-With the data and the model ready, we run the experiments and record the results as explained in Section~\ref{subsec:framework}. The experiments were ran where 64 federated rounds of learning took place with the local epoch count being 16. For the global user, the experiment ran for $64 \times 16$ epochs. The 
+With the data and the model ready, we run the experiments and record the results as explained in Section~\ref{subsec:framework}. The experiments were ran where 64 rounds of federated learning took place with the local epoch count being 16. For the global user, the experiment ran for $64 \times 16$ epochs.
 \\\\
 \begin{figure}[H]
 \centering
@@ -824,7 +826,7 @@ With the data and the model ready, we run the experiments and record the results
     \includegraphics[width=\textwidth]{resources/posture_weightround_p2p-stdsplit-accuracy.png}
     \caption{Peer-to-peer Weighed Averaging}
 \end{subfigure}
-\caption[short]{Graphs for the experiments on the postures dataset.}
+\caption{Graphs for the experiments on the postures dataset.}
 \label{fig:posture_graphs}
 \end{figure}
 \noindent The graphs in Figure~\ref{fig:posture_graphs} show the progression of the ideas in a round-by-round manner with the $min\_max\_fill$ fill style which shades the region between the highest and the lowest evaluations. On the x-axis we have the rounds, except for Figure~\ref{fig:posture_graphs:global} where the x-axis is epochs, and on the y-axis we have the evaluations for which we used accuracy as the metric. For all the graphs, bar Figure~\ref{fig:posture_graphs:global}, the evaluations are averages of every users evaluations on their local testing data in the $pre\_fit$ and $post\_fit$ context. 
@@ -872,7 +874,8 @@ Highest & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\% & 100.00\%\\
 \noindent To get a better idea of the performance, we look at the statistics from the final $pre\_fit$ and $post\_fit$ evaluations of the ideas in tables~\ref{tab:postures_pre_fit} and~\ref{tab:postures_post_fit}. We can see that the highest evaluations in either set of evaluations are very close to 100\%, if not 100\%. This means that some users are probably benefiting a lot from the federated learning process. But we can also observe from the lowest evaluations that some are struggling. This could be due to the fact that in this dataset, records cannot be directly compared and the weights from models learnt on different datasets could cause hindrances in the training process for certain users, for example the ones that are not performing well. Our hypothesis regarding the peer-to-peer ideas is also solidified here as we can see that in most cases, the peer-to-peer ideas have a higher value in the ``Lowest" evaluation section when compared to their central averaging counterpart. Their standard deviations are also lower. And the averaging process is still anonymous as the users do not know the owner of the weights, so we can say that the peer-to-peer idea seems to be provided a better overall approach with better metrics than the central averaging counterparts whilst maintaining privacy. The general trend of the metrics being better in the $post\_fit$ evaluations compared to the $pre\_fit$ evaluations is because the users train their model on their local data and then evaluate it once again on their local test data. Expectedly, this training process makes them better at recognising the patterns in their local data which results in their metrics getting better. 
 \\\\
 Table~\ref{tab:postures_on_global_user} reiterates the fact that the local training idea was the best performing one for a given user in terms of the evaluations done on the local testing data. No other federated idea could come close to it in the $pre\_fit$ evaluation where the evaluations on the freshly averaged weights are compared. But this is because the $pre\_fit$ evaluations are essentially redundant in this case and not weight sharing process takes place. So we look at the $post\_fit$ performance where all the users were performing better than the local training idea and would probably perform better than it when met with a wider variety of unseen data as well. This is once again because the local training idea only focusses on the user's dataset and does not avail of the knowledge learnt by other users. It is pretty safe to say that the metrics from the local training approach are misleading as we will find out in the following section.
-\subsubsection{Testing on global user}
+%\subsubsection{Testing on global user}
+\\\\
 The evaluations seen earlier were conducted on every user's local testing data. We wanted to see how their local models would fare on a more generic dataset that contained data from every user. So we decided to evaluate every user's model on the global user's testing data. The global user's test data contains about 20\% of every user's data. Here we also evaluated the global user, which uses the non-federated approach, for the first time on its test data. The results are seen in Table~\ref{tab:postures_on_global_user}.
 \begin{table}[H]
 \def\arraystretch{1.2}%
@@ -911,7 +914,9 @@ Average & 99.64\% & 55.04\% & 77.88\% & 78.26\% & 77.30\% & 77.14\% & 74.85\%\\
 \end{tabular}}
 \caption{Posture dataset: Results from testing user models on global user's data.} \label{tab:postures_on_global_user}
 \end{table}
-\noindent The table shows the evaluation of every user's models from every idea on the global user's testing data. Their averages show numbers that we can use to compare how good the models created by those ideas were on generic testing data. It is evident that the averages for every idea are lower than that when the evaluations were done on the user's local testing data because now the testing set is more varied. We can see, as expected, the local training idea does not fare well here at all because of the lack of shared knowledge gained from federated learning. All the other ideas beat this benchmark, but cannot come close to the non-federated approach which has a very high accuracy. The other ideas, for the most part, are very close to one another though, implying that they did not have that big of an impact on the training process. But, because of that, we can also say that we can get better privacy using our peer-to-peer ideas. This decentralises the process and removes all doubt that the central agent could learn anything from the user's weights. It also means that the calculations of the averaging and re-evaluations take place on the edge device, which means it takes more resources. This is a trade-off that must be decided on, a little bit more privacy for more processing to be done on the edge device. The peer-to-peer idea is also probably a bit better because of its higher values in the lowest evaluations section, which means that individual users benefit more whilst maintaining the idea of shared knowledge which benefits them overall when exposed to more varied data. This hypothesis is backed up by the results we can see in Figure~\ref{fig:posture_graphs} and Tables~\ref{tab:postures_pre_fit} and~\ref{tab:postures_post_fit}.
+\noindent The table shows the evaluation of every user's models from every idea on the global user's testing data. Their averages show numbers that we can use to compare how good the models created by those ideas were on generic testing data. It is evident that the averages for every idea are lower than that when the evaluations were done on the user's local testing data because now the testing set is more varied. We can see, as expected, the local training idea does not fare well here at all because of the lack of shared knowledge gained from federated learning. All the other ideas beat this benchmark, but cannot come close to the non-federated approach which has a very high accuracy. 
+\\\\
+The other ideas, for the most part, are very close to one another though, implying that they did not have that big of an impact on the training process. But because of that, we can also say that we can get better privacy using our peer-to-peer ideas with minimal performance loss. This is because a peer-to-peer approach decentralises the process and removes all doubt that the central agent could learn anything from any user's weights. It also means that the calculations of the averaging and re-evaluations take place on the edge device, which means it takes more resources on the edge device. This is a trade-off that must be decided on, a little bit more privacy for more processing to be done on the edge device. The peer-to-peer idea is also probably a bit better for individual users because of its higher values in the lowest evaluations section, which means that individual users benefit more whilst maintaining the idea of shared knowledge which benefits them overall when exposed to more varied data. This hypothesis is backed up by the results we can see in Figure~\ref{fig:posture_graphs} and Tables~\ref{tab:postures_pre_fit} and~\ref{tab:postures_post_fit}.
 \subsubsection{Sanity check using TFF}
 Section~\ref{subsec:tff} explained how TFF can be used to conduct federated learning once the dataset is separated based on the users and placed in Dataset objects that TFF can use for its learning process. We will now look at the process of placing the data in Dataset objects for TFF to perform federated learning and we will compare the evaluation results with our implementation of standard federated learning for a sanity check. 
 \\\\
@@ -946,125 +951,242 @@ With the data in place, we move on to the selection of the model for this experi
 \end{figure}
 \noindent We use Keras to build the sequential models, starting off with two convolutional layers which are made using \texttt{Conv2D} layer objects. All the \texttt{Conv2D} layers have a kernel size of $3 \times 3$. The feature map counts for the first layer is 32 and the following layer is 64. We then use a max pooling layer using the \texttt{MaxPooling2D} layer object, which reduces the size of the output by a factor of $2$ in our case where the kernel for it is of size $2 \times 2$. Max pooling layers do not learn anything new, they only propagate the highest value from its kernel window. We use the same kernel size for all \texttt{MaxPooling2D} layers. This is followed by two sets of \texttt{Conv2D} layer with a feature map count of 128 and a \texttt{MaxPooling2D} layer, in that order. We end the convolutional layers by having one last \texttt{Conv2D} layer with 256 feature maps. After that work on the classification section of the architecture. To do so, we flatten the output obtained from the last \texttt{Conv2D} layer using the \texttt{Flatten} layer and pass it to a \texttt{Dense} layer with 256 nodes. This layer is followed by the final \texttt{Dense} layer with 8 nodes which is used for the prediction of the images. The initial weights of the model are seeded as mentioned before. The compiled version of this architecture is used by the global user and federated users. We store a copy of this model in every user's User object for them to use locally. 
 \subsubsection{Results}
+With everything ready, we ran the first set of experiments on this dataset where the value of $P$ was $\tfrac{1}{8}$. With this, every user gets about the same number of images from every class. The experiments were ran where 32 rounds of federated learning took place with the local epoch count being 16. For the global user, the experiment ran for $32 \times 16$ epochs. 
+\\\\
+Once again, the graphs in Figure~\ref{fig:images_graphs_eq} show the progression of the ideas in a round-by-round manner with the $min\_max\_fill$ fill style which shades the region between the highest and the lowest evaluations. On the x-axis we have the rounds, except for Figure~\ref{fig:posture_graphs:global} where the x-axis is epochs, and on the y-axis we have the evaluations for which we used accuracy as the metric. For all the graphs, bar Figure~\ref{fig:posture_graphs:global}, the evaluations are averages of every users evaluations on their local testing data in the $pre\_fit$ and $post\_fit$ context.
 \begin{figure}[H]
 \centering
 \begin{subfigure}{0.45\textwidth}
     \centering
-    \includegraphics[width=\textwidth]{resources/posture_global_stdsplit-accuracy.png}
+    \includegraphics[width=\textwidth]{resources/posture_global_0.125-accuracy.png}
     \caption{\small Global user}
 
 \end{subfigure}%
 \\
 \begin{subfigure}{0.45\textwidth}
-    \includegraphics[width=\textwidth]{resources/posture_localround-stdsplit-accuracy.png}
+    \includegraphics[width=\textwidth]{resources/posture_localround-0.125-accuracy.png}
     \raggedleft
     \caption{\small Local Training}
 \end{subfigure}
 \begin{subfigure}{0.45\textwidth}
     \raggedleft
-    \includegraphics[width=\textwidth]{resources/posture_centralround-stdsplit-accuracy.png}
+    \includegraphics[width=\textwidth]{resources/posture_centralround-0.125-accuracy.png}
     \caption{\small Central Standard Averaging}
 \end{subfigure}%
 \\
 \begin{subfigure}{0.45\textwidth}
     \raggedleft
-    \includegraphics[width=\textwidth]{resources/posture_stdround-stdsplit-accuracy.png}
+    \includegraphics[width=\textwidth]{resources/posture_stdround-0.125-accuracy.png}
     \caption{Central Selective Inclusion}
 \end{subfigure}
 \begin{subfigure}{0.45\textwidth}
     \raggedleft
-    \includegraphics[width=\textwidth]{resources/posture_stdround_p2p-stdsplit-accuracy.png}
+    \includegraphics[width=\textwidth]{resources/posture_stdround_p2p-0.125-accuracy.png}
     \caption{Peer-to-peer Selective Inclusion}
 \end{subfigure}
 \\
 \begin{subfigure}{0.45\textwidth}
     \raggedleft
-    \includegraphics[width=\textwidth]{resources/posture_weightround-stdsplit-accuracy.png}
+    \includegraphics[width=\textwidth]{resources/posture_weightround-0.125-accuracy.png}
     \caption{Central Weighed Averaging}
 \end{subfigure}
 \begin{subfigure}{0.45\textwidth}
     \raggedleft
-    \includegraphics[width=\textwidth]{resources/posture_weightround_p2p-stdsplit-accuracy.png}
+    \includegraphics[width=\textwidth]{resources/posture_weightround_p2p-0.125-accuracy.png}
     \caption{Peer-to-peer Weighed Averaging}
 \end{subfigure}
-\caption[short]{A beautiful, well written caption}
+\caption{Graphs for the experiments on the images dataset with $P = \tfrac{1}{8}$.}\label{fig:images_graphs_eq}
 \end{figure}
-
-
-
-Local Training\\
-TensorFlow Federated\\
-Standard Federated Learning\\
-Non-Federated Learning\\
-P2P Weighted Average\\
-P2P Selective Inclusion\\
-Central Selective Inclusion\\
-Central Weighted Average\\
-\subsubsection{Testing user weights on global data}
-
-\begin{table}[H]
-\def\arraystretch{1.2}%  1 is the default, change whatever you need
-
-\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|c|} %lllll
+\noindent In this case, where everyone essentially has the same number of images for every class, we would expect the evaluations to be pretty high for all the users because they had a wide variety of images to learn from in the training process. This would result in the $min\_max\_fill$ region being very small. The graphs in Figure~\ref{fig:images_graphs_eq} show that this is indeed the case. We also see that the lower line in the fill region for the peer-to-peer ideas have a higher value than their central averaging counterpart, just as in the postures dataset. This means that once again the peer-to-peer averaging approach seems to have better models for individual users. This is further reiterated in Tables~\ref{tab:image_eq_pre_fit} and~\ref{tab:image_eq_post_fit} where we see the lowest evaluations section is higher for the peer-to-peer approaches than their central averaging counterparts. 
+\begin{table}[H] % prefit -----------------------------------------------------------
+\def\arraystretch{1.2}%
+\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|} %lllll
 \hline
- & \makecell{Non\\Federated} & \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
+& \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
 \hline
-User 0 &  & 81.48\% & 91.65\% & 90.79\% & 91.17\% & 90.60\% & 92.42\%\\
+Average & 80.33\% & 90.18\% & 91.09\% & 89.87\% & 90.62\% & 90.19\%\\
 \hline
-User 1 &  & 81.96\% & 91.94\% & 91.27\% & 91.94\% & 90.60\% & 91.94\%\\
+\makecell{Standard\\Deviation} & 2.46 & 1.40 & 2.84 & 1.38 & 2.11 & 1.90\\
 \hline
-User 2 &  & 82.53\% & 91.65\% & 90.98\% & 91.84\% & 90.31\% & 91.65\%\\
+Lowest & 74.81\% & 88.80\% & 88.00\% & 88.06\% & 86.47\% & 88.10\%\\
 \hline
-User 3 &  & 80.33\% & 91.84\% & 91.17\% & 91.36\% & 90.88\% & 92.13\%\\
-\hline
-User 4 &  & 80.23\% & 91.36\% & 91.55\% & 91.55\% & 90.79\% & 91.94\%\\
-\hline
-User 5 &  & 78.89\% & 91.84\% & 91.36\% & 91.94\% & 90.40\% & 91.75\%\\
-\hline
-User 6 &  & 84.36\% & 91.75\% & 88.48\% & 91.65\% & 90.60\% & 92.03\%\\
-\hline
-User 7 &  & 78.50\% & 91.55\% & 91.65\% & 91.65\% & 90.69\% & 92.23\%\\
-\hline
-Average & 92.51\% & 81.03\% & 91.70\% & 90.91\% & 91.64\% & 90.61\% & 92.01\%\\
-\hline\end{tabular}}
-\caption{Image dataset with $P$ = 12.50\%} \label{tab:sometab}
-
-\end{table}
-
-
-\begin{table}[H]
-\def\arraystretch{1.2}%  1 is the default, change whatever you need
-
-\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|c|} %lllll
-\hline
- & \makecell{Non\\Federated} & \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
-\hline
-User 0 &  & 71.31\% & 87.24\% & 88.29\% & 80.33\% & 90.21\% & 77.45\%\\
-\hline
-User 1 &  & 71.50\% & 85.22\% & 87.72\% & 80.90\% & 88.96\% & 77.06\%\\
-\hline
-User 2 &  & 75.14\% & 81.38\% & 86.66\% & 68.81\% & 89.92\% & 73.51\%\\
-\hline
-User 3 &  & 74.95\% & 86.37\% & 88.48\% & 78.60\% & 90.02\% & 77.16\%\\
-\hline
-User 4 &  & 61.90\% & 73.80\% & 68.14\% & 70.25\% & 76.78\% & 68.62\%\\
-\hline
-User 5 &  & 69.00\% & 87.81\% & 88.20\% & 81.67\% & 89.92\% & 79.94\%\\
-\hline
-User 6 &  & 70.92\% & 87.14\% & 88.00\% & 79.17\% & 90.21\% & 78.41\%\\
-\hline
-User 7 &  & 71.31\% & 79.85\% & 82.15\% & 70.44\% & 87.24\% & 62.38\%\\
-\hline
-Average & 86.85\% & 70.75\% & 83.60\% & 84.70\% & 76.27\% & 87.91\% & 74.32\%\\
+Highest & 83.97\% & 93.02\% & 95.45\% & 92.37\% & 93.02\% & 93.70\%\\
 \hline
 \end{tabular}}
-\caption{Image dataset with $P$ = 70\%} \label{tab:sometab}
-
+\caption{Images dataset: Pre fit results at the end of the rounds from testing user models with $P = \tfrac{1}{8}$.} \label{tab:image_eq_pre_fit}
 \end{table}
+\begin{table}[H] % postfit -----------------------------------------------------------
+\def\arraystretch{1.2}%
+\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|} %lllll
+\hline
+& \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
+\hline
+Average & 80.23\% & 89.80\% & 89.74\% & 89.30\% & 90.04\% & 90.76\%\\
+\hline
+\makecell{Standard\\Deviation} & 2.68 & 1.39 & 4.27 & 1.27 & 1.87 & 1.95\\
+\hline
+Lowest & 74.05\% & 88.00\% & 80.16\% & 88.06\% & 86.47\% & 88.89\%\\
+\hline
+Highest & 83.97\% & 92.25\% & 94.70\% & 91.47\% & 93.02\% & 94.49\%\\
+\hline
+\end{tabular}}
+\caption{Images dataset: Post fit results at the end of the rounds from testing user models with $P = \tfrac{1}{8}$.} \label{tab:image_eq_post_fit}
+\end{table}
+\noindent But the averages are essentially equal between the central and peer-to-peer approaches which means that some users from the central averaging approach are losing performance in the peer-to-peer approach. This is another trade off that might need to be discussed along with the edge user resources vs. privacy argument. It is once again dependant on the context as to whether or not a more levelled performance is better than having some very good and some very bad performing users. Although in the general case, it would seem more beneficial to have every user perform well rather than having good and bad users. 
+\\\\
+An interesting note here is that the local training approach is not the best one. This is probably because of the lack of shared knowledge once again. Every user has access to all the classes of images with unique images for every user. This means that the user might learn about characteristics for a class from images that another user may not have as their local data and in the federated approaches this knowledge is shared, but not in the local training idea. And this explains why the local training approach lags behind when compared to the other approaches. 
+\\\\
+A general note on the $pre\_fit$ and $post\_fit$ evaluations is that the averages seem to drop after the local training takes place after the weights are averaged. Even though the different is probably not significantly big, there can be an explanation behind this drop. The drop could possibly be due to the fact that the averaged weights contain more knowledge about generic characteristics on the images, and when the local training  takes place this knowledge is lost. So when we evaluate the models on unseen local test data, this cause a drop in the accuracy of the predictions. We now move on to look at how every user's model performed on the global users dataset which has more images on which the models can be evaluated. The results are seen in Table~\ref{tab:images_eq_global}.
+\begin{table}[H]
+\def\arraystretch{1.2}%  1 is the default, change whatever you need
+
+\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|c|} %lllll
+\hline
+ & \makecell{Non\\Federated} & \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
+\hline
+User 0 &  & 79.48\% & 91.91\% & 91.91\% & 90.94\% & 92.58\% & 91.62\%\\
+\hline
+User 1 &  & 79.19\% & 91.52\% & 91.71\% & 91.14\% & 92.10\% & 91.91\%\\
+\hline
+User 2 &  & 82.18\% & 92.10\% & 92.10\% & 90.85\% & 92.39\% & 91.71\%\\
+\hline
+User 3 &  & 80.15\% & 92.00\% & 92.29\% & 91.14\% & 92.29\% & 91.62\%\\
+\hline
+User 4 &  & 82.18\% & 91.62\% & 86.03\% & 91.52\% & 92.29\% & 91.04\%\\
+\hline
+User 6 &  & 82.27\% & 92.29\% & 92.68\% & 91.33\% & 91.91\% & 91.81\%\\
+\hline
+User 7 &  & 81.21\% & 92.10\% & 92.97\% & 90.85\% & 92.29\% & 91.23\%\\
+\hline
+User 5 &  & 81.12\% & 92.10\% & 92.68\% & 91.91\% & 91.81\% & 91.52\%\\
+\hline
+Average & 90.37\% & 80.97\% & 91.96\% & 91.55\% & 91.21\% & 92.21\% & 91.56\%\\
+\hline
+\end{tabular}}
+\caption{Image dataset: Results from testing user models on global user's data with $P = \frac{1}{8}$} \label{tab:images_eq_global}
+\end{table}
+\noindent We did not expect to see a big difference here as the user's local test data was pretty representative of the whole dataset and the evaluations are indeed pretty much the same as what we saw on earlier. One thing that is added here is the evaluation from the non-federated approach of the global user. We can see that the averages from all the ideas, bar local training, are in-fact higher than that of the non-federated approach. This could be due to chance or due to the fact that the model started over-fitting after being exposed to the same data for too long, although the learning curve from Figure~\ref{fig:images_graphs_eq} does not suggest this. So it is very likely that this is due to chance and that their performance is essentially the same on the global user's test data.
+\\\\
+The experiment with $P=\frac{1}{8}$ was interesting because of the almost equal split of data amongst all the users. But this would rarely be the case in a real world scenario where a user is probably more biased to taking pictures of a certain class. To simulate this situation, we changed the value of $P$ to be $0.7$. This means that every user is biased to having more pictures of a certain class when compared to the others. More specifically, almost 70\% of a user's data would be images from a specific class, and the rest would be a split from the remaining classes. Almost every user gets at least one images from every class in this part of the experiment. This was once again ran for 32 rounds of federated learning for 16 epochs and the global user's experiment ran for $32 \times 16$ epochs. The graphs from these experiments can be seen in Figure~\ref{fig:images_graphs_biased}.
+\begin{figure}[H]
+\centering
+\begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{resources/posture_global_0.7-accuracy.png}
+    \caption{\small Global user}
+
+\end{subfigure}%
+\\
+\begin{subfigure}{0.45\textwidth}
+    \includegraphics[width=\textwidth]{resources/posture_localround-0.7-accuracy.png}
+    \raggedleft
+    \caption{\small Local Training}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \raggedleft
+    \includegraphics[width=\textwidth]{resources/posture_centralround-0.7-accuracy.png}
+    \caption{\small Central Standard Averaging}
+\end{subfigure}%
+\\
+\begin{subfigure}{0.45\textwidth}
+    \raggedleft
+    \includegraphics[width=\textwidth]{resources/posture_stdround-0.7-accuracy.png}
+    \caption{Central Selective Inclusion}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \raggedleft
+    \includegraphics[width=\textwidth]{resources/posture_stdround_p2p-0.7-accuracy.png}
+    \caption{Peer-to-peer Selective Inclusion}
+\end{subfigure}
+\\
+\begin{subfigure}{0.45\textwidth}
+    \raggedleft
+    \includegraphics[width=\textwidth]{resources/posture_weightround-0.7-accuracy.png}
+    \caption{Central Weighed Averaging}
+\end{subfigure}
+\begin{subfigure}{0.45\textwidth}
+    \raggedleft
+    \includegraphics[width=\textwidth]{resources/posture_weightround_p2p-0.7-accuracy.png}
+    \caption{Peer-to-peer Weighed Averaging}
+\end{subfigure}
+\caption{Graphs for the experiments on the images dataset with $P = 0.7$.}\label{fig:images_graphs_biased}
+\end{figure}
+\noindent We can see that the graphs have a bit more of the fill region for the $pre\_fit$ line which shows that the averaged weights are not the best set of weights for the local test data of some users. This is probably because the averaging process causes a loss of knowledge of the user's image bias. The global user's learning curve does not show any signs of over-fitting from its learning curve, just like the other experiment. And once again, as has been the case with all other experiments, the lower bound of the filling region for the $pre\_fit$ line is higher for the peer-to-peer approaches than the that of their central averaging counterparts and Tables~\ref{tab:image_biased_pre_fit} and~\ref{tab:image_biased_post_fit} support that as well. Other than that, they are all performing at essentially the same level as each other. The local training idea seems to be performing better as a whole considering its smaller fill region but the better evaluation will be when we test it on the global user's test data later.
+\begin{table}[H] % prefit -----------------------------------------------------------
+\def\arraystretch{1.2}%
+\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|} %lllll
+\hline
+& \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
+\hline
+Average & 87.31\% & 86.84\% & 85.58\% & 89.72\% & 85.18\% & 87.49\%\\
+\hline
+\makecell{Standard\\Deviation} & 4.41 & 11.64 & 13.90 & 7.87 & 11.21 & 7.45\\
+\hline
+Lowest & 76.52\% & 57.39\% & 50.00\% & 70.09\% & 62.39\% & 70.00\%\\
+\hline
+Highest & 92.36\% & 96.53\% & 97.16\% & 96.03\% & 95.90\% & 95.89\%\\
+\hline
+\end{tabular}}
+\caption{Images dataset: Pre fit results at the end of the rounds from testing user models with $P = 0.7$.} \label{tab:image_biased_pre_fit}
+\end{table}
+\begin{table}[H] % postfit -----------------------------------------------------------
+\def\arraystretch{1.2}%
+\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|} %lllll
+\hline
+& \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
+\hline
+Average & 87.31\% & 93.11\% & 92.76\% & 94.66\% & 92.45\% & 93.41\%\\
+\hline
+\makecell{Standard\\Deviation} & 4.41 & 2.35 & 2.90 & 1.40 & 3.04 & 1.65\\
+\hline
+Lowest & 76.52\% & 89.57\% & 87.72\% & 92.31\% & 87.18\% & 90.15\%\\
+\hline
+Highest & 92.36\% & 95.83\% & 97.16\% & 97.62\% & 95.95\% & 95.89\%\\
+\hline
+\end{tabular}}
+\caption{Images dataset: Post fit results at the end of the rounds from testing user models with $P = 0.7$.} \label{tab:image_biased_post_fit}
+\end{table}
+\noindent From the two tables we can see that the local training helps out the users not performing well on the averaged weights as the lowest evaluations rise sharply in Table~\ref{tab:image_biased_post_fit} which is for the $post\_fit$ evaluations. The same trend of the peer-to-peer idea being better for individual users is seen here with the higher lowest evaluations, higher averages and lower standard deviations as seen in both tables. This made us more confident in saying that the peer-to-peer approach increases the privacy by decentralising the process and gives better performance for individual users. Other than the peer-to-per ideas, the central averaging ideas seem to be performing pretty much on the same level as each other.
+\begin{table}[H]
+\def\arraystretch{1.2}%  1 is the default, change whatever you need
+
+\resizebox{\linewidth}{!}{\begin{tabular}{|c|c|c|c|c|c|c|c|} %lllll
+\hline
+ & \makecell{Non\\Federated} & \makecell{Local\\Training} & \makecell{Central\\Standard\\Averaging} & \makecell{Central\\Selective\\Inclusion} & \makecell{P2P\\Selective\\Inclusion} & \makecell{Central\\Weighted\\Averaging} & \makecell{P2P\\Weighted\\Averaging}\\
+\hline
+User 0 &  & 77.31\% & 89.42\% & 88.08\% & 89.52\% & 88.27\% & 88.08\%\\
+\hline
+User 1 &  & 73.37\% & 88.65\% & 87.98\% & 86.73\% & 87.50\% & 88.75\%\\
+\hline
+User 2 &  & 71.54\% & 87.69\% & 87.12\% & 88.17\% & 85.58\% & 85.67\%\\
+\hline
+User 3 &  & 73.46\% & 88.94\% & 87.12\% & 86.54\% & 87.88\% & 88.27\%\\
+\hline
+User 4 &  & 66.35\% & 76.44\% & 77.40\% & 78.65\% & 80.87\% & 80.10\%\\
+\hline
+User 5 &  & 74.04\% & 89.52\% & 88.17\% & 89.23\% & 88.17\% & 88.75\%\\
+\hline
+User 6 &  & 74.04\% & 88.94\% & 87.88\% & 88.85\% & 87.88\% & 88.46\%\\
+\hline
+User 7 &  & 66.06\% & 81.35\% & 84.13\% & 83.65\% & 81.54\% & 82.31\%\\
+\hline
+Average & 87.21\% & 72.02\% & 86.37\% & 85.99\% & 86.42\% & 85.96\% & 86.30\%\\
+\hline
+\end{tabular}}
+\caption{Image dataset: Results from testing user models on global user's data with $P = 0.7$}\label{tab:images_biased_global}
+\end{table}
+\noindent We now look at the evaluations of the user's models on the global user's testing data shown in Table~\ref{tab:images_biased_global}. As expected, the accuracies shown here are lower than the ones in Tables~\ref{tab:image_biased_pre_fit} and~\ref{tab:image_biased_post_fit} because they were conducted on the user's local test data which is biased towards the user's overall dataset. The global user's more varied test data means that the results are more objective in terms of the performance. The local training idea is the worst performing idea once again because of the lack of shared knowledge it could have gained from a federated approach. Even though it is the idea which provides the utmost privacy, the performance loss seen in it is too much on the more generic dataset. Again, depending on the context, this might be acceptable but in the general case it is more desirable to have a model that can predict well on a wider range of samples.
+\\\\
+Other than the local training idea, the other ideas are once again performing on pretty much the same level and even almost matching the non-federated learning idea. This means that we can say with confidence that the federated learning ideas are very close to the performance of the non-federated approach but provide more privacy. The peer-to-peer ideas further build up on that idea more and provide even more privacy whilst maintaining the same level of overall performance. The higher level of privacy is gained by decentralising the process but at the cost of more computations to be done on the edge users. It even provides a more levelled out performance across all the users, as seen from the experiments with the lower standard deviations and higher values for the lowest evaluations seen per round for any given user.
+\\\\
+With the experimentation process and their results discussed, we move on to the final section where we talk about our concluding remarks on this project and further work that can be done in this area. We will also discuss things that could have been done better or differently in this project. 
+%\subsubsection{Testing user weights on global data}
 \clearpage
 \section{Conclusions and future work}
 can use "i" in here
 
+
+The experiments we conducted show that the extended ideas we implemented did not give us a significant gain in overall performance. But, we did notice the points we raised earlier about the peer-to-peer approach providing a bit more privacy and more levelled out performance across all the users. 
 early stopping
 could have implemented the exact version of google with deltas being sent
 secure aggregation could have been explored

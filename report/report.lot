@@ -1,11 +1,19 @@
 \boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {1}{\ignorespaces Posture dataset: Pre fit results at the end of the rounds from testing user models.\relax }}{64}{table.caption.17}%
+\contentsline {table}{\numberline {1}{\ignorespaces Posture dataset: Pre fit results at the end of the rounds from testing user models.\relax }}{63}{table.caption.17}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {2}{\ignorespaces Posture dataset: Post fit results at the end of the rounds from testing user models.\relax }}{64}{table.caption.18}%
+\contentsline {table}{\numberline {2}{\ignorespaces Posture dataset: Post fit results at the end of the rounds from testing user models.\relax }}{63}{table.caption.18}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {3}{\ignorespaces Posture dataset: Results from testing user models on global user's data.\relax }}{66}{table.caption.19}%
+\contentsline {table}{\numberline {3}{\ignorespaces Posture dataset: Results from testing user models on global user's data.\relax }}{65}{table.caption.19}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {4}{\ignorespaces Image dataset with $P$ = 12.50\%\relax }}{74}{table.caption.22}%
+\contentsline {table}{\numberline {4}{\ignorespaces Images dataset: Pre fit results at the end of the rounds from testing user models with $P = \genfrac {}{}{}1{1}{8}$.\relax }}{73}{table.caption.22}%
 \defcounter {refsection}{0}\relax 
-\contentsline {table}{\numberline {5}{\ignorespaces Image dataset with $P$ = 70\%\relax }}{75}{table.caption.23}%
+\contentsline {table}{\numberline {5}{\ignorespaces Images dataset: Post fit results at the end of the rounds from testing user models with $P = \genfrac {}{}{}1{1}{8}$.\relax }}{73}{table.caption.23}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {6}{\ignorespaces Image dataset: Results from testing user models on global user's data with $P = \frac {1}{8}$\relax }}{75}{table.caption.24}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {7}{\ignorespaces Images dataset: Pre fit results at the end of the rounds from testing user models with $P = 0.7$.\relax }}{77}{table.caption.26}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {8}{\ignorespaces Images dataset: Post fit results at the end of the rounds from testing user models with $P = 0.7$.\relax }}{77}{table.caption.27}%
+\defcounter {refsection}{0}\relax 
+\contentsline {table}{\numberline {9}{\ignorespaces Image dataset: Results from testing user models on global user's data with $P = 0.7$\relax }}{78}{table.caption.28}%

@@ -49,11 +49,9 @@
 \BOOKMARK [3][-]{subsubsection.5.5.1}{Data separation}{subsection.5.5}% 49
 \BOOKMARK [3][-]{subsubsection.5.5.2}{Model Selection}{subsection.5.5}% 50
 \BOOKMARK [3][-]{subsubsection.5.5.3}{Results}{subsection.5.5}% 51
-\BOOKMARK [3][-]{subsubsection.5.5.4}{Testing on global user}{subsection.5.5}% 52
-\BOOKMARK [3][-]{subsubsection.5.5.5}{Sanity check using TFF}{subsection.5.5}% 53
-\BOOKMARK [2][-]{subsection.5.6}{Image dataset}{section.5}% 54
-\BOOKMARK [3][-]{subsubsection.5.6.1}{Data Separation}{subsection.5.6}% 55
-\BOOKMARK [3][-]{subsubsection.5.6.2}{Model Selection}{subsection.5.6}% 56
-\BOOKMARK [3][-]{subsubsection.5.6.3}{Results}{subsection.5.6}% 57
-\BOOKMARK [3][-]{subsubsection.5.6.4}{Testing user weights on global data}{subsection.5.6}% 58
-\BOOKMARK [1][-]{section.6}{Conclusions and future work}{}% 59
+\BOOKMARK [3][-]{subsubsection.5.5.4}{Sanity check using TFF}{subsection.5.5}% 52
+\BOOKMARK [2][-]{subsection.5.6}{Image dataset}{section.5}% 53
+\BOOKMARK [3][-]{subsubsection.5.6.1}{Data Separation}{subsection.5.6}% 54
+\BOOKMARK [3][-]{subsubsection.5.6.2}{Model Selection}{subsection.5.6}% 55
+\BOOKMARK [3][-]{subsubsection.5.6.3}{Results}{subsection.5.6}% 56
+\BOOKMARK [1][-]{section.6}{Conclusions and future work}{}% 57

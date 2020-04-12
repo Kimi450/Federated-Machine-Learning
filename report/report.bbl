@@ -57,6 +57,30 @@
       \field{pages}{1429\bibrangedash 1441}
       \range{pages}{13}
     \endentry
+    \entry{chollet2015keras}{misc}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{1}{}{%
+        {{hash=14134a39113404b1f80969c9ccc1f71e}{%
+           family={Chollet},
+           familyi={C\bibinitperiod},
+           given={François},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{fullhash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{bibnamehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{authorbibnamehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{authornamehash}{2f3cf4de7406c8a08275677188d056f8}
+      \strng{authorfullhash}{2f3cf4de7406c8a08275677188d056f8}
+      \field{sortinit}{C}
+      \field{sortinithash}{4c244ceae61406cdc0cc2ce1cb1ff703}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{\url{https://keras.io}}
+      \field{title}{Keras}
+      \field{year}{2015}
+    \endentry
     \entry{deeplearning}{book}{}
       \name{author}{1}{}{%
         {{hash=5836fc1fa037e340c8b5591da3207608}{%

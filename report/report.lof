@@ -16,14 +16,16 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {8}{\ignorespaces Methods and attributes of the Average class.\relax }}{23}{figure.caption.12}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {9}{\ignorespaces A visual representation of the data splitting approaches.\relax }}{50}{figure.caption.13}%
+\contentsline {figure}{\numberline {9}{\ignorespaces A visual representation of the data splitting approaches.\relax }}{49}{figure.caption.13}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {10}{\ignorespaces An example to show the sausage graph idea.\relax }}{56}{figure.caption.14}%
+\contentsline {figure}{\numberline {10}{\ignorespaces An example to show the sausage graph idea.\relax }}{55}{figure.caption.14}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {11}{\ignorespaces Architecture of the model used for the postures dataset.\relax }}{61}{figure.caption.15}%
+\contentsline {figure}{\numberline {11}{\ignorespaces Architecture of the model used for the postures dataset.\relax }}{60}{figure.caption.15}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {12}{\ignorespaces short}}{62}{figure.caption.16}%
+\contentsline {figure}{\numberline {12}{\ignorespaces Graphs for the experiments on the postures dataset.\relax }}{61}{figure.caption.16}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {13}{\ignorespaces Architecture of the model used for the images dataset.\relax }}{71}{figure.caption.20}%
+\contentsline {figure}{\numberline {13}{\ignorespaces Architecture of the model used for the images dataset.\relax }}{70}{figure.caption.20}%
 \defcounter {refsection}{0}\relax 
-\contentsline {figure}{\numberline {14}{\ignorespaces short}}{73}{figure.caption.21}%
+\contentsline {figure}{\numberline {14}{\ignorespaces Graphs for the experiments on the images dataset with $P = \genfrac {}{}{}1{1}{8}$.\relax }}{72}{figure.caption.21}%
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {15}{\ignorespaces Graphs for the experiments on the images dataset with $P = 0.7$.\relax }}{76}{figure.caption.25}%

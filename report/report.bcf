@@ -2196,9 +2196,10 @@
     <bcf:citekey order="15">neuralnets</bcf:citekey>
     <bcf:citekey order="16">deeplearning</bcf:citekey>
     <bcf:citekey order="17">secagg</bcf:citekey>
-    <bcf:citekey order="18">Dua:2019</bcf:citekey>
-    <bcf:citekey order="19">roy2018effects</bcf:citekey>
-    <bcf:citekey order="20">kaggle:model</bcf:citekey>
+    <bcf:citekey order="18">chollet2015keras</bcf:citekey>
+    <bcf:citekey order="19">Dua:2019</bcf:citekey>
+    <bcf:citekey order="20">roy2018effects</bcf:citekey>
+    <bcf:citekey order="21">kaggle:model</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">

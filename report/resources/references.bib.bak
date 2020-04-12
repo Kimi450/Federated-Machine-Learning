@@ -4,6 +4,12 @@ author	= {Aaron Segal and Antonio Marcedone and Benjamin Kreuter and Daniel Rama
 year	= {2017},
 booktitle	= {CCS}
 }
+@misc{chollet2015keras,
+  title={Keras},
+  author={Chollet, Fran\c{c}ois and others},
+  year={2015},
+  howpublished={\url{https://keras.io}},
+}
 @article{roy2018effects,
 
 title={Effects of Degradations on Deep Neural Network Architectures},
