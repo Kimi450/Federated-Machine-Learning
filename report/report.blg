@@ -1,17 +1,17 @@
 [0] Config.pm:304> INFO - This is Biber 2.14
 [0] Config.pm:307> INFO - Logfile is 'report.blg'
-[135] biber-MSWIN64:322> INFO - === 
-[168] Biber.pm:415> INFO - Reading 'report.bcf'
-[364] Biber.pm:943> INFO - Found 11 citekeys in bib section 0
-[393] Biber.pm:4256> INFO - Processing section 0
-[394] Utils.pm:75> INFO - Globbing data source 'resources/references.bib'
-[409] Utils.pm:91> INFO - Globbed data source 'resources/references.bib' to resources/references.bib
-[435] Biber.pm:4455> INFO - Looking for bibtex format file 'resources/references.bib' for section 0
-[629] bibtex.pm:1653> INFO - LaTeX decoding ...
-[682] bibtex.pm:1471> INFO - Found BibTeX data source 'resources/references.bib'
-[921] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[921] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[921] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
-[921] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
-[952] bbl.pm:652> INFO - Writing 'report.bbl' with encoding 'UTF-8'
-[964] bbl.pm:755> INFO - Output to report.bbl
+[126] biber-MSWIN64:322> INFO - === 
+[158] Biber.pm:415> INFO - Reading 'report.bcf'
+[342] Biber.pm:943> INFO - Found 11 citekeys in bib section 0
+[370] Biber.pm:4256> INFO - Processing section 0
+[371] Utils.pm:75> INFO - Globbing data source 'resources/references.bib'
+[384] Utils.pm:91> INFO - Globbed data source 'resources/references.bib' to resources/references.bib
+[410] Biber.pm:4455> INFO - Looking for bibtex format file 'resources/references.bib' for section 0
+[415] bibtex.pm:1653> INFO - LaTeX decoding ...
+[449] bibtex.pm:1471> INFO - Found BibTeX data source 'resources/references.bib'
+[689] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[689] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[689] Biber.pm:4084> INFO - Sorting list 'nty/global//global/global' of type 'entry' with template 'nty' and locale 'en-US'
+[690] Biber.pm:4090> INFO - No sort tailoring available for locale 'en-US'
+[714] bbl.pm:652> INFO - Writing 'report.bbl' with encoding 'UTF-8'
+[726] bbl.pm:755> INFO - Output to report.bbl
