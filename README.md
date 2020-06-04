@@ -1,6 +1,8 @@
 ## Federated Machine-Learning
 This is my Final Year Project as an undergraduate Computer Science student in UCC. It is a study based around federated machine learning, with Google's approach to federated learning implemented in TensorFlow Federated and from scratch. Several extensions to federated learning were also implemented which included the idea of weighted averaging and selective inclusion (based on being at most one standard deviation worse than the average of evaluations). The extensions were also implemented in a peer-to-peer context where every user would take the decision independantly instead of a central agent performing the averaging for them.
 
+Final grade achieved: 255/300 (85%)
+
 ## State the given problem in your own words (First deliverable)
 
 Federated machine learning is the idea (from Google) of anonymised machine learning (or rather deep learning). It is a way to get a Neural Network trained on everyones data, but without having direct access to everyones data.
